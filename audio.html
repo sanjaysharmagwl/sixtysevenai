@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUDIO Mode - sixtysevenai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white font-sans transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="absolute top-0 left-0 right-0 py-6 px-6 z-10">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+                <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <svg id="moon-icon" class="w-6 h-6 text-gray-700 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+            <div class="flex gap-6">
+                <a href="online.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Online Hub</a>
+                <a href="read.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Read</a>
+                <a href="video.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Video</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-[50vh] flex flex-col justify-center items-center text-center px-6 py-20 relative">
+        <a href="online.html" class="text-purple-600 dark:text-purple-400 hover:underline mb-6">← Back to Online Hub</a>
+        <div class="text-6xl mb-6">🎧</div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">AUDIO Mode</h1>
+        <p class="text-xl text-purple-600 dark:text-purple-400 font-medium mb-6">Learn AI on the go.</p>
+        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+            Podcast-style lessons, discussions, and deep dives. Perfect for your commute, workout, or whenever you prefer listening over reading.
+        </p>
+    </section>
+
+    <!-- Episodes Section -->
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Latest Episodes</h2>
+            
+            <div class="space-y-6">
+                <!-- Episode 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
+                    <div class="flex items-start gap-6">
+                        <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-4 text-3xl">🎙️</div>
+                        <div class="flex-1">
+                            <span class="text-sm text-purple-600 dark:text-purple-400 font-medium">Episode 01</span>
+                            <h3 class="text-xl font-bold mt-1 mb-2">AI Demystified: What's Really Going On</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                A no-fluff intro to AI — what it is, what it isn't, and why you should care. Perfect starting point.
+                            </p>
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span>28 min</span>
+                                <span>•</span>
+                                <span>Beginner</span>
+                            </div>
+                            <!-- Audio Player Placeholder -->
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 flex items-center gap-4">
+                                <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition">
+                                    <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </button>
+                                <div class="flex-1 h-2 bg-gray-300 dark:bg-gray-600 rounded-full">
+                                    <div class="w-0 h-2 bg-purple-600 rounded-full"></div>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">0:00 / 28:15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
+                    <div class="flex items-start gap-6">
+                        <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-4 text-3xl">🎙️</div>
+                        <div class="flex-1">
+                            <span class="text-sm text-purple-600 dark:text-purple-400 font-medium">Episode 02</span>
+                            <h3 class="text-xl font-bold mt-1 mb-2">Inside the Black Box: How Models Learn</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                We break down training, weights, and the magic that happens when AI "learns" something new.
+                            </p>
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span>35 min</span>
+                                <span>•</span>
+                                <span>Intermediate</span>
+                            </div>
+                            <!-- Audio Player Placeholder -->
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 flex items-center gap-4">
+                                <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition">
+                                    <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </button>
+                                <div class="flex-1 h-2 bg-gray-300 dark:bg-gray-600 rounded-full">
+                                    <div class="w-0 h-2 bg-purple-600 rounded-full"></div>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">0:00 / 35:42</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
+                    <div class="flex items-start gap-6">
+                        <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-4 text-3xl">🎙️</div>
+                        <div class="flex-1">
+                            <span class="text-sm text-purple-600 dark:text-purple-400 font-medium">Episode 03</span>
+                            <h3 class="text-xl font-bold mt-1 mb-2">LLMs Explained: From GPT to Claude</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                A conversational deep-dive into large language models — how they work, why they hallucinate, and what's next.
+                            </p>
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span>42 min</span>
+                                <span>•</span>
+                                <span>Intermediate</span>
+                            </div>
+                            <!-- Audio Player Placeholder -->
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 flex items-center gap-4">
+                                <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition">
+                                    <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </button>
+                                <div class="flex-1 h-2 bg-gray-300 dark:bg-gray-600 rounded-full">
+                                    <div class="w-0 h-2 bg-purple-600 rounded-full"></div>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">0:00 / 42:08</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Never miss an episode</h2>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Subscribe to get new episodes delivered straight to your ears.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg transition">Subscribe Now</a>
+                <a href="#" class="border border-purple-500 text-purple-600 dark:text-purple-400 hover:bg-purple-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition">Get on Spotify</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-4xl mx-auto text-center text-gray-500">
+            <p>&copy; 2025 sixtysevenai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.classList.toggle('dark', savedTheme === 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+
+</body>
+</html>
