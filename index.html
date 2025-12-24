@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sixtysevenai - Learn AI. Actually understand it.</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-gray-950 text-white font-sans">
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white font-sans transition-colors duration-300">
 
     <!-- Navigation -->
     <nav class="absolute top-0 left-0 right-0 py-6 px-6 z-10">
-        <div class="max-w-5xl mx-auto flex justify-end items-center">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+                <!-- Sun icon (shown in dark mode) -->
+                <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <!-- Moon icon (shown in light mode) -->
+                <svg id="moon-icon" class="w-6 h-6 text-gray-700 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
             <div class="flex gap-6">
-                <a href="index.html" class="text-white font-medium">Home</a>
-                <a href="about.html" class="text-gray-400 hover:text-white transition">About</a>
+                <a href="index.html" class="text-gray-900 dark:text-white font-medium">Home</a>
+                <a href="about.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">About</a>
             </div>
         </div>
     </nav>
@@ -27,33 +43,33 @@
         </div>
         
         <h1 class="text-5xl md:text-7xl font-bold mb-4">Learn AI.</h1>
-        <h2 class="text-4xl md:text-6xl font-bold text-purple-400 mb-8">Actually understand it.</h2>
-        <p class="text-lg text-gray-400 max-w-xl mb-10">We teach AI the way the internet learns — hands-on, curiosity-first, zero fluff.</p>
+        <h2 class="text-4xl md:text-6xl font-bold text-purple-600 dark:text-purple-400 mb-8">Actually understand it.</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl mb-10">We teach AI the way the internet learns — hands-on, curiosity-first, zero fluff.</p>
         <div class="flex flex-col sm:flex-row gap-4">
             <a href="#foundations" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg transition">Start Learning</a>
-            <a href="#cta" class="border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition">Get Early Access</a>
+            <a href="#cta" class="border border-purple-500 text-purple-600 dark:text-purple-400 hover:bg-purple-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition">Get Early Access</a>
         </div>
     </section>
 
     <!-- What is sixtysevenai -->
-    <section class="py-20 px-6 bg-gray-900">
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">So… what is sixtysevenai?</h2>
-            <p class="text-xl text-purple-400 font-medium mb-8">AI school, but not the boring kind.</p>
-            <p class="text-gray-300 mb-6">Most AI content is either:</p>
-            <ul class="text-gray-400 space-y-2 mb-8 ml-6">
-                <li class="flex items-center gap-2"><span class="text-red-400">✗</span> way too surface-level, or</li>
-                <li class="flex items-center gap-2"><span class="text-red-400">✗</span> way too intimidating</li>
+            <p class="text-xl text-purple-600 dark:text-purple-400 font-medium mb-8">AI school, but not the boring kind.</p>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Most AI content is either:</p>
+            <ul class="text-gray-600 dark:text-gray-400 space-y-2 mb-8 ml-6">
+                <li class="flex items-center gap-2"><span class="text-red-500 dark:text-red-400">✗</span> way too surface-level, or</li>
+                <li class="flex items-center gap-2"><span class="text-red-500 dark:text-red-400">✗</span> way too intimidating</li>
             </ul>
-            <p class="text-2xl font-semibold text-white mb-8">We said: nah.</p>
-            <div class="bg-gray-800 rounded-xl p-8">
-                <p class="text-lg text-gray-200 mb-4">At sixtysevenai:</p>
-                <ul class="space-y-3 text-gray-300">
-                    <li class="flex items-center gap-3"><span class="text-green-400">✓</span> Humans design the learning</li>
-                    <li class="flex items-center gap-3"><span class="text-green-400">✓</span> AI helps you when you're stuck</li>
-                    <li class="flex items-center gap-3"><span class="text-green-400">✓</span> You go deep — without getting lost</li>
+            <p class="text-2xl font-semibold mb-8">We said: nah.</p>
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
+                <p class="text-lg text-gray-800 dark:text-gray-200 mb-4">At sixtysevenai:</p>
+                <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                    <li class="flex items-center gap-3"><span class="text-green-500 dark:text-green-400">✓</span> Humans design the learning</li>
+                    <li class="flex items-center gap-3"><span class="text-green-500 dark:text-green-400">✓</span> AI helps you when you're stuck</li>
+                    <li class="flex items-center gap-3"><span class="text-green-500 dark:text-green-400">✓</span> You go deep — without getting lost</li>
                 </ul>
-                <p class="mt-6 text-purple-400 font-medium">Smart, chill, and actually useful.</p>
+                <p class="mt-6 text-purple-600 dark:text-purple-400 font-medium">Smart, chill, and actually useful.</p>
             </div>
         </div>
     </section>
@@ -62,46 +78,46 @@
     <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-8">How learning works here</h2>
-            <p class="text-xl text-gray-300 mb-8">Simple rules:</p>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Simple rules:</p>
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-gray-800 rounded-xl p-6">
-                    <p class="text-lg text-white">Learn <span class="text-purple-400 font-semibold">why</span>, not just what to type</p>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <p class="text-lg">Learn <span class="text-purple-600 dark:text-purple-400 font-semibold">why</span>, not just what to type</p>
                 </div>
-                <div class="bg-gray-800 rounded-xl p-6">
-                    <p class="text-lg text-white">Build <span class="text-purple-400 font-semibold">real stuff</span> (not fake demos)</p>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <p class="text-lg">Build <span class="text-purple-600 dark:text-purple-400 font-semibold">real stuff</span> (not fake demos)</p>
                 </div>
-                <div class="bg-gray-800 rounded-xl p-6">
-                    <p class="text-lg text-white">Ask unlimited questions — <span class="text-gray-400">no ego, no judgment</span></p>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <p class="text-lg">Ask unlimited questions — <span class="text-gray-500 dark:text-gray-400">no ego, no judgment</span></p>
                 </div>
-                <div class="bg-gray-800 rounded-xl p-6">
-                    <p class="text-lg text-white">Go fast, slow, rewind — <span class="text-purple-400">it's your pace</span></p>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <p class="text-lg">Go fast, slow, rewind — <span class="text-purple-600 dark:text-purple-400">it's your pace</span></p>
                 </div>
             </div>
-            <p class="mt-10 text-xl text-gray-300">You're not "taking a course."</p>
-            <p class="text-2xl font-bold text-purple-400">You're leveling up your brain.</p>
+            <p class="mt-10 text-xl text-gray-700 dark:text-gray-300">You're not "taking a course."</p>
+            <p class="text-2xl font-bold text-purple-600 dark:text-purple-400">You're leveling up your brain.</p>
         </div>
     </section>
 
     <!-- First Drop: AI Foundations -->
-    <section id="foundations" class="py-20 px-6 bg-gray-900">
+    <section id="foundations" class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto">
-            <p class="text-purple-400 font-medium mb-2">First drop</p>
+            <p class="text-purple-600 dark:text-purple-400 font-medium mb-2">First drop</p>
             <h2 class="text-3xl md:text-4xl font-bold mb-4">AI Foundations</h2>
-            <p class="text-xl text-gray-300 mb-8">This is where it starts.</p>
-            <div class="bg-gray-800 rounded-xl p-8 mb-8">
-                <p class="text-lg text-white mb-4">You'll learn:</p>
-                <ul class="space-y-3 text-gray-300">
-                    <li class="flex items-center gap-3"><span class="text-purple-400">→</span> How modern AI actually works</li>
-                    <li class="flex items-center gap-3"><span class="text-purple-400">→</span> What's happening inside models</li>
-                    <li class="flex items-center gap-3"><span class="text-purple-400">→</span> How AI systems are built end-to-end</li>
-                    <li class="flex items-center gap-3"><span class="text-purple-400">→</span> How to think like an AI engineer</li>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">This is where it starts.</p>
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 mb-8 shadow-lg dark:shadow-none">
+                <p class="text-lg mb-4">You'll learn:</p>
+                <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                    <li class="flex items-center gap-3"><span class="text-purple-600 dark:text-purple-400">→</span> How modern AI actually works</li>
+                    <li class="flex items-center gap-3"><span class="text-purple-600 dark:text-purple-400">→</span> What's happening inside models</li>
+                    <li class="flex items-center gap-3"><span class="text-purple-600 dark:text-purple-400">→</span> How AI systems are built end-to-end</li>
+                    <li class="flex items-center gap-3"><span class="text-purple-600 dark:text-purple-400">→</span> How to think like an AI engineer</li>
                 </ul>
             </div>
-            <p class="text-gray-400 mb-2">No shortcuts. No hype.</p>
-            <p class="text-xl font-semibold text-white mb-8">Just solid fundamentals.</p>
+            <p class="text-gray-600 dark:text-gray-400 mb-2">No shortcuts. No hype.</p>
+            <p class="text-xl font-semibold mb-8">Just solid fundamentals.</p>
             <div class="flex flex-wrap gap-4">
-                <span class="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-lg">Online (self-paced)</span>
-                <span class="bg-gray-700 text-gray-300 px-4 py-2 rounded-lg">Guided cohorts (coming soon)</span>
+                <span class="bg-purple-100 dark:bg-purple-600/20 text-purple-600 dark:text-purple-400 px-4 py-2 rounded-lg">Online (self-paced)</span>
+                <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg">Guided cohorts (coming soon)</span>
             </div>
         </div>
     </section>
@@ -110,26 +126,26 @@
     <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-8">Who this is for</h2>
-            <p class="text-xl text-gray-300 mb-6">If you:</p>
-            <ul class="space-y-4 text-lg text-gray-300 mb-8">
-                <li class="flex items-center gap-3"><span class="text-purple-400">•</span> are curious but overwhelmed</li>
-                <li class="flex items-center gap-3"><span class="text-purple-400">•</span> want more than YouTube snippets</li>
-                <li class="flex items-center gap-3"><span class="text-purple-400">•</span> hate tutorials that skip the "why"</li>
-                <li class="flex items-center gap-3"><span class="text-purple-400">•</span> want to build, not just prompt</li>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-6">If you:</p>
+            <ul class="space-y-4 text-lg text-gray-700 dark:text-gray-300 mb-8">
+                <li class="flex items-center gap-3"><span class="text-purple-600 dark:text-purple-400">•</span> are curious but overwhelmed</li>
+                <li class="flex items-center gap-3"><span class="text-purple-600 dark:text-purple-400">•</span> want more than YouTube snippets</li>
+                <li class="flex items-center gap-3"><span class="text-purple-600 dark:text-purple-400">•</span> hate tutorials that skip the "why"</li>
+                <li class="flex items-center gap-3"><span class="text-purple-600 dark:text-purple-400">•</span> want to build, not just prompt</li>
             </ul>
-            <p class="text-2xl font-bold text-purple-400">Yeah. This is for you.</p>
+            <p class="text-2xl font-bold text-purple-600 dark:text-purple-400">Yeah. This is for you.</p>
         </div>
     </section>
 
     <!-- The Bigger Idea -->
-    <section class="py-20 px-6 bg-gray-900">
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-8">The bigger idea</h2>
-            <p class="text-xl text-gray-300 mb-4">AI shouldn't feel mysterious or exclusive.</p>
-            <p class="text-2xl font-semibold text-purple-400 mb-8">It should feel learnable.</p>
-            <p class="text-lg text-gray-400 mb-2">sixtysevenai exists to make AI make sense —</p>
-            <p class="text-lg text-gray-400 mb-8">and help you go from "confused" to "confident."</p>
-            <p class="text-xl text-white font-medium">We're just getting started.</p>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-4">AI shouldn't feel mysterious or exclusive.</p>
+            <p class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-8">It should feel learnable.</p>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-2">sixtysevenai exists to make AI make sense —</p>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">and help you go from "confused" to "confident."</p>
+            <p class="text-xl font-medium">We're just getting started.</p>
         </div>
     </section>
 
@@ -137,21 +153,37 @@
     <section id="cta" class="py-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">What do you want to learn next?</h2>
-            <p class="text-xl text-gray-300 mb-2">AI is moving fast.</p>
-            <p class="text-xl text-purple-400 font-semibold mb-10">You can move with it.</p>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-2">AI is moving fast.</p>
+            <p class="text-xl text-purple-600 dark:text-purple-400 font-semibold mb-10">You can move with it.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg transition">Join sixtysevenai</a>
-                <a href="#" class="border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition">Stay in the Loop</a>
+                <a href="#" class="border border-purple-500 text-purple-600 dark:text-purple-400 hover:bg-purple-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition">Stay in the Loop</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-10 px-6 border-t border-gray-800">
+    <footer class="py-10 px-6 border-t border-gray-200 dark:border-gray-800">
         <div class="max-w-4xl mx-auto text-center text-gray-500">
-            <p>&copy; 2024 sixtysevenai. All rights reserved.</p>
+            <p>&copy; 2025 sixtysevenai. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.classList.toggle('dark', savedTheme === 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
 
 </body>
 </html>
