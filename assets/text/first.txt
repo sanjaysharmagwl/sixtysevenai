@@ -1,0 +1,66 @@
+🎬 Video 1 Transcript: “Stop Learning AI the Wrong Way”
+Total Length: ~90 seconds
+Delivery Notes: Speak with high energy and conviction—pause for emphasis on bolded words. Use quick cuts or B-roll (e.g., frustrated learner clips for relatability, clean code builds for empowerment). Background music: Upbeat electronic build-up, fading to motivational close. Visuals: Bold text overlays for key phrases, subtle AI animations (e.g., skill tree branching).
+
+[0–3s | Hook — Pattern Interrupt]
+(Screen: Sudden freeze-frame of a chaotic tutorial montage. You appear on camera, leaning in intensely.)
+Stop.
+If you’re learning AI from random tutorials…
+you’re already losing.
+[3–10s | Relatability]
+(Cut to relatable clips: Scrolling YouTube, bookmarking articles, staring blankly at code that errors out.)
+You watch videos. Endless ones.
+You read blogs until your eyes blur.
+You save bookmarks like they're gold.
+But when it’s time to build something real—
+a chatbot, an app, anything that matters—
+nothing works. It all falls apart.
+That’s not your fault.
+(Soft nod, empathetic eye contact.)
+[10–25s | The Core Problem]
+(Visuals: Broken puzzle pieces labeled "Concepts," "Definitions," "Frameworks." Stats overlay: "80% of AI learners quit within 3 months.")
+AI education today? It’s broken.
+It teaches concepts, not confidence.
+You learn definitions that sound smart in theory… not decisions that stick when the rubber meets the road.
+Frameworks you memorize… but no real thinking to adapt them.
+And that’s why most people quit.
+They chase the hype, hit the wall, and bail.
+[25–45s | Reframe — New Mental Model]
+(Transition: Puzzle pieces reassemble into a branching skill tree. You gesture animatedly.)
+Here’s the reframe: Real AI isn’t about knowing everything upfront.
+It’s about knowing what to build next. One smart step at a time.
+Builders don’t waste time asking:
+“What is machine learning?”
+They ask:
+“How do I make this thing work? Right now?”
+That’s the difference.
+That’s what turns overwhelm into momentum.
+[45–65s | SixtySeven AI Philosophy]
+(Branded visuals: SixtySeven AI logo fades in. Show quick clips of simple-to-advanced builds—e.g., basic prompt → full app deployment.)
+At SixtySeven AI, we don’t teach AI like some dusty subject in a textbook.
+We teach it like a skill tree—your personal upgrade path.
+You start simple: Nail the basics in minutes.
+You build fast: Hands-on projects that ship.
+You level up only when you’re ready—no rushing, no skipping steps.
+No fluff. No gatekeeping egos.
+No fake “AI expert” vibes from people who haven’t shipped in years.
+[65–80s | Empowerment]
+(Warm close-up: You smile directly at camera, inclusive tone.)
+You don’t need a PhD from some Ivy League tower.
+You don’t need 10 years grinding in Big Tech.
+You just need the right way in—the path that clicks for you.
+And yes—
+you belong here.
+The builder’s table is open.
+[80–90s | CTA + Signature Close]
+(Screen: Subscribe button pulses. Text: "Subscribe to Build AI That Works." End with your sign-off graphic.)
+If you want to actually build AI—not just talk about it endlessly—
+hit subscribe right now.
+Now you’re playing the real game.
+Welcome to the builder side.
+
+Quick Production Tips
+
+Timing Check: Read aloud with natural pauses—aim for 150-160 words per minute to hit 90s exactly.
+Why This Transcript Works: It stays true to your outline but adds vivid, spoken flow (e.g., contractions, rhetorical questions) for better on-camera delivery. Hooks emotionally, reframes pain points, and funnels to CTA without feeling salesy.
+Next Steps: If you want voiceover tweaks, B-roll suggestions, or a script for Video 2, just say the word!

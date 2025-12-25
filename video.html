@@ -40,7 +40,7 @@
         <h1 class="text-4xl md:text-6xl font-bold mb-4">VIDEO Mode</h1>
         <p class="text-xl text-purple-500 dark:text-purple-400 font-medium mb-6">Watch. Learn. Build.</p>
         <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-            Video tutorials, screencasts, and live sessions. See AI concepts come to life with visual explanations and hands-on coding.
+            Video tutorials and lessons designed for builders. See AI concepts come to life with visual explanations and hands-on learning.
         </p>
     </section>
 
@@ -49,117 +49,105 @@
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-8">Featured Video</h2>
             
-            <!-- Video Embed Placeholder -->
+            <!-- Video Player -->
             <div class="bg-gray-800 rounded-xl overflow-hidden shadow-2xl mb-8">
-                <div class="aspect-video flex items-center justify-center bg-gradient-to-br from-purple-900 to-gray-900">
-                    <div class="text-center">
-                        <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full w-20 h-20 flex items-center justify-center transition mb-4 mx-auto">
-                            <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                        <p class="text-gray-400">Video content coming soon</p>
-                    </div>
-                </div>
+                <video 
+                    id="featured-video"
+                    class="w-full aspect-video"
+                    controls
+                    poster="assets/images/video-poster.jpg"
+                >
+                    <source src="assets/video/first_video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
             
             <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
-                <h3 class="text-2xl font-bold mb-2">AI Foundations: Your First Neural Network</h3>
+                <span class="text-sm text-purple-500 dark:text-purple-400 font-medium">Episode 01</span>
+                <h3 class="text-2xl font-bold mt-2 mb-2">Stop Learning AI the Wrong Way</h3>
                 <p class="text-gray-600 dark:text-gray-400 mb-4">
-                    In this hands-on session, we build a neural network from scratch. No frameworks, no magic — just pure understanding.
+                    If you're learning AI from random tutorials, you're already losing. Real AI isn't about knowing everything upfront — it's about knowing what to build next. Welcome to the builder's side.
                 </p>
                 <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                    <span>45 min</span>
+                    <span>~90 seconds</span>
                     <span>•</span>
-                    <span>Beginner friendly</span>
+                    <span>Introduction</span>
                     <span>•</span>
-                    <span>Hands-on coding</span>
+                    <span>For all levels</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Video Library -->
+    <!-- Key Takeaways -->
     <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">Video Library</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Key Takeaways</h2>
             
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Video Card 1 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg dark:shadow-none group">
-                    <div class="aspect-video bg-gradient-to-br from-purple-800 to-gray-800 flex items-center justify-center relative">
-                        <button class="bg-purple-600/80 group-hover:bg-purple-600 text-white rounded-full w-14 h-14 flex items-center justify-center transition">
-                            <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                        <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">18:32</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">What is Machine Learning?</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">A visual introduction to ML concepts</p>
-                    </div>
+                <!-- Takeaway 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <div class="text-3xl mb-4">🧩</div>
+                    <h3 class="font-bold text-lg mb-2">The Problem with AI Education</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Most AI education teaches concepts, not confidence. You learn definitions that sound smart but can't apply them when it matters.
+                    </p>
                 </div>
 
-                <!-- Video Card 2 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg dark:shadow-none group">
-                    <div class="aspect-video bg-gradient-to-br from-purple-800 to-gray-800 flex items-center justify-center relative">
-                        <button class="bg-purple-600/80 group-hover:bg-purple-600 text-white rounded-full w-14 h-14 flex items-center justify-center transition">
-                            <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                        <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">25:15</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Understanding Transformers</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">The architecture behind GPT, Claude & more</p>
-                    </div>
+                <!-- Takeaway 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <div class="text-3xl mb-4">🔄</div>
+                    <h3 class="font-bold text-lg mb-2">The Builder's Mindset</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Don't ask "What is machine learning?" Ask "How do I make this thing work right now?" That's the difference that creates momentum.
+                    </p>
                 </div>
 
-                <!-- Video Card 3 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg dark:shadow-none group">
-                    <div class="aspect-video bg-gradient-to-br from-purple-800 to-gray-800 flex items-center justify-center relative">
-                        <button class="bg-purple-600/80 group-hover:bg-purple-600 text-white rounded-full w-14 h-14 flex items-center justify-center transition">
-                            <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                        <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">32:48</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Building a Chatbot from Scratch</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Live coding session with Q&A</p>
-                    </div>
+                <!-- Takeaway 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <div class="text-3xl mb-4">🌳</div>
+                    <h3 class="font-bold text-lg mb-2">The Skill Tree Approach</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Start simple, build fast with hands-on projects that ship, and level up only when you're ready. No rushing, no skipping steps.
+                    </p>
                 </div>
 
-                <!-- Video Card 4 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg dark:shadow-none group">
-                    <div class="aspect-video bg-gradient-to-br from-purple-800 to-gray-800 flex items-center justify-center relative">
-                        <button class="bg-purple-600/80 group-hover:bg-purple-600 text-white rounded-full w-14 h-14 flex items-center justify-center transition">
-                            <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                        <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">28:00</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Prompt Engineering Deep Dive</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Get better results from AI models</p>
-                    </div>
+                <!-- Takeaway 4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <div class="text-3xl mb-4">🚀</div>
+                    <h3 class="font-bold text-lg mb-2">You Belong Here</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        No PhD required. No 10 years in Big Tech. You just need the right path that clicks for you. The builder's table is open.
+                    </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Formats -->
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Prefer a different format?</h2>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">This content is available in multiple formats to suit your learning style.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="audio.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg flex items-center justify-center gap-2">
+                    <span class="text-xl">🎧</span> Listen as Audio
+                </a>
+                <a href="read.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg flex items-center justify-center gap-2">
+                    <span class="text-xl">📖</span> Read the Transcript
+                </a>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+    <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to watch and learn?</h2>
-            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Get full access to all video content with early access.</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to build AI that works?</h2>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Join the builder's side. Get early access to more content.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#" class="btn-brand-primary font-semibold px-8 py-4 rounded-lg">Get Early Access</a>
-                <a href="#" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg">Subscribe on YouTube</a>
+                <a href="contact.html" class="btn-brand-primary font-semibold px-8 py-4 rounded-lg">Get Early Access</a>
+                <a href="contact.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg">Subscribe on YouTube</a>
             </div>
         </div>
     </section>

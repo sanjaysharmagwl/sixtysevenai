@@ -40,67 +40,140 @@
         <h1 class="text-4xl md:text-6xl font-bold mb-4">READ Mode</h1>
         <p class="text-xl text-purple-500 dark:text-purple-400 font-medium mb-6">Text-based learning at your pace.</p>
         <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-            Dive into articles, interactive guides, and in-depth explanations. Perfect for those who love to read, highlight, and take notes.
+            Prefer reading? Dive into the full transcript with highlights, take notes, and learn at your own speed.
         </p>
     </section>
 
-    <!-- Sample Content -->
+    <!-- Featured Article / Transcript -->
     <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">Featured Articles</h2>
-            
-            <div class="space-y-6">
-                <!-- Article 1 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <span class="text-sm text-purple-500 dark:text-purple-400 font-medium">Foundations</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-4">What Actually Is a Neural Network?</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
-                        Forget the math for a second. Let's talk about what's really happening when data flows through a neural network — and why it matters for everything you'll build.
-                    </p>
-                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                        <span>15 min read</span>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-none overflow-hidden">
+                <!-- Header -->
+                <div class="bg-gradient-to-r from-purple-600 to-purple-800 p-8 text-white">
+                    <span class="text-sm font-medium opacity-80">Episode 01 • Transcript</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2">Stop Learning AI the Wrong Way</h2>
+                    <div class="flex items-center gap-4 text-sm mt-4 opacity-80">
+                        <span>~90 second read</span>
                         <span>•</span>
-                        <span>Beginner friendly</span>
+                        <span>Introduction</span>
+                        <span>•</span>
+                        <span>For all levels</span>
                     </div>
                 </div>
-
-                <!-- Article 2 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <span class="text-sm text-purple-500 dark:text-purple-400 font-medium">Deep Dive</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-4">Transformers: The Architecture That Changed Everything</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
-                        From attention mechanisms to self-attention, we break down the transformer architecture piece by piece. No PhD required.
-                    </p>
-                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                        <span>25 min read</span>
-                        <span>•</span>
-                        <span>Intermediate</span>
-                    </div>
+                
+                <!-- Featured Image -->
+                <div class="w-full">
+                    <img src="assets/images/first_image.png" alt="Stop Learning AI the Wrong Way" class="w-full h-auto object-cover">
                 </div>
+                
+                <!-- Content -->
+                <div class="p-8 md:p-12">
+                    <article class="prose prose-lg dark:prose-invert max-w-none">
+                        
+                        <!-- Greeting -->
+                        <div class="mb-10">
+                            <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+                                <strong>Hey Builder,</strong>
+                            </p>
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mt-4">
+                                I'm your SixtySevenAI mentor. Let's talk about learning AI the wrong way – and how to fix it. No more endless scrolling. Ready to build for real? Let's go. 😊
+                            </p>
+                        </div>
 
-                <!-- Article 3 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <span class="text-sm text-purple-500 dark:text-purple-400 font-medium">Practical</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-4">Building Your First AI Pipeline</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
-                        Step-by-step guide to building a complete AI pipeline — from data prep to deployment. Real code, real results.
-                    </p>
-                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                        <span>40 min read</span>
-                        <span>•</span>
-                        <span>Hands-on</span>
-                    </div>
+                        <!-- The Struggle -->
+                        <div class="mb-10">
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                                You watch videos. Endless ones. You read blogs until your eyes blur. You save bookmarks like they're gold. But when it's time to build something real – a chatbot, an app, anything that matters – nothing works. It all falls apart. That's not your fault. <em>What's one tutorial that left you stuck? Tell me!</em> <strong>Try building one small thing today.</strong>
+                            </p>
+                        </div>
+
+                        <!-- The Core Problem -->
+                        <div class="mb-10 bg-gray-100 dark:bg-gray-700/50 rounded-xl p-6">
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                                AI education today? It's broken. It teaches concepts, not confidence. You learn definitions that sound smart in theory… not decisions that stick when the rubber meets the road. Frameworks you memorize… but no real thinking to adapt them. And that's why most people quit. They chase the hype, hit the wall, and bail. <em>Ever chased hype and quit? Share your story!</em> <strong>Pick one concept and apply it now.</strong>
+                            </p>
+                        </div>
+
+                        <!-- The Reframe -->
+                        <div class="mb-10">
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                                Here's the reframe: Real AI isn't about knowing everything upfront. It's about knowing what to build next. One smart step at a time. Builders don't waste time asking: "What is machine learning?" They ask: <strong class="text-purple-600 dark:text-purple-400">"How do I make this thing work? Right now?"</strong> That's the difference. That's what turns overwhelm into momentum. <em>What's your "right now" question? Reply with it!</em> <strong>Ask yourself that on your next project.</strong>
+                            </p>
+                        </div>
+
+                        <!-- SixtySeven AI Philosophy -->
+                        <div class="mb-10 bg-purple-100 dark:bg-purple-900/30 rounded-xl p-6">
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                                At SixtySeven AI, we don't teach AI like some dusty subject in a textbook. We teach it like a <strong>skill tree</strong> – your personal upgrade path.
+                            </p>
+                            <ul class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mt-4 space-y-2">
+                                <li><strong>You start simple:</strong> Nail the basics in minutes.</li>
+                                <li><strong>You build fast:</strong> Hands-on projects that ship.</li>
+                                <li><strong>You level up only when you're ready</strong> – no rushing, no skipping steps.</li>
+                            </ul>
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mt-4">
+                                No fluff. No gatekeeping egos. No fake "AI expert" vibes from people who haven't shipped in years. <em>What's one step you're ready for? Let me know!</em> <strong>Start with basics today.</strong>
+                            </p>
+                        </div>
+
+                        <!-- Empowerment -->
+                        <div class="mb-10 bg-gradient-to-r from-purple-100 to-purple-50 dark:from-purple-900/30 dark:to-purple-800/20 rounded-xl p-6">
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                                You don't need a PhD from some Ivy League tower. You don't need 10 years grinding in Big Tech. You just need the right way in – the path that clicks for <em>you</em>. And yes – you belong here. The builder's table is open. <em>What's your biggest doubt? Tell me!</em> <strong>Believe in yourself and join the table now.</strong>
+                            </p>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="text-center py-8 border-t border-gray-200 dark:border-gray-700">
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                                If you want to actually build AI – not just talk about it endlessly – <strong>hit subscribe right now.</strong>
+                            </p>
+                            <p class="text-xl font-bold text-purple-600 dark:text-purple-400 mb-6">
+                                Now you're playing the real game. Welcome to the builder side. 🚀
+                            </p>
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                                <strong>You've got this. What's your first build?</strong>
+                            </p>
+                        </div>
+
+                        <!-- Sign-off -->
+                        <div class="pt-6 border-t border-gray-200 dark:border-gray-700">
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                                Cheers,<br>
+                                <strong>Your SixtySevenAI Mentor</strong>
+                            </p>
+                            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mt-4 italic">
+                                P.S. Hit reply – let's make it happen! 💪
+                            </p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- Other Formats -->
     <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to start reading?</h2>
-            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Access the full library with early access.</p>
-            <a href="#" class="btn-brand-primary font-semibold px-8 py-4 rounded-lg inline-block">Get Early Access</a>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Prefer a different format?</h2>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">This content is available in multiple formats to suit your learning style.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="video.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg flex items-center justify-center gap-2">
+                    <span class="text-xl">🎬</span> Watch the Video
+                </a>
+                <a href="audio.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg flex items-center justify-center gap-2">
+                    <span class="text-xl">🎧</span> Listen as Audio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to start building?</h2>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Join the builder's side. Get early access to more content.</p>
+            <a href="contact.html" class="btn-brand-primary font-semibold px-8 py-4 rounded-lg inline-block">Get Early Access</a>
         </div>
     </section>
 

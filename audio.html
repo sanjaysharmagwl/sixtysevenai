@@ -40,108 +40,98 @@
         <h1 class="text-4xl md:text-6xl font-bold mb-4">AUDIO Mode</h1>
         <p class="text-xl text-purple-500 dark:text-purple-400 font-medium mb-6">Learn AI on the go.</p>
         <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-            Podcast-style lessons, discussions, and deep dives. Perfect for your commute, workout, or whenever you prefer listening over reading.
+            Listen to lessons while you commute, exercise, or whenever you prefer audio over video. Same great content, optimized for listening.
         </p>
     </section>
 
-    <!-- Episodes Section -->
+    <!-- Featured Episode -->
     <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">Latest Episodes</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Featured Episode</h2>
             
-            <div class="space-y-6">
-                <!-- Episode 1 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <div class="flex items-start gap-6">
-                        <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-4 text-3xl">🎙️</div>
-                        <div class="flex-1">
-                            <span class="text-sm text-purple-500 dark:text-purple-400 font-medium">Episode 01</span>
-                            <h3 class="text-xl font-bold mt-1 mb-2">AI Demystified: What's Really Going On</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                A no-fluff intro to AI — what it is, what it isn't, and why you should care. Perfect starting point.
-                            </p>
-                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                                <span>28 min</span>
-                                <span>•</span>
-                                <span>Beginner</span>
-                            </div>
-                            <!-- Audio Player Placeholder -->
-                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 flex items-center gap-4">
-                                <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition">
-                                    <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </button>
-                                <div class="flex-1 h-2 bg-gray-300 dark:bg-gray-600 rounded-full">
-                                    <div class="w-0 h-2 bg-purple-600 rounded-full"></div>
-                                </div>
-                                <span class="text-sm text-gray-500 dark:text-gray-400">0:00 / 28:15</span>
-                            </div>
+            <!-- Episode Card -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
+                <div class="flex flex-col md:flex-row items-start gap-6">
+                    <div class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl p-8 text-6xl flex-shrink-0">
+                        🎙️
+                    </div>
+                    <div class="flex-1 w-full">
+                        <span class="text-sm text-purple-500 dark:text-purple-400 font-medium">Episode 01</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-3">Stop Learning AI the Wrong Way</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            If you're learning AI from random tutorials, you're already losing. Real AI isn't about knowing everything upfront — it's about knowing what to build next. Welcome to the builder's side.
+                        </p>
+                        <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
+                            <span>~90 seconds</span>
+                            <span>•</span>
+                            <span>Introduction</span>
+                            <span>•</span>
+                            <span>For all levels</span>
+                        </div>
+                        
+                        <!-- Audio Player -->
+                        <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4">
+                            <audio 
+                                id="featured-audio"
+                                class="w-full"
+                                controls
+                            >
+                                <source src="assets/audio/first_audio.m4a" type="audio/mp4">
+                                <source src="assets/audio/first_audio.m4a" type="audio/x-m4a">
+                                Your browser does not support the audio element.
+                            </audio>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Episode 2 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <div class="flex items-start gap-6">
-                        <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-4 text-3xl">🎙️</div>
-                        <div class="flex-1">
-                            <span class="text-sm text-purple-500 dark:text-purple-400 font-medium">Episode 02</span>
-                            <h3 class="text-xl font-bold mt-1 mb-2">Inside the Black Box: How Models Learn</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                We break down training, weights, and the magic that happens when AI "learns" something new.
-                            </p>
-                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                                <span>35 min</span>
-                                <span>•</span>
-                                <span>Intermediate</span>
-                            </div>
-                            <!-- Audio Player Placeholder -->
-                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 flex items-center gap-4">
-                                <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition">
-                                    <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </button>
-                                <div class="flex-1 h-2 bg-gray-300 dark:bg-gray-600 rounded-full">
-                                    <div class="w-0 h-2 bg-purple-600 rounded-full"></div>
-                                </div>
-                                <span class="text-sm text-gray-500 dark:text-gray-400">0:00 / 35:42</span>
-                            </div>
-                        </div>
+    <!-- What You'll Learn -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">What You'll Learn</h2>
+            
+            <div class="space-y-4">
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none flex items-start gap-4">
+                    <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-3 text-xl">🎯</div>
+                    <div>
+                        <h3 class="font-bold mb-1">Why most AI learners quit within 3 months</h3>
+                        <p class="text-gray-600 dark:text-gray-400">The core problem with AI education today — and how to avoid the trap.</p>
                     </div>
                 </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none flex items-start gap-4">
+                    <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-3 text-xl">💡</div>
+                    <div>
+                        <h3 class="font-bold mb-1">The mental model shift that changes everything</h3>
+                        <p class="text-gray-600 dark:text-gray-400">From "What is machine learning?" to "How do I make this work right now?"</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none flex items-start gap-4">
+                    <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-3 text-xl">🌳</div>
+                    <div>
+                        <h3 class="font-bold mb-1">The SixtySeven AI skill tree approach</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Start simple, build fast, and level up when you're ready — no fluff, no gatekeeping.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Episode 3 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <div class="flex items-start gap-6">
-                        <div class="bg-purple-100 dark:bg-purple-600/20 rounded-lg p-4 text-3xl">🎙️</div>
-                        <div class="flex-1">
-                            <span class="text-sm text-purple-500 dark:text-purple-400 font-medium">Episode 03</span>
-                            <h3 class="text-xl font-bold mt-1 mb-2">LLMs Explained: From GPT to Claude</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                A conversational deep-dive into large language models — how they work, why they hallucinate, and what's next.
-                            </p>
-                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                                <span>42 min</span>
-                                <span>•</span>
-                                <span>Intermediate</span>
-                            </div>
-                            <!-- Audio Player Placeholder -->
-                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 flex items-center gap-4">
-                                <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition">
-                                    <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </button>
-                                <div class="flex-1 h-2 bg-gray-300 dark:bg-gray-600 rounded-full">
-                                    <div class="w-0 h-2 bg-purple-600 rounded-full"></div>
-                                </div>
-                                <span class="text-sm text-gray-500 dark:text-gray-400">0:00 / 42:08</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Other Formats -->
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Prefer a different format?</h2>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">This content is available in multiple formats to suit your learning style.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="video.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg flex items-center justify-center gap-2">
+                    <span class="text-xl">🎬</span> Watch the Video
+                </a>
+                <a href="read.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg flex items-center justify-center gap-2">
+                    <span class="text-xl">📖</span> Read the Transcript
+                </a>
             </div>
         </div>
     </section>
@@ -152,8 +142,8 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Never miss an episode</h2>
             <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Subscribe to get new episodes delivered straight to your ears.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#" class="btn-brand-primary font-semibold px-8 py-4 rounded-lg">Subscribe Now</a>
-                <a href="#" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg">Get on Spotify</a>
+                <a href="contact.html" class="btn-brand-primary font-semibold px-8 py-4 rounded-lg">Get Early Access</a>
+                <a href="contact.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg">Subscribe on Spotify</a>
             </div>
         </div>
     </section>
