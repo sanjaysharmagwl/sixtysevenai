@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - sixtysevenai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white font-sans transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="absolute top-0 left-0 right-0 py-6 px-6 z-10">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+                <!-- Sun icon (shown in dark mode) -->
+                <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <!-- Moon icon (shown in light mode) -->
+                <svg id="moon-icon" class="w-6 h-6 text-gray-700 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+            <div class="flex gap-6">
+                <a href="index.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Home</a>
+                <a href="about.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">About</a>
+                <a href="contact.html" class="text-gray-900 dark:text-white font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 relative">
+        <div class="max-w-2xl">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Get in Touch</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-10">Have feedback? Want to learn more? Ready to join the builder community?</p>
+            <p class="text-lg text-purple-600 dark:text-purple-400 font-medium">We'd love to hear from you.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-2xl mx-auto">
+            <!-- Notice Banner -->
+            <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-6">
+                <p class="text-sm text-blue-800 dark:text-blue-300"><strong>Note:</strong> This form is coming soon. For now, reach out directly via email below.</p>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none opacity-60">
+                <form id="contact-form" class="space-y-6" disabled>
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Name</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            disabled
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-500 placeholder-gray-400 dark:placeholder-gray-500 cursor-not-allowed"
+                            placeholder="Your name">
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            disabled
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-500 placeholder-gray-400 dark:placeholder-gray-500 cursor-not-allowed"
+                            placeholder="your@email.com">
+                    </div>
+
+                    <!-- Message Type -->
+                    <div>
+                        <label for="type" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">What's this about?</label>
+                        <select 
+                            id="type" 
+                            name="type" 
+                            disabled
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-500 cursor-not-allowed">
+                            <option value="">Select one...</option>
+                            <option value="feedback">Feedback on content or experience</option>
+                            <option value="partnership">Partnership or collaboration</option>
+                            <option value="question">Questions about AI or learning</option>
+                            <option value="join">I want to join the community</option>
+                            <option value="other">Something else</option>
+                        </select>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Your message</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            rows="6" 
+                            disabled
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-500 placeholder-gray-400 dark:placeholder-gray-500 resize-none cursor-not-allowed"
+                            placeholder="Examples:&#10;• 'Your video on LLMs finally made sense to me, but I got stuck on...'&#10;• 'I built an AI tool and want to share my learnings'&#10;• 'I'm interested in your cohort programs'&#10;• 'I have feedback on the course structure'"></textarea>
+                    </div>
+
+                    <!-- Hints Section -->
+                    <div class="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4">
+                        <p class="text-sm font-medium text-purple-900 dark:text-purple-200 mb-2">What we'd love to hear:</p>
+                        <ul class="text-xs text-purple-800 dark:text-purple-300 space-y-1">
+                            <li>• Feedback or ideas about content</li>
+                            <li>• Projects you've built after learning</li>
+                            <li>• Questions about AI concepts</li>
+                            <li>• Partnership opportunities</li>
+                            <li>• Requests to join the community</li>
+                        </ul>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        disabled
+                        class="w-full bg-gray-400 text-gray-600 font-semibold px-8 py-3 rounded-lg cursor-not-allowed">
+                        Send Message (Coming Soon)
+                    </button>
+                </form>
+            </div>
+
+            <!-- Direct Email -->
+            <div class="mt-10 text-center">
+                <p class="text-gray-700 dark:text-gray-300 font-semibold mb-3">Reach us directly:</p>
+                <a href="mailto:admin@sixtysevenai.com" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 text-lg font-medium transition">
+                    admin@sixtysevenai.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">What happens next?</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <p class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-3">1</p>
+                    <h3 class="text-lg font-semibold mb-2">We read it</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Your message gets to the core team within 24 hours.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <p class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-3">2</p>
+                    <h3 class="text-lg font-semibold mb-2">We respond</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Direct, honest reply. No automated nonsense.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
+                    <p class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-3">3</p>
+                    <h3 class="text-lg font-semibold mb-2">We build together</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Your feedback shapes what we create next.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Learning -->
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-2xl font-bold mb-4">Ready to learn?</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">Start exploring AI fundamentals now.</p>
+            <a href="online.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg transition">
+                Start Learning
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-4xl mx-auto text-center text-gray-500">
+            <p>&copy; 2025 sixtysevenai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.classList.toggle('dark', savedTheme === 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+
+</body>
+</html>
