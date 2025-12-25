@@ -1,0 +1,94 @@
+/* SIXTYSEVEN AI - Brand Colors */
+:root {
+    /* Primary Brand Gradient Colors */
+    --human-teal: #26E6C8;
+    --intelligence-blue: #2A8CFF;
+    --builder-violet: #7B3FE4;
+    --growth-pink: #FF4FD8;
+    --momentum-orange: #FF8A00;
+    
+    /* Core Brand Colors */
+    --neural-navy: #0F172A;
+    --pure-white: #FFFFFF;
+    --soft-graphite: #E5E7EB;
+    --void-black: #000000;
+    
+    /* Action Colors */
+    --neural-green: #22C55E;
+    --vibrant-purple: #A855F7;
+    --signal-yellow: #FACC15;
+    --alert-red: #EF4444;
+    
+    /* UI Backgrounds */
+    --soft-snow: #F9FAFB;
+}
+
+/* Dark mode background override - Neural Navy */
+.dark {
+    --tw-bg-opacity: 1;
+}
+
+.dark.bg-gray-950,
+.dark .bg-gray-950 {
+    background-color: var(--neural-navy) !important;
+}
+
+/* Brand Purple for accents */
+.text-brand-purple {
+    color: var(--vibrant-purple);
+}
+
+.dark .dark\:text-brand-purple {
+    color: var(--vibrant-purple);
+}
+
+/* Brand gradient for hero elements */
+.bg-brand-gradient {
+    background: linear-gradient(135deg, var(--human-teal), var(--intelligence-blue), var(--builder-violet), var(--growth-pink), var(--momentum-orange));
+}
+
+/* CTA gradient */
+.bg-cta-gradient {
+    background: linear-gradient(90deg, var(--momentum-orange), var(--growth-pink));
+}
+
+.bg-cta-gradient:hover {
+    background: linear-gradient(90deg, #e67a00, #e645c2);
+}
+
+/* AI Depth gradient for dark sections */
+.bg-ai-depth {
+    background: linear-gradient(135deg, var(--neural-navy), var(--intelligence-blue));
+}
+
+/* Brand accent button */
+.btn-brand-primary {
+    background: linear-gradient(90deg, var(--momentum-orange), var(--growth-pink));
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-brand-primary:hover {
+    background: linear-gradient(90deg, #e67a00, #e645c2);
+    transform: translateY(-1px);
+}
+
+/* Brand outline button */
+.btn-brand-outline {
+    border: 2px solid var(--vibrant-purple);
+    color: var(--vibrant-purple);
+    transition: all 0.3s ease;
+}
+
+.btn-brand-outline:hover {
+    background-color: var(--vibrant-purple);
+    color: white;
+}
+
+/* Gradient text effect */
+.text-brand-gradient {
+    background: linear-gradient(90deg, var(--intelligence-blue), var(--vibrant-purple), var(--growth-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
