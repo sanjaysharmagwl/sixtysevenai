@@ -149,18 +149,7 @@
                     </a>
                 </div>
                 
-                <!-- Right: Theme Toggle -->
-                <div class="flex gap-2 items-center">
-                    <button id="theme-light" class="p-2 rounded-lg bg-yellow-300 hover:bg-yellow-400 transition-colors text-yellow-900" title="Light Theme">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 1.78a1 1 0 011.39 0l.71.71a1 1 0 11-1.39 1.39l-.71-.71a1 1 0 010-1.39zm2.56 5.92a1 1 0 110 1.41l-.71.71a1 1 0 11-1.39-1.39l.71-.71a1 1 0 011.39 0zM10 18a1 1 0 01-1-1v-1a1 1 0 112 0v1a1 1 0 01-1 1zm-4.22-1.78a1 1 0 011.39 0l.71.71a1 1 0 11-1.39 1.39l-.71-.71a1 1 0 010-1.39zm-2.56-5.92a1 1 0 110-1.41l.71-.71a1 1 0 111.39 1.39l-.71.71a1 1 0 01-1.39 0zM18 10a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm13.22-5.78a1 1 0 011.39 0l.71.71a1 1 0 11-1.39 1.39l-.71-.71a1 1 0 010-1.39z"/></svg>
-                    </button>
-                    <button id="theme-dark" class="p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors text-white" title="Dark Theme">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    </button>
-                    <button id="theme-game" class="p-2 rounded-lg bg-gradient-to-r from-neural-spectrum-orange to-neural-spectrum-pink hover:shadow-lg transition-all text-white" title="Game Theme">
-                        <span class="text-lg">🎮</span>
-                    </button>
-                </div>
+
             </div>
         </div>
     </nav>
@@ -196,17 +185,60 @@
                         Build Real Power.
                     </h1>
                     <p class="text-lg text-white/90 max-w-lg font-inter">
-                        SixtySeven AI is a Skill Game Engine where you unlock real abilities by building real things.
+                        Master games, discover power, build real abilities.
                     </p>
                 </div>
                 
-                <!-- CTA BUTTONS -->
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="games.html" class="px-8 py-4 rounded-lg font-bold text-white text-center font-grotesk bg-gradient-to-r from-neural-spectrum-orange to-neural-spectrum-pink hover:shadow-2xl hover:shadow-neural-spectrum-orange/50 transition transform hover:scale-105 duration-300">
-                        [ START PLAYING ]
+                <!-- UNIVERSE PORTAL NAVIGATION -->
+                <div class="grid sm:grid-cols-2 gap-6 pt-8 max-w-lg">
+                    <!-- GAMES UNIVERSE PORTAL -->
+                    <a href="games.html" class="group relative overflow-hidden rounded-2xl transition-all duration-500 hover:scale-110">
+                        <!-- Portal Background -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-orange via-neural-spectrum-pink to-neural-spectrum-violet opacity-90 group-hover:opacity-100"></div>
+                        
+                        <!-- Glow Effect -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-neural-spectrum-orange/0 via-neural-spectrum-orange/40 to-neural-spectrum-orange/0 blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                        
+                        <!-- Portal Ring -->
+                        <div class="absolute inset-0 border-2 border-white/30 group-hover:border-white/60 rounded-2xl transition-all duration-500"></div>
+                        
+                        <!-- Content -->
+                        <div class="relative px-6 py-12 text-center space-y-4 flex flex-col items-center justify-center h-56">
+                            <div class="text-6xl drop-shadow-lg group-hover:scale-125 transition-transform duration-500">🎮</div>
+                            <div>
+                                <h3 class="text-2xl font-bold font-grotesk text-white mb-2">GAMES UNIVERSE</h3>
+                                <p class="text-sm text-white/90 font-inter">Master skills • Unlock powers • Build empires</p>
+                            </div>
+                            <div class="text-xs font-bold text-white/80 tracking-wider mt-auto">→ ENTER UNIVERSE →</div>
+                        </div>
+                        
+                        <!-- Bottom Accent -->
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </a>
-                    <a href="#power-up" class="px-8 py-4 rounded-lg font-bold text-center font-grotesk border-2 border-white text-white hover:bg-white hover:text-neural-spectrum-orange transition duration-300">
-                        [ EXPLORE POWER UP ]
+
+                    <!-- POWERUP UNIVERSE PORTAL -->
+                    <a href="#power-up" class="group relative overflow-hidden rounded-2xl transition-all duration-500 hover:scale-110">
+                        <!-- Portal Background -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal via-neural-spectrum-blue to-neural-spectrum-violet opacity-90 group-hover:opacity-100"></div>
+                        
+                        <!-- Glow Effect -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-neural-spectrum-teal/0 via-neural-spectrum-teal/40 to-neural-spectrum-teal/0 blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                        
+                        <!-- Portal Ring -->
+                        <div class="absolute inset-0 border-2 border-white/30 group-hover:border-white/60 rounded-2xl transition-all duration-500"></div>
+                        
+                        <!-- Content -->
+                        <div class="relative px-6 py-12 text-center space-y-4 flex flex-col items-center justify-center h-56">
+                            <div class="text-6xl drop-shadow-lg group-hover:scale-125 transition-transform duration-500">⚡</div>
+                            <div>
+                                <h3 class="text-2xl font-bold font-grotesk text-white mb-2">POWER UP UNIVERSE</h3>
+                                <p class="text-sm text-white/90 font-inter">Discover content • Get inspired • Level up</p>
+                            </div>
+                            <div class="text-xs font-bold text-white/80 tracking-wider mt-auto">→ ENTER UNIVERSE →</div>
+                        </div>
+                        
+                        <!-- Bottom Accent -->
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </a>
                 </div>
             </div>
@@ -531,45 +563,8 @@
         </div>
     </footer>
 
-    <!-- Theme Toggle Script -->
+    <!-- Discovery Tab Switcher Script -->
     <script>
-        const html = document.documentElement;
-        const themeLightBtn = document.getElementById('theme-light');
-        const themeDarkBtn = document.getElementById('theme-dark');
-        const themeGameBtn = document.getElementById('theme-game');
-        
-        function setTheme(theme) {
-            // Remove all theme classes
-            html.classList.remove('dark', 'game');
-            
-            // Update button styles
-            themeLightBtn.classList.remove('ring-2', 'ring-yellow-400', 'bg-gray-300');
-            themeDarkBtn.classList.remove('ring-2', 'ring-blue-400', 'bg-gray-600');
-            themeGameBtn.classList.remove('ring-2', 'ring-white', 'shadow-lg');
-            
-            // Apply selected theme
-            if (theme === 'dark') {
-                html.classList.add('dark');
-                themeDarkBtn.classList.add('ring-2', 'ring-blue-400', 'bg-gray-600');
-            } else if (theme === 'game') {
-                html.classList.add('game');
-                themeGameBtn.classList.add('ring-2', 'ring-white', 'shadow-lg');
-            } else {
-                themeLightBtn.classList.add('ring-2', 'ring-yellow-400', 'bg-gray-300');
-            }
-            
-            localStorage.setItem('theme', theme);
-        }
-        
-        // Initialize theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        setTheme(savedTheme);
-
-        // Theme button listeners
-        themeLightBtn.addEventListener('click', () => setTheme('light'));
-        themeDarkBtn.addEventListener('click', () => setTheme('dark'));
-        themeGameBtn.addEventListener('click', () => setTheme('game'));
-
         // Discovery Tab Switcher
         const discoveryTabs = document.querySelectorAll('.discovery-tab');
         discoveryTabs.forEach(tab => {
