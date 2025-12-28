@@ -53,13 +53,8 @@
         }
     </script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/brand-enhancements.css">
     <style>
-        .glow-orange {
-            filter: drop-shadow(0 0 30px rgba(255, 138, 0, 0.6));
-        }
-        .glow-teal {
-            filter: drop-shadow(0 0 20px rgba(38, 230, 200, 0.4));
-        }
         
         /* Game Theme Variant */
         html.game {
@@ -131,8 +126,8 @@
             <!-- Navigation Links & Theme Toggle -->
             <div class="flex justify-between items-center">
                 <!-- Left: Logo -->
-                <div class="flex items-center">
-                    <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-32 w-auto drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300">
+                <div class="logo-container">
+                    <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-48 w-auto logo-img">
                 </div>
                 
                 <!-- Center: Navigation Links -->
@@ -169,11 +164,31 @@
             <!-- LEFT SIDE: Headline + Subline + CTAs -->
             <div class="space-y-10">
                 <!-- Brand Logo Section (Top) -->
-                <div class="mb-8">
-                    <div class="text-7xl md:text-8xl font-bold font-mono text-white glow-orange animate-pulse">
-                        6→7
+                <div class="mb-8 transition-error-container">
+                    <div class="transition-level">
+                        6<span class="transition-arrow">→</span>7
                     </div>
-                    <p class="text-white/80 text-sm mt-2 font-inter">Upgrade to the next level</p>
+                    
+                    <!-- Error State Elements (appear on hover) -->
+                    <!-- Arrows flowing from 6 → 7 -->
+                    <div class="transition-error transition-error-left">≫≫≫</div>
+                    <div class="transition-error transition-error-left" style="animation-delay: 0.4s;">≫≫≫</div>
+                    <div class="transition-error transition-error-left" style="animation-delay: 0.8s;">≫≫≫</div>
+                    
+                    <!-- Arrows flowing through middle -->
+                    <div class="transition-error transition-error-right">≫≫≫</div>
+                    <div class="transition-error transition-error-right" style="animation-delay: 0.2s;">≫≫≫</div>
+                    <div class="transition-error transition-error-right" style="animation-delay: 0.7s;">≫≫≫</div>
+                    
+                    <!-- Arrows flowing to 7 -->
+                    <div class="transition-error transition-error-center">≫≫≫</div>
+                    <div class="transition-error transition-error-center" style="animation-delay: 0.3s;">≫≫≫</div>
+                    <div class="transition-error transition-error-center" style="animation-delay: 1.2s;">≫≫≫</div>
+                    
+                    <div class="transition-error-flicker"></div>
+                    <div class="transition-error-status">[ ERROR: TRANSITION INCOMPLETE ]</div>
+                    
+                    <p class="transition-subtitle">Upgrade to the next level</p>
                 </div>
 
                 <!-- Headline -->
