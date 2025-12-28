@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - SixtySeven AI</title>
+    <title>About - sixtysevenai</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,28 +19,20 @@
         <div class="max-w-4xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-4">
                 <a href="index.html" class="flex items-center gap-3">
-                    <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-10 w-auto">
+                    <img src="assets/images/logo.png" alt="sixtysevenai" class="h-10 w-auto">
                 </a>
-                <!-- Theme Toggle (Light / Dark / Game) -->
-                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2" aria-label="Toggle theme">
-                    <!-- Sun icon (Light mode) -->
-                    <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+                    <svg id="sun-icon" class="w-5 h-5 text-yellow-500 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                     </svg>
-                    <!-- Moon icon (Dark mode) -->
-                    <svg id="moon-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg id="moon-icon" class="w-5 h-5 text-gray-700 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                    <!-- Game icon (Game mode) -->
-                    <svg id="game-icon" class="w-6 h-6 text-cyan-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </button>
             </div>
             <div class="flex gap-6">
                 <a href="index.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Home</a>
-                <a href="games.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Play Games</a>
                 <a href="about.html" class="text-gray-900 dark:text-white font-medium">About</a>
             </div>
         </div>
@@ -49,8 +41,8 @@
     <!-- Hero Section -->
     <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">About SixtySeven AI</h1>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Skill Game Engine for Real Life</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">About sixtysevenai</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">AI school, but not the boring kind.</p>
         </div>
     </section>
 
@@ -58,7 +50,7 @@
     <section class="py-16 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-2xl md:text-3xl font-bold mb-6">The Problem</h2>
-            <p class="text-gray-700 dark:text-gray-300 mb-6">Most learning content is either:</p>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Most AI content is either:</p>
             <div class="grid md:grid-cols-2 gap-6 mb-8">
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 border-l-4 border-red-500 shadow-lg dark:shadow-none">
                     <p class="text-lg">Way too surface-level</p>
@@ -68,173 +60,110 @@
                     <p class="text-lg">Way too intimidating</p>
                     <p class="text-gray-500 dark:text-gray-400 mt-2">Assumes you have a PhD in mathematics</p>
                 </div>
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 border-l-4 border-red-500 shadow-lg dark:shadow-none">
-                    <p class="text-lg">Feels like attending class</p>
-                    <p class="text-gray-500 dark:text-gray-400 mt-2">Traditional courses that make you sit through lectures</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 border-l-4 border-green-500 shadow-lg dark:shadow-none">
-                    <p class="text-lg">We believe differently</p>
-                    <p class="text-gray-500 dark:text-gray-400 mt-2">Learning should feel like upgrading a character</p>
-                </div>
             </div>
-            <p class="text-2xl font-semibold text-purple-500 dark:text-purple-400">We said: nah. Let's make it a game.</p>
+            <p class="text-2xl font-semibold text-purple-500 dark:text-purple-400">We said: nah.</p>
         </div>
     </section>
 
     <!-- Our Approach -->
     <section class="py-16 px-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8">Our Approach: Game Design Principles</h2>
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">Our Approach</h2>
             <div class="space-y-6">
                 <div class="flex items-start gap-4">
-                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">🎮</span>
+                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">1</span>
                     <div>
-                        <h3 class="text-xl font-semibold mb-2">Every course = One Game</h3>
-                        <p class="text-gray-500 dark:text-gray-400">A complete experience with a clear objective and progression.</p>
+                        <h3 class="text-xl font-semibold mb-2">Humans design the learning</h3>
+                        <p class="text-gray-500 dark:text-gray-400">Real educators craft the curriculum, not just algorithms.</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-4">
-                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">🏆</span>
+                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">2</span>
                     <div>
-                        <h3 class="text-xl font-semibold mb-2">Every topic = One Level</h3>
-                        <p class="text-gray-500 dark:text-gray-400">Bite-sized challenges you can conquer one at a time.</p>
+                        <h3 class="text-xl font-semibold mb-2">AI helps you when you're stuck</h3>
+                        <p class="text-gray-500 dark:text-gray-400">Get unstuck instantly without waiting for office hours.</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-4">
-                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">⚔️</span>
+                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">3</span>
                     <div>
-                        <h3 class="text-xl font-semibold mb-2">Every action = A Quest</h3>
-                        <p class="text-gray-500 dark:text-gray-400">Clear missions with purpose and reward.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">⚡</span>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Every skill = A Power</h3>
-                        <p class="text-gray-500 dark:text-gray-400">Abilities you gain that make you stronger.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">🔓</span>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Every completion = An Unlock</h3>
-                        <p class="text-gray-500 dark:text-gray-400">New capabilities and content revealed as you progress.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">👤</span>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Every learner = A Player</h3>
-                        <p class="text-gray-500 dark:text-gray-400">You're not a student. You're an active participant.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <span class="bg-cta-gradient text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">🏗️</span>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Every outcome = A Real-World Build</h3>
-                        <p class="text-gray-500 dark:text-gray-400">Something tangible you can use outside the game.</p>
+                        <h3 class="text-xl font-semibold mb-2">You go deep — without getting lost</h3>
+                        <p class="text-gray-500 dark:text-gray-400">We guide you through complexity step by step.</p>
                     </div>
                 </div>
             </div>
+            <p class="mt-10 text-xl text-purple-500 dark:text-purple-400 font-medium">Smart, chill, and actually useful.</p>
         </div>
     </section>
 
-    <!-- Design Goals -->
+    <!-- Learning Philosophy -->
     <section class="py-16 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8">Design Goals</h2>
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">How Learning Works Here</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
-                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Produce something real every level</h3>
-                    <p class="text-gray-500 dark:text-gray-400">No fake demos. Real outputs you can use.</p>
+                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Learn why, not just what to type</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Understanding beats memorization every time.</p>
                 </div>
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
-                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Increase player power visibly</h3>
-                    <p class="text-gray-500 dark:text-gray-400">See your capabilities grow with every session.</p>
+                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Build real stuff</h3>
+                    <p class="text-gray-500 dark:text-gray-400">No fake demos. Projects you can actually use.</p>
                 </div>
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
-                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Unlock abilities you can see and use</h3>
-                    <p class="text-gray-500 dark:text-gray-400">Skills that transfer to the real world.</p>
+                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Ask unlimited questions</h3>
+                    <p class="text-gray-500 dark:text-gray-400">No ego, no judgment. Just learning.</p>
                 </div>
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none">
-                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Every step feels like progress</h3>
-                    <p class="text-gray-500 dark:text-gray-400">No filler. Every moment matters.</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none md:col-span-2">
-                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Lead to real-world readiness</h3>
-                    <p class="text-gray-500 dark:text-gray-400">When you finish, you're ready to perform — not just recite.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Law -->
-    <section class="py-16 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8">The Experience Law</h2>
-            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none border-l-4 border-purple-500">
-                <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl">🚫</span>
-                        <p class="text-xl text-gray-700 dark:text-gray-300">"We are not allowed to design boring courses"</p>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl">🎯</span>
-                        <p class="text-xl text-gray-700 dark:text-gray-300">"Everything must feel like a playable system"</p>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl">⬆️</span>
-                        <p class="text-xl text-gray-700 dark:text-gray-300">"Learning should feel like leveling up, not attending classes"</p>
-                    </div>
+                    <h3 class="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-2">Go at your pace</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Fast, slow, rewind — it's your journey.</p>
                 </div>
             </div>
             <div class="mt-10 text-center">
                 <p class="text-xl text-gray-700 dark:text-gray-300">You're not "taking a course."</p>
-                <p class="text-2xl font-bold text-purple-500 dark:text-purple-400 mt-2">You're playing your way to mastery.</p>
+                <p class="text-2xl font-bold text-purple-500 dark:text-purple-400 mt-2">You're leveling up your brain.</p>
             </div>
         </div>
     </section>
 
-    <!-- Who Should Play -->
-    <section class="py-16 px-6 bg-gray-100 dark:bg-gray-900">
+    <!-- Who This Is For -->
+    <section class="py-16 px-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8">Who Should Play</h2>
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">Who This Is For</h2>
             <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
                 <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">If you:</p>
                 <ul class="space-y-4 text-lg">
-                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Are curious but overwhelmed by traditional learning</li>
-                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Want more than passive video watching</li>
-                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Learn better by doing than by sitting</li>
-                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Want to build real skills, not collect certificates</li>
-                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Believe learning should feel rewarding</li>
+                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Are curious but overwhelmed</li>
+                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Want more than YouTube snippets</li>
+                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Hate tutorials that skip the "why"</li>
+                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300"><span class="text-green-500 dark:text-green-400">✓</span> Want to build, not just prompt</li>
                 </ul>
-                <p class="mt-8 text-2xl font-bold text-purple-500 dark:text-purple-400">Yeah. Press Start.</p>
+                <p class="mt-8 text-2xl font-bold text-purple-500 dark:text-purple-400">Yeah. This is for you.</p>
             </div>
         </div>
     </section>
 
     <!-- The Vision -->
-    <section class="py-16 px-6">
+    <section class="py-16 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-2xl md:text-3xl font-bold mb-8">The Bigger Idea</h2>
-            <p class="text-xl text-gray-700 dark:text-gray-300 mb-4">Learning shouldn't feel like a chore.</p>
-            <p class="text-2xl font-semibold text-purple-500 dark:text-purple-400 mb-8">It should feel like a game worth playing.</p>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-4">AI shouldn't feel mysterious or exclusive.</p>
+            <p class="text-2xl font-semibold text-purple-500 dark:text-purple-400 mb-8">It should feel learnable.</p>
             <div class="bg-white dark:bg-gray-800 rounded-xl p-8 max-w-2xl mx-auto shadow-lg dark:shadow-none">
-                <p class="text-lg text-gray-700 dark:text-gray-300">SixtySeven AI exists to turn every skill into a game — and help you go from <span class="text-red-500 dark:text-red-400">"beginner"</span> to <span class="text-green-500 dark:text-green-400">"boss level."</span></p>
+                <p class="text-lg text-gray-700 dark:text-gray-300">sixtysevenai exists to make AI make sense — and help you go from <span class="text-red-500 dark:text-red-400">"confused"</span> to <span class="text-green-500 dark:text-green-400">"confident."</span></p>
             </div>
-            <p class="mt-10 text-xl font-medium">Game on. 🎮</p>
+            <p class="mt-10 text-xl font-medium">We're just getting started.</p>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+    <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to play?</h2>
-            <p class="text-xl text-gray-700 dark:text-gray-300 mb-2">Pick your game. Start your quest.</p>
-            <p class="text-xl text-purple-500 dark:text-purple-400 font-semibold mb-10">Level up for real.</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">What do you want to learn next?</h2>
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-2">AI is moving fast.</p>
+            <p class="text-xl text-purple-500 dark:text-purple-400 font-semibold mb-10">You can move with it.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="games.html" class="btn-brand-primary font-semibold px-8 py-4 rounded-lg">Browse Games</a>
-                <a href="index.html" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg">Back to Home</a>
+                <a href="index.html#foundations" class="btn-brand-primary font-semibold px-8 py-4 rounded-lg">Start Learning</a>
+                <a href="#" class="btn-brand-outline font-semibold px-8 py-4 rounded-lg">Stay in the Loop</a>
             </div>
         </div>
     </section>
@@ -242,48 +171,23 @@
     <!-- Footer -->
     <footer class="py-10 px-6 border-t border-gray-200 dark:border-gray-800">
         <div class="max-w-4xl mx-auto text-center text-gray-500">
-            <p>&copy; 2025 SixtySeven AI. All rights reserved.</p>
+            <p>&copy; 2025 sixtysevenai. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Theme Toggle Script (Light / Dark / Game) -->
+    <!-- Theme Toggle Script -->
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
-        const sunIcon = document.getElementById('sun-icon');
-        const moonIcon = document.getElementById('moon-icon');
-        const gameIcon = document.getElementById('game-icon');
-        
-        const themes = ['light', 'dark', 'game'];
-        
-        function setTheme(theme) {
-            html.classList.remove('dark', 'game');
-            sunIcon.classList.add('hidden');
-            moonIcon.classList.add('hidden');
-            gameIcon.classList.add('hidden');
-            
-            if (theme === 'dark') {
-                html.classList.add('dark');
-                sunIcon.classList.remove('hidden');
-            } else if (theme === 'game') {
-                html.classList.add('game');
-                gameIcon.classList.remove('hidden');
-            } else {
-                moonIcon.classList.remove('hidden');
-            }
-            
-            localStorage.setItem('theme', theme);
-        }
-        
-        // Initialize theme
+
+        // Check for saved theme preference or default to dark
         const savedTheme = localStorage.getItem('theme') || 'dark';
-        setTheme(savedTheme);
+        html.classList.toggle('dark', savedTheme === 'dark');
 
         themeToggle.addEventListener('click', () => {
-            const currentTheme = localStorage.getItem('theme') || 'dark';
-            const currentIndex = themes.indexOf(currentTheme);
-            const nextIndex = (currentIndex + 1) % themes.length;
-            setTheme(themes[nextIndex]);
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     </script>
 
