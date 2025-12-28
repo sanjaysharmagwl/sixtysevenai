@@ -55,81 +55,148 @@
 
 
 /* ============================================
-   6→7 TRANSITION LEVEL STYLES
-   Enhanced Cyberpunk Hero Effect
-   ============================================ */
+    6 >>> 7 TRANSITION LEVEL STYLES
+    Dynamic Progression Flow
+    ============================================ */
 
-.transition-level {
+.transition-level-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     position: relative;
-    font-size: clamp(2rem, 15vw, 12rem);
+}
+
+.transition-level-number {
+    position: relative;
+    font-size: clamp(1.5rem, 10vw, 7rem);
     font-weight: 900;
     font-family: 'JetBrains Mono', monospace;
-    text-align: left;
     letter-spacing: 0.05em;
     background: linear-gradient(135deg, #FF8A00, #FF4FD8, #7B3FE4, #2A8CFF, #26E6C8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 40px rgba(255, 138, 0, 0.6));
-    animation: transition-pulse 2s ease-in-out infinite, transition-float 3s ease-in-out infinite;
-    text-shadow: 0 0 60px rgba(255, 138, 0, 0.4);
+    filter: drop-shadow(0 0 30px rgba(255, 138, 0, 0.5));
+    animation: level-pulse 2s ease-in-out infinite;
 }
 
-@keyframes transition-pulse {
+.transition-level-number:first-child {
+    animation: level-pulse 2s ease-in-out infinite, level-float 3s ease-in-out infinite;
+}
+
+.transition-level-number:last-child {
+    animation: level-glow 2s ease-in-out infinite, level-float 3s ease-in-out infinite;
+}
+
+@keyframes level-pulse {
     0% {
-        filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3)) drop-shadow(0 0 60px rgba(255, 79, 216, 0.2));
-        transform: scaleY(1);
+        filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3));
+        transform: scale(1);
     }
     50% {
-        filter: drop-shadow(0 0 50px rgba(255, 138, 0, 0.8)) drop-shadow(0 0 100px rgba(255, 79, 216, 0.5));
-        transform: scaleY(1.05);
+        filter: drop-shadow(0 0 40px rgba(255, 138, 0, 0.7));
+        transform: scale(1.02);
     }
     100% {
-        filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3)) drop-shadow(0 0 60px rgba(255, 79, 216, 0.2));
-        transform: scaleY(1);
+        filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3));
+        transform: scale(1);
     }
 }
 
-@keyframes transition-float {
-    0%, 100% {
-        transform: translateY(0px) scaleY(1);
+@keyframes level-glow {
+    0% {
+        filter: drop-shadow(0 0 20px rgba(38, 230, 200, 0.3));
     }
     50% {
-        transform: translateY(-15px) scaleY(1.02);
+        filter: drop-shadow(0 0 40px rgba(38, 230, 200, 0.8));
+    }
+    100% {
+        filter: drop-shadow(0 0 20px rgba(38, 230, 200, 0.3));
     }
 }
 
-.transition-level:hover {
-    animation: transition-pulse 1s ease-in-out infinite, transition-float 2s ease-in-out infinite;
-    filter: drop-shadow(0 0 80px rgba(255, 138, 0, 1)) drop-shadow(0 0 120px rgba(255, 79, 216, 0.8));
+@keyframes level-float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
-/* Responsive sizing */
-@media (max-width: 768px) {
-    .transition-level {
-        font-size: clamp(1.5rem, 10vw, 4rem);
+.transition-arrows-container {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    min-width: 3rem;
+    justify-content: center;
+    position: relative;
+    height: clamp(1.5rem, 10vw, 7rem);
+    display: flex;
+    align-items: center;
+}
+
+.transition-arrow-flow {
+    font-size: clamp(1.5rem, 10vw, 7rem);
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: #FF8A00;
+    opacity: 0;
+    filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.6));
+    animation: arrow-surge 1.5s ease-in-out infinite;
+    display: inline-block;
+}
+
+.transition-arrow-flow:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.transition-arrow-flow:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.transition-arrow-flow:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes arrow-surge {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(40px);
     }
 }
 
 
 /* ============================================
    TRANSITION SUBTITLE (Upgrade to next level)
+   Subtle supporting text - doesn't grab focus
    ============================================ */
 
 .transition-subtitle {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
-    letter-spacing: 0.1em;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    opacity: 0;
-    animation: subtitle-fade-in 1s ease-out 0.5s forwards;
+    animation: subtitle-fade-in 1.5s ease-out 0.8s forwards, subtitle-subtle-float 4s ease-in-out 2.3s infinite;
+    margin-top: 12px;
 }
 
 @keyframes subtitle-fade-in {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-8px);
     }
     to {
         opacity: 1;
@@ -137,24 +204,12 @@
     }
 }
 
-
-/* ============================================
-   ARROW ANIMATION (→ symbol)
-   ============================================ */
-
-.transition-arrow {
-    display: inline-block;
-    animation: arrow-bounce 1.5s ease-in-out infinite;
-}
-
-@keyframes arrow-bounce {
+@keyframes subtitle-subtle-float {
     0%, 100% {
-        transform: translateX(0) scaleX(1);
-        opacity: 1;
+        transform: translateY(0px);
     }
     50% {
-        transform: translateX(8px) scaleX(1.1);
-        opacity: 0.7;
+        transform: translateY(-1px);
     }
 }
 
@@ -474,4 +529,207 @@
 .transition-error-container:hover .transition-error-flicker,
 .transition-error-container:hover .transition-error-status {
     opacity: 1 !important;
+}
+
+
+/* ============================================
+   GAME-THEMED NAVIGATION
+   Menu Items with Power-Up Effects
+   ============================================ */
+
+/* Navigation wrapper */
+nav .flex.gap-8 {
+    position: relative;
+}
+
+/* Base navigation link styles */
+nav a,
+.nav-link {
+    position: relative;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Glow underline on nav items */
+nav a::before,
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #26E6C8, #2A8CFF, #FF4FD8, #FF8A00);
+    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 10px rgba(255, 138, 0, 0.5);
+}
+
+/* Hover effect: expand underline */
+nav a:hover::before,
+.nav-link:hover::before {
+    width: 100%;
+    box-shadow: 0 0 20px rgba(255, 138, 0, 0.8);
+}
+
+/* Game-mode nav styling */
+html.game nav a {
+    color: #26E6C8;
+    text-shadow: 0 0 10px rgba(38, 230, 200, 0.3);
+}
+
+html.game nav a:hover {
+    color: #FF8A00;
+    background: rgba(255, 138, 0, 0.1);
+    text-shadow: 0 0 20px rgba(255, 138, 0, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 138, 0, 0.3);
+}
+
+/* Dark mode nav styling */
+.dark nav a:hover {
+    color: #FF8A00;
+    background: rgba(255, 138, 0, 0.05);
+    text-shadow: 0 0 15px rgba(255, 138, 0, 0.4);
+}
+
+/* Light mode nav styling */
+nav a:hover {
+    color: #FF8A00;
+    background: rgba(255, 138, 0, 0.08);
+}
+
+/* Active page indicator (Home on index, etc) */
+nav a[href="index.html"],
+nav a[href="games.html"],
+nav a[href="powerup.html"],
+nav a[href="about.html"],
+nav a[href="contact.html"] {
+    position: relative;
+}
+
+/* Menu item icons/badges */
+nav a::after {
+    content: attr(data-icon);
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+nav a:hover::after {
+    right: -28px;
+    opacity: 1;
+}
+
+/* Individual nav item colors */
+nav a:nth-child(1)::before {
+    background: linear-gradient(90deg, #26E6C8, #2A8CFF);
+}
+
+nav a:nth-child(2)::before {
+    background: linear-gradient(90deg, #2A8CFF, #7B3FE4);
+}
+
+nav a:nth-child(3)::before {
+    background: linear-gradient(90deg, #7B3FE4, #FF4FD8);
+}
+
+nav a:nth-child(4)::before {
+    background: linear-gradient(90deg, #FF4FD8, #FF8A00);
+}
+
+nav a:nth-child(5)::before {
+    background: linear-gradient(90deg, #FF8A00, #26E6C8);
+}
+
+/* Pulse animation for hover state */
+@keyframes nav-pulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(255, 138, 0, 0.3));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(255, 138, 0, 0.8));
+    }
+}
+
+nav a:hover {
+    animation: nav-pulse 1.5s ease-in-out infinite;
+}
+
+/* Badge/Power-up indicator animation */
+.nav-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: rgba(255, 138, 0, 0.2);
+    border: 1px solid #FF8A00;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #FF8A00;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transition: all 0.3s ease;
+    animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+}
+
+nav a:hover .nav-badge {
+    opacity: 1;
+    background: rgba(255, 138, 0, 0.4);
+    box-shadow: 0 0 10px rgba(255, 138, 0, 0.6);
+}
+
+/* Responsive nav adjustments */
+@media (max-width: 1024px) {
+    nav .flex.gap-8 {
+        gap: 6px;
+    }
+    
+    nav a {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    
+    nav a::after {
+        display: none;
+    }
+}
+
+/* Small nav items pop-out effect */
+@keyframes nav-pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+nav a:active {
+    animation: nav-pop 0.3s ease-out;
 }
