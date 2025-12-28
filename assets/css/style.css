@@ -1,19 +1,11 @@
-/* SIXTYSEVEN AI - Brand Colors */
+/* SIXTYSEVEN AI - Brand Colors (Neural Spectrum) */
 :root {
-    /* Primary Brand Gradient Colors */
-    --human-teal: #26E6C8;
-    --intelligence-blue: #2A8CFF;
-    --builder-violet: #7B3FE4;
-    --growth-pink: #FF4FD8;
-    --momentum-orange: #FF8A00;
-    
-    /* PROMPTFORGE Game UI Colors */
-    --human-core-teal: #2FA4A9;
-    --ai-core-navy: #0F2A44;
-    --power-yellow: #F4C430;
-    --xp-cyan: #2DE2E6;
-    --void-black: #060B14;
-    --interface-white: #F5F7FA;
+    /* Neural Spectrum - Primary Brand Gradient */
+    --neural-spectrum-teal: #26E6C8;
+    --neural-spectrum-blue: #2A8CFF;
+    --neural-spectrum-violet: #7B3FE4;
+    --neural-spectrum-pink: #FF4FD8;
+    --neural-spectrum-orange: #FF8A00;
     
     /* Core Brand Colors */
     --neural-navy: #0F172A;
@@ -29,6 +21,19 @@
     
     /* UI Backgrounds */
     --soft-snow: #F9FAFB;
+    
+    /* Game-specific colors (for backward compatibility) */
+    --human-teal: #26E6C8;
+    --intelligence-blue: #2A8CFF;
+    --builder-violet: #7B3FE4;
+    --growth-pink: #FF4FD8;
+    --momentum-orange: #FF8A00;
+    --human-core-teal: #2FA4A9;
+    --ai-core-navy: #0F2A44;
+    --power-yellow: #F4C430;
+    --xp-cyan: #2DE2E6;
+    --void-black-game: #060B14;
+    --interface-white: #F5F7FA;
 }
 
 /* Dark mode background override - Neural Navy */
@@ -50,47 +55,83 @@
     color: var(--vibrant-purple);
 }
 
-/* Brand gradient for hero elements */
+/* Hero Gradient - Neural Spectrum (5-color) */
 .bg-brand-gradient {
-    background: linear-gradient(135deg, var(--human-teal), var(--intelligence-blue), var(--builder-violet), var(--growth-pink), var(--momentum-orange));
+    background: linear-gradient(135deg, var(--neural-spectrum-teal), var(--neural-spectrum-blue), var(--neural-spectrum-violet), var(--neural-spectrum-pink), var(--neural-spectrum-orange));
 }
 
-/* CTA gradient */
+/* CTA Gradient - Momentum Orange → Growth Pink */
 .bg-cta-gradient {
-    background: linear-gradient(90deg, var(--momentum-orange), var(--growth-pink));
+    background: linear-gradient(90deg, var(--neural-spectrum-orange), var(--neural-spectrum-pink));
 }
 
 .bg-cta-gradient:hover {
     background: linear-gradient(90deg, #e67a00, #e645c2);
 }
 
-/* AI Depth gradient for dark sections */
+/* AI Depth Gradient - Neural Navy → Intelligence Blue */
 .bg-ai-depth {
-    background: linear-gradient(135deg, var(--neural-navy), var(--intelligence-blue));
+    background: linear-gradient(135deg, var(--neural-navy), var(--neural-spectrum-blue));
 }
 
-/* Brand accent button */
+/* XP Bar Gradient - Intelligence Blue → Momentum Orange */
+.bg-xp-gradient {
+    background: linear-gradient(90deg, var(--neural-spectrum-blue), var(--neural-spectrum-orange));
+}
+
+/* Boss Levels Gradient - Neural Navy → Void Black */
+.bg-boss-gradient {
+    background: linear-gradient(135deg, var(--neural-navy), var(--void-black));
+}
+
+/* Unlock Effects Gradient - Momentum Orange → Human Teal */
+.bg-unlock-gradient {
+    background: linear-gradient(90deg, var(--neural-spectrum-orange), var(--neural-spectrum-teal));
+}
+
+/* Primary CTA Button - Momentum Orange → Growth Pink */
 .btn-brand-primary {
-    background: linear-gradient(90deg, var(--momentum-orange), var(--growth-pink));
+    background: linear-gradient(90deg, var(--neural-spectrum-orange), var(--neural-spectrum-pink));
     color: white;
     transition: all 0.3s ease;
+    font-weight: 700;
 }
 
 .btn-brand-primary:hover {
-    background: linear-gradient(90deg, #e67a00, #e645c2);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 138, 0, 0.4);
 }
 
-/* Brand outline button */
+/* Secondary CTA Button - Intelligence Blue */
 .btn-brand-outline {
-    border: 2px solid var(--vibrant-purple);
-    color: var(--vibrant-purple);
+    border: 2px solid var(--neural-spectrum-blue);
+    color: var(--neural-spectrum-blue);
+    background: transparent;
     transition: all 0.3s ease;
+    font-weight: 700;
 }
 
 .btn-brand-outline:hover {
-    background-color: var(--vibrant-purple);
+    background-color: var(--neural-spectrum-blue);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42, 140, 255, 0.4);
+}
+
+/* Secondary Button - Intelligence Blue */
+.btn-brand-secondary {
+    border: 2px solid var(--neural-spectrum-blue);
+    color: var(--neural-spectrum-blue);
+    background: transparent;
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+.btn-brand-secondary:hover {
+    background-color: var(--neural-spectrum-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42, 140, 255, 0.4);
 }
 
 /* Gradient text effect */
@@ -188,6 +229,21 @@
 @keyframes shimmer {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) translateX(0px);
+        opacity: 1;
+    }
+    50% { 
+        transform: translateY(-20px) translateX(5px);
+        opacity: 0.8;
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
 }
 
 /* Badge Styles */
