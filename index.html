@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -55,7 +58,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/brand-enhancements.css">
     <style>
-        
         /* Game Theme Variant */
         html.game {
             --bg-primary: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00);
@@ -63,99 +65,112 @@
             --text-primary: #FFFFFF;
             --text-secondary: rgba(255, 255, 255, 0.8);
         }
-        
+
         html.game body {
             background: linear-gradient(135deg, #26E6C8 0%, #2A8CFF 25%, #7B3FE4 50%, #FF4FD8 75%, #FF8A00 100%);
             color: #FFFFFF;
         }
-        
+
         html.game section {
             background: rgba(15, 23, 42, 0.95) !important;
             color: #FFFFFF;
         }
-        
-        html.game h1, html.game h2, html.game h3, html.game h4, html.game h5, html.game h6 {
+
+        html.game h1,
+        html.game h2,
+        html.game h3,
+        html.game h4,
+        html.game h5,
+        html.game h6 {
             color: #FFFFFF;
         }
-        
+
         html.game .bg-white {
             background: rgba(255, 255, 255, 0.1) !important;
         }
-        
+
         html.game .bg-neural-snow {
             background: rgba(15, 23, 42, 0.8) !important;
         }
-        
+
         html.game .bg-neural-graphite {
             background: rgba(255, 255, 255, 0.05) !important;
         }
-        
+
         html.game .border-neural-graphite {
             border-color: rgba(255, 255, 255, 0.2) !important;
         }
-        
+
         html.game .text-gray-600,
         html.game .text-gray-500,
         html.game .text-gray-400 {
             color: rgba(255, 255, 255, 0.7) !important;
         }
-        
+
         html.game a {
             color: #26E6C8;
         }
-        
+
         html.game a:hover {
             color: #FF8A00;
         }
-        
+
         html.game nav {
             background: rgba(15, 23, 42, 0.8);
         }
-        
+
         html.game footer {
             background: rgba(15, 23, 42, 0.95);
             border-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
-<body class="bg-white dark:bg-neural-navy game:bg-gradient-to-br game:from-neural-spectrum-teal game:via-neural-spectrum-blue game:via-neural-spectrum-violet game:to-neural-spectrum-pink game:to-neural-spectrum-orange text-neural-navy dark:text-white game:text-white font-inter transition-colors duration-300">
+
+<body
+    class="bg-white dark:bg-neural-navy game:bg-gradient-to-br game:from-neural-spectrum-teal game:via-neural-spectrum-blue game:via-neural-spectrum-violet game:to-neural-spectrum-pink game:to-neural-spectrum-orange text-neural-navy dark:text-white game:text-white font-inter transition-colors duration-300">
 
     <!-- Navigation -->
-    <nav class="absolute top-0 left-0 right-0 py-6 px-6 z-10">
+    <nav class="absolute top-0 left-0 right-0 py-4 px-4 sm:py-6 sm:px-6 z-10">
         <div class="max-w-7xl mx-auto">
             <!-- Navigation Links & Theme Toggle -->
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center flex-wrap sm:flex-nowrap gap-4">
                 <!-- Left: Logo -->
-                <div class="logo-container">
-                    <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-48 w-auto logo-img">
+                <div class="logo-container flex-shrink-0">
+                    <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-32 sm:h-48 w-auto logo-img">
                 </div>
-                
+
                 <!-- Center: Navigation Links -->
-                <div class="flex gap-8 items-center">
-                    <a href="index.html" class="nav-link text-neural-navy dark:text-white font-medium transition">
+                <div class="flex gap-4 sm:gap-8 items-center text-sm sm:text-base">
+                    <a href="index.html"
+                        class="nav-link text-neural-navy dark:text-white font-medium transition whitespace-nowrap">
                         🏠 Home
                     </a>
-                    <a href="about.html" class="nav-link text-neural-navy dark:text-white transition">
+                    <a href="about.html" class="nav-link text-neural-navy dark:text-white transition whitespace-nowrap">
                         📖 About
                     </a>
-                    <a href="contact.html" class="nav-link text-neural-navy dark:text-white transition">
+                    <a href="contact.html"
+                        class="nav-link text-neural-navy dark:text-white transition whitespace-nowrap">
                         💬 Contact
                     </a>
                 </div>
-                
+
 
             </div>
         </div>
     </nav>
 
     <!-- HERO ZONE — THE PORTAL -->
-    <section class="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden bg-gradient-to-br from-neural-spectrum-teal via-neural-spectrum-blue via-neural-spectrum-violet to-neural-spectrum-pink to-neural-spectrum-orange">
+    <section
+        class="min-h-screen flex items-center justify-center px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden bg-gradient-to-br from-neural-spectrum-teal via-neural-spectrum-blue via-neural-spectrum-violet to-neural-spectrum-pink to-neural-spectrum-orange">
         <!-- Background overlay for readability -->
-        <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal/5 via-neural-spectrum-blue/5 to-neural-spectrum-pink/5 opacity-30"></div>
-        
-        <div class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center relative z-10">
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal/5 via-neural-spectrum-blue/5 to-neural-spectrum-pink/5 opacity-30">
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center relative z-10">
             <!-- LEFT SIDE: Headline + Subline + CTAs -->
-            <div class="space-y-10">
+            <div class="space-y-6 sm:space-y-10">
                 <!-- Brand Logo Section (Top) -->
                 <div class="mb-8 transition-error-container">
                     <div class="transition-level-wrapper">
@@ -167,25 +182,26 @@
                         </div>
                         <span class="transition-level-number">7</span>
                     </div>
-                    
+
                     <p class="transition-subtitle">Upgrade to the next level</p>
                 </div>
 
                 <!-- Headline -->
                 <div>
-                    <h1 class="text-5xl md:text-6xl font-bold font-grotesk leading-tight mb-6 text-white">
+                    <h1
+                        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-grotesk leading-tight mb-4 sm:mb-6 text-white">
                         Upgrade Your Brain.<br>
                         Command AI.<br>
                         Build Real Power.
                     </h1>
-                    <p class="text-lg text-white/90 max-w-lg font-inter">
+                    <p class="text-base sm:text-lg text-white/90 max-w-lg font-inter">
                         Master games, discover power, build real abilities.
                     </p>
                 </div>
-                
+
 
             </div>
-            
+
             <!-- RIGHT SIDE: Animated 6 → 7 symbol + XP particles -->
             <div class="relative h-96 flex items-center justify-center hidden md:flex">
                 <div class="relative w-full h-full flex items-center justify-center">
@@ -194,14 +210,20 @@
                     </div>
                     <!-- Floating XP particles -->
                     <div class="absolute inset-0 pointer-events-none">
-                        <div class="absolute top-0 left-1/4 w-3 h-3 bg-white rounded-full animate-float opacity-75"></div>
-                        <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-white rounded-full animate-float opacity-60" style="animation-delay: 0.2s;"></div>
-                        <div class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white rounded-full animate-float opacity-70" style="animation-delay: 0.4s;"></div>
-                        <div class="absolute bottom-0 right-1/3 w-3 h-3 bg-white rounded-full animate-float opacity-65" style="animation-delay: 0.6s;"></div>
+                        <div class="absolute top-0 left-1/4 w-3 h-3 bg-white rounded-full animate-float opacity-75">
+                        </div>
+                        <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-white rounded-full animate-float opacity-60"
+                            style="animation-delay: 0.2s;"></div>
+                        <div class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white rounded-full animate-float opacity-70"
+                            style="animation-delay: 0.4s;"></div>
+                        <div class="absolute bottom-0 right-1/3 w-3 h-3 bg-white rounded-full animate-float opacity-65"
+                            style="animation-delay: 0.6s;"></div>
                     </div>
                 </div>
                 <!-- Glow effect -->
-                <div class="absolute inset-0 bg-gradient-to-r from-white/20 via-neural-spectrum-orange/20 to-white/20 rounded-full blur-3xl animate-pulse"></div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-white/20 via-neural-spectrum-orange/20 to-white/20 rounded-full blur-3xl animate-pulse">
+                </div>
             </div>
         </div>
 
@@ -212,19 +234,22 @@
                     opacity: 0;
                     transform: translateY(-20px);
                 }
+
                 20% {
                     opacity: 1;
                 }
+
                 80% {
                     opacity: 1;
                     transform: translateY(20px);
                 }
+
                 100% {
                     opacity: 0;
                     transform: translateY(40px);
                 }
             }
-            
+
             .transition-arrow-vertical {
                 font-size: clamp(1.5rem, 10vw, 7rem);
                 font-weight: 900;
@@ -233,26 +258,26 @@
                 animation: arrow-surge-vertical 1.5s ease-in-out infinite;
                 display: inline-block;
             }
-            
+
             .transition-arrow-vertical:nth-child(1) {
                 color: #2A8CFF;
                 filter: drop-shadow(0 0 20px rgba(42, 140, 255, 0.6));
                 animation-delay: 0s;
             }
-            
+
             .transition-arrow-vertical:nth-child(2) {
                 color: #26E6C8;
                 filter: drop-shadow(0 0 20px rgba(38, 230, 200, 0.6));
                 animation-delay: 0.3s;
             }
-            
+
             .transition-arrow-vertical:nth-child(3) {
                 color: #7B3FE4;
                 filter: drop-shadow(0 0 20px rgba(123, 63, 228, 0.6));
                 animation-delay: 0.6s;
             }
         </style>
-        
+
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 pointer-events-none">
             <div class="flex flex-col items-center gap-0">
                 <!-- Arrow Flow Container - Downward Style -->
@@ -261,10 +286,11 @@
                     <span class="transition-arrow-vertical">↓</span>
                     <span class="transition-arrow-vertical">↓</span>
                 </div>
-                
+
                 <!-- Guide Text -->
                 <div class="mt-6 text-center">
-                    <p class="text-sm font-bold font-grotesk text-neural-spectrum-blue animate-pulse" style="filter: drop-shadow(0 0 10px rgba(42, 140, 255, 0.5));">
+                    <p class="text-sm font-bold font-grotesk text-neural-spectrum-blue animate-pulse"
+                        style="filter: drop-shadow(0 0 10px rgba(42, 140, 255, 0.5));">
                         CHOOSE YOUR PATH
                     </p>
                 </div>
@@ -273,110 +299,130 @@
     </section>
 
     <!-- UNIVERSE SELECTION CARDS -->
-    <section class="py-20 px-6 bg-white dark:bg-neural-navy">
+    <section class="py-12 sm:py-20 px-4 sm:px-6 bg-white dark:bg-neural-navy">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold font-grotesk text-neural-navy dark:text-white mb-4">
+            <div class="text-center mb-8 sm:mb-16">
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-grotesk text-neural-navy dark:text-white mb-3 sm:mb-4">
                     Choose Your Universe
                 </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300">
+                <p class="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300">
                     Discover the path that powers your growth
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <!-- GAMES Universe Card -->
-                <a href="games.html" class="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105">
+                <a href="games.html"
+                    class="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105">
                     <!-- Card Background Gradient -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-blue via-neural-spectrum-violet to-neural-spectrum-pink"></div>
-                    
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-blue via-neural-spectrum-violet to-neural-spectrum-pink">
+                    </div>
+
                     <!-- Glow Effect -->
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                    
+                    <div
+                        class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                    </div>
+
                     <!-- Card Content -->
-                    <div class="relative z-10 px-8 py-16 text-white text-center space-y-6">
-                        <div class="text-6xl">🎮</div>
+                    <div
+                        class="relative z-10 px-6 sm:px-8 py-10 sm:py-16 text-white text-center space-y-4 sm:space-y-6">
+                        <div class="text-4xl sm:text-6xl">🎮</div>
                         <div>
-                            <h3 class="text-3xl font-bold font-grotesk mb-3">
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold font-grotesk mb-2 sm:mb-3">
                                 GAMES
                             </h3>
-                            <p class="text-lg text-white/90 max-w-sm mx-auto">
-                                Master skill games, unlock levels, earn XP and badges. Build real power through progressive challenges.
+                            <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-sm mx-auto">
+                                Master skill games, unlock levels, earn XP and badges. Build real power through
+                                progressive challenges.
                             </p>
                         </div>
-                        <div class="pt-4">
-                            <span class="inline-block px-8 py-3 rounded-lg bg-neural-spectrum-orange font-bold font-grotesk text-neural-navy hover:bg-white transition">
+                        <div class="pt-2 sm:pt-4">
+                            <span
+                                class="inline-block px-6 sm:px-8 py-2 sm:py-3 text-xs sm:text-base rounded-lg bg-neural-spectrum-orange font-bold font-grotesk text-neural-navy hover:bg-white transition">
                                 ENTER GAMES
                             </span>
                         </div>
                     </div>
-                    
+
                     <!-- Border Glow -->
-                    <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="box-shadow: inset 0 0 30px rgba(255, 138, 0, 0.3);"></div>
+                    <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style="box-shadow: inset 0 0 30px rgba(255, 138, 0, 0.3);"></div>
                 </a>
 
                 <!-- POWER UP Universe Card -->
-                <a href="powerup.html" class="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105">
+                <a href="powerup.html"
+                    class="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105">
                     <!-- Card Background Gradient -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal via-neural-spectrum-blue to-neural-spectrum-violet"></div>
-                    
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal via-neural-spectrum-blue to-neural-spectrum-violet">
+                    </div>
+
                     <!-- Glow Effect -->
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                    
+                    <div
+                        class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                    </div>
+
                     <!-- Card Content -->
-                    <div class="relative z-10 px-8 py-16 text-white text-center space-y-6">
-                        <div class="text-6xl">⭐</div>
+                    <div
+                        class="relative z-10 px-6 sm:px-8 py-10 sm:py-16 text-white text-center space-y-4 sm:space-y-6">
+                        <div class="text-4xl sm:text-6xl">⭐</div>
                         <div>
-                            <h3 class="text-3xl font-bold font-grotesk mb-3">
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold font-grotesk mb-2 sm:mb-3">
                                 POWER UP
                             </h3>
-                            <p class="text-lg text-white/90 max-w-sm mx-auto">
-                                Discover trending content, explore featured resources, and find the power-ups that unlock your potential.
+                            <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-sm mx-auto">
+                                Discover trending content, explore featured resources, and find the power-ups that
+                                unlock your potential.
                             </p>
                         </div>
-                        <div class="pt-4">
-                            <span class="inline-block px-8 py-3 rounded-lg bg-neural-spectrum-teal font-bold font-grotesk text-neural-navy hover:bg-white transition">
+                        <div class="pt-2 sm:pt-4">
+                            <span
+                                class="inline-block px-6 sm:px-8 py-2 sm:py-3 text-xs sm:text-base rounded-lg bg-neural-spectrum-teal font-bold font-grotesk text-neural-navy hover:bg-white transition">
                                 EXPLORE POWER UP
                             </span>
                         </div>
                     </div>
-                    
+
                     <!-- Border Glow -->
-                    <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="box-shadow: inset 0 0 30px rgba(38, 230, 200, 0.3);"></div>
+                    <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style="box-shadow: inset 0 0 30px rgba(38, 230, 200, 0.3);"></div>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- HERO FEATURE STRIP -->
-    <section class="py-12 px-6 bg-neural-navy dark:bg-neural-navy border-b border-gray-800 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <section
+        class="py-8 sm:py-12 px-4 sm:px-6 bg-neural-navy dark:bg-neural-navy border-b border-gray-800 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             <div class="text-center text-white space-y-2">
-                <div class="text-3xl">🎯</div>
+                <div class="text-2xl sm:text-3xl">🎯</div>
                 <div class="space-y-1">
-                    <p class="font-bold text-lg font-grotesk">Build Real Projects</p>
-                    <p class="text-sm text-gray-300">Produce Portfolio Output</p>
+                    <p class="font-bold text-xs sm:text-lg font-grotesk">Build Real Projects</p>
+                    <p class="text-xs text-gray-300">Produce Portfolio Output</p>
                 </div>
             </div>
             <div class="text-center text-white space-y-2">
-                <div class="text-3xl">⚡</div>
+                <div class="text-2xl sm:text-3xl">⚡</div>
                 <div class="space-y-1">
-                    <p class="font-bold text-lg font-grotesk">Unlock Abilities</p>
-                    <p class="text-sm text-gray-300">Increase Player Power</p>
+                    <p class="font-bold text-xs sm:text-lg font-grotesk">Unlock Abilities</p>
+                    <p class="text-xs text-gray-300">Increase Player Power</p>
                 </div>
             </div>
             <div class="text-center text-white space-y-2">
-                <div class="text-3xl">🏅</div>
+                <div class="text-2xl sm:text-3xl">🏅</div>
                 <div class="space-y-1">
-                    <p class="font-bold text-lg font-grotesk">Earn Badges</p>
-                    <p class="text-sm text-gray-300">Create Visible Achievements</p>
+                    <p class="font-bold text-xs sm:text-lg font-grotesk">Earn Badges</p>
+                    <p class="text-xs text-gray-300">Create Visible Achievements</p>
                 </div>
             </div>
             <div class="text-center text-white space-y-2">
-                <div class="text-3xl">💰</div>
+                <div class="text-2xl sm:text-3xl">💰</div>
                 <div class="space-y-1">
-                    <p class="font-bold text-lg font-grotesk">Launch Paid Skills</p>
-                    <p class="text-sm text-gray-300">Monetize Your Power</p>
+                    <p class="font-bold text-xs sm:text-lg font-grotesk">Launch Paid Skills</p>
+                    <p class="text-xs text-gray-300">Monetize Your Power</p>
                 </div>
             </div>
         </div>
@@ -389,8 +435,9 @@
 
 
     <!-- Footer -->
-    <footer class="py-10 px-6 border-t border-neural-graphite dark:border-gray-800 bg-white dark:bg-neural-navy">
-        <div class="max-w-7xl mx-auto text-center text-gray-600 dark:text-gray-400">
+    <footer
+        class="py-8 sm:py-10 px-4 sm:px-6 border-t border-neural-graphite dark:border-gray-800 bg-white dark:bg-neural-navy">
+        <div class="max-w-7xl mx-auto text-center text-sm sm:text-base text-gray-600 dark:text-gray-400">
             <p>&copy; 2025 SixtySeven AI. All rights reserved.</p>
         </div>
     </footer>
@@ -398,4 +445,5 @@
 
 
 </body>
+
 </html>
