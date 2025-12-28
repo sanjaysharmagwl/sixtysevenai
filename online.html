@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Learning - sixtysevenai</title>
+    <title>Power-Up Content Hub - sixtysevenai</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -17,17 +17,25 @@
     <!-- Navigation -->
     <nav class="absolute top-0 left-0 right-0 py-6 px-6 z-10">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <!-- Theme Toggle -->
-            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
-                <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Theme Toggle (Light / Dark / Game) -->
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2" aria-label="Toggle theme">
+                <!-- Sun icon (Light mode) -->
+                <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg>
-                <svg id="moon-icon" class="w-6 h-6 text-gray-700 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Moon icon (Dark mode) -->
+                <svg id="moon-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+                <!-- Game icon (Game mode) -->
+                <svg id="game-icon" class="w-6 h-6 text-cyan-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
             </button>
             <div class="flex gap-6">
                 <a href="index.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Home</a>
+                <a href="games.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Play Games</a>
                 <a href="about.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">About</a>
             </div>
         </div>
@@ -36,44 +44,57 @@
     <!-- Hero Section -->
     <section class="min-h-[60vh] flex flex-col justify-center items-center text-center px-6 py-20 relative">
         <a href="index.html" class="text-purple-500 dark:text-purple-400 hover:underline mb-6">← Back to Home</a>
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Online Learning</h1>
-        <p class="text-xl text-purple-500 dark:text-purple-400 font-medium mb-6">Choose your way to learn AI.</p>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Power-Up Content Hub</h1>
+        <p class="text-xl text-purple-500 dark:text-purple-400 font-medium mb-6">Trending, featured, and discovery content</p>
         <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-            We've got three modes to fit your style. Read at your own pace, listen while you commute, or watch and follow along. Pick what works for you — or mix them all.
+            READ, AUDIO, VIDEO — these aren't games. They're power-up content that supports your learning journey. Consume anytime. Level up faster.
         </p>
     </section>
 
     <!-- Mode Selection -->
     <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Pick Your Mode</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Pick Your Power-Up</h2>
             <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Same content. Different vibes.</p>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- READ Card -->
                 <a href="read.html" class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
                     <div class="text-5xl mb-4">📖</div>
-                    <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">READ</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">Text-based learning. Articles, guides, and interactive content.</p>
+                    <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">READ Mode</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">Articles, guides, and insights. Power-up your knowledge base.</p>
                     <span class="text-purple-500 dark:text-purple-400 font-medium">Start Reading →</span>
                 </a>
 
                 <!-- AUDIO Card -->
                 <a href="audio.html" class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
                     <div class="text-5xl mb-4">🎧</div>
-                    <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">AUDIO</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">Podcast-style lessons. Learn on the go.</p>
+                    <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">AUDIO Mode</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">Learn on the go. Power-up during commute, workouts, anytime.</p>
                     <span class="text-purple-500 dark:text-purple-400 font-medium">Start Listening →</span>
                 </a>
 
                 <!-- VIDEO Card -->
                 <a href="video.html" class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
                     <div class="text-5xl mb-4">🎬</div>
-                    <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">VIDEO</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">Video tutorials and live sessions. Watch and learn.</p>
+                    <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">VIDEO Mode</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">Watch and learn. Visual power-ups for complex concepts.</p>
                     <span class="text-purple-500 dark:text-purple-400 font-medium">Start Watching →</span>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Ready to Play Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Play?</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                Power-ups are great, but the real XP comes from playing the games.
+            </p>
+            <a href="games.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-colors text-lg">
+                Enter the Games →
+            </a>
         </div>
     </section>
 
@@ -84,18 +105,44 @@
         </div>
     </footer>
 
-    <!-- Theme Toggle Script -->
+    <!-- Theme Toggle Script (Light / Dark / Game) -->
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
-
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const gameIcon = document.getElementById('game-icon');
+        
+        const themes = ['light', 'dark', 'game'];
+        
+        function setTheme(theme) {
+            html.classList.remove('dark', 'game');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.add('hidden');
+            gameIcon.classList.add('hidden');
+            
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+            } else if (theme === 'game') {
+                html.classList.add('game');
+                gameIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+        
+        // Initialize theme
         const savedTheme = localStorage.getItem('theme') || 'dark';
-        html.classList.toggle('dark', savedTheme === 'dark');
+        setTheme(savedTheme);
 
         themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            const isDark = html.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            setTheme(themes[nextIndex]);
         });
     </script>
 

@@ -7,6 +7,14 @@
     --growth-pink: #FF4FD8;
     --momentum-orange: #FF8A00;
     
+    /* PROMPTFORGE Game UI Colors */
+    --human-core-teal: #2FA4A9;
+    --ai-core-navy: #0F2A44;
+    --power-yellow: #F4C430;
+    --xp-cyan: #2DE2E6;
+    --void-black: #060B14;
+    --interface-white: #F5F7FA;
+    
     /* Core Brand Colors */
     --neural-navy: #0F172A;
     --pure-white: #FFFFFF;
@@ -91,4 +99,625 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* ============================================
+   SIXTYSEVEN AI SKILL GAME ENGINE STYLES
+   ============================================ */
+
+/* Game Section Backgrounds */
+.game-section {
+    background: linear-gradient(180deg, var(--neural-navy) 0%, #1a1f35 50%, var(--neural-navy) 100%);
+    position: relative;
+}
+
+.game-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(123, 63, 228, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Game Cards */
+.game-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--vibrant-purple);
+    box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3), 0 0 60px rgba(168, 85, 247, 0.1);
+}
+
+.game-card:hover::before {
+    left: 100%;
+}
+
+/* XP Bar & Progress Indicators */
+.xp-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--vibrant-purple), var(--growth-pink), var(--momentum-orange));
+    border-radius: 6px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Badge Styles */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.badge-locked {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.4);
+    filter: grayscale(100%);
+}
+
+.badge-locked::after {
+    content: '🔒';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.75rem;
+}
+
+.badge-unlocked {
+    background: linear-gradient(135deg, var(--vibrant-purple), var(--growth-pink));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.badge-unlocked:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(168, 85, 247, 0.6);
+}
+
+/* Level Indicator Styles */
+.level-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.level-current {
+    background: linear-gradient(135deg, var(--momentum-orange), var(--growth-pink));
+    color: white;
+    box-shadow: 0 0 30px rgba(255, 138, 0, 0.4);
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 30px rgba(255, 138, 0, 0.4); }
+    50% { box-shadow: 0 0 50px rgba(255, 138, 0, 0.6); }
+}
+
+.level-locked {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Quest Card Styles */
+.quest-card {
+    background: linear-gradient(135deg, rgba(42, 140, 255, 0.1), rgba(123, 63, 228, 0.1));
+    border: 1px solid rgba(42, 140, 255, 0.3);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.quest-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--intelligence-blue);
+    border-radius: 4px 0 0 4px;
+}
+
+.quest-active {
+    border-color: var(--signal-yellow);
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+}
+
+.quest-active::before {
+    background: var(--signal-yellow);
+    animation: quest-pulse 1.5s infinite;
+}
+
+@keyframes quest-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.quest-complete {
+    border-color: var(--neural-green);
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+}
+
+.quest-complete::before {
+    background: var(--neural-green);
+}
+
+.quest-complete::after {
+    content: '✓';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 24px;
+    height: 24px;
+    background: var(--neural-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+/* Power/Skill Unlock Styles */
+.power-card {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6));
+    border: 2px solid rgba(168, 85, 247, 0.3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.power-locked {
+    filter: grayscale(80%) brightness(0.6);
+    border-style: dashed;
+}
+
+.power-locked::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.power-locked::after {
+    content: '🔒';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+.power-unlocked {
+    border-color: var(--vibrant-purple);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+.power-unlocked:hover {
+    transform: translateY(-5px) rotateX(5deg);
+    box-shadow: 0 20px 60px rgba(168, 85, 247, 0.4);
+    border-color: var(--growth-pink);
+}
+
+/* Glow Effects for Achievements */
+.glow-gold {
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.5), 0 0 40px rgba(250, 204, 21, 0.3), 0 0 60px rgba(250, 204, 21, 0.1);
+    animation: glow-gold-pulse 2s infinite;
+}
+
+@keyframes glow-gold-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(250, 204, 21, 0.5), 0 0 40px rgba(250, 204, 21, 0.3), 0 0 60px rgba(250, 204, 21, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(250, 204, 21, 0.7), 0 0 60px rgba(250, 204, 21, 0.5), 0 0 90px rgba(250, 204, 21, 0.2);
+    }
+}
+
+.glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3), 0 0 60px rgba(168, 85, 247, 0.1);
+    animation: glow-purple-pulse 2s infinite;
+}
+
+@keyframes glow-purple-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3), 0 0 60px rgba(168, 85, 247, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.7), 0 0 60px rgba(168, 85, 247, 0.5), 0 0 90px rgba(168, 85, 247, 0.2);
+    }
+}
+
+/* Skill Tree Connector Lines */
+.skill-tree-line {
+    position: absolute;
+    background: linear-gradient(180deg, var(--vibrant-purple), var(--growth-pink));
+    width: 2px;
+    opacity: 0.5;
+}
+
+.skill-tree-line.active {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* Achievement Unlock Animation */
+@keyframes achievement-unlock {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.achievement-unlocked {
+    animation: achievement-unlock 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ============================================
+   GAME THEME - NEON ARCADE STYLE
+   ============================================ */
+
+/* Game Theme Base */
+.game {
+    --game-bg-primary: #0a0a1a;
+    --game-bg-secondary: #12122a;
+    --game-bg-card: #1a1a3a;
+    --game-accent-cyan: #00f5ff;
+    --game-accent-magenta: #ff00ff;
+    --game-accent-lime: #39ff14;
+    --game-accent-gold: #ffd700;
+    --game-text-primary: #ffffff;
+    --game-text-secondary: #b0b0d0;
+    --game-border-glow: rgba(0, 245, 255, 0.5);
+}
+
+/* Game Theme Body */
+.game.bg-gray-50,
+.game .bg-gray-50,
+.game.bg-gray-950,
+.game .bg-gray-950 {
+    background: var(--game-bg-primary) !important;
+    background-image: 
+        radial-gradient(ellipse at 20% 0%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(255, 0, 255, 0.15) 0%, transparent 50%),
+        linear-gradient(180deg, var(--game-bg-primary) 0%, var(--game-bg-secondary) 100%) !important;
+}
+
+/* Game Theme Sections */
+.game .bg-gray-100,
+.game .dark\:bg-gray-900 {
+    background: var(--game-bg-secondary) !important;
+    border-top: 1px solid rgba(0, 245, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+}
+
+/* Game Theme Cards */
+.game .bg-white,
+.game .dark\:bg-gray-800 {
+    background: var(--game-bg-card) !important;
+    border: 1px solid rgba(0, 245, 255, 0.2) !important;
+    box-shadow: 
+        0 0 20px rgba(0, 245, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+.game .bg-white:hover,
+.game .dark\:bg-gray-800:hover {
+    border-color: var(--game-accent-cyan) !important;
+    box-shadow: 
+        0 0 30px rgba(0, 245, 255, 0.3),
+        0 0 60px rgba(0, 245, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Game Theme Text */
+.game .text-gray-900,
+.game .dark\:text-white {
+    color: var(--game-text-primary) !important;
+}
+
+.game .text-gray-600,
+.game .text-gray-700,
+.game .dark\:text-gray-300,
+.game .dark\:text-gray-400 {
+    color: var(--game-text-secondary) !important;
+}
+
+/* Game Theme Accent Colors */
+.game .text-purple-500,
+.game .dark\:text-purple-400 {
+    color: var(--game-accent-cyan) !important;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+/* Game Theme Gradient Text */
+.game .text-brand-gradient {
+    background: linear-gradient(90deg, var(--game-accent-cyan), var(--game-accent-magenta), var(--game-accent-lime)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5));
+}
+
+/* Game Theme Buttons */
+.game .btn-brand-primary {
+    background: linear-gradient(90deg, var(--game-accent-cyan), var(--game-accent-magenta)) !important;
+    color: var(--game-bg-primary) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 
+        0 0 20px rgba(0, 245, 255, 0.4),
+        0 0 40px rgba(255, 0, 255, 0.2);
+    border: none;
+}
+
+.game .btn-brand-primary:hover {
+    background: linear-gradient(90deg, var(--game-accent-magenta), var(--game-accent-cyan)) !important;
+    box-shadow: 
+        0 0 30px rgba(0, 245, 255, 0.6),
+        0 0 60px rgba(255, 0, 255, 0.4);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.game .btn-brand-outline {
+    border: 2px solid var(--game-accent-cyan) !important;
+    color: var(--game-accent-cyan) !important;
+    background: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+}
+
+.game .btn-brand-outline:hover {
+    background: var(--game-accent-cyan) !important;
+    color: var(--game-bg-primary) !important;
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+}
+
+/* Game Theme Navigation */
+.game nav {
+    background: rgba(10, 10, 26, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.game nav a {
+    transition: all 0.3s ease;
+}
+
+.game nav a:hover {
+    color: var(--game-accent-cyan) !important;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.8);
+}
+
+/* Game Theme Theme Toggle Button */
+.game #theme-toggle {
+    background: var(--game-bg-card) !important;
+    border: 1px solid var(--game-accent-cyan);
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+.game #theme-toggle:hover {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+/* Game Theme XP Bar */
+.game .xp-bar,
+.game .w-full.bg-gray-200,
+.game .dark\:bg-gray-700 {
+    background: rgba(0, 245, 255, 0.1) !important;
+    border: 1px solid rgba(0, 245, 255, 0.3) !important;
+}
+
+.game .bg-gradient-to-r.from-purple-500 {
+    background: linear-gradient(90deg, var(--game-accent-cyan), var(--game-accent-magenta), var(--game-accent-lime)) !important;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+/* Game Theme Badges */
+.game .bg-yellow-100,
+.game .dark\:bg-yellow-900\/30 {
+    background: rgba(255, 215, 0, 0.2) !important;
+    border: 1px solid var(--game-accent-gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.game .bg-blue-100,
+.game .dark\:bg-blue-900\/30 {
+    background: rgba(0, 245, 255, 0.2) !important;
+    border: 1px solid var(--game-accent-cyan);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+}
+
+.game .bg-green-100,
+.game .dark\:bg-green-900\/30 {
+    background: rgba(57, 255, 20, 0.2) !important;
+    border: 1px solid var(--game-accent-lime);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+}
+
+.game .bg-orange-100,
+.game .dark\:bg-orange-900\/30 {
+    background: rgba(255, 138, 0, 0.2) !important;
+    border: 1px solid var(--momentum-orange);
+    box-shadow: 0 0 15px rgba(255, 138, 0, 0.3);
+}
+
+/* Game Theme Purple Backgrounds */
+.game .bg-purple-100,
+.game .dark\:bg-purple-600\/20,
+.game .dark\:bg-purple-900\/30 {
+    background: rgba(255, 0, 255, 0.15) !important;
+    border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+/* Game Theme Featured Card */
+.game .bg-gradient-to-br.from-purple-500\/10 {
+    background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 0, 255, 0.1)) !important;
+    border: 2px solid var(--game-accent-cyan) !important;
+    box-shadow: 
+        0 0 40px rgba(0, 245, 255, 0.2),
+        inset 0 0 60px rgba(0, 245, 255, 0.05);
+}
+
+/* Game Theme Featured Badge */
+.game .bg-purple-500 {
+    background: linear-gradient(90deg, var(--game-accent-cyan), var(--game-accent-magenta)) !important;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+}
+
+/* Game Theme Skill Tags */
+.game .text-purple-600,
+.game .dark\:text-purple-400 {
+    color: var(--game-accent-cyan) !important;
+}
+
+/* Game Theme Level Indicator */
+.game .bg-gradient-to-br.from-purple-500.to-pink-500 {
+    background: linear-gradient(135deg, var(--game-accent-cyan), var(--game-accent-magenta)) !important;
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.5);
+    animation: neon-pulse 2s infinite;
+}
+
+@keyframes neon-pulse {
+    0%, 100% { box-shadow: 0 0 25px rgba(0, 245, 255, 0.5); }
+    50% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.8), 0 0 60px rgba(255, 0, 255, 0.4); }
+}
+
+/* Game Theme Footer */
+.game footer {
+    border-color: rgba(0, 245, 255, 0.2) !important;
+}
+
+/* Game Theme Green/Success Colors */
+.game .text-green-500,
+.game .dark\:text-green-400 {
+    color: var(--game-accent-lime) !important;
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+/* Game Theme Red/Error Colors */
+.game .text-red-500,
+.game .dark\:text-red-400 {
+    color: #ff4757 !important;
+    text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+/* Game Theme Locked Items */
+.game .opacity-60 {
+    opacity: 0.4 !important;
+    filter: grayscale(50%);
+}
+
+/* Game Theme Scanlines Effect (Optional - for extra retro feel) */
+.game::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Game Theme CTA Gradient Background */
+.game .bg-cta-gradient {
+    background: linear-gradient(90deg, var(--game-accent-cyan), var(--game-accent-magenta)) !important;
+}
+
+/* Game Theme Drop Shadow for Logo */
+.game .drop-shadow-\[0_0_30px_rgba\(168\,85\,247\,0\.4\)\] {
+    filter: drop-shadow(0 0 30px rgba(0, 245, 255, 0.6)) drop-shadow(0 0 60px rgba(255, 0, 255, 0.4)) !important;
+}
+
+/* Game Theme Hover Scale Effects */
+.game .hover\:scale-105:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.4) !important;
 }
