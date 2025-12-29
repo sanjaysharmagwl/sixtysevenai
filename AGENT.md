@@ -181,6 +181,275 @@ If any future change conflicts with this file, **this file wins.**
 
 ---
 
+## 10. Homepage Layout Grid
+
+The homepage is the entry point to the platform—it must immediately communicate the game structure and drive navigation into either Power Up or GAMES zones.
+
+### Grid Structure (Desktop: 12-column, Mobile: 4-column, Tablet: 8-column)
+
+| Section      | Grid Span | Height   | Purpose                                      |
+| ------------ | --------- | -------- | -------------------------------------------- |
+| Hero Zone    | Full      | 60vh     | Neural Spectrum gradient, headline, "START"  |
+| Identity Block | Full    | Auto     | What is SixtySeven (not course, is skill-forging) |
+| Games Hub    | Full      | Auto     | 5 game cards in responsive grid (1–2–5 layout) |
+| Core Pillars | Full      | Auto     | 3 pillar cards: Game-Structured, AI-Native, Real Power |
+| CTA Zone     | Full      | 40vh     | Dark hero section with final call-to-action  |
+
+### Hero Zone Specifications
+
+**Background**: Neural Spectrum gradient (`linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00)`)
+
+**Text**: 
+- Headline: Space Grotesk, 64px (desktop), bold, Neural Navy (#0F172A)
+- Subheadline: Inter, 24px, Neural Navy
+- CTA Button: Gradient background (`linear-gradient(90deg, #FF8A00, #FF4FD8)`), white text, 18px Inter bold, min 48px height, glow effect
+
+**Layout**: Center-aligned, 80% max-width, 60px padding top/bottom
+
+### Identity Block Specifications
+
+**Background**: Pure White (#FFFFFF)
+
+**Grid**: 2 columns (desktop), 1 column (mobile)
+
+**Content Left**: 
+- Headline: "This is not a course platform. This is a skill-forging engine."
+- Body: 3–4 sentences differentiating SixtySeven
+- Font: Space Grotesk (headline), Inter (body)
+- Color: Neural Navy (#0F172A)
+
+**Content Right**:
+- Table: Traditional Learning vs SixtySeven AI (6 rows)
+- Use monospace (JetBrains Mono) for comparison items
+- Left column: dim gray (#999), right column: Intelligence Blue (#2A8CFF)
+
+**Spacing**: 80px padding, 40px column gap
+
+### Games Hub Grid
+
+**Background**: Soft Snow (#F9FAFB)
+
+**Layout**: 5 game cards responsive (5 cols on desktop, 2 cols tablet, 1 col mobile)
+
+**Card Grid**: Max 1200px width, centered, 20px gap
+
+**Padding**: 60px top/bottom, 40px sides
+
+---
+
+## 11. Games Hub Card System
+
+Each game card must signal progression potential and drive action into the game.
+
+### Game Card Anatomy
+
+| Element        | Spec                                                |
+| -------------- | --------------------------------------------------- |
+| Background     | Gradient based on game (custom per game)            |
+| Border         | 2px solid, gradient (90deg variation of background) |
+| Border Radius  | 12px                                                |
+| Padding        | 32px                                                |
+| Min Height     | 280px                                               |
+| Glow Effect    | `box-shadow: 0 0 30px rgba(255, 143, 0, 0.3)` (orange-tinted) |
+| Hover State    | Scale 1.05, glow brightens, shadow deepens         |
+
+### Game Card Layout (Vertical Stack)
+
+```
+┌─────────────────────┐
+│  [Game Icon]        │  (32x32, centered)
+├─────────────────────┤
+│  Game Title         │  (Space Grotesk, 24px, bold, Neural Navy)
+├─────────────────────┤
+│  Description        │  (Inter, 14px, Neural Navy, 2 lines max)
+├─────────────────────┤
+│  XP Badge           │  (Vibrant Purple bg, white text, 12px monospace)
+│  "Total XP: 2,500"  │
+├─────────────────────┤
+│  [START BUTTON]     │  (Full width, gradient CTA, 48px height)
+└─────────────────────┘
+```
+
+### Per-Game Gradient & Color
+
+| Game              | Gradient                                          | Icon Color      |
+| ----------------- | ------------------------------------------------- | --------------- |
+| Prompt Architect  | `linear-gradient(135deg, #26E6C8, #2A8CFF)`      | Human Teal      |
+| Agent Engineer    | `linear-gradient(135deg, #2A8CFF, #7B3FE4)`      | Intelligence Blue |
+| Automation Forge  | `linear-gradient(135deg, #7B3FE4, #FF4FD8)`      | Builder Violet  |
+| Creator OS        | `linear-gradient(135deg, #FF4FD8, #FF8A00)`      | Growth Pink     |
+| Startup Builder   | `linear-gradient(135deg, #FF8A00, #26E6C8)`      | Momentum Orange |
+
+### Badge System (XP Display)
+
+**Position**: Top-right corner of card, absolute positioned
+
+**Style**:
+- Background: Vibrant Purple (#A855F7)
+- Text: Pure White (#FFFFFF)
+- Font: JetBrains Mono, 11px
+- Padding: 8px 12px
+- Border Radius: 6px
+- Content: `XP: [number]` (total game XP)
+
+### START Button (CTA)
+
+**Style**:
+- Background: Gradient (`linear-gradient(90deg, #FF8A00, #FF4FD8)`)
+- Text: Pure White, Inter 16px bold
+- Height: 48px
+- Border: None
+- Border Radius: 6px
+- Cursor: pointer
+- Glow on hover: `box-shadow: 0 0 20px rgba(255, 143, 0, 0.5)`
+
+**Interaction**: Click → Navigate to `/games/[game-slug].html`
+
+### Responsive Behavior
+
+| Breakpoint | Columns | Card Width | Gap  |
+| ---------- | ------- | ---------- | ---- |
+| Desktop    | 5       | Auto       | 20px |
+| Tablet     | 2       | Auto       | 16px |
+| Mobile     | 1       | Full       | 12px |
+
+---
+
+## 12. Level 1 Onboarding Flow
+
+When a player enters a game, Level 1 must hook them immediately, establish game rules, and deliver their first win within 5 minutes.
+
+### Level 1 Container Specs
+
+**Background**: Dark Mode (Neural Navy #0F172A) with subtle grid pattern
+
+**Layout**: Center container, max-width 900px, 60px padding
+
+**Typography**: Space Grotesk headings, Inter body text, all text Pure White (#FFFFFF)
+
+### Level 1 Flow (4 Screens)
+
+#### Screen 1: Level Intro
+
+```
+┌─────────────────────────────────┐
+│  LEVEL 1: [Game-Specific Name]  │  (Space Grotesk, 48px)
+│  The Foundation                 │  (Subheadline, 24px)
+├─────────────────────────────────┤
+│  [32x32 Level Icon]             │
+├─────────────────────────────────┤
+│  Description (2–3 sentences)    │  (Inter, 16px, #E5E7EB)
+│  What you'll build & unlock     │
+├─────────────────────────────────┤
+│  [NEXT → Button]                │  (CTA Gradient)
+└─────────────────────────────────┘
+
+Duration: Auto-advance after 3s or click NEXT
+```
+
+#### Screen 2: Mission Brief
+
+```
+┌─────────────────────────────────┐
+│  YOUR MISSION                   │  (Space Grotesk, 32px)
+├─────────────────────────────────┤
+│  [Mission Icon]                 │
+├─────────────────────────────────┤
+│  Primary Task                   │  (Inter, 18px bold)
+│  [Checkbox] Subtask 1           │
+│  [Checkbox] Subtask 2           │
+│  [Checkbox] Subtask 3           │
+├─────────────────────────────────┤
+│  XP REWARD: 100 XP              │  (JetBrains Mono, Momentum Orange)
+│  [ACCEPT MISSION →]             │  (CTA Gradient)
+└─────────────────────────────────┘
+
+Interaction: Checkboxes are visual only; cannot be checked yet
+```
+
+#### Screen 3: Tutorial / First Action
+
+```
+┌─────────────────────────────────┐
+│  YOUR FIRST POWER-UP            │  (Space Grotesk, 32px)
+├─────────────────────────────────┤
+│  [Video/GIF: 4-second demo]     │  (Max 640px width)
+├─────────────────────────────────┤
+│  Guided Action (Game-Specific)  │  (Inter, 16px)
+│  Click the orange button below  │
+│  or fill the form               │
+├─────────────────────────────────┤
+│  [Primary Interactive Element]  │  (Styled per game)
+│  [Helper Text / Tooltip]        │
+└─────────────────────────────────┘
+
+Interaction: Player completes the first real task
+```
+
+#### Screen 4: Completion & Unlock
+
+```
+┌─────────────────────────────────┐
+│  MISSION COMPLETE 🎮            │  (Space Grotesk, 40px)
+├─────────────────────────────────┤
+│  +100 XP                        │  (Animated: fly from center, JetBrains Mono, 32px)
+│  [Progress Bar: 100/1000]       │  (XP Bar gradient, smooth animation)
+├─────────────────────────────────┤
+│  POWER UNLOCKED:                │  (Space Grotesk, 24px)
+│  [Power Icon] [Power Name]      │  (Vibrant Purple badge)
+├─────────────────────────────────┤
+│  Next Level Available           │
+│  [PLAY LEVEL 2 →]              │  (CTA Gradient, primary button)
+│  [View Leaderboard]             │  (Secondary link)
+└─────────────────────────────────┘
+
+Animation: XP counter animates up, progress bar fills, power badge glows
+```
+
+### Level 1 Timing & Progression
+
+| Screen | Duration      | Trigger                    |
+| ------ | ------------- | -------------------------- |
+| 1      | 3s auto / tap | Auto-advance or click NEXT |
+| 2      | Until click   | ACCEPT MISSION button      |
+| 3      | Until task    | Complete the interactive element |
+| 4      | 4s auto       | Auto-advance to Level 2 or stay for celebration |
+
+### Game-Specific Level 1 Variations
+
+Each game's Level 1 must customize **Screen 3** and the **mission definition**:
+
+| Game             | Screen 3 Task                               | Output                |
+| ---------------- | ------------------------------------------- | --------------------- |
+| Prompt Architect | Write a 3-sentence system prompt            | Prompt string         |
+| Agent Engineer   | Define an agent's goal in 1 sentence        | Goal definition       |
+| Automation Forge | Connect 2 tools via a workflow diagram      | Visual workflow       |
+| Creator OS       | Build a 5-step content outline              | Outline list          |
+| Startup Builder  | Define your AI product in 2 sentences       | Product statement     |
+
+### Level 1 XP Rewards (Override Section 5)
+
+| Completion         | XP    |
+| ------------------ | ----- |
+| Level 1 Complete   | 100   |
+| Bonus: Sub-3min    | +25   |
+| Bonus: Perfect     | +50   |
+| **Total L1 Max**   | **175** |
+
+### Lock States & Visibility Rules
+
+**During Level 1**:
+- All future levels appear as **LOCKED** (Navy background, 30% opacity)
+- Locked level cards show lock icon, "Level 2" text, no progress bar
+- Leaderboard shows only Level 1 entries
+
+**After Level 1 Complete**:
+- Level 2 becomes **AVAILABLE** (full color, clickable)
+- XP bar updates globally
+- Badge "Level 1 Player" appears on profile
+
+---
+
 ## TODO: Future Sections
 
 - Component naming conventions
