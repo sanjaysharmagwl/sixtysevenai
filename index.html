@@ -407,7 +407,7 @@
                     <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-grotesk leading-tight mb-3 sm:mb-4 md:mb-6 text-white mt-12 sm:mt-16 md:mt-20 lg:mt-24">
                         Don't learn AI.<br>Level up inside it.
                     </h1>
-                    <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-lg font-inter leading-relaxed">
+                    <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-lg font-inter leading-relaxed mb-6 sm:mb-8">
                         <strong>You don't just play games. You install Power-Ups for your brain.</strong><br><br>
                         Games build your core abilities. Power-Ups amplify your daily performance.<br><br>
                         <span class="block space-y-1 sm:space-y-2">
@@ -418,6 +418,10 @@
                         </span><br>
                         This is a complete operating system for the AI age.
                     </p>
+                    <!-- Primary CTA Button -->
+                    <button onclick="document.getElementById('games-hub').scrollIntoView({ behavior: 'smooth' })" class="cta-button px-6 sm:px-10 py-3 sm:py-4 text-white font-bold font-grotesk rounded-lg hover:shadow-lg transition-all duration-300 text-sm sm:text-base">
+                        Start Your First Game
+                    </button>
                 </div>
             </div>
 
@@ -504,12 +508,12 @@
                 </div>
 
                 <!-- Right: Comparison Table -->
-                <div class="bg-neural-snow rounded-lg p-6 sm:p-8">
-                    <h4 class="text-lg font-bold font-grotesk text-neural-navy mb-6">Traditional Learning vs SixtySeven AI</h4>
+                <div class="bg-neural-snow rounded-xl p-8 sm:p-10 border-2 border-neural-spectrum-blue/40">
+                    <h4 class="text-lg font-bold font-grotesk text-neural-navy mb-8">Traditional Learning vs SixtySeven AI</h4>
                     <table class="comparison-table w-full text-sm">
                         <tr>
-                            <td>Watch videos</td>
-                            <td>Play games</td>
+                            <td class="font-medium">Watch videos</td>
+                            <td class="font-medium">Play games</td>
                         </tr>
                         <tr>
                             <td>Take notes</td>
@@ -528,8 +532,8 @@
                             <td>Gain permanent skills</td>
                         </tr>
                         <tr>
-                            <td>Passive consumption</td>
-                            <td>Active operator mode</td>
+                            <td class="font-medium">Passive consumption</td>
+                            <td class="font-medium">Active operator mode</td>
                         </tr>
                     </table>
                 </div>
@@ -588,8 +592,8 @@
             </div>
 
             <!-- Bottom Call-Out -->
-            <div class="mt-12 sm:mt-16 bg-neural-navy text-center rounded-xl p-8 sm:p-12">
-                <p class="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+            <div class="mt-12 sm:mt-16 bg-white dark:bg-gradient-to-r dark:from-neural-navy dark:to-black text-center rounded-xl p-8 sm:p-12 border border-neural-spectrum-blue/20 dark:border-neural-spectrum-blue/20">
+                <p class="text-lg sm:text-xl text-neural-navy dark:text-white max-w-2xl mx-auto leading-relaxed">
                     <strong>This is not a course platform. This is an operating system.</strong> Games build your power. Power-Ups multiply it.
                 </p>
             </div>
@@ -612,7 +616,7 @@
             <!-- Games Grid: Responsive Layout (5 cols desktop, 2 cols tablet, 1 col mobile) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 max-w-6xl mx-auto">
                 <!-- Game Card 1: Prompt Architect -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer" style="background: linear-gradient(135deg, #26E6C8, #2A8CFF); border-color: rgba(38, 230, 200, 0.5);" onclick="openLevel1Modal('prompt-architect')">
+                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #26E6C8, #2A8CFF); border-color: rgba(38, 230, 200, 0.5);" onclick="openLevel1Modal('prompt-architect')">
                     <!-- Content Wrapper -->
                     <div class="relative z-10 flex flex-col h-full">
                         <!-- Icon -->
@@ -635,7 +639,7 @@
                 </div>
 
                 <!-- Game Card 2: Agent Engineer -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer" style="background: linear-gradient(135deg, #2A8CFF, #7B3FE4); border-color: rgba(42, 140, 255, 0.5);" onclick="openLevel1Modal('agent-engineer')">
+                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #2A8CFF, #7B3FE4); border-color: rgba(42, 140, 255, 0.5);" onclick="openLevel1Modal('agent-engineer')">
                     <div class="relative z-10 flex flex-col h-full">
                         <div class="text-4xl mb-4">🤖</div>
                         <h3 class="text-xl font-bold font-grotesk text-white mb-2">Agent Engineer</h3>
@@ -648,7 +652,7 @@
                 </div>
 
                 <!-- Game Card 3: Automation Forge -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer" style="background: linear-gradient(135deg, #7B3FE4, #FF4FD8); border-color: rgba(123, 63, 228, 0.5);" onclick="openLevel1Modal('automation-forge')">
+                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #7B3FE4, #FF4FD8); border-color: rgba(123, 63, 228, 0.5);" onclick="openLevel1Modal('automation-forge')">
                     <div class="relative z-10 flex flex-col h-full">
                         <div class="text-4xl mb-4">⚙️</div>
                         <h3 class="text-xl font-bold font-grotesk text-white mb-2">Automation Forge</h3>
@@ -661,7 +665,7 @@
                 </div>
 
                 <!-- Game Card 4: Creator OS -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer" style="background: linear-gradient(135deg, #FF4FD8, #FF8A00); border-color: rgba(255, 79, 216, 0.5);" onclick="openLevel1Modal('creator-os')">
+                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #FF4FD8, #FF8A00); border-color: rgba(255, 79, 216, 0.5);" onclick="openLevel1Modal('creator-os')">
                     <div class="relative z-10 flex flex-col h-full">
                         <div class="text-4xl mb-4">✍️</div>
                         <h3 class="text-xl font-bold font-grotesk text-white mb-2">Creator OS</h3>
@@ -674,7 +678,7 @@
                 </div>
 
                 <!-- Game Card 5: Startup Builder -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer" style="background: linear-gradient(135deg, #FF8A00, #26E6C8); border-color: rgba(255, 138, 0, 0.5);" onclick="openLevel1Modal('startup-builder')">
+                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #FF8A00, #26E6C8); border-color: rgba(255, 138, 0, 0.5);" onclick="openLevel1Modal('startup-builder')">
                     <div class="relative z-10 flex flex-col h-full">
                         <div class="text-4xl mb-4">🚀</div>
                         <h3 class="text-xl font-bold font-grotesk text-white mb-2">Startup Builder</h3>
@@ -705,7 +709,7 @@
             <!-- 6-Mode Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 <!-- Mode 1: Read -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-blue/30 hover:border-neural-spectrum-blue/60 hover:shadow-lg transition-all duration-300">
+                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-blue/40 hover:border-neural-spectrum-blue/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">📖</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Read Mode</h3>
                     <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-blue">Thinking Speed & Comprehension</p>
@@ -713,7 +717,7 @@
                 </div>
 
                 <!-- Mode 2: Watch -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-teal/30 hover:border-neural-spectrum-teal/60 hover:shadow-lg transition-all duration-300">
+                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-teal/40 hover:border-neural-spectrum-teal/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">🎬</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Watch Mode</h3>
                     <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-teal">Learning Velocity</p>
@@ -721,7 +725,7 @@
                 </div>
 
                 <!-- Mode 3: Listen -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-violet/30 hover:border-neural-spectrum-violet/60 hover:shadow-lg transition-all duration-300">
+                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-violet/40 hover:border-neural-spectrum-violet/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">🎧</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Listen Mode</h3>
                     <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-violet">Memory Retention</p>
@@ -729,7 +733,7 @@
                 </div>
 
                 <!-- Mode 4: Focus -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-pink/30 hover:border-neural-spectrum-pink/60 hover:shadow-lg transition-all duration-300">
+                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-pink/40 hover:border-neural-spectrum-pink/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">🧠</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Focus Mode</h3>
                     <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-pink">Deep Work Stamina</p>
@@ -737,7 +741,7 @@
                 </div>
 
                 <!-- Mode 5: Builder -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-orange/30 hover:border-neural-spectrum-orange/60 hover:shadow-lg transition-all duration-300">
+                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-orange/40 hover:border-neural-spectrum-orange/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">🔧</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Builder Mode</h3>
                     <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-orange">Execution Speed</p>
@@ -745,7 +749,7 @@
                 </div>
 
                 <!-- Mode 6: Prompt -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-pink/30 hover:border-neural-spectrum-pink/60 hover:shadow-lg transition-all duration-300">
+                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-pink/40 hover:border-neural-spectrum-pink/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">✍️</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Prompt Mode</h3>
                     <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-pink">Command Clarity</p>
@@ -832,10 +836,10 @@
     <section class="hero-gradient min-h-[40vh] md:min-h-[50vh] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 relative overflow-hidden">
          <div class="absolute inset-0 opacity-20"></div>
          <div class="max-w-4xl mx-auto text-center relative z-10">
-             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-grotesk text-neural-navy mb-4 sm:mb-6">
+             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-grotesk text-white mb-4 sm:mb-6">
                  Your brain is the console.<br>SixtySeven AI is the operating system.
              </h2>
-             <p class="text-sm sm:text-base md:text-lg text-neural-navy/90 max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+             <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
                  The future rewards operators—people who can command machines, design systems, create leverage, and move faster. You don't just learn AI. You become AI-native.
              </p>
              <!-- Dual CTAs -->
@@ -847,7 +851,7 @@
                      Install Your First Power-Up
                  </button>
              </div>
-             <p class="text-sm text-neural-navy/80 mt-6 font-mono">Begin your upgrade.</p>
+             <p class="text-sm text-white/80 mt-6 font-mono">Begin your upgrade.</p>
          </div>
      </section>
 
