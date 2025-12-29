@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,17 +49,113 @@
         .hero-gradient {
             background: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00);
         }
-        
+
         .cta-button {
             background: linear-gradient(90deg, #FF8A00, #FF4FD8);
             transition: all 0.3s ease;
         }
-        
+
         .cta-button:hover {
             box-shadow: 0 0 20px rgba(255, 143, 0, 0.5);
         }
+
+        /* Power-up Card Styling */
+        .powerup-card {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 32px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.1);
+            position: relative;
+        }
+
+        .powerup-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+            border-color: #FF8A00;
+        }
+
+        .dark .powerup-card {
+            background: #0F172A;
+            border-color: #2A8CFF;
+        }
+
+        .dark .powerup-card:hover {
+            border-color: #FF8A00;
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+        }
+
+        .powerup-icon {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .powerup-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin: 8px 0;
+            color: #0F172A;
+        }
+
+        .dark .powerup-title {
+            color: #FFFFFF;
+        }
+
+        .powerup-description {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: #666666;
+            flex-grow: 1;
+        }
+
+        .dark .powerup-description {
+            color: #E5E7EB;
+        }
+
+        .powerup-cta {
+            color: #FF8A00;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .powerup-card:hover .powerup-cta {
+            color: #FF4FD8;
+        }
+
+        .xp-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #A855F7;
+            color: #FFFFFF;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .section-background {
+            background: #FFFFFF;
+        }
+
+        .dark .section-background {
+            background: #0F172A;
+        }
     </style>
 </head>
+
 <body class="bg-white dark:bg-neural-navy text-neural-navy dark:text-white font-inter transition-colors duration-300">
 
     <!-- Navigation -->
@@ -71,55 +168,78 @@
 
             <!-- Center: Navigation Links -->
             <div class="flex gap-4 sm:gap-8 items-center text-xs sm:text-sm font-medium flex-shrink-0">
-                <a href="index.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="index.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🎯 Dashboard
                 </a>
-                <a href="gamehub.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="gamehub.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🎮 Games
                 </a>
-                <a href="powerup.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="powerup.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     ⚡ Powers
                 </a>
-                <a href="leaderboard.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="leaderboard.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🏆 Leaderboard
                 </a>
-                <a href="profile.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="profile.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     👤 Profile
                 </a>
             </div>
 
             <!-- Right: Theme Toggle (Light / Dark / Game) -->
-            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors flex items-center gap-2" aria-label="Toggle theme">
+            <button id="theme-toggle"
+                class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors flex items-center gap-2"
+                aria-label="Toggle theme">
                 <!-- Sun icon (Light mode) -->
-                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                    </path>
                 </svg>
                 <!-- Moon icon (Dark mode) -->
-                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                    </path>
                 </svg>
                 <!-- Game icon (Game mode) -->
-                <svg id="game-icon" class="w-5 h-5 text-cyan-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg id="game-icon" class="w-5 h-5 text-cyan-300 hidden" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
             </button>
         </div>
     </nav>
 
     <!-- HERO ZONE (60vh) -->
-    <section class="hero-gradient min-h-screen md:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 pt-48 pb-16 sm:pt-56 sm:pb-20 md:pt-64 md:py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal/5 via-neural-spectrum-blue/5 to-neural-spectrum-pink/5 opacity-30"></div>
+    <section
+        class="hero-gradient min-h-screen md:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 pt-48 pb-16 sm:pt-56 sm:pb-20 md:pt-64 md:py-20 relative overflow-hidden">
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal/5 via-neural-spectrum-blue/5 to-neural-spectrum-pink/5 opacity-30">
+        </div>
 
         <div class="max-w-7xl mx-auto w-full text-center relative z-10">
             <div class="space-y-4 sm:space-y-6 md:space-y-8">
                 <div>
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-grotesk leading-tight mb-3 sm:mb-4 md:mb-6 text-white">
+                    <h1
+                        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-grotesk leading-tight mb-3 sm:mb-4 md:mb-6 text-white">
                         Install Power-Ups<br>for Your Brain.
                     </h1>
-                    <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto font-inter leading-relaxed">
+                    <p
+                        class="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto font-inter leading-relaxed">
                         <strong>These aren't lessons. They're AI upgrades.</strong><br><br>
-                        Short, high-impact modes that plug into your daily life. Read faster. Learn deeper. Build smarter. Ship quicker.<br><br>
+                        Short, high-impact modes that plug into your daily life. Read faster. Learn deeper. Build
+                        smarter. Ship quicker.<br><br>
                         <span class="block space-y-1 sm:space-y-2">
                             • Master key concepts in minutes<br>
                             • Amplify your existing abilities<br>
@@ -136,9 +256,12 @@
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 pointer-events-none">
             <div class="flex flex-col items-center gap-0">
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #2A8CFF; filter: drop-shadow(0 0 20px rgba(42, 140, 255, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite;">↓</span>
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #26E6C8; filter: drop-shadow(0 0 20px rgba(38, 230, 200, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.3s;">↓</span>
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #7B3FE4; filter: drop-shadow(0 0 20px rgba(123, 63, 228, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.6s;">↓</span>
+                    <span
+                        style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #2A8CFF; filter: drop-shadow(0 0 20px rgba(42, 140, 255, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite;">↓</span>
+                    <span
+                        style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #26E6C8; filter: drop-shadow(0 0 20px rgba(38, 230, 200, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.3s;">↓</span>
+                    <span
+                        style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #7B3FE4; filter: drop-shadow(0 0 20px rgba(123, 63, 228, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.6s;">↓</span>
                 </div>
             </div>
         </div>
@@ -149,13 +272,16 @@
                     opacity: 0;
                     transform: translateY(-20px);
                 }
+
                 20% {
                     opacity: 1;
                 }
+
                 80% {
                     opacity: 1;
                     transform: translateY(20px);
                 }
+
                 100% {
                     opacity: 0;
                     transform: translateY(40px);
@@ -165,71 +291,79 @@
     </section>
 
     <!-- Mode Selection -->
-    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+    <section class="py-20 px-6 section-background">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Pick Your Power-Up</h2>
+            <h2 class="text-3xl md:text-4xl font-bold font-grotesk mb-4 text-center">Pick Your Power-Up</h2>
             <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Same content. Different vibes.</p>
-            
+
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
                 <!-- READ Card -->
-                <a href="read.html" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
-                    <div class="text-4xl mb-3">📖</div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">READ Mode</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Articles, guides, and insights. Power-up your knowledge base.</p>
-                    <span class="text-purple-500 dark:text-purple-400 font-medium text-sm">Start Reading →</span>
+                <a href="read.html" class="powerup-card group">
+                    <div class="xp-badge">XP: 100</div>
+                    <div class="powerup-icon">📖</div>
+                    <h3 class="powerup-title">READ Mode</h3>
+                    <p class="powerup-description">Articles, guides, and insights. Power-up your knowledge base.</p>
+                    <span class="powerup-cta">Start Reading →</span>
                 </a>
 
                 <!-- AUDIO Card -->
-                <a href="audio.html" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
-                    <div class="text-4xl mb-3">🎧</div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">AUDIO Mode</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Learn on the go. Power-up during commute, workouts, anytime.</p>
-                    <span class="text-purple-500 dark:text-purple-400 font-medium text-sm">Start Listening →</span>
+                <a href="audio.html" class="powerup-card group">
+                    <div class="xp-badge">XP: 100</div>
+                    <div class="powerup-icon">🎧</div>
+                    <h3 class="powerup-title">AUDIO Mode</h3>
+                    <p class="powerup-description">Learn on the go. Power-up during commute, workouts, anytime.</p>
+                    <span class="powerup-cta">Start Listening →</span>
                 </a>
 
                 <!-- VIDEO Card -->
-                <a href="video.html" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
-                    <div class="text-4xl mb-3">🎬</div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">VIDEO Mode</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Watch and learn. Visual power-ups for complex concepts.</p>
-                    <span class="text-purple-500 dark:text-purple-400 font-medium text-sm">Start Watching →</span>
+                <a href="video.html" class="powerup-card group">
+                    <div class="xp-badge">XP: 100</div>
+                    <div class="powerup-icon">🎬</div>
+                    <h3 class="powerup-title">VIDEO Mode</h3>
+                    <p class="powerup-description">Watch and learn. Visual power-ups for complex concepts.</p>
+                    <span class="powerup-cta">Start Watching →</span>
                 </a>
 
                 <!-- FOCUS MODE Card -->
-                <a href="focus.html" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
-                    <div class="text-4xl mb-3">🔧</div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Focus Mode</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Eliminate context switching. Sustain flow state for hours.</p>
-                    <span class="text-purple-500 dark:text-purple-400 font-medium text-sm">Start Reading →</span>
+                <a href="focus.html" class="powerup-card group">
+                    <div class="xp-badge">XP: 100</div>
+                    <div class="powerup-icon">🔧</div>
+                    <h3 class="powerup-title">Focus Mode</h3>
+                    <p class="powerup-description">Eliminate context switching. Sustain flow state for hours.</p>
+                    <span class="powerup-cta">Start Focusing →</span>
                 </a>
 
                 <!-- BUILDER MODE Card -->
-                <a href="builder.html" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
-                    <div class="text-4xl mb-3">⚙️</div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Builder Mode</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Turn ideas into code instantly. Prototype without delay.</p>
-                    <span class="text-purple-500 dark:text-purple-400 font-medium text-sm">Start Reading →</span>
+                <a href="builder.html" class="powerup-card group">
+                    <div class="xp-badge">XP: 150</div>
+                    <div class="powerup-icon">⚙️</div>
+                    <h3 class="powerup-title">Builder Mode</h3>
+                    <p class="powerup-description">Turn ideas into code instantly. Prototype without delay.</p>
+                    <span class="powerup-cta">Start Building →</span>
                 </a>
 
                 <!-- PROMPT MODE Card -->
-                <a href="prompt.html" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-none hover:scale-105 transition-transform group">
-                    <div class="text-4xl mb-3">✍️</div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Prompt Mode</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Command AI with precision. Extract maximum value from interactions.</p>
-                    <span class="text-purple-500 dark:text-purple-400 font-medium text-sm">Start Reading →</span>
+                <a href="prompt.html" class="powerup-card group">
+                    <div class="xp-badge">XP: 150</div>
+                    <div class="powerup-icon">✍️</div>
+                    <h3 class="powerup-title">Prompt Mode</h3>
+                    <p class="powerup-description">Command AI with precision. Extract maximum value from interactions.
+                    </p>
+                    <span class="powerup-cta">Start Prompting →</span>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Ready to Play Section -->
-    <section class="py-20 px-6">
+    <section class="py-20 px-6 section-background">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Play?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold font-grotesk mb-4">Ready to Play?</h2>
             <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
                 Power-ups are great, but the real XP comes from playing the games.
             </p>
-            <a href="gamehub.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-colors text-lg">
+            <a href="gamehub.html"
+                class="cta-button text-white font-bold py-4 px-8 rounded-lg transition-all text-lg inline-block">
                 Enter the Games →
             </a>
         </div>
@@ -240,8 +374,10 @@
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
             <p class="text-sm sm:text-base text-gray-500">&copy; 2025 sixtysevenai. All rights reserved.</p>
             <div class="flex gap-6 text-sm sm:text-base">
-                <a href="about.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">📖 About</a>
-                <a href="contact.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">💬 Contact</a>
+                <a href="about.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">📖
+                    About</a>
+                <a href="contact.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">💬
+                    Contact</a>
             </div>
         </div>
     </footer>
@@ -253,15 +389,15 @@
         const sunIcon = document.getElementById('sun-icon');
         const moonIcon = document.getElementById('moon-icon');
         const gameIcon = document.getElementById('game-icon');
-        
+
         const themes = ['light', 'dark', 'game'];
-        
+
         function setTheme(theme) {
             html.classList.remove('dark', 'game');
             sunIcon.classList.add('hidden');
             moonIcon.classList.add('hidden');
             gameIcon.classList.add('hidden');
-            
+
             if (theme === 'dark') {
                 html.classList.add('dark');
                 sunIcon.classList.remove('hidden');
@@ -271,10 +407,10 @@
             } else {
                 moonIcon.classList.remove('hidden');
             }
-            
+
             localStorage.setItem('theme', theme);
         }
-        
+
         // Initialize theme
         const savedTheme = localStorage.getItem('theme') || 'dark';
         setTheme(savedTheme);
@@ -288,4 +424,5 @@
     </script>
 
 </body>
+
 </html>
