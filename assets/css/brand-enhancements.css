@@ -138,14 +138,19 @@
 }
 
 .transition-arrow-flow {
-    font-size: clamp(1.5rem, 10vw, 7rem);
-    font-weight: 900;
-    font-family: 'JetBrains Mono', monospace;
-    color: #FF8A00;
-    opacity: 0;
-    filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.6));
-    animation: arrow-surge 1.5s ease-in-out infinite;
-    display: inline-block;
+     font-size: clamp(1.5rem, 10vw, 7rem);
+     font-weight: 900;
+     font-family: 'JetBrains Mono', monospace;
+     background: linear-gradient(90deg, #FF8A00, #FF4FD8, #7B3FE4);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+     opacity: 0;
+     filter: drop-shadow(0 0 25px rgba(255, 138, 0, 0.8)) drop-shadow(0 0 15px rgba(255, 79, 216, 0.6));
+     animation: arrow-surge 1.5s ease-in-out infinite;
+     display: inline-block;
+     -webkit-print-color-adjust: exact;
+     print-color-adjust: exact;
 }
 
 .transition-arrow-flow:nth-child(1) {
