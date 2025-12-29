@@ -1,0 +1,603 @@
+/* ============================================
+   GAME THEME - ULTRA GAMIFIED
+   Arcade + RPG + Cyberpunk Fusion
+   Loud, Creative, & Distinctly Gamified
+   ============================================ */
+
+/* Define Game Theme CSS Variables */
+:root {
+    --game-bg-primary: #050A15;
+    --game-bg-secondary: #0F1B2E;
+    --game-bg-tertiary: #1A2847;
+    --game-text-primary: #FFFFFF;
+    --game-text-secondary: #B0D8F0;
+    --game-accent-cyan: #00F5FF;
+    --game-accent-magenta: #FF00FF;
+    --game-accent-lime: #39FF14;
+    --game-accent-gold: #FFD700;
+    --game-hp-red: #FF0040;
+    --game-mana-blue: #0080FF;
+    --game-energy-purple: #9D00FF;
+    --game-success-green: #00FF80;
+    --game-warning-orange: #FF6B00;
+    --game-critical-pink: #FF1493;
+}
+
+/* ============================================
+   GAME MODE - FULL DOCUMENT
+   ============================================ */
+
+html.game {
+    background: radial-gradient(ellipse at top, var(--game-bg-primary) 0%, #000000 100%);
+    color: var(--game-text-primary);
+}
+
+html.game body {
+    background: linear-gradient(180deg, 
+        rgba(5, 10, 21, 0.95) 0%,
+        rgba(15, 27, 46, 0.9) 50%,
+        rgba(5, 10, 21, 0.95) 100%);
+    color: var(--game-text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Scanlines overlay effect */
+html.game body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9998;
+}
+
+/* CRT flicker effect - subtle */
+html.game body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.03);
+    animation: crt-flicker 0.15s infinite;
+    pointer-events: none;
+    z-index: 9997;
+}
+
+@keyframes crt-flicker {
+    0% { opacity: 0.97; }
+    50% { opacity: 1; }
+    100% { opacity: 0.97; }
+}
+
+/* ============================================
+   GAME THEME - HERO SECTION
+   ============================================ */
+
+html.game .hero-zone-protect {
+    background: linear-gradient(135deg, 
+        var(--game-accent-cyan) 0%,
+        var(--game-accent-magenta) 25%,
+        var(--game-accent-purple, #9D00FF) 50%,
+        var(--game-accent-lime) 75%,
+        var(--game-accent-gold) 100%) !important;
+    box-shadow: 
+        0 0 40px rgba(0, 245, 255, 0.6),
+        0 0 80px rgba(255, 0, 255, 0.4),
+        inset 0 0 40px rgba(255, 255, 255, 0.1);
+    animation: hero-flare 4s ease-in-out infinite;
+}
+
+@keyframes hero-flare {
+    0%, 100% {
+        filter: brightness(1) drop-shadow(0 0 20px rgba(0, 245, 255, 0.5));
+    }
+    50% {
+        filter: brightness(1.15) drop-shadow(0 0 40px rgba(255, 0, 255, 0.7));
+    }
+}
+
+/* ============================================
+   GAME THEME - CARDS & CONTAINERS
+   ============================================ */
+
+html.game .bg-gray-50,
+html.game .bg-white,
+html.game .bg-neural-snow {
+    background: linear-gradient(135deg, 
+        rgba(15, 27, 46, 0.8) 0%,
+        rgba(26, 40, 71, 0.7) 100%) !important;
+    border: 2px solid rgba(0, 245, 255, 0.3) !important;
+    box-shadow: 
+        0 0 20px rgba(0, 245, 255, 0.2),
+        inset 0 0 20px rgba(255, 0, 255, 0.05);
+}
+
+html.game .dark\:bg-gray-900,
+html.game .dark\:bg-gray-950 {
+    background: linear-gradient(135deg, 
+        rgba(5, 10, 21, 0.9) 0%,
+        rgba(15, 27, 46, 0.85) 100%) !important;
+    border: 1px solid rgba(0, 245, 255, 0.2) !important;
+}
+
+/* Animated card glow */
+html.game .dark\:bg-gray-800,
+html.game .bg-white.rounded-xl,
+html.game div[class*="rounded"][class*="border"] {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+html.game .dark\:bg-gray-800::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, 
+        var(--game-accent-cyan),
+        var(--game-accent-magenta),
+        var(--game-accent-lime));
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    animation: card-pulse 2s ease-in-out infinite;
+}
+
+@keyframes card-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+html.game .dark\:bg-gray-800:hover::before {
+    opacity: 0.8;
+    animation: card-pulse-intense 0.5s ease-in-out infinite;
+}
+
+@keyframes card-pulse-intense {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* ============================================
+   GAME THEME - BUTTONS
+   ============================================ */
+
+html.game .btn-brand-primary,
+html.game button[class*="btn"],
+html.game a[class*="btn"] {
+    background: linear-gradient(135deg, 
+        var(--game-accent-cyan) 0%,
+        var(--game-accent-magenta) 50%,
+        var(--game-accent-lime) 100%) !important;
+    color: var(--game-bg-primary) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    border: 2px solid var(--game-accent-cyan) !important;
+    box-shadow: 
+        0 0 15px rgba(0, 245, 255, 0.6),
+        0 0 30px rgba(255, 0, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+html.game .btn-brand-primary::before,
+html.game button[class*="btn"]::before,
+html.game a[class*="btn"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent);
+    transition: left 0.5s ease;
+}
+
+html.game .btn-brand-primary:hover::before,
+html.game button[class*="btn"]:hover::before,
+html.game a[class*="btn"]:hover::before {
+    left: 100%;
+}
+
+html.game .btn-brand-primary:hover,
+html.game button[class*="btn"]:hover,
+html.game a[class*="btn"]:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 8px 25px rgba(0, 245, 255, 0.8),
+        0 0 40px rgba(255, 0, 255, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+html.game .btn-brand-primary:active,
+html.game button[class*="btn"]:active,
+html.game a[class*="btn"]:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* ============================================
+   GAME THEME - TEXT & TYPOGRAPHY
+   ============================================ */
+
+html.game h1,
+html.game h2,
+html.game h3,
+html.game h4,
+html.game h5,
+html.game h6 {
+    background: linear-gradient(90deg, 
+        var(--game-accent-cyan),
+        var(--game-accent-magenta),
+        var(--game-accent-lime));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+    animation: text-glow 2s ease-in-out infinite;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@keyframes text-glow {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px rgba(0, 245, 255, 0.4),
+            0 0 20px rgba(255, 0, 255, 0.2);
+    }
+    50% {
+        text-shadow: 
+            0 0 20px rgba(0, 245, 255, 0.7),
+            0 0 40px rgba(255, 0, 255, 0.4);
+    }
+}
+
+html.game p,
+html.game span,
+html.game .text-gray-600,
+html.game .text-gray-700,
+html.game .dark\:text-gray-300,
+html.game .dark\:text-gray-400 {
+    color: var(--game-text-secondary) !important;
+    text-shadow: 0 0 5px rgba(0, 245, 255, 0.2);
+}
+
+/* ============================================
+   GAME THEME - PROGRESS BARS & INDICATORS
+   ============================================ */
+
+html.game .bg-gray-200,
+html.game .dark\:bg-gray-700,
+html.game .xp-bar {
+    background: linear-gradient(90deg, 
+        rgba(0, 80, 255, 0.3),
+        rgba(0, 245, 255, 0.1)) !important;
+    border: 1px solid var(--game-accent-cyan) !important;
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px rgba(0, 245, 255, 0.2);
+}
+
+html.game .bg-gradient-to-r.from-purple-500,
+html.game .bg-gradient-to-r.from-orange-400,
+html.game .bg-blue-500,
+html.game .progress-fill {
+    background: linear-gradient(90deg, 
+        var(--game-mana-blue) 0%,
+        var(--game-accent-cyan) 25%,
+        var(--game-accent-magenta) 50%,
+        var(--game-accent-lime) 75%,
+        var(--game-accent-gold) 100%) !important;
+    box-shadow: 
+        0 0 10px rgba(0, 245, 255, 0.8),
+        0 0 20px rgba(255, 0, 255, 0.4),
+        inset 0 0 5px rgba(255, 255, 255, 0.2);
+    animation: progress-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-glow {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(0, 245, 255, 0.8),
+            0 0 20px rgba(255, 0, 255, 0.4),
+            inset 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(0, 245, 255, 1),
+            0 0 40px rgba(255, 0, 255, 0.6),
+            inset 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* ============================================
+   GAME THEME - BADGES & LABELS
+   ============================================ */
+
+html.game .bg-yellow-100,
+html.game .dark\:bg-yellow-900,
+html.game .bg-blue-100,
+html.game .dark\:bg-blue-900,
+html.game .bg-green-100,
+html.game .dark\:bg-green-900,
+html.game .bg-purple-100,
+html.game .dark\:bg-purple-900 {
+    background: linear-gradient(135deg, 
+        rgba(0, 245, 255, 0.2),
+        rgba(255, 0, 255, 0.15)) !important;
+    border: 2px solid var(--game-accent-cyan) !important;
+    box-shadow: 
+        0 0 15px rgba(0, 245, 255, 0.4),
+        inset 0 0 10px rgba(255, 0, 255, 0.1);
+}
+
+html.game .text-yellow-700,
+html.game .text-yellow-600,
+html.game .text-blue-700,
+html.game .text-blue-600 {
+    color: var(--game-accent-gold) !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+html.game .text-green-700,
+html.game .text-green-600 {
+    color: var(--game-success-green) !important;
+    text-shadow: 0 0 10px rgba(0, 255, 128, 0.5);
+}
+
+html.game .text-purple-700,
+html.game .text-purple-600 {
+    color: var(--game-accent-magenta) !important;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+/* ============================================
+   GAME THEME - SPECIAL EFFECTS
+   ============================================ */
+
+/* Neon borders */
+html.game .border {
+    border-color: rgba(0, 245, 255, 0.3) !important;
+}
+
+html.game .dark\:border-gray-700 {
+    border-color: rgba(0, 245, 255, 0.2) !important;
+}
+
+/* Highlighted elements */
+html.game .shadow-lg,
+html.game .shadow-xl {
+    box-shadow: 
+        0 0 20px rgba(0, 245, 255, 0.4),
+        0 0 40px rgba(255, 0, 255, 0.2) !important;
+}
+
+/* Badge/XP indicator */
+html.game .px-3.py-1,
+html.game .px-4.py-2,
+html.game .text-sm.font-bold {
+    background: linear-gradient(135deg, 
+        rgba(0, 245, 255, 0.1),
+        rgba(255, 0, 255, 0.1));
+    border: 1px solid var(--game-accent-cyan);
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+    border-radius: 4px;
+}
+
+/* ============================================
+   GAME THEME - HOVER & INTERACTIVE STATES
+   ============================================ */
+
+html.game a:hover,
+html.game button:hover {
+    color: var(--game-accent-gold) !important;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+html.game .hover\:scale-105:hover,
+html.game .hover\:text-gray-900:hover {
+    transform: scale(1.08);
+    box-shadow: 
+        0 0 20px rgba(0, 245, 255, 0.6),
+        0 0 40px rgba(255, 0, 255, 0.3) !important;
+}
+
+/* ============================================
+   GAME THEME - NAVIGATION
+   ============================================ */
+
+html.game nav {
+    background: linear-gradient(180deg, 
+        rgba(5, 10, 21, 0.9) 0%,
+        rgba(15, 27, 46, 0.7) 100%) !important;
+    border-bottom: 2px solid rgba(0, 245, 255, 0.2) !important;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.1);
+}
+
+html.game nav a {
+    color: var(--game-accent-cyan) !important;
+    text-shadow: 0 0 8px rgba(0, 245, 255, 0.4);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+html.game nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        var(--game-accent-cyan),
+        var(--game-accent-magenta));
+    transition: width 0.3s ease;
+}
+
+html.game nav a:hover {
+    color: var(--game-accent-gold) !important;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    transform: translateY(-2px);
+}
+
+html.game nav a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   GAME THEME - LOGO & BRANDING
+   ============================================ */
+
+html.game .logo-container {
+    border: 2px solid var(--game-accent-cyan);
+    box-shadow: 
+        0 0 20px rgba(0, 245, 255, 0.5),
+        inset 0 0 15px rgba(255, 0, 255, 0.1);
+    background: linear-gradient(135deg, 
+        rgba(0, 245, 255, 0.1),
+        rgba(255, 0, 255, 0.1));
+}
+
+html.game .logo-img {
+    filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.6));
+}
+
+/* ============================================
+   GAME THEME - THEME TOGGLE BUTTON
+   ============================================ */
+
+html.game #theme-toggle {
+    background: linear-gradient(135deg, 
+        rgba(0, 245, 255, 0.2),
+        rgba(255, 0, 255, 0.15)) !important;
+    border: 2px solid var(--game-accent-cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+    color: var(--game-accent-cyan) !important;
+    transition: all 0.3s ease;
+}
+
+html.game #theme-toggle:hover {
+    background: linear-gradient(135deg, 
+        rgba(0, 245, 255, 0.3),
+        rgba(255, 0, 255, 0.25)) !important;
+    box-shadow: 
+        0 0 25px rgba(0, 245, 255, 0.6),
+        0 0 40px rgba(255, 0, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* ============================================
+   GAME THEME - FOOTER
+   ============================================ */
+
+html.game footer {
+    background: linear-gradient(180deg, 
+        rgba(15, 27, 46, 0.8),
+        rgba(5, 10, 21, 0.9)) !important;
+    border-top: 2px solid rgba(0, 245, 255, 0.2) !important;
+    box-shadow: 0 -10px 30px rgba(0, 245, 255, 0.1);
+}
+
+html.game footer a {
+    color: var(--game-accent-cyan) !important;
+    text-shadow: 0 0 8px rgba(0, 245, 255, 0.3);
+}
+
+html.game footer a:hover {
+    color: var(--game-accent-magenta) !important;
+    text-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+}
+
+/* ============================================
+   GAME THEME - ANIMATED ELEMENTS
+   ============================================ */
+
+/* Pulsing elements */
+@keyframes pulse-game {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(0, 245, 255, 0.4);
+    }
+    50% {
+        opacity: 0.8;
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+    }
+}
+
+html.game .animate-pulse {
+    animation: pulse-game 2s ease-in-out infinite;
+}
+
+/* Floating elements */
+@keyframes float-game {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+html.game .animate-float {
+    animation: float-game 3s ease-in-out infinite;
+}
+
+/* ============================================
+   GAME THEME - RETRO ARCADE STYLE
+   ============================================ */
+
+/* "Game Over" style emphasis */
+html.game .text-red-500,
+html.game .text-red-600 {
+    color: var(--game-hp-red) !important;
+    text-shadow: 0 0 15px rgba(255, 0, 64, 0.7);
+}
+
+/* Critical/Important emphasis */
+html.game .font-bold {
+    text-shadow: 0 0 5px rgba(0, 245, 255, 0.3);
+    letter-spacing: 0.05em;
+}
+
+/* Level/Experience display */
+html.game .text-2xl,
+html.game .text-3xl,
+html.game .text-4xl {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.15em;
+}
+
+/* ============================================
+   GAME THEME - RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    html.game h1, html.game h2, html.game h3 {
+        font-size: 1.5rem;
+    }
+    
+    html.game nav a {
+        font-size: 0.85rem;
+    }
+    
+    html.game .btn-brand-primary {
+        padding: 0.75rem 1.5rem;
+    }
+}
