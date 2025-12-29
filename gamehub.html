@@ -118,7 +118,26 @@
         /* Hover State: Scale 1.08, Intensify Glow */
         .game-card:hover:not(.game-card-locked) {
             transform: scale(1.08);
-            box-shadow: 0 0 60px rgba(255, 143, 0, 0.6) !important;
+        }
+
+        .game-card-prompt-architect:hover:not(.game-card-locked) {
+            box-shadow: 0 0 60px rgba(38, 230, 200, 0.8) !important;
+        }
+
+        .game-card-agent-engineer:hover:not(.game-card-locked) {
+            box-shadow: 0 0 60px rgba(42, 140, 255, 0.8) !important;
+        }
+
+        .game-card-automation-forge:hover:not(.game-card-locked) {
+            box-shadow: 0 0 60px rgba(123, 63, 228, 0.8) !important;
+        }
+
+        .game-card-creator-os:hover:not(.game-card-locked) {
+            box-shadow: 0 0 60px rgba(255, 79, 216, 0.8) !important;
+        }
+
+        .game-card-startup-builder:hover:not(.game-card-locked) {
+            box-shadow: 0 0 60px rgba(255, 143, 0, 0.8) !important;
         }
 
         /* Locked Card State */
@@ -167,6 +186,27 @@
             color: #0F172A;
             margin-bottom: 4px;
             line-height: 1.2;
+        }
+
+        /* Game-specific title colors */
+        .game-card-prompt-architect .game-card-title {
+            color: #26E6C8;
+        }
+
+        .game-card-agent-engineer .game-card-title {
+            color: #2A8CFF;
+        }
+
+        .game-card-automation-forge .game-card-title {
+            color: #7B3FE4;
+        }
+
+        .game-card-creator-os .game-card-title {
+            color: #FF4FD8;
+        }
+
+        .game-card-startup-builder .game-card-title {
+            color: #FF8A00;
         }
 
         @media (max-width: 640px) {
@@ -271,7 +311,6 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            background: rgba(15, 23, 42, 0.9);
             color: #FFFFFF;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
@@ -280,6 +319,32 @@
             border-radius: 4px;
             z-index: 20;
             white-space: nowrap;
+        }
+
+        /* Game-specific badge colors */
+        .game-card-prompt-architect .game-card-badge {
+            background: #26E6C8;
+            color: #0F172A;
+        }
+
+        .game-card-agent-engineer .game-card-badge {
+            background: #2A8CFF;
+            color: #FFFFFF;
+        }
+
+        .game-card-automation-forge .game-card-badge {
+            background: #7B3FE4;
+            color: #FFFFFF;
+        }
+
+        .game-card-creator-os .game-card-badge {
+            background: #FF4FD8;
+            color: #FFFFFF;
+        }
+
+        .game-card-startup-builder .game-card-badge {
+            background: #FF8A00;
+            color: #FFFFFF;
         }
 
         /* ENTER GAME Button */
@@ -607,7 +672,7 @@
                 </div>
 
                 <!-- ===== AGENT ENGINEER (Advanced) ===== -->
-                <div class="game-card game-card-agent-engineer" data-level="2" data-unlocked="false">
+                <div class="game-card game-card-agent-engineer game-card-locked" data-level="2" data-unlocked="false">
                     <!-- Level Badge -->
                     <div class="game-card-badge">LEVEL 5+</div>
 
@@ -655,7 +720,7 @@
                 </div>
 
                 <!-- ===== AUTOMATION FORGE (Elite) ===== -->
-                <div class="game-card game-card-automation-forge" data-level="3" data-unlocked="false">
+                <div class="game-card game-card-automation-forge game-card-locked" data-level="3" data-unlocked="false">
                     <!-- Level Badge -->
                     <div class="game-card-badge">LEVEL 10+</div>
 
@@ -703,7 +768,7 @@
                 </div>
 
                 <!-- ===== CREATOR OS (Master) ===== -->
-                <div class="game-card game-card-creator-os" data-level="4" data-unlocked="false">
+                <div class="game-card game-card-creator-os game-card-locked" data-level="4" data-unlocked="false">
                     <!-- Level Badge -->
                     <div class="game-card-badge">LEVEL 15+</div>
 
@@ -751,7 +816,7 @@
                 </div>
 
                 <!-- ===== STARTUP BUILDER (Master) ===== -->
-                <div class="game-card game-card-startup-builder" data-level="5" data-unlocked="false">
+                <div class="game-card game-card-startup-builder game-card-locked" data-level="5" data-unlocked="false">
                     <!-- Level Badge -->
                     <div class="game-card-badge">LEVEL 25+</div>
 
@@ -896,9 +961,14 @@
             <p class="text-base sm:text-lg text-neural-navy/70 dark:text-gray-400 mb-6 sm:mb-8 font-inter">
                 Start with Prompt Architect. Complete quests, defeat bosses, unlock powers, and ascend the 7-level ladder to Godmode.
             </p>
-            <a href="games.html" class="ready-to-play-button">
-                ENTER GAME →
-            </a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="onboarding.html" class="ready-to-play-button" style="background: linear-gradient(90deg, #FF8A00, #FF4FD8);">
+                    START YOUR FIRST GAME →
+                </a>
+                <a href="games.html" class="ready-to-play-button" style="background: rgba(255, 138, 0, 0.2); color: #FF8A00; border: 2px solid #FF8A00;">
+                    SKIP ONBOARDING
+                </a>
+            </div>
         </div>
     </section>
 

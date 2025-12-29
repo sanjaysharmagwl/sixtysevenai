@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SixtySeven AI - Enter the System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0F172A;
+            color: #FFFFFF;
+            overflow-y: auto;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Brand Gradient */
+        .gradient-brand {
+            background: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00);
+        }
+
+        .gradient-xp {
+            background: linear-gradient(90deg, #2A8CFF, #FF8A00);
+        }
+
+        .gradient-cta {
+            background: linear-gradient(90deg, #FF8A00, #FF4FD8);
+        }
+
+        /* Main Container */
+        .onboarding-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #0F172A 0%, #1a2a4a 100%);
+            padding: 40px 20px 60px;
+        }
+
+        .screen {
+            display: none;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Entry Screen */
+        .entry-screen {
+            text-align: center;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            display: flex;
+            padding-top: 80px;
+        }
+
+        .entry-headline {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .entry-subheadline {
+            font-size: 24px;
+            color: #E5E7EB;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .entry-body {
+            font-size: 16px;
+            color: #9CA3AF;
+            max-width: 600px;
+            line-height: 1.6;
+            margin: 0 auto 60px;
+        }
+
+        /* Quest Container */
+        .quest-container {
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(38, 230, 200, 0.2);
+            border-radius: 16px;
+            padding: 48px;
+            backdrop-filter: blur(10px);
+            scroll-margin-top: 40px;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .quest-container {
+                padding: 28px 20px;
+                margin-top: 20px;
+            }
+        }
+
+        .quest-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(38, 230, 200, 0.15);
+        }
+
+        .quest-title {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .quest-timer {
+            font-size: 14px;
+            color: #FF8A00;
+            background: rgba(255, 138, 0, 0.1);
+            padding: 8px 16px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quest-body {
+            margin-bottom: 40px;
+            background: rgba(38, 230, 200, 0.03);
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 3px solid rgba(38, 230, 200, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .quest-body {
+                padding: 20px;
+            }
+        }
+
+        .quest-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #E5E7EB;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(229, 231, 235, 0.2);
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(42, 140, 255, 0.5);
+            box-shadow: 0 0 20px rgba(42, 140, 255, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: #6B7280;
+        }
+
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .option-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(229, 231, 235, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(42, 140, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .option-card.selected {
+            background: linear-gradient(135deg, rgba(42, 140, 255, 0.15), rgba(255, 138, 0, 0.15));
+            border-color: #FF8A00;
+            box-shadow: 0 0 30px rgba(255, 138, 0, 0.3);
+        }
+
+        .option-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .option-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .option-desc {
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            outline: none;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #FF8A00, #FF4FD8);
+            color: #FFFFFF;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 138, 0, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #FFFFFF;
+            border: 1px solid rgba(229, 231, 235, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(42, 140, 255, 0.4);
+        }
+
+        /* XP System */
+        .xp-reward {
+            background: rgba(255, 138, 0, 0.1);
+            border: 1px solid rgba(255, 138, 0, 0.3);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .xp-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FF8A00;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .xp-label {
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+
+        /* Progress Bar */
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(229, 231, 235, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2A8CFF, #FF8A00);
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-bottom: 32px;
+        }
+
+        .progress-label {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Mini Boss / Boss Screen */
+        .boss-screen {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .boss-title {
+            font-size: 48px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #FF4FD8, #FF8A00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .boss-icon {
+            font-size: 96px;
+            margin-bottom: 32px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .boss-body {
+            font-size: 18px;
+            color: #E5E7EB;
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Ceremony Screen */
+        .ceremony-screen {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ceremony-badge {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            background: linear-gradient(135deg, rgba(42, 140, 255, 0.2), rgba(255, 138, 0, 0.2));
+            border: 3px solid #FF8A00;
+            border-radius: 50%;
+            animation: bounce 1s ease-out;
+            box-shadow: 0 0 60px rgba(255, 138, 0, 0.3);
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .ceremony-title {
+            font-size: 56px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #26E6C8, #2A8CFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ceremony-subtitle {
+            font-size: 24px;
+            color: #FF8A00;
+            margin-bottom: 40px;
+        }
+
+        .rank-display {
+            background: rgba(255, 138, 0, 0.1);
+            border: 2px solid #FF8A00;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            display: inline-block;
+            min-width: 300px;
+        }
+
+        .rank-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            margin-bottom: 8px;
+        }
+
+        .rank-name {
+            font-size: 48px;
+            color: #FF8A00;
+            font-weight: 700;
+        }
+
+        .rank-perks {
+            text-align: left;
+            color: #E5E7EB;
+            font-size: 14px;
+            line-height: 2;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 138, 0, 0.2);
+        }
+
+        .perk {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .perk-icon {
+            color: #FF8A00;
+            font-weight: 700;
+        }
+
+        /* XP Counter Animation */
+        .xp-counter {
+            font-size: 48px;
+            font-weight: 700;
+            color: #FF8A00;
+            font-family: 'JetBrains Mono', monospace;
+            animation: counterUp 1s ease-out;
+        }
+
+        @keyframes counterUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed rgba(38, 230, 200, 0.3);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: rgba(38, 230, 200, 0.6);
+            background: rgba(38, 230, 200, 0.05);
+        }
+
+        .upload-area.active {
+            border-color: #FF8A00;
+            background: rgba(255, 138, 0, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .upload-text {
+            font-size: 16px;
+            color: #E5E7EB;
+            margin-bottom: 8px;
+        }
+
+        .upload-subtext {
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+
+        @media (max-width: 768px) {
+            .entry-headline {
+                font-size: 32px;
+            }
+
+            .entry-subheadline {
+                font-size: 18px;
+            }
+
+            .quest-title {
+                font-size: 28px;
+            }
+
+            .quest-container {
+                padding: 24px 16px;
+            }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #FF8A00;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="onboarding-container">
+        <!-- ENTRY SCREEN -->
+        <div class="screen active entry-screen" id="entryScreen">
+            <div>
+                <h1 class="entry-headline">You are entering the SixtySeven System</h1>
+                <p class="entry-subheadline">Your brain is about to receive its first upgrade</p>
+                <p class="entry-body">No fluff. No lectures. Only power.</p>
+                <button class="btn btn-primary" id="startButton"
+                    style="width: auto; margin: 0 auto; padding: 20px 60px; font-size: 18px;">
+                    PRESS START →
+                </button>
+            </div>
+        </div>
+
+        <!-- QUEST 1: ACTIVATE YOUR OS -->
+        <div class="screen" id="quest1Screen">
+            <div class="quest-container">
+                <div class="quest-header">
+                    <div>
+                        <h2 class="quest-title">Activate Your OS</h2>
+                        <p style="color: #9CA3AF; margin-top: 4px;">Build your Personal AI System</p>
+                    </div>
+                    <div class="quest-timer">⏱ 2 min</div>
+                </div>
+
+                <div class="progress-info">
+                    <span>Quest 1 of 5</span>
+                    <span class="progress-label">20%</span>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 20%;"></div>
+                </div>
+
+                <div class="xp-reward">
+                    <div>
+                        <div class="xp-label">QUEST REWARD</div>
+                        <div style="color: #E5E7EB; margin-top: 4px;">+100 XP</div>
+                    </div>
+                    <div class="xp-amount">100</div>
+                </div>
+
+                <div class="quest-body">
+                    <div class="form-group">
+                        <label for="playerName">Your Name</label>
+                        <input type="text" id="playerName" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="playerGoal">Your Primary Goal</label>
+                        <select id="playerGoal" required>
+                            <option value="">Select an option...</option>
+                            <option value="study">📚 Study & Learning</option>
+                            <option value="business">💼 Business & Growth</option>
+                            <option value="creator">🎨 Content & Creativity</option>
+                            <option value="startup">🚀 Startup & Scaling</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="playerPain">Your Main Pain Point</label>
+                        <select id="playerPain" required>
+                            <option value="">Select an option...</option>
+                            <option value="time">⏰ Lack of Time</option>
+                            <option value="focus">🧠 Focus & Distractions</option>
+                            <option value="money">💰 Need to Earn More</option>
+                            <option value="clarity">🎯 Lack of Direction</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 16px;">
+                    <button class="btn btn-secondary" onclick="goToQuest(0)">← BACK</button>
+                    <button class="btn btn-primary" onclick="completeQuest1()" style="flex: 1;">INSTALL OS → </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUEST 2: INSTALL FIRST POWER-UP -->
+        <div class="screen" id="quest2Screen">
+            <div class="quest-container">
+                <div class="quest-header">
+                    <div>
+                        <h2 class="quest-title">Install First Power-Up</h2>
+                        <p style="color: #9CA3AF; margin-top: 4px;">Choose your first ability boost</p>
+                    </div>
+                    <div class="quest-timer">⏱ 1 min</div>
+                </div>
+
+                <div class="progress-info">
+                    <span>Quest 2 of 5</span>
+                    <span class="progress-label">40%</span>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 40%;"></div>
+                </div>
+
+                <div class="xp-reward">
+                    <div>
+                        <div class="xp-label">QUEST REWARD</div>
+                        <div style="color: #E5E7EB; margin-top: 4px;">+75 XP</div>
+                    </div>
+                    <div class="xp-amount">75</div>
+                </div>
+
+                <div class="quest-body">
+                    <p class="quest-label" style="margin-bottom: 24px;">SELECT ONE POWER-UP</p>
+
+                    <div class="options-grid" id="powerupOptions">
+                        <div class="option-card" onclick="selectPowerup('focus')">
+                            <div class="option-icon">🎯</div>
+                            <div class="option-name">Focus Mode</div>
+                            <div class="option-desc">Lock in deep work</div>
+                        </div>
+
+                        <div class="option-card" onclick="selectPowerup('memory')">
+                            <div class="option-icon">🧠</div>
+                            <div class="option-name">Memory Lock</div>
+                            <div class="option-desc">Learn faster</div>
+                        </div>
+
+                        <div class="option-card" onclick="selectPowerup('speed')">
+                            <div class="option-icon">⚡</div>
+                            <div class="option-name">Speed Boost</div>
+                            <div class="option-desc">Execute faster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 16px; margin-top: 32px;">
+                    <button class="btn btn-secondary" onclick="goToQuest(1)">← BACK</button>
+                    <button class="btn btn-primary" id="activatePowerup" onclick="completePowerup()" style="flex: 1;"
+                        disabled>ACTIVATE ⚡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUEST 3: FIRST BUILD -->
+        <div class="screen" id="quest3Screen">
+            <div class="quest-container">
+                <div class="quest-header">
+                    <div>
+                        <h2 class="quest-title">Your First Build</h2>
+                        <p style="color: #9CA3AF; margin-top: 4px;">Create a real AI tool</p>
+                    </div>
+                    <div class="quest-timer">⏱ 4 min</div>
+                </div>
+
+                <div class="progress-info">
+                    <span>Quest 3 of 5</span>
+                    <span class="progress-label">60%</span>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 60%;"></div>
+                </div>
+
+                <div class="xp-reward">
+                    <div>
+                        <div class="xp-label">QUEST REWARD</div>
+                        <div style="color: #E5E7EB; margin-top: 4px;">+500 XP</div>
+                    </div>
+                    <div class="xp-amount">500</div>
+                </div>
+
+                <div class="quest-body">
+                    <p style="color: #9CA3AF; margin-bottom: 24px;">Describe your first AI tool (e.g., personal planner,
+                        content machine, study bot, sales bot)</p>
+
+                    <div class="form-group">
+                        <label for="toolName">Tool Name</label>
+                        <input type="text" id="toolName" placeholder="e.g., 'Daily Focus Bot'" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="toolDescription">What does it do?</label>
+                        <textarea id="toolDescription"
+                            placeholder="Describe the tool's purpose and what it helps you with..." rows="4"
+                            required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="toolOutput">Expected Output</label>
+                        <input type="text" id="toolOutput"
+                            placeholder="e.g., 'Daily schedule with AI-optimized focus blocks'" required>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 16px;">
+                    <button class="btn btn-secondary" onclick="goToQuest(2)">← BACK</button>
+                    <button class="btn btn-primary" onclick="deployTool()" style="flex: 1;">DEPLOY TOOL → </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI BOSS: PROOF UPLOAD -->
+        <div class="screen" id="miniBossScreen">
+            <div class="quest-container">
+                <div class="quest-header">
+                    <div>
+                        <h2 class="quest-title">Proof Upload</h2>
+                        <p style="color: #9CA3AF; margin-top: 4px;">Mini Boss: Show your work</p>
+                    </div>
+                    <div class="quest-timer">⏱ 2 min</div>
+                </div>
+
+                <div class="progress-info">
+                    <span>Mini Boss</span>
+                    <span class="progress-label">80%</span>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 80%;"></div>
+                </div>
+
+                <div class="xp-reward">
+                    <div>
+                        <div class="xp-label">BOSS REWARD</div>
+                        <div style="color: #E5E7EB; margin-top: 4px;">+300 XP</div>
+                    </div>
+                    <div class="xp-amount">300</div>
+                </div>
+
+                <div class="quest-body" style="text-align: left;">
+                    <p style="color: #9CA3AF; margin-bottom: 24px;">Upload proof of your deployed tool (screenshot,
+                        link, or output)</p>
+
+                    <div class="form-group">
+                        <label>Screenshot or Link</label>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">📸</div>
+                            <div class="upload-text">Click to upload or drag and drop</div>
+                            <div class="upload-subtext">PNG, JPG, or URL</div>
+                            <input type="file" id="proofFile" accept="image/*" style="display: none;"
+                                onchange="handleFileUpload(event)">
+                        </div>
+                        <div id="fileName" style="margin-top: 12px; color: #FF8A00;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="proofDescription">Describe what you built</label>
+                        <textarea id="proofDescription" placeholder="Briefly describe the tool and how it works..."
+                            rows="3" required></textarea>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 16px;">
+                    <button class="btn btn-secondary" onclick="goToQuest(3)">← BACK</button>
+                    <button class="btn btn-primary" onclick="completeMiniBoss()" style="flex: 1;">SUBMIT PROOF →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINAL BOSS: ASCENSION GATE -->
+        <div class="screen boss-screen" id="bossFinalScreen">
+            <div style="max-width: 700px;">
+                <div class="boss-icon">🔮</div>
+                <h2 class="boss-title">Ascension Gate</h2>
+
+                <div class="progress-info">
+                    <span>Final Boss</span>
+                    <span class="progress-label">100%</span>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 100%;"></div>
+                </div>
+
+                <div class="xp-reward" style="max-width: 500px; margin: 24px auto;">
+                    <div>
+                        <div class="xp-label">FINAL BOSS REWARD</div>
+                        <div style="color: #E5E7EB; margin-top: 4px;">+700 XP</div>
+                    </div>
+                    <div class="xp-amount">700</div>
+                </div>
+
+                <div class="boss-body">
+                    <p style="margin-bottom: 24px;">Do you commit to upgrading your brain daily?</p>
+                    <p style="color: #9CA3AF; font-size: 16px;">This is the threshold. Cross it and you ascend.</p>
+                </div>
+
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+                    <button class="btn btn-secondary" onclick="goToQuest(4)" style="width: auto;">Not Yet</button>
+                    <button class="btn btn-primary" onclick="completeFinalBoss()" style="width: auto;">I COMMIT
+                        ✓</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CEREMONY SCREEN -->
+        <div class="screen ceremony-screen" id="ceremonyScreen">
+            <div style="max-width: 700px;">
+                <div class="ceremony-badge">🎮</div>
+                <h2 class="ceremony-title">ASCENSION COMPLETE</h2>
+                <p class="ceremony-subtitle">You are now a USER</p>
+
+                <div class="rank-display">
+                    <div class="rank-label">New Rank Unlocked</div>
+                    <div class="rank-name">USER</div>
+                    <div class="rank-perks">
+                        <div class="perk"><span class="perk-icon">✓</span> Access to Games Hub</div>
+                        <div class="perk"><span class="perk-icon">✓</span> Streak Counter (1.0× XP)</div>
+                        <div class="perk"><span class="perk-icon">✓</span> Skill Tree Branches</div>
+                        <div class="perk"><span class="perk-icon">✓</span> Power-Up System</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <p class="quest-label">TOTAL XP EARNED</p>
+                    <div class="xp-counter" id="totalXpDisplay">1675</div>
+                </div>
+
+                <button class="btn btn-primary" style="width: 100%; margin-top: 32px;" onclick="enterGamesHub()">
+                    ENTER GAMES HUB →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State Management
+        let playerState = {
+            name: '',
+            goal: '',
+            pain: '',
+            selectedPowerup: '',
+            totalXp: 0,
+            questsCompleted: [],
+            osInstalled: false,
+            toolDeployed: false,
+            proofUploaded: false,
+            bossesBeat: []
+        };
+
+        // Utility Functions
+        function goToScreen(screenId) {
+            console.log('goToScreen called with:', screenId);
+            const screen = document.getElementById(screenId);
+            if (!screen) {
+                console.error('Screen not found:', screenId);
+                return;
+            }
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            screen.classList.add('active');
+
+            // Scroll quest container to top, or page to top for entry screen
+            if (screenId === 'entryScreen') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const questContainer = screen.querySelector('.quest-container');
+                if (questContainer) {
+                    questContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+        }
+
+        function goToQuest(questNum) {
+            console.log('goToQuest called with:', questNum);
+            const screenMap = {
+                0: 'entryScreen',
+                1: 'quest1Screen',
+                2: 'quest2Screen',
+                3: 'quest3Screen',
+                4: 'miniBossScreen',
+                5: 'bossFinalScreen'
+            };
+            const screenId = screenMap[questNum];
+            console.log('Navigating to screen:', screenId);
+            goToScreen(screenId);
+        }
+
+        function awardXp(amount) {
+            playerState.totalXp += amount;
+            savePlayerState();
+            return amount;
+        }
+
+        function savePlayerState() {
+            localStorage.setItem('playerState', JSON.stringify(playerState));
+        }
+
+        function loadPlayerState() {
+            const saved = localStorage.getItem('playerState');
+            if (saved) playerState = JSON.parse(saved);
+        }
+
+        // Quest 1: Activate OS
+        function completeQuest1() {
+            const name = document.getElementById('playerName').value.trim();
+            const goal = document.getElementById('playerGoal').value;
+            const pain = document.getElementById('playerPain').value;
+
+            if (!name || !goal || !pain) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            playerState.name = name;
+            playerState.goal = goal;
+            playerState.pain = pain;
+            playerState.osInstalled = true;
+            playerState.questsCompleted.push(1);
+
+            awardXp(100);
+            goToQuest(2);
+        }
+
+        // Quest 2: Power-Up
+        function selectPowerup(type) {
+            document.querySelectorAll('#powerupOptions .option-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            playerState.selectedPowerup = type;
+            document.getElementById('activatePowerup').disabled = false;
+        }
+
+        function completePowerup() {
+            if (!playerState.selectedPowerup) return;
+
+            playerState.questsCompleted.push(2);
+            awardXp(75);
+
+            // Show activation screen effect
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(s => s.style.opacity = '0.3');
+            setTimeout(() => {
+                screens.forEach(s => s.style.opacity = '1');
+                goToQuest(3);
+            }, 500);
+        }
+
+        // Quest 3: Deploy Tool
+        function deployTool() {
+            const toolName = document.getElementById('toolName').value.trim();
+            const toolDesc = document.getElementById('toolDescription').value.trim();
+            const toolOutput = document.getElementById('toolOutput').value.trim();
+
+            if (!toolName || !toolDesc || !toolOutput) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            playerState.toolDeployed = true;
+            playerState.questsCompleted.push(3);
+            awardXp(500);
+
+            goToQuest(4);
+        }
+
+        // Mini Boss: Proof Upload
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadArea = document.getElementById('uploadArea');
+            if (uploadArea) {
+                uploadArea.addEventListener('click', () => {
+                    document.getElementById('proofFile').click();
+                });
+            }
+        });
+
+        function handleFileUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('fileName').textContent = '✓ ' + file.name;
+                playerState.proofUploaded = true;
+            }
+        }
+
+        function completeMiniBoss() {
+            const desc = document.getElementById('proofDescription').value.trim();
+
+            if (!desc) {
+                alert('Please describe your tool');
+                return;
+            }
+
+            if (!playerState.proofUploaded) {
+                alert('Please upload proof of your tool');
+                return;
+            }
+
+            playerState.bossesBeat.push('miniBoss');
+            playerState.questsCompleted.push(4);
+            awardXp(300);
+
+            goToQuest(5);
+        }
+
+        // Final Boss
+        function completeFinalBoss() {
+            playerState.bossesBeat.push('finalBoss');
+            awardXp(700);
+
+            // Show ceremony after a moment
+            setTimeout(() => {
+                document.getElementById('totalXpDisplay').textContent = playerState.totalXp;
+                goToScreen('ceremonyScreen');
+            }, 800);
+        }
+
+        // Enter Games Hub
+        function enterGamesHub() {
+            // Save final state
+            savePlayerState();
+            // Redirect to games hub
+            window.location.href = 'gamehub.html?upgraded=true';
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            console.log('Page loaded, initializing...');
+            loadPlayerState();
+
+            // Check if returning from onboarding completion
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('upgraded') === 'true') {
+                // Redirect to games hub after brief celebration
+                setTimeout(() => {
+                    window.location.href = 'gamehub.html';
+                }, 3000);
+            }
+
+            // Setup start button listener
+            const startButton = document.getElementById('startButton');
+            if (startButton) {
+                console.log('Found start button, attaching listener');
+                startButton.addEventListener('click', (e) => {
+                    console.log('Start button clicked!');
+                    e.preventDefault();
+                    goToQuest(1);
+                });
+            } else {
+                console.warn('Start button not found');
+            }
+
+            // Link upload area drag-drop
+            const uploadArea = document.getElementById('uploadArea');
+            if (uploadArea) {
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('active');
+                });
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('active');
+                });
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('active');
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        document.getElementById('proofFile').files = files;
+                        handleFileUpload({ target: { files } });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

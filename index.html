@@ -178,13 +178,16 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             20% {
                 opacity: 1;
             }
+
             80% {
                 opacity: 1;
                 transform: translateY(20px);
             }
+
             100% {
                 opacity: 0;
                 transform: translateY(40px);
@@ -251,10 +254,12 @@
                 filter: drop-shadow(0 0 40px rgba(255, 138, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 79, 216, 0.3));
                 transform: scale(1);
             }
+
             50% {
                 filter: drop-shadow(0 0 80px rgba(255, 138, 0, 1)) drop-shadow(0 0 40px rgba(255, 79, 216, 0.8));
                 transform: scale(1.08);
             }
+
             100% {
                 filter: drop-shadow(0 0 40px rgba(255, 138, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 79, 216, 0.3));
                 transform: scale(1);
@@ -265,18 +270,23 @@
             0% {
                 filter: drop-shadow(0 0 40px rgba(38, 230, 200, 0.5)) drop-shadow(0 0 20px rgba(42, 140, 255, 0.3));
             }
+
             50% {
                 filter: drop-shadow(0 0 80px rgba(38, 230, 200, 0.9)) drop-shadow(0 0 40px rgba(42, 140, 255, 0.8));
             }
+
             100% {
                 filter: drop-shadow(0 0 40px rgba(38, 230, 200, 0.5)) drop-shadow(0 0 20px rgba(42, 140, 255, 0.3));
             }
         }
 
         @keyframes level-float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-20px);
             }
@@ -320,14 +330,17 @@
                 opacity: 0;
                 transform: translateX(-30px) scale(0.8);
             }
+
             20% {
                 opacity: 1;
                 transform: translateX(0) scale(1);
             }
+
             80% {
                 opacity: 1;
                 transform: translateX(30px) scale(1);
             }
+
             100% {
                 opacity: 0;
                 transform: translateX(60px) scale(0.8);
@@ -362,61 +375,87 @@
 
             <!-- Center: Navigation Links - Hidden on mobile, shown on md and up -->
             <div class="hidden md:flex gap-4 lg:gap-8 items-center text-xs lg:text-sm font-medium flex-shrink-0">
-                <a href="index.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="index.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🎯 Dashboard
                 </a>
-                <a href="gamehub.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="gamehub.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🎮 Games
                 </a>
-                <a href="powerup.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="powerup.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     ⚡ Powers
                 </a>
-                <a href="leaderboard.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="leaderboard.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🏆 Leaderboard
                 </a>
-                <a href="profile.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="profile.html"
+                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     👤 Profile
                 </a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors" aria-label="Toggle mobile menu">
+            <button id="mobile-menu-toggle"
+                class="md:hidden p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors"
+                aria-label="Toggle mobile menu">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
                 </svg>
             </button>
 
             <!-- Right: Theme Toggle (Light / Dark / Game) -->
-            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors flex items-center gap-2" aria-label="Toggle theme">
+            <button id="theme-toggle"
+                class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors flex items-center gap-2"
+                aria-label="Toggle theme">
                 <!-- Sun icon (Light mode) -->
-                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                    </path>
                 </svg>
                 <!-- Moon icon (Dark mode) -->
-                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                    </path>
                 </svg>
                 <!-- Game icon (Game mode) -->
-                <svg id="game-icon" class="w-5 h-5 text-cyan-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg id="game-icon" class="w-5 h-5 text-cyan-300 hidden" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
             </button>
         </div>
     </nav>
 
     <!-- SECTION 10: HERO ZONE (60vh) -->
-    <section class="hero-gradient min-h-screen md:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 pt-48 pb-16 sm:pt-56 sm:pb-20 md:pt-64 md:py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal/5 via-neural-spectrum-blue/5 to-neural-spectrum-pink/5 opacity-30"></div>
+    <section
+        class="hero-gradient min-h-screen md:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 pt-48 pb-16 sm:pt-56 sm:pb-20 md:pt-64 md:py-20 relative overflow-hidden">
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal/5 via-neural-spectrum-blue/5 to-neural-spectrum-pink/5 opacity-30">
+        </div>
 
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center relative z-10">
+        <div
+            class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center relative z-10">
             <!-- LEFT: Headline + Subline + CTAs -->
             <div class="space-y-4 sm:space-y-6 md:space-y-8">
                 <div>
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-grotesk leading-tight mb-3 sm:mb-4 md:mb-6 text-white mt-12 sm:mt-16 md:mt-20 lg:mt-24">
+                    <h1
+                        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-grotesk leading-tight mb-3 sm:mb-4 md:mb-6 text-white mt-12 sm:mt-16 md:mt-20 lg:mt-24">
                         Don't learn AI.<br>Level up inside it.
                     </h1>
-                    <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-lg font-inter leading-relaxed mb-6 sm:mb-8">
+                    <p
+                        class="text-sm sm:text-base md:text-lg text-white/90 max-w-lg font-inter leading-relaxed mb-6 sm:mb-8">
                         <strong>You don't just play games. You install Power-Ups for your brain.</strong><br><br>
                         Games build your core abilities. Power-Ups amplify your daily performance.<br><br>
                         <span class="block space-y-1 sm:space-y-2">
@@ -428,7 +467,8 @@
                         This is a complete operating system for the AI age.
                     </p>
                     <!-- Primary CTA Button -->
-                    <button onclick="document.getElementById('games-hub').scrollIntoView({ behavior: 'smooth' })" class="cta-button px-6 sm:px-10 py-3 sm:py-4 text-white font-bold font-grotesk rounded-lg hover:shadow-lg transition-all duration-300 text-sm sm:text-base">
+                    <button onclick="document.getElementById('games-hub').scrollIntoView({ behavior: 'smooth' })"
+                        class="cta-button px-6 sm:px-10 py-3 sm:py-4 text-white font-bold font-grotesk rounded-lg hover:shadow-lg transition-all duration-300 text-sm sm:text-base">
                         Start Your First Game
                     </button>
                 </div>
@@ -486,72 +526,86 @@
     </section> -->
 
     <!-- Disclaimer Banner -->
-    <section class="bg-yellow-50 dark:bg-yellow-950/30 border-t border-b border-yellow-200 dark:border-yellow-900 py-3 sm:py-4 px-4 sm:px-6">
+    <section
+        class="bg-yellow-50 dark:bg-yellow-950/30 border-t border-b border-yellow-200 dark:border-yellow-900 py-3 sm:py-4 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto">
             <p class="text-xs sm:text-sm text-yellow-800 dark:text-yellow-100 text-center">
-                <strong>⚠️ Optimal Experience:</strong> This site is best viewed in <strong>light theme</strong> and on <strong>desktop</strong>. Mobile experience is still under development.
+                <strong>⚠️ Optimal Experience:</strong> This site is best viewed in <strong>light theme</strong> and on
+                <strong>desktop</strong>. Mobile experience is still under development.
             </p>
         </div>
     </section>
 
-    <!-- SECTION 10: IDENTITY BLOCK (Auto height) -->
-    <section class="py-16 sm:py-20 px-4 sm:px-6 bg-white">
+    <!-- SECTION: IDENTITY BLOCK (Auto height) - "Not a Course" Statement -->
+    <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <!-- Headline -->
-            <div class="text-center mb-12 sm:mb-16">
+            <div class="text-center mb-12 sm:mb-16 md:mb-20">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk text-neural-navy mb-4">
                     This is not a course platform.<br>
                     This is a skill-forging engine.
                 </h2>
                 <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    SixtySeven AI turns learning into a progression system that rewards real power, not passive consumption.
+                    SixtySeven AI turns learning into a progression system that rewards real power, not passive
+                    consumption.
                 </p>
             </div>
 
-            <!-- 2-Column Grid: Content Left + Table Right -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                <!-- Left: Differentiating Content -->
+            <!-- 2-Column Grid: Content Left + Table Right (per AGENT.md) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+                <!-- Left: Core Differentiator -->
                 <div class="space-y-6">
                     <div>
-                        <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-3">Why SixtySeven is Different</h3>
-                        <p class="text-base text-gray-600 leading-relaxed">
-                            Most platforms give you videos. We give you levels, XP, unlocks, and real builds. You don't finish lessons—you progress your brain through challenges that produce tangible output.
+                        <h3 class="text-2xl sm:text-3xl font-bold font-grotesk text-neural-navy mb-4">
+                            Games forge your skills.<br>Power-Ups multiply your output.<br>Skill Trees unlock your
+                            future.
+                        </h3>
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            You're not here to consume content. You're here to install upgrades to your brain and deploy
+                            real systems.
                         </p>
                     </div>
                     <div>
                         <p class="text-base text-gray-600 leading-relaxed">
-                            Every mission you complete unlocks new abilities. Every level you beat brings you closer to real-world operator status. Your progress is your portfolio.
+                            Every game produces something real. Every level unlocks visible power. Every skill tree node
+                            is a permanent upgrade that never resets.
                         </p>
                     </div>
                 </div>
 
-                <!-- Right: Comparison Table -->
-                <div class="bg-neural-snow rounded-xl p-8 sm:p-10 border-2 border-neural-spectrum-blue/40">
-                    <h4 class="text-lg font-bold font-grotesk text-neural-navy mb-8">Traditional Learning vs SixtySeven AI</h4>
+                <!-- Right: Comparison Table (per AGENT.md §11) -->
+                <div>
+                    <p class="text-xs font-mono font-bold text-neural-navy uppercase tracking-widest mb-6">Traditional
+                        Learning vs SixtySeven</p>
                     <table class="comparison-table w-full text-sm">
-                        <tr>
-                            <td class="font-medium">Watch videos</td>
-                            <td class="font-medium">Play games</td>
+                        <tr class="border-b border-neural-graphite">
+                            <td class="py-3 px-0 font-mono text-gray-500">Watch videos</td>
+                            <td class="py-3 px-0 font-mono text-neural-spectrum-blue font-bold">🎮 Play games</td>
+                        </tr>
+                        <tr class="border-b border-neural-graphite">
+                            <td class="py-3 px-0 font-mono text-gray-500">Take notes</td>
+                            <td class="py-3 px-0 font-mono text-neural-spectrum-blue font-bold">⚙️ Build systems</td>
+                        </tr>
+                        <tr class="border-b border-neural-graphite">
+                            <td class="py-3 px-0 font-mono text-gray-500">Earn certificates</td>
+                            <td class="py-3 px-0 font-mono text-neural-spectrum-blue font-bold">🔓 Unlock real power
+                            </td>
+                        </tr>
+                        <tr class="border-b border-neural-graphite">
+                            <td class="py-3 px-0 font-mono text-gray-500">Finish & forget</td>
+                            <td class="py-3 px-0 font-mono text-neural-spectrum-blue font-bold">♾️ Permanent upgrades
+                            </td>
+                        </tr>
+                        <tr class="border-b border-neural-graphite">
+                            <td class="py-3 px-0 font-mono text-gray-500">No output</td>
+                            <td class="py-3 px-0 font-mono text-neural-spectrum-blue font-bold">💼 Build a portfolio
+                            </td>
                         </tr>
                         <tr>
-                            <td>Take notes</td>
-                            <td>Complete missions</td>
-                        </tr>
-                        <tr>
-                            <td>Finish courses</td>
-                            <td>Unlock levels</td>
-                        </tr>
-                        <tr>
-                            <td>Get certificates</td>
-                            <td>Build real systems</td>
-                        </tr>
-                        <tr>
-                            <td>Forget later</td>
-                            <td>Gain permanent skills</td>
-                        </tr>
-                        <tr>
-                            <td class="font-medium">Passive consumption</td>
-                            <td class="font-medium">Active operator mode</td>
+                            <td class="py-3 px-0 font-mono text-gray-500 font-bold">Passive consumption</td>
+                            <td class="py-3 px-0 font-mono text-neural-spectrum-blue font-bold">⚡ Active operator</td>
                         </tr>
                     </table>
                 </div>
@@ -575,12 +629,15 @@
             <!-- 2-Column System Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
                 <!-- Engine 1: Games Hub -->
-                <div class="bg-gradient-to-br from-neural-spectrum-blue/10 to-neural-spectrum-teal/10 rounded-xl p-8 border border-neural-spectrum-blue/30">
+                <div
+                    class="bg-gradient-to-br from-neural-spectrum-blue/10 to-neural-spectrum-teal/10 rounded-xl p-8 border border-neural-spectrum-blue/30">
                     <div class="text-5xl mb-4">🎮</div>
                     <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-3">Games Hub</h3>
-                    <p class="text-sm text-gray-600 mb-4 font-mono font-bold text-neural-spectrum-blue">Skill-forging engine</p>
+                    <p class="text-sm text-gray-600 mb-4 font-mono font-bold text-neural-spectrum-blue">Skill-forging
+                        engine</p>
                     <p class="text-base text-gray-700 mb-6 leading-relaxed">
-                        Forge your permanent abilities. Every game builds real skills through progressive levels, quests, and boss challenges.
+                        Forge your permanent abilities. Every game builds real skills through progressive levels,
+                        quests, and boss challenges.
                     </p>
                     <ul class="text-sm text-gray-600 space-y-2">
                         <li>✓ Prompt Architect</li>
@@ -592,12 +649,15 @@
                 </div>
 
                 <!-- Engine 2: Power-Up Layer -->
-                <div class="bg-gradient-to-br from-neural-spectrum-orange/10 to-neural-spectrum-pink/10 rounded-xl p-8 border border-neural-spectrum-orange/30">
+                <div
+                    class="bg-gradient-to-br from-neural-spectrum-orange/10 to-neural-spectrum-pink/10 rounded-xl p-8 border border-neural-spectrum-orange/30">
                     <div class="text-5xl mb-4">⚡</div>
                     <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-3">Power-Up Layer</h3>
-                    <p class="text-sm text-gray-600 mb-4 font-mono font-bold text-neural-spectrum-orange">Performance engine</p>
+                    <p class="text-sm text-gray-600 mb-4 font-mono font-bold text-neural-spectrum-orange">Performance
+                        engine</p>
                     <p class="text-base text-gray-700 mb-6 leading-relaxed">
-                        Multiply your daily performance. Install AI upgrades that plug directly into your daily workflow.
+                        Multiply your daily performance. Install AI upgrades that plug directly into your daily
+                        workflow.
                     </p>
                     <ul class="text-sm text-gray-600 space-y-2">
                         <li>✓ Read Mode (thinking speed)</li>
@@ -610,9 +670,11 @@
             </div>
 
             <!-- Bottom Call-Out -->
-            <div class="mt-12 sm:mt-16 bg-white dark:bg-gradient-to-r dark:from-neural-navy dark:to-black text-center rounded-xl p-8 sm:p-12 border border-neural-spectrum-blue/20 dark:border-neural-spectrum-blue/20">
+            <div
+                class="mt-12 sm:mt-16 bg-white dark:bg-gradient-to-r dark:from-neural-navy dark:to-black text-center rounded-xl p-8 sm:p-12 border border-neural-spectrum-blue/20 dark:border-neural-spectrum-blue/20">
                 <p class="text-lg sm:text-xl text-neural-navy dark:text-white max-w-2xl mx-auto leading-relaxed">
-                    <strong>This is not a course platform. This is an operating system.</strong> Games build your power. Power-Ups multiply it.
+                    <strong>This is not a course platform. This is an operating system.</strong> Games build your power.
+                    Power-Ups multiply it.
                 </p>
             </div>
         </div>
@@ -632,78 +694,213 @@
             </div>
 
             <!-- Games Grid: Responsive Layout (5 cols desktop, 2 cols tablet, 1 col mobile) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5 max-w-6xl mx-auto">
-                <!-- Game Card 1: Prompt Architect -->
-                <div class="game-card relative rounded-lg sm:rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[240px] sm:min-h-[260px] lg:min-h-[280px]" style="background: linear-gradient(135deg, #26E6C8, #2A8CFF); border-color: rgba(38, 230, 200, 0.5);" onclick="openLevel1Modal('prompt-architect')">
-                     <!-- Content Wrapper -->
-                     <div class="relative z-10 flex flex-col h-full">
-                         <!-- Icon -->
-                         <div class="text-3xl sm:text-4xl mb-2 sm:mb-4">🎯</div>
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5 max-w-6xl mx-auto">
+                <!-- Game Card 1: Prompt Architect (per AGENT.md §12) -->
+                <div class="game-card relative rounded-lg sm:rounded-xl p-5 sm:p-6 lg:p-7 border-2 overflow-hidden cursor-pointer min-h-[320px] sm:min-h-[340px] lg:min-h-[360px]"
+                    style="background: linear-gradient(135deg, #26E6C8, #2A8CFF); border-color: rgba(38, 230, 200, 0.4);"
+                    onclick="openLevel1Modal('prompt-architect')">
+                    <!-- Content Wrapper -->
+                    <div class="relative z-10 flex flex-col h-full">
+                        <!-- Header: Icon + Level Badge -->
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="text-3xl sm:text-4xl">🎯</div>
+                            <div class="xp-badge text-xs font-mono">LEVEL 1</div>
+                        </div>
 
-                         <!-- Title -->
-                         <h3 class="text-lg sm:text-xl font-bold font-grotesk text-white mb-1 sm:mb-2">Prompt Architect</h3>
+                        <!-- Title -->
+                        <h3 class="text-lg sm:text-xl font-bold font-grotesk text-white mb-1">Prompt Architect</h3>
 
-                         <!-- Description -->
-                         <p class="text-xs sm:text-sm text-white/90 mb-3 sm:mb-4 flex-grow">Build elite prompting systems</p>
+                        <!-- Tagline -->
+                        <p class="text-xs sm:text-sm text-white/80 mb-4 flex-grow">Build elite command systems</p>
 
-                         <!-- XP Badge -->
-                         <div class="absolute top-3 right-3 sm:top-4 sm:right-4 xp-badge text-xs sm:text-sm">XP: 2,500</div>
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="bg-white/20 rounded-full h-1.5 overflow-hidden mb-1">
+                                <div class="xp-bar h-full w-1/3"></div>
+                            </div>
+                            <p class="text-xs font-mono text-white/70">Level 1 / 10</p>
+                        </div>
 
-                         <!-- START Button -->
-                         <button class="w-full mt-auto cta-button py-2 sm:py-3 text-white font-bold font-inter text-sm sm:text-base rounded-lg transition-all duration-300">
-                             START
-                         </button>
-                     </div>
-                 </div>
+                        <!-- Unlocks Section -->
+                        <div class="mb-4">
+                            <p class="text-xs font-mono font-bold text-white/70 uppercase tracking-wide mb-2">Unlocks
+                            </p>
+                            <ul class="text-xs text-white/80 space-y-1">
+                                <li>• Prompt frameworks</li>
+                                <li>• Reusable command packs</li>
+                                <li>• AI thinking models</li>
+                            </ul>
+                        </div>
+
+                        <!-- Skill Icons -->
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-lg">⚙️</span>
+                            <span class="text-lg">🧠</span>
+                            <span class="text-lg">⚡</span>
+                            <span class="text-lg">💰</span>
+                        </div>
+
+                        <!-- ENTER GAME Button -->
+                        <button
+                            class="w-full mt-auto cta-button py-3 text-white font-bold font-inter text-sm rounded-lg transition-all duration-300 hover:shadow-lg">
+                            ENTER GAME
+                        </button>
+                    </div>
+                </div>
 
                 <!-- Game Card 2: Agent Engineer -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #2A8CFF, #7B3FE4); border-color: rgba(42, 140, 255, 0.5);" onclick="openLevel1Modal('agent-engineer')">
+                <div class="game-card relative rounded-lg sm:rounded-xl p-5 sm:p-6 lg:p-7 border-2 overflow-hidden cursor-pointer min-h-[320px] sm:min-h-[340px] lg:min-h-[360px]"
+                    style="background: linear-gradient(135deg, #2A8CFF, #7B3FE4); border-color: rgba(42, 140, 255, 0.4);"
+                    onclick="openLevel1Modal('agent-engineer')">
                     <div class="relative z-10 flex flex-col h-full">
-                        <div class="text-4xl mb-4">🤖</div>
-                        <h3 class="text-xl font-bold font-grotesk text-white mb-2">Agent Engineer</h3>
-                        <p class="text-sm text-white/90 mb-4 flex-grow">Create autonomous AI agents</p>
-                        <div class="absolute top-4 right-4 xp-badge">XP: 2,800</div>
-                        <button class="w-full mt-auto cta-button py-3 text-white font-bold font-inter rounded-lg transition-all duration-300">
-                            START
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="text-3xl sm:text-4xl">🤖</div>
+                            <div class="xp-badge text-xs font-mono">LEVEL 5+</div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-grotesk text-white mb-1">Agent Engineer</h3>
+                        <p class="text-xs sm:text-sm text-white/80 mb-4 flex-grow">Create autonomous AI workers</p>
+                        <div class="mb-4">
+                            <div class="bg-white/20 rounded-full h-1.5 overflow-hidden mb-1">
+                                <div class="xp-bar h-full w-1/6"></div>
+                            </div>
+                            <p class="text-xs font-mono text-white/70">Level 2 / 12</p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-xs font-mono font-bold text-white/70 uppercase tracking-wide mb-2">Unlocks
+                            </p>
+                            <ul class="text-xs text-white/80 space-y-1">
+                                <li>• Task agents</li>
+                                <li>• Memory agents</li>
+                                <li>• Self-healing workflows</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-lg">⚙️</span>
+                            <span class="text-lg">🧠</span>
+                            <span class="text-lg">⚡</span>
+                            <span class="text-lg">💰</span>
+                        </div>
+                        <button
+                            class="w-full mt-auto cta-button py-3 text-white font-bold font-inter text-sm rounded-lg transition-all duration-300 hover:shadow-lg">
+                            ENTER GAME
                         </button>
                     </div>
                 </div>
 
                 <!-- Game Card 3: Automation Forge -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #7B3FE4, #FF4FD8); border-color: rgba(123, 63, 228, 0.5);" onclick="openLevel1Modal('automation-forge')">
+                <div class="game-card relative rounded-lg sm:rounded-xl p-5 sm:p-6 lg:p-7 border-2 overflow-hidden cursor-pointer min-h-[320px] sm:min-h-[340px] lg:min-h-[360px]"
+                    style="background: linear-gradient(135deg, #7B3FE4, #FF4FD8); border-color: rgba(123, 63, 228, 0.4);"
+                    onclick="openLevel1Modal('automation-forge')">
                     <div class="relative z-10 flex flex-col h-full">
-                        <div class="text-4xl mb-4">⚙️</div>
-                        <h3 class="text-xl font-bold font-grotesk text-white mb-2">Automation Forge</h3>
-                        <p class="text-sm text-white/90 mb-4 flex-grow">Build business automation stacks</p>
-                        <div class="absolute top-4 right-4 xp-badge">XP: 2,600</div>
-                        <button class="w-full mt-auto cta-button py-3 text-white font-bold font-inter rounded-lg transition-all duration-300">
-                            START
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="text-3xl sm:text-4xl">⚙️</div>
+                            <div class="xp-badge text-xs font-mono">LEVEL 10+</div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-grotesk text-white mb-1">Automation Forge</h3>
+                        <p class="text-xs sm:text-sm text-white/80 mb-4 flex-grow">Build business automation</p>
+                        <div class="mb-4">
+                            <div class="bg-white/20 rounded-full h-1.5 overflow-hidden mb-1">
+                                <div class="xp-bar h-full w-1/12"></div>
+                            </div>
+                            <p class="text-xs font-mono text-white/70">Level 1 / 15</p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-xs font-mono font-bold text-white/70 uppercase tracking-wide mb-2">Unlocks
+                            </p>
+                            <ul class="text-xs text-white/80 space-y-1">
+                                <li>• Lead engines</li>
+                                <li>• Sales bots</li>
+                                <li>• Ops automation</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-lg">⚙️</span>
+                            <span class="text-lg">🧠</span>
+                            <span class="text-lg">⚡</span>
+                            <span class="text-lg">💰</span>
+                        </div>
+                        <button
+                            class="w-full mt-auto cta-button py-3 text-white font-bold font-inter text-sm rounded-lg transition-all duration-300 hover:shadow-lg">
+                            ENTER GAME
                         </button>
                     </div>
                 </div>
 
                 <!-- Game Card 4: Creator OS -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #FF4FD8, #FF8A00); border-color: rgba(255, 79, 216, 0.5);" onclick="openLevel1Modal('creator-os')">
+                <div class="game-card relative rounded-lg sm:rounded-xl p-5 sm:p-6 lg:p-7 border-2 overflow-hidden cursor-pointer min-h-[320px] sm:min-h-[340px] lg:min-h-[360px]"
+                    style="background: linear-gradient(135deg, #FF4FD8, #FF8A00); border-color: rgba(255, 79, 216, 0.4);"
+                    onclick="openLevel1Modal('creator-os')">
                     <div class="relative z-10 flex flex-col h-full">
-                        <div class="text-4xl mb-4">✍️</div>
-                        <h3 class="text-xl font-bold font-grotesk text-white mb-2">Creator OS</h3>
-                        <p class="text-sm text-white/90 mb-4 flex-grow">Build AI-powered content machines</p>
-                        <div class="absolute top-4 right-4 xp-badge">XP: 2,400</div>
-                        <button class="w-full mt-auto cta-button py-3 text-white font-bold font-inter rounded-lg transition-all duration-300">
-                            START
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="text-3xl sm:text-4xl">✍️</div>
+                            <div class="xp-badge text-xs font-mono">FREE</div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-grotesk text-white mb-1">Creator OS</h3>
+                        <p class="text-xs sm:text-sm text-white/80 mb-4 flex-grow">Build AI content machines</p>
+                        <div class="mb-4">
+                            <div class="bg-white/20 rounded-full h-1.5 overflow-hidden mb-1">
+                                <div class="xp-bar h-full w-1/4"></div>
+                            </div>
+                            <p class="text-xs font-mono text-white/70">Level 1 / 10</p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-xs font-mono font-bold text-white/70 uppercase tracking-wide mb-2">Unlocks
+                            </p>
+                            <ul class="text-xs text-white/80 space-y-1">
+                                <li>• Content blueprints</li>
+                                <li>• Audience engagement</li>
+                                <li>• Monetization templates</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-lg">⚙️</span>
+                            <span class="text-lg">🧠</span>
+                            <span class="text-lg">⚡</span>
+                            <span class="text-lg">💰</span>
+                        </div>
+                        <button
+                            class="w-full mt-auto cta-button py-3 text-white font-bold font-inter text-sm rounded-lg transition-all duration-300 hover:shadow-lg">
+                            ENTER GAME
                         </button>
                     </div>
                 </div>
 
                 <!-- Game Card 5: Startup Builder -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #FF8A00, #26E6C8); border-color: rgba(255, 138, 0, 0.5);" onclick="openLevel1Modal('startup-builder')">
+                <div class="game-card relative rounded-lg sm:rounded-xl p-5 sm:p-6 lg:p-7 border-2 overflow-hidden cursor-pointer min-h-[320px] sm:min-h-[340px] lg:min-h-[360px]"
+                    style="background: linear-gradient(135deg, #FF8A00, #26E6C8); border-color: rgba(255, 138, 0, 0.4);"
+                    onclick="openLevel1Modal('startup-builder')">
                     <div class="relative z-10 flex flex-col h-full">
-                        <div class="text-4xl mb-4">🚀</div>
-                        <h3 class="text-xl font-bold font-grotesk text-white mb-2">Startup Builder</h3>
-                        <p class="text-sm text-white/90 mb-4 flex-grow">Build monetizable AI startups</p>
-                        <div class="absolute top-4 right-4 xp-badge">XP: 3,100</div>
-                        <button class="w-full mt-auto cta-button py-3 text-white font-bold font-inter rounded-lg transition-all duration-300">
-                            START
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="text-3xl sm:text-4xl">🚀</div>
+                            <div class="xp-badge text-xs font-mono">LOCKED 🔒</div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-grotesk text-white mb-1">Startup Builder</h3>
+                        <p class="text-xs sm:text-sm text-white/80 mb-4 flex-grow">Build monetizable AI companies</p>
+                        <div class="mb-4">
+                            <div class="bg-white/20 rounded-full h-1.5 overflow-hidden mb-1">
+                                <div class="xp-bar h-full w-0"></div>
+                            </div>
+                            <p class="text-xs font-mono text-white/70">Locked</p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-xs font-mono font-bold text-white/70 uppercase tracking-wide mb-2">Unlocks
+                            </p>
+                            <ul class="text-xs text-white/80 space-y-1">
+                                <li>• Fundraising frameworks</li>
+                                <li>• Go-to-market machines</li>
+                                <li>• Revenue multiplication</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-lg">⚙️</span>
+                            <span class="text-lg">🧠</span>
+                            <span class="text-lg">⚡</span>
+                            <span class="text-lg">💰</span>
+                        </div>
+                        <button
+                            class="w-full mt-auto cta-button py-3 text-white font-bold font-inter text-sm rounded-lg transition-all duration-300 hover:shadow-lg opacity-50 cursor-not-allowed">
+                            UNLOCK AT LEVEL 25
                         </button>
                     </div>
                 </div>
@@ -720,130 +917,199 @@
                     Install Power-Ups for Your Brain
                 </h2>
                 <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-                    Short, high-impact AI modes that plug directly into your daily life. They don't teach—they enhance your operating system.
+                    Short, high-impact AI modes that plug directly into your daily life. They don't teach—they enhance
+                    your operating system.
                 </p>
             </div>
 
             <!-- 6-Mode Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
                 <!-- Mode 1: Read -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-blue/40 hover:border-neural-spectrum-blue/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-blue/40 hover:border-neural-spectrum-blue/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">📖</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Read Mode</h3>
-                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-blue">Thinking Speed & Comprehension</p>
-                    <p class="text-sm text-gray-700">Parse complex documents faster. Synthesize ideas at scale. Compress information into actionable insights.</p>
+                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-blue">Thinking Speed &
+                        Comprehension</p>
+                    <p class="text-sm text-gray-700">Parse complex documents faster. Synthesize ideas at scale. Compress
+                        information into actionable insights.</p>
                 </div>
 
                 <!-- Mode 2: Watch -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-teal/40 hover:border-neural-spectrum-teal/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-teal/40 hover:border-neural-spectrum-teal/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">🎬</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Watch Mode</h3>
-                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-teal">Learning Velocity</p>
-                    <p class="text-sm text-gray-700">Absorb visual content faster. Extract key frames from videos. Build mental models from motion.</p>
+                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-teal">Learning
+                        Velocity</p>
+                    <p class="text-sm text-gray-700">Absorb visual content faster. Extract key frames from videos. Build
+                        mental models from motion.</p>
                 </div>
 
                 <!-- Mode 3: Listen -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-violet/40 hover:border-neural-spectrum-violet/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-violet/40 hover:border-neural-spectrum-violet/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">🎧</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Listen Mode</h3>
-                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-violet">Memory Retention</p>
-                    <p class="text-sm text-gray-700">Process audio without loss. Remember conversations verbatim. Build auditory understanding instantly.</p>
+                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-violet">Memory
+                        Retention</p>
+                    <p class="text-sm text-gray-700">Process audio without loss. Remember conversations verbatim. Build
+                        auditory understanding instantly.</p>
                 </div>
 
                 <!-- Mode 4: Focus -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-pink/40 hover:border-neural-spectrum-pink/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-pink/40 hover:border-neural-spectrum-pink/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">🧠</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Focus Mode</h3>
-                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-pink">Deep Work Stamina</p>
-                    <p class="text-sm text-gray-700">Eliminate context switching. Sustain flow state for hours. Shield attention from interruption.</p>
+                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-pink">Deep Work
+                        Stamina</p>
+                    <p class="text-sm text-gray-700">Eliminate context switching. Sustain flow state for hours. Shield
+                        attention from interruption.</p>
                 </div>
 
                 <!-- Mode 5: Builder -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-orange/40 hover:border-neural-spectrum-orange/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-orange/40 hover:border-neural-spectrum-orange/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">🔧</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Builder Mode</h3>
-                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-orange">Execution Speed</p>
-                    <p class="text-sm text-gray-700">Turn ideas into code instantly. Prototype without delay. Ship faster than your competition.</p>
+                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-orange">Execution
+                        Speed</p>
+                    <p class="text-sm text-gray-700">Turn ideas into code instantly. Prototype without delay. Ship
+                        faster than your competition.</p>
                 </div>
 
                 <!-- Mode 6: Prompt -->
-                <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-pink/40 hover:border-neural-spectrum-pink/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-pink/40 hover:border-neural-spectrum-pink/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">✍️</div>
                     <h3 class="text-xl font-bold font-grotesk text-neural-navy mb-2">Prompt Mode</h3>
-                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-pink">Command Clarity</p>
-                    <p class="text-sm text-gray-700">Get what you ask for. Command AI with precision. Extract maximum value from every interaction.</p>
+                    <p class="text-sm text-gray-600 mb-3 font-mono font-bold text-neural-spectrum-pink">Command Clarity
+                    </p>
+                    <p class="text-sm text-gray-700">Get what you ask for. Command AI with precision. Extract maximum
+                        value from every interaction.</p>
                 </div>
             </div>
 
             <!-- Bottom Call-Out for Power-Ups -->
-            <div class="mt-12 sm:mt-16 bg-gradient-to-r from-neural-spectrum-orange/10 to-neural-spectrum-pink/10 rounded-xl p-8 sm:p-12 border border-neural-spectrum-orange/20 text-center">
+            <div
+                class="mt-12 sm:mt-16 bg-gradient-to-r from-neural-spectrum-orange/10 to-neural-spectrum-pink/10 rounded-xl p-8 sm:p-12 border border-neural-spectrum-orange/20 text-center">
                 <p class="text-lg sm:text-xl text-neural-navy font-grotesk font-bold mb-3">
                     Power-Ups aren't content.<br>They're upgrades.
                 </p>
                 <p class="text-base text-gray-700 max-w-2xl mx-auto">
-                    Install them once. Use them forever. Every mode amplifies your existing abilities—no learning curve, just instant capability gains.
+                    Install them once. Use them forever. Every mode amplifies your existing abilities—no learning curve,
+                    just instant capability gains.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 10: CORE PILLARS (Auto height) -->
-    <section class="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+    <!-- SECTION: CORE PILLARS (Auto height) - per AGENT.md §11 -->
+    <section class="py-16 sm:py-24 md:py-28 px-4 sm:px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <!-- Section Header -->
-            <div class="text-center mb-12 sm:mb-16">
+            <div class="text-center mb-12 sm:mb-16 md:mb-20">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk text-neural-navy mb-3">
                     Core Pillars
                 </h2>
-                <p class="text-base sm:text-lg text-gray-600">
-                    What makes SixtySeven AI different
+                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                    What separates a skill-forging engine from a course platform
                 </p>
             </div>
 
-            <!-- 3-Column Pillar Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            <!-- 3-Column Pillar Cards (per AGENT.md) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
                 <!-- Pillar 1: Game-Structured Learning -->
-                <div class="bg-neural-snow rounded-xl p-8 border border-neural-graphite">
-                    <div class="text-4xl mb-4">🎮</div>
-                    <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-3">Game-Structured Learning</h3>
-                    <p class="text-base text-gray-600 mb-4">
-                        Every topic is a game with levels, quests, boss challenges, and unlockable tools. You progress your brain through challenges.
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-graphite hover:shadow-lg hover:border-neural-spectrum-blue/40 transition-all duration-300">
+                    <div class="text-5xl mb-6">🎮</div>
+                    <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-4">
+                        Game-Structured Learning
+                    </h3>
+                    <p class="text-base text-gray-700 mb-6 leading-relaxed">
+                        Every topic is a game with levels, quests, and boss challenges. You don't finish lessons—you
+                        progress through challenges that produce tangible output.
                     </p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>✓ Levels (not lessons)</li>
-                        <li>✓ Quests (not videos)</li>
-                        <li>✓ Boss challenges (not exams)</li>
-                        <li>✓ Skill trees (not transcripts)</li>
+                    <ul class="text-sm text-gray-600 space-y-3 font-inter">
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Levels, not lessons</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Quests, not videos</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Boss challenges, not exams</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Skill trees, not transcripts</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Pillar 2: AI-Native From Day One -->
-                <div class="bg-neural-snow rounded-xl p-8 border border-neural-graphite">
-                    <div class="text-4xl mb-4">🧠</div>
-                    <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-3">AI-Native From Day One</h3>
-                    <p class="text-base text-gray-600 mb-4">
-                        You don't learn about AI. You work with AI as your co-pilot inside every mission.
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-graphite hover:shadow-lg hover:border-neural-spectrum-blue/40 transition-all duration-300">
+                    <div class="text-5xl mb-6">🧠</div>
+                    <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-4">
+                        AI-Native From Day One
+                    </h3>
+                    <p class="text-base text-gray-700 mb-6 leading-relaxed">
+                        You don't learn about AI. You work WITH AI as your co-pilot, building systems and agents in
+                        every mission.
                     </p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>✓ Build AI agents</li>
-                        <li>✓ Create prompt systems</li>
-                        <li>✓ Design workflows</li>
-                        <li>✓ Deploy real automation</li>
+                    <ul class="text-sm text-gray-600 space-y-3 font-inter">
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Build autonomous agents</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Create prompt systems</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Design workflows</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Deploy real automation</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Pillar 3: Real Power Projects -->
-                <div class="bg-neural-snow rounded-xl p-8 border border-neural-graphite">
-                    <div class="text-4xl mb-4">⚡</div>
-                    <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-3">Real Power Projects</h3>
-                    <p class="text-base text-gray-600 mb-4">
-                        Every game produces something real. Your progress is your portfolio.
+                <div
+                    class="bg-neural-snow rounded-xl p-8 border-2 border-neural-graphite hover:shadow-lg hover:border-neural-spectrum-blue/40 transition-all duration-300">
+                    <div class="text-5xl mb-6">⚡</div>
+                    <h3 class="text-2xl font-bold font-grotesk text-neural-navy mb-4">
+                        Real Power Projects
+                    </h3>
+                    <p class="text-base text-gray-700 mb-6 leading-relaxed">
+                        Every game produces something real. Your progress becomes your portfolio. You don't collect
+                        certificates—you build leverage.
                     </p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>✓ Tools you can use</li>
-                        <li>✓ Systems you can deploy</li>
-                        <li>✓ Projects you can monetize</li>
-                        <li>✓ Proof you can show</li>
+                    <ul class="text-sm text-gray-600 space-y-3 font-inter">
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Tools you can use</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Systems you deploy</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Projects you monetize</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-neural-spectrum-blue font-bold">✓</span>
+                            <span>Proof you can show</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -851,27 +1117,31 @@
     </section>
 
     <!-- SECTION 10: CTA ZONE (40vh) -->
-    <section class="hero-gradient min-h-[40vh] md:min-h-[50vh] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 relative overflow-hidden">
-         <div class="absolute inset-0 opacity-20"></div>
-         <div class="max-w-4xl mx-auto text-center relative z-10">
-             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-grotesk text-white mb-4 sm:mb-6">
-                 Your brain is the console.<br>SixtySeven AI is the operating system.
-             </h2>
-             <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-                 The future rewards operators—people who can command machines, design systems, create leverage, and move faster. You don't just learn AI. You become AI-native.
-             </p>
-             <!-- Dual CTAs -->
-             <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center">
-                 <button onclick="document.getElementById('games-hub').scrollIntoView({ behavior: 'smooth' })" class="cta-button px-6 sm:px-10 py-3 sm:py-4 text-white font-bold font-grotesk rounded-lg hover:shadow-lg transition-all duration-300 text-sm sm:text-base md:text-lg">
-                     Choose Your First Game
-                 </button>
-                 <button onclick="document.getElementById('power-up-layer').scrollIntoView({ behavior: 'smooth' })" class="px-6 sm:px-10 py-3 sm:py-4 bg-neural-spectrum-blue text-white font-bold font-grotesk rounded-lg hover:bg-neural-spectrum-teal transition-all duration-300 text-sm sm:text-base md:text-lg">
-                     Install Your First Power-Up
-                 </button>
-             </div>
-             <p class="text-sm text-white/80 mt-6 font-mono">Begin your upgrade.</p>
-         </div>
-     </section>
+    <section
+        class="hero-gradient min-h-[40vh] md:min-h-[50vh] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-grotesk text-white mb-4 sm:mb-6">
+                Your brain is the console.<br>SixtySeven AI is the operating system.
+            </h2>
+            <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+                The future rewards operators—people who can command machines, design systems, create leverage, and move
+                faster. You don't just learn AI. You become AI-native.
+            </p>
+            <!-- Dual CTAs -->
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center">
+                <button onclick="document.getElementById('games-hub').scrollIntoView({ behavior: 'smooth' })"
+                    class="cta-button px-6 sm:px-10 py-3 sm:py-4 text-white font-bold font-grotesk rounded-lg hover:shadow-lg transition-all duration-300 text-sm sm:text-base md:text-lg">
+                    Choose Your First Game
+                </button>
+                <button onclick="document.getElementById('power-up-layer').scrollIntoView({ behavior: 'smooth' })"
+                    class="px-6 sm:px-10 py-3 sm:py-4 bg-neural-spectrum-blue text-white font-bold font-grotesk rounded-lg hover:bg-neural-spectrum-teal transition-all duration-300 text-sm sm:text-base md:text-lg">
+                    Install Your First Power-Up
+                </button>
+            </div>
+            <p class="text-sm text-white/80 mt-6 font-mono">Begin your upgrade.</p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="py-8 sm:py-10 px-4 sm:px-6 border-t border-neural-graphite bg-white">
@@ -880,7 +1150,8 @@
                 <p class="text-sm sm:text-base text-gray-600">&copy; 2025 SixtySeven AI. All rights reserved.</p>
                 <div class="flex gap-6 text-sm sm:text-base">
                     <a href="about.html" class="text-gray-600 hover:text-neural-spectrum-teal transition">📖 About</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-neural-spectrum-teal transition">💬 Contact</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-neural-spectrum-teal transition">💬
+                        Contact</a>
                 </div>
             </div>
         </div>
@@ -896,9 +1167,11 @@
                 <h2 class="text-5xl font-bold font-grotesk text-white mb-2">LEVEL 1</h2>
                 <p class="text-2xl text-white/80 mb-6">The Foundation</p>
                 <p class="text-lg text-white/70 max-w-md mx-auto mb-8 leading-relaxed">
-                    Welcome to your first mission. You'll learn the fundamentals and unlock your first power. This should take 2–3 minutes.
+                    Welcome to your first mission. You'll learn the fundamentals and unlock your first power. This
+                    should take 2–3 minutes.
                 </p>
-                <button onclick="nextScreen()" class="cta-button px-8 py-3 text-white font-bold font-grotesk rounded-lg hover:shadow-lg inline-block">
+                <button onclick="nextScreen()"
+                    class="cta-button px-8 py-3 text-white font-bold font-grotesk rounded-lg hover:shadow-lg inline-block">
                     NEXT →
                 </button>
             </div>
@@ -927,7 +1200,8 @@
                 <div class="text-lg font-bold text-neural-spectrum-orange mb-8 font-mono">
                     XP REWARD: 100 XP
                 </div>
-                <button onclick="nextScreen()" class="cta-button px-8 py-3 text-white font-bold font-grotesk rounded-lg hover:shadow-lg inline-block">
+                <button onclick="nextScreen()"
+                    class="cta-button px-8 py-3 text-white font-bold font-grotesk rounded-lg hover:shadow-lg inline-block">
                     ACCEPT MISSION →
                 </button>
             </div>
@@ -936,15 +1210,18 @@
             <div id="screen3" class="screen-content text-center relative z-20 hidden">
                 <h2 class="text-4xl font-bold font-grotesk text-white mb-6">YOUR FIRST POWER-UP</h2>
                 <div class="bg-neural-navy/50 rounded-lg p-8 mb-6 max-w-2xl mx-auto">
-                    <video width="640" height="360" autoplay muted loop class="rounded-lg mb-4" style="max-width: 100%;">
+                    <video width="640" height="360" autoplay muted loop class="rounded-lg mb-4"
+                        style="max-width: 100%;">
                         <source src="assets/video/demo.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="text-white/80 mb-4">4-second demo showing what you'll build</p>
                 </div>
                 <p class="text-lg text-white/80 mb-6">Click the orange button below to complete your first task.</p>
-                <input type="text" placeholder="Enter your response here..." class="w-full max-w-md px-4 py-3 rounded-lg mb-6 text-neural-navy">
-                <button onclick="nextScreen()" class="cta-button px-8 py-3 text-white font-bold font-grotesk rounded-lg hover:shadow-lg inline-block">
+                <input type="text" placeholder="Enter your response here..."
+                    class="w-full max-w-md px-4 py-3 rounded-lg mb-6 text-neural-navy">
+                <button onclick="nextScreen()"
+                    class="cta-button px-8 py-3 text-white font-bold font-grotesk rounded-lg hover:shadow-lg inline-block">
                     SUBMIT & CONTINUE →
                 </button>
             </div>
@@ -973,17 +1250,20 @@
 
                 <p class="text-white/80 mb-6">Next Level Available</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="closeLevel1Modal()" class="cta-button px-8 py-3 text-white font-bold font-grotesk rounded-lg hover:shadow-lg">
+                    <button onclick="closeLevel1Modal()"
+                        class="cta-button px-8 py-3 text-white font-bold font-grotesk rounded-lg hover:shadow-lg">
                         PLAY LEVEL 2 →
                     </button>
-                    <button onclick="closeLevel1Modal()" class="px-8 py-3 border-2 border-white text-white font-bold font-grotesk rounded-lg hover:bg-white/10">
+                    <button onclick="closeLevel1Modal()"
+                        class="px-8 py-3 border-2 border-white text-white font-bold font-grotesk rounded-lg hover:bg-white/10">
                         View Leaderboard
                     </button>
                 </div>
             </div>
 
             <!-- Close Button -->
-            <button onclick="closeLevel1Modal()" class="absolute top-4 right-4 text-white/60 hover:text-white text-2xl z-30">✕</button>
+            <button onclick="closeLevel1Modal()"
+                class="absolute top-4 right-4 text-white/60 hover:text-white text-2xl z-30">✕</button>
         </div>
     </div>
 
@@ -1054,15 +1334,15 @@
         const sunIcon = document.getElementById('sun-icon');
         const moonIcon = document.getElementById('moon-icon');
         const gameIcon = document.getElementById('game-icon');
-        
+
         const themes = ['light', 'dark', 'game'];
-        
+
         function setTheme(theme) {
             html.classList.remove('dark', 'game');
             sunIcon.classList.add('hidden');
             moonIcon.classList.add('hidden');
             gameIcon.classList.add('hidden');
-            
+
             if (theme === 'dark') {
                 html.classList.add('dark');
                 sunIcon.classList.remove('hidden');
@@ -1072,10 +1352,10 @@
             } else {
                 moonIcon.classList.remove('hidden');
             }
-            
+
             localStorage.setItem('theme', theme);
         }
-        
+
         // Initialize theme
         const savedTheme = localStorage.getItem('theme') || 'dark';
         setTheme(savedTheme);
