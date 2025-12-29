@@ -450,6 +450,201 @@ Each game's Level 1 must customize **Screen 3** and the **mission definition**:
 
 ---
 
+## 13. Mobile & Responsive Design (All Pages)
+
+All pages must be fully responsive and mobile-friendly across all breakpoints.
+
+### Breakpoints & Grid
+
+**Tailwind Breakpoints**:
+- `sm`: 640px (small phones)
+- `md`: 768px (tablets)
+- `lg`: 1024px (large tablets/desktops)
+- `xl`: 1280px (full desktops)
+
+### Navigation (Mobile-First)
+
+**Mobile (< 768px)**:
+- Logo: `h-8` (28px)
+- Navigation links: Hidden
+- Mobile menu toggle button: Visible (hamburger icon)
+- Gap: `gap-2` minimal spacing
+- Padding: `px-3 py-3` reduced
+
+**Tablet (md, 768px+)**:
+- Logo: `h-12` (48px)
+- Navigation links: Visible
+- Mobile menu toggle: Hidden
+- Gap: `gap-6 md:gap-12` increases
+- Padding: `px-6 py-4`
+
+**Desktop (lg+)**:
+- Logo: `h-16 md:h-20` (64-80px)
+- Full navigation visible
+- Gap: `lg:gap-8` generous spacing
+- Font: `lg:text-sm` larger readable text
+
+### Typography Scaling
+
+All headings must use `clamp()` or responsive classes:
+
+```
+Heading Patterns:
+- Mobile: text-3xl
+- Tablet (sm): text-4xl
+- Desktop (md): text-5xl
+- Large (lg): text-6xl
+```
+
+Example: `<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">`
+
+Body text: Always responsive
+- Mobile: `text-sm sm:text-base md:text-lg`
+- Default: DO NOT use `text-lg` directly on mobile
+
+### Spacing Consistency
+
+**Padding (Sections)**:
+- Mobile: `px-4 py-12` or `px-4 py-16`
+- Tablet: `sm:px-6 sm:py-16` or `sm:py-20`
+- Desktop: `md:py-24` for large sections
+
+**Gaps (Grids)**:
+- Mobile: `gap-2` or `gap-3` (minimal)
+- Tablet: `sm:gap-4` or `sm:gap-6`
+- Desktop: `lg:gap-5` or `lg:gap-8`
+
+**Margins**: Follow gap patterns, scale vertically
+
+### Cards & Grids (Mobile-First)
+
+**Standard Layout**:
+```
+Mobile: grid-cols-1 (full width)
+Tablet: sm:grid-cols-2 (2 columns)
+Desktop: lg:grid-cols-3 xl:grid-cols-5 (5 columns max)
+```
+
+Example 5-column grid:
+```html
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+```
+
+Card padding scales with breakpoint:
+```html
+<div class="p-4 sm:p-6 md:p-8">
+```
+
+### Mobile Menu Pattern
+
+All pages must implement:
+
+1. **Toggle Button** (hidden on md+):
+```html
+<button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg bg-gray-700/40" aria-label="Toggle mobile menu">
+    <svg class="w-5 h-5 text-white"><!-- hamburger icon --></svg>
+</button>
+```
+
+2. **Navigation Links** (hidden on mobile, shown on md+):
+```html
+<div class="hidden md:flex gap-4 lg:gap-8 items-center">
+    <!-- nav links -->
+</div>
+```
+
+3. **JavaScript Handler**:
+```javascript
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+mobileMenuToggle.addEventListener('click', () => {
+    const navLinks = document.querySelector('.hidden.md\\:flex');
+    navLinks.classList.toggle('hidden');
+});
+```
+
+### Footer Responsiveness
+
+**Mobile**:
+- `py-8 px-4` (reduced padding)
+- `flex-col` (stacked vertical)
+- `gap-4` (tight spacing)
+- `text-xs` (small text)
+
+**Desktop**:
+- `sm:py-10 sm:px-6` (increase padding)
+- `sm:flex-row` (side-by-side)
+- `sm:gap-6` (loose spacing)
+- `sm:text-base` (readable)
+
+### Buttons & CTAs (Mobile-First)
+
+Button padding scales:
+```html
+<button class="py-3 px-6 sm:py-4 sm:px-8 text-base sm:text-lg">
+```
+
+CTA buttons minimum height: **48px** on all devices
+Touch targets (mobile): Minimum **44px × 44px**
+
+### Images & Media Responsive
+
+All images must have `max-width` on mobile:
+```html
+<img src="..." class="w-full max-w-2xl">
+<video style="max-width: 100%;">
+```
+
+Hero heights responsive:
+```html
+<section class="min-h-screen md:min-h-[60vh]">
+```
+
+### Tables (Mobile-Friendly)
+
+Tables must NOT overflow on mobile:
+
+```html
+<div class="overflow-x-auto">
+    <table class="w-full text-sm sm:text-base">
+        <!-- table content -->
+    </table>
+</div>
+```
+
+Reduce table font on mobile to prevent overflow:
+- Mobile: `text-xs` or `text-sm`
+- Desktop: `text-base`
+
+### Testing & QA Checklist
+
+Before shipping any page:
+
+- [ ] Mobile (375px): No horizontal scroll, readable text, tappable buttons
+- [ ] Tablet (768px): Proper 2-column layouts, images scale
+- [ ] Desktop (1024px+): 3-5 column grids, full feature set
+- [ ] Touch targets: All buttons ≥ 44px
+- [ ] Legibility: Text readable at all sizes
+- [ ] Navigation: Menu toggle works, links accessible
+- [ ] Spacing: No overlapping elements at any breakpoint
+- [ ] Dark mode: All text visible in both themes
+- [ ] Performance: Images optimized, no layout shifts
+
+### Logo Sizing Reference
+
+Consistent logo sizing across breakpoints:
+
+```html
+<img src="assets/images/logo.png" 
+     class="h-8 sm:h-12 md:h-16 lg:h-20 w-auto">
+```
+
+- Mobile: 32px
+- Tablet: 48px
+- Small desktop: 64px
+- Large desktop: 80px
+
+---
+
 ## TODO: Future Sections
 
 - Component naming conventions

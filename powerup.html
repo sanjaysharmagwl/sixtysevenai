@@ -159,36 +159,38 @@
 <body class="bg-white dark:bg-neural-navy text-neural-navy dark:text-white font-inter transition-colors duration-300">
 
     <!-- Navigation -->
-    <nav class="absolute top-0 left-0 right-0 z-10 py-4 sm:py-6 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center gap-6 sm:gap-12">
-            <!-- Left: Logo -->
+    <nav class="absolute top-0 left-0 right-0 z-10 py-3 sm:py-4 md:py-6 px-3 sm:px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-2 sm:gap-6 md:gap-12">
+            <!-- Left: Logo (Smaller in mobile) -->
             <div class="logo-container flex-shrink-0">
-                <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-12 sm:h-16 md:h-20 w-auto">
+                <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-8 sm:h-12 md:h-16 lg:h-20 w-auto">
             </div>
 
-            <!-- Center: Navigation Links -->
-            <div class="flex gap-4 sm:gap-8 items-center text-xs sm:text-sm font-medium flex-shrink-0">
-                <a href="index.html"
-                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+            <!-- Center: Navigation Links - Hidden on mobile, shown on md and up -->
+            <div class="hidden md:flex gap-4 lg:gap-8 items-center text-xs lg:text-sm font-medium flex-shrink-0">
+                <a href="index.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🎯 Dashboard
                 </a>
-                <a href="gamehub.html"
-                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="gamehub.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🎮 Games
                 </a>
-                <a href="powerup.html"
-                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="powerup.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     ⚡ Powers
                 </a>
-                <a href="leaderboard.html"
-                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="leaderboard.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🏆 Leaderboard
                 </a>
-                <a href="profile.html"
-                    class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="profile.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     👤 Profile
                 </a>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors" aria-label="Toggle mobile menu">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
 
             <!-- Right: Theme Toggle (Light / Dark / Game) -->
             <button id="theme-toggle"
@@ -291,12 +293,12 @@
     </section>
 
     <!-- Mode Selection -->
-    <section class="py-20 px-6 section-background">
+    <section class="py-16 sm:py-20 px-4 sm:px-6 section-background">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold font-grotesk mb-4 text-center">Pick Your Power-Up</h2>
-            <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Same content. Different vibes.</p>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk mb-3 sm:mb-4 text-center">Pick Your Power-Up</h2>
+            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-center mb-8 sm:mb-12">Same content. Different vibes.</p>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 <!-- READ Card -->
                 <a href="read.html" class="powerup-card group">
                     <div class="xp-badge">XP: 100</div>
@@ -356,34 +358,44 @@
     </section>
 
     <!-- Ready to Play Section -->
-    <section class="py-20 px-6 section-background">
+    <section class="py-16 sm:py-20 px-4 sm:px-6 section-background">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold font-grotesk mb-4">Ready to Play?</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk mb-4 sm:mb-6">Ready to Play?</h2>
+            <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">
                 Power-ups are great, but the real XP comes from playing the games.
             </p>
             <a href="gamehub.html"
-                class="cta-button text-white font-bold py-4 px-8 rounded-lg transition-all text-lg inline-block">
+                class="cta-button text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all text-base sm:text-lg inline-block">
                 Enter the Games →
             </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-10 px-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
-            <p class="text-sm sm:text-base text-gray-500">&copy; 2025 sixtysevenai. All rights reserved.</p>
-            <div class="flex gap-6 text-sm sm:text-base">
-                <a href="about.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">📖
-                    About</a>
-                <a href="contact.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">💬
-                    Contact</a>
+    <footer class="py-8 sm:py-10 px-4 sm:px-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
+            <p class="text-xs sm:text-sm text-gray-500">&copy; 2025 sixtysevenai. All rights reserved.</p>
+            <div class="flex gap-4 sm:gap-6 text-xs sm:text-sm sm:text-base">
+                <a href="about.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">📖 About</a>
+                <a href="contact.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">💬 Contact</a>
             </div>
         </div>
     </footer>
 
-    <!-- Theme Toggle Script (Light / Dark / Game) -->
+    <!-- Mobile Menu Toggle & Theme Toggle Script -->
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const navLinks = document.querySelector('.hidden.md\\:flex');
+                if (navLinks) {
+                    navLinks.classList.toggle('hidden');
+                }
+            });
+        }
+
+        // Theme Toggle Script (Light / Dark / Game)
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         const sunIcon = document.getElementById('sun-icon');
