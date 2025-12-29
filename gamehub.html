@@ -57,96 +57,233 @@
             box-shadow: 0 0 20px rgba(255, 143, 0, 0.5);
         }
 
-        /* Game Card Styles - Per AGENT.md Specs */
+        /* ===== GAME CARD SYSTEM (Per AGENT.md Section 12) ===== */
+
+        /* Card Base Structure */
         .game-card {
             border-radius: 12px;
-            padding: 32px;
-            min-height: 280px;
+            padding: 24px;
+            min-height: 360px;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Responsive Padding */
+        @media (max-width: 640px) {
+            .game-card {
+                padding: 20px;
+                min-height: 300px;
+            }
+        }
+
+        /* Game-Specific Gradients (135deg backgrounds) */
         .game-card-prompt-architect {
             background: linear-gradient(135deg, #26E6C8, #2A8CFF);
             border: 2px solid;
             border-image: linear-gradient(90deg, #26E6C8, #2A8CFF) 1;
-            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+            box-shadow: 0 0 40px rgba(38, 230, 200, 0.3);
         }
 
         .game-card-agent-engineer {
             background: linear-gradient(135deg, #2A8CFF, #7B3FE4);
             border: 2px solid;
             border-image: linear-gradient(90deg, #2A8CFF, #7B3FE4) 1;
-            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+            box-shadow: 0 0 40px rgba(42, 140, 255, 0.35);
         }
 
         .game-card-automation-forge {
             background: linear-gradient(135deg, #7B3FE4, #FF4FD8);
             border: 2px solid;
             border-image: linear-gradient(90deg, #7B3FE4, #FF4FD8) 1;
-            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+            box-shadow: 0 0 50px rgba(123, 63, 228, 0.4);
         }
 
         .game-card-creator-os {
             background: linear-gradient(135deg, #FF4FD8, #FF8A00);
             border: 2px solid;
             border-image: linear-gradient(90deg, #FF4FD8, #FF8A00) 1;
-            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+            box-shadow: 0 0 40px rgba(255, 79, 216, 0.45);
         }
 
         .game-card-startup-builder {
             background: linear-gradient(135deg, #FF8A00, #26E6C8);
             border: 2px solid;
             border-image: linear-gradient(90deg, #FF8A00, #26E6C8) 1;
-            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+            box-shadow: 0 0 40px rgba(255, 143, 0, 0.4);
         }
 
-        .game-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(255, 143, 0, 0.6) !important;
+        /* Hover State: Scale 1.08, Intensify Glow */
+        .game-card:hover:not(.game-card-locked) {
+            transform: scale(1.08);
+            box-shadow: 0 0 60px rgba(255, 143, 0, 0.6) !important;
         }
 
+        /* Locked Card State */
+        .game-card-locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: rgba(229, 231, 235, 0.3) !important;
+        }
+
+        .game-card-locked .game-card-icon {
+            opacity: 0.6;
+        }
+
+        .game-card-locked .game-card-title,
+        .game-card-locked .game-card-tagline,
+        .game-card-locked .game-card-unlocks {
+            color: rgba(15, 23, 42, 0.6);
+        }
+
+        .lock-icon-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+        /* Game Card Icon */
         .game-card-icon {
-            width: 32px;
-            height: 32px;
-            margin: 0 auto 20px;
-            font-size: 32px;
+            width: 48px;
+            height: 48px;
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Game Card Title */
         .game-card-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             color: #0F172A;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
+            line-height: 1.2;
         }
 
-        .game-card-description {
+        @media (max-width: 640px) {
+            .game-card-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Game Card Tagline */
+        .game-card-tagline {
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            color: #0F172A;
-            margin-bottom: 20px;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            color: rgba(15, 23, 42, 0.7);
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
 
-        .xp-badge {
-            background: #A855F7;
+        /* Progress Bar Container */
+        .game-card-progress-container {
+            margin-bottom: 16px;
+        }
+
+        .game-card-progress-bar {
+            height: 8px;
+            background: #E5E7EB;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .game-card-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2A8CFF, #FF8A00);
+            width: 40%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .game-card-progress-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #0F172A;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Unlocks Section */
+        .game-card-unlocks {
+            margin-bottom: 12px;
+        }
+
+        .game-card-unlocks-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            color: #0F172A;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .game-card-unlocks-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .game-card-unlocks-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #0F172A;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .game-card-unlocks-item::before {
+            content: "•";
+            font-weight: bold;
+        }
+
+        /* Skill Icons Preview */
+        .game-card-skill-icons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            justify-content: center;
+        }
+
+        .game-card-skill-icon {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Level Badge (Top-Right) */
+        .game-card-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.9);
             color: #FFFFFF;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin-bottom: 16px;
-            display: inline-block;
-            align-self: flex-start;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 4px;
+            z-index: 20;
+            white-space: nowrap;
         }
 
-        .start-button {
+        /* ENTER GAME Button */
+        .game-card-button {
             background: linear-gradient(90deg, #FF8A00, #FF4FD8);
             color: #FFFFFF;
             font-family: 'Inter', sans-serif;
@@ -164,12 +301,29 @@
             justify-content: center;
             text-decoration: none;
             margin-top: auto;
+            box-shadow: 0 0 20px rgba(255, 143, 0, 0.3);
         }
 
-        .start-button:hover {
-            box-shadow: 0 0 20px rgba(255, 143, 0, 0.5);
+        .game-card-button:hover:not(:disabled) {
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.6);
+            transform: scale(1.02);
+            brightness: 1.1;
         }
 
+        .game-card-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Button */
+        @media (max-width: 640px) {
+            .game-card-button {
+                height: 44px;
+                font-size: 14px;
+            }
+        }
+
+        /* How it Works Cards */
         .how-it-works-card {
             background: linear-gradient(135deg, #26E6C8 0%, #2A8CFF 50%, #7B3FE4 100%);
             border-radius: 12px;
@@ -283,6 +437,29 @@
             background: linear-gradient(90deg, #FF8A00 0%, rgba(255, 143, 0, 0.15) 100%);
             color: #FFFFFF;
         }
+
+        /* Arrow Animation */
+        @keyframes arrow-surge-vertical {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+        }
+
+        .arrow-animation {
+            animation: arrow-surge-vertical 1.5s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-neural-navy text-neural-navy dark:text-white font-inter transition-colors duration-300">
@@ -290,12 +467,12 @@
     <!-- Navigation -->
     <nav class="absolute top-0 left-0 right-0 z-10 py-3 sm:py-4 md:py-6 px-3 sm:px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center gap-2 sm:gap-6 md:gap-12">
-            <!-- Left: Logo (Smaller in mobile) -->
+            <!-- Left: Logo -->
             <div class="logo-container flex-shrink-0">
                 <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-8 sm:h-12 md:h-16 lg:h-20 w-auto">
             </div>
 
-            <!-- Center: Navigation Links - Hidden on mobile, shown on md and up -->
+            <!-- Center: Navigation Links -->
             <div class="hidden md:flex gap-4 lg:gap-8 items-center text-xs lg:text-sm font-medium flex-shrink-0">
                 <a href="index.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🎯 Dashboard
@@ -321,17 +498,14 @@
                 </svg>
             </button>
 
-            <!-- Right: Theme Toggle (Light / Dark / Game) -->
+            <!-- Right: Theme Toggle -->
             <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors flex items-center gap-2" aria-label="Toggle theme">
-                <!-- Sun icon (Light mode) -->
                 <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg>
-                <!-- Moon icon (Dark mode) -->
                 <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                 </svg>
-                <!-- Game icon (Game mode) -->
                 <svg id="game-icon" class="w-5 h-5 text-cyan-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -348,18 +522,17 @@
             <div class="space-y-4 sm:space-y-6 md:space-y-8">
                 <div>
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-grotesk leading-tight mb-6 sm:mb-8 md:mb-10 text-white drop-shadow-lg" style="text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);">
-                        Choose Your First Game<br>and Start Leveling.
+                        Master Your First Game<br>and Forge Real Power
                     </h1>
                     <p class="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto font-inter leading-relaxed drop-shadow-md" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);">
-                        <strong class="block mb-4">This is where you forge real power.</strong>
-                        Games build your permanent abilities. Each level unlocks new skills. Each boss mission brings you closer to mastery.<br><br>
+                        <strong class="block mb-4">This is where you build permanent abilities.</strong>
+                        Choose a game. Complete quests. Defeat bosses. Unlock powers. Ascend ranks. Your progress is your portfolio.<br><br>
                         <span class="block space-y-2 sm:space-y-1 mb-4">
-                            • Master core AI skills<br>
-                            • Build real systems<br>
-                            • Unlock permanent abilities<br>
-                            • Graduate at 10,500 XP
+                            • 7 Ascension Ranks (Noob → Godmode)<br>
+                            • Real Skills & Systems<br>
+                            • Permanent Unlocks<br>
+                            • Portfolio Proof Required
                         </span>
-                        Your progress is your portfolio.
                     </p>
                 </div>
             </div>
@@ -368,91 +541,261 @@
         <!-- Downward Arrow Flow Animation -->
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 pointer-events-none">
             <div class="flex flex-col items-center gap-0">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4)); animation: arrow-surge-vertical 1.5s ease-in-out infinite;">↓</span>
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.3s;">↓</span>
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.6s;">↓</span>
-                </div>
+                <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4));" class="arrow-animation">↓</span>
+                <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4));" class="arrow-animation" style="animation-delay: 0.3s;">↓</span>
+                <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4));" class="arrow-animation" style="animation-delay: 0.6s;">↓</span>
             </div>
         </div>
-
-        <style>
-            @keyframes arrow-surge-vertical {
-                0% {
-                    opacity: 0;
-                    transform: translateY(-20px);
-                }
-                20% {
-                    opacity: 1;
-                }
-                80% {
-                    opacity: 1;
-                    transform: translateY(20px);
-                }
-                100% {
-                    opacity: 0;
-                    transform: translateY(40px);
-                }
-            }
-        </style>
     </section>
 
-    <!-- Games Grid Section -->
-    <section class="py-16 sm:py-20 px-4 sm:px-6 bg-neural-snow dark:bg-gray-900">
-        <div class="max-w-6xl mx-auto">
+    <!-- Games Hub Grid Section -->
+    <section class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-neural-snow dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk mb-3 sm:mb-4 text-center text-neural-navy dark:text-white">
-                Available Games
+                Games Hub
             </h2>
-            <p class="text-sm sm:text-base text-neural-navy/70 dark:text-gray-400 text-center mb-8 sm:mb-12 font-inter">
-                Master different skills. Earn XP. Unlock powers. Graduate at 10,500 XP.
+            <p class="text-sm sm:text-base text-neural-navy/70 dark:text-gray-400 text-center mb-8 sm:mb-12 lg:mb-16 font-inter max-w-2xl mx-auto">
+                Choose a game to begin your ascension. Each game builds different skills. Reach Godmode and unlock everything.
             </p>
             
             <!-- 5-Column Responsive Grid: 5 cols desktop, 2 tablet, 1 mobile -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5 auto-rows-max">
                 
-                <!-- Prompt Architect Card -->
-                <div class="game-card game-card-prompt-architect">
-                    <div class="game-card-icon">🔨</div>
+                <!-- ===== PROMPT ARCHITECT (Starter) ===== -->
+                <div class="game-card game-card-prompt-architect" data-level="1" data-unlocked="true">
+                    <!-- Level Badge -->
+                    <div class="game-card-badge">LEVEL 1</div>
+
+                    <!-- Icon -->
+                    <div class="game-card-icon">🎯</div>
+
+                    <!-- Title & Tagline -->
                     <h3 class="game-card-title">Prompt Architect</h3>
-                    <p class="game-card-description">Master the art of communicating with AI systems</p>
-                    <div class="xp-badge">XP: 2,500</div>
-                    <a href="games.html" class="start-button">START →</a>
+                    <p class="game-card-tagline">Master the art of communicating with AI</p>
+
+                    <!-- Progress Bar -->
+                    <div class="game-card-progress-container">
+                        <div class="game-card-progress-bar">
+                            <div class="game-card-progress-fill" style="width: 40%;"></div>
+                        </div>
+                        <div class="game-card-progress-label">
+                            <span>Level 4 / 10</span>
+                            <span class="text-neural-spectrum-orange">2,400 / 6,000 XP</span>
+                        </div>
+                    </div>
+
+                    <!-- Unlocks -->
+                    <div class="game-card-unlocks">
+                        <div class="game-card-unlocks-label">UNLOCKS</div>
+                        <ul class="game-card-unlocks-list">
+                            <li class="game-card-unlocks-item">Prompt frameworks</li>
+                            <li class="game-card-unlocks-item">Command packs</li>
+                            <li class="game-card-unlocks-item">AI thinking models</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Icons Preview -->
+                    <div class="game-card-skill-icons">
+                        <div class="game-card-skill-icon">⚙️</div>
+                        <div class="game-card-skill-icon">🧠</div>
+                        <div class="game-card-skill-icon">⚡</div>
+                        <div class="game-card-skill-icon">💰</div>
+                    </div>
+
+                    <!-- ENTER GAME Button -->
+                    <a href="games.html" class="game-card-button">ENTER GAME</a>
                 </div>
 
-                <!-- Agent Engineer Card -->
-                <div class="game-card game-card-agent-engineer">
+                <!-- ===== AGENT ENGINEER (Advanced) ===== -->
+                <div class="game-card game-card-agent-engineer" data-level="2" data-unlocked="false">
+                    <!-- Level Badge -->
+                    <div class="game-card-badge">LEVEL 5+</div>
+
+                    <!-- Icon -->
                     <div class="game-card-icon">🤖</div>
+
+                    <!-- Title & Tagline -->
                     <h3 class="game-card-title">Agent Engineer</h3>
-                    <p class="game-card-description">Design and build autonomous AI agents</p>
-                    <div class="xp-badge">XP: 2,500</div>
-                    <a href="games.html" class="start-button">START →</a>
+                    <p class="game-card-tagline">Build autonomous AI workers</p>
+
+                    <!-- Progress Bar -->
+                    <div class="game-card-progress-container">
+                        <div class="game-card-progress-bar">
+                            <div class="game-card-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="game-card-progress-label">
+                            <span>Locked</span>
+                            <span class="text-neural-spectrum-orange">0 / 8,000 XP</span>
+                        </div>
+                    </div>
+
+                    <!-- Unlocks -->
+                    <div class="game-card-unlocks">
+                        <div class="game-card-unlocks-label">UNLOCKS</div>
+                        <ul class="game-card-unlocks-list">
+                            <li class="game-card-unlocks-item">Task agents</li>
+                            <li class="game-card-unlocks-item">Memory agents</li>
+                            <li class="game-card-unlocks-item">Self-healing workflows</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Icons Preview -->
+                    <div class="game-card-skill-icons">
+                        <div class="game-card-skill-icon">⚙️</div>
+                        <div class="game-card-skill-icon">🧠</div>
+                        <div class="game-card-skill-icon">⚡</div>
+                        <div class="game-card-skill-icon">💰</div>
+                    </div>
+
+                    <!-- ENTER GAME Button (Locked) -->
+                    <button class="game-card-button" disabled>UNLOCK AT LEVEL 5</button>
+
+                    <!-- Lock Icon Overlay -->
+                    <div class="lock-icon-overlay">🔒</div>
                 </div>
 
-                <!-- Automation Forge Card -->
-                <div class="game-card game-card-automation-forge">
+                <!-- ===== AUTOMATION FORGE (Elite) ===== -->
+                <div class="game-card game-card-automation-forge" data-level="3" data-unlocked="false">
+                    <!-- Level Badge -->
+                    <div class="game-card-badge">LEVEL 10+</div>
+
+                    <!-- Icon -->
                     <div class="game-card-icon">⚙️</div>
+
+                    <!-- Title & Tagline -->
                     <h3 class="game-card-title">Automation Forge</h3>
-                    <p class="game-card-description">Build powerful workflow systems and automations</p>
-                    <div class="xp-badge">XP: 2,500</div>
-                    <a href="games.html" class="start-button">START →</a>
+                    <p class="game-card-tagline">Build business machines</p>
+
+                    <!-- Progress Bar -->
+                    <div class="game-card-progress-container">
+                        <div class="game-card-progress-bar">
+                            <div class="game-card-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="game-card-progress-label">
+                            <span>Locked</span>
+                            <span class="text-neural-spectrum-orange">0 / 10,000 XP</span>
+                        </div>
+                    </div>
+
+                    <!-- Unlocks -->
+                    <div class="game-card-unlocks">
+                        <div class="game-card-unlocks-label">UNLOCKS</div>
+                        <ul class="game-card-unlocks-list">
+                            <li class="game-card-unlocks-item">Lead engines</li>
+                            <li class="game-card-unlocks-item">Sales bots</li>
+                            <li class="game-card-unlocks-item">Ops automation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Icons Preview -->
+                    <div class="game-card-skill-icons">
+                        <div class="game-card-skill-icon">⚙️</div>
+                        <div class="game-card-skill-icon">🧠</div>
+                        <div class="game-card-skill-icon">⚡</div>
+                        <div class="game-card-skill-icon">💰</div>
+                    </div>
+
+                    <!-- ENTER GAME Button (Locked) -->
+                    <button class="game-card-button" disabled>UNLOCK AT LEVEL 10</button>
+
+                    <!-- Lock Icon Overlay -->
+                    <div class="lock-icon-overlay">🔒</div>
                 </div>
 
-                <!-- Creator OS Card -->
-                <div class="game-card game-card-creator-os">
+                <!-- ===== CREATOR OS (Master) ===== -->
+                <div class="game-card game-card-creator-os" data-level="4" data-unlocked="false">
+                    <!-- Level Badge -->
+                    <div class="game-card-badge">LEVEL 15+</div>
+
+                    <!-- Icon -->
                     <div class="game-card-icon">📝</div>
+
+                    <!-- Title & Tagline -->
                     <h3 class="game-card-title">Creator OS</h3>
-                    <p class="game-card-description">Master content creation and personal branding</p>
-                    <div class="xp-badge">XP: 2,500</div>
-                    <a href="games.html" class="start-button">START →</a>
+                    <p class="game-card-tagline">Build content empires</p>
+
+                    <!-- Progress Bar -->
+                    <div class="game-card-progress-container">
+                        <div class="game-card-progress-bar">
+                            <div class="game-card-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="game-card-progress-label">
+                            <span>Locked</span>
+                            <span class="text-neural-spectrum-orange">0 / 12,000 XP</span>
+                        </div>
+                    </div>
+
+                    <!-- Unlocks -->
+                    <div class="game-card-unlocks">
+                        <div class="game-card-unlocks-label">UNLOCKS</div>
+                        <ul class="game-card-unlocks-list">
+                            <li class="game-card-unlocks-item">Content blueprints</li>
+                            <li class="game-card-unlocks-item">Audience systems</li>
+                            <li class="game-card-unlocks-item">Monetization flows</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Icons Preview -->
+                    <div class="game-card-skill-icons">
+                        <div class="game-card-skill-icon">⚙️</div>
+                        <div class="game-card-skill-icon">🧠</div>
+                        <div class="game-card-skill-icon">⚡</div>
+                        <div class="game-card-skill-icon">💰</div>
+                    </div>
+
+                    <!-- ENTER GAME Button (Locked) -->
+                    <button class="game-card-button" disabled>UNLOCK AT LEVEL 15</button>
+
+                    <!-- Lock Icon Overlay -->
+                    <div class="lock-icon-overlay">🔒</div>
                 </div>
 
-                <!-- Startup Builder Card -->
-                <div class="game-card game-card-startup-builder">
+                <!-- ===== STARTUP BUILDER (Master) ===== -->
+                <div class="game-card game-card-startup-builder" data-level="5" data-unlocked="false">
+                    <!-- Level Badge -->
+                    <div class="game-card-badge">LEVEL 25+</div>
+
+                    <!-- Icon -->
                     <div class="game-card-icon">🚀</div>
+
+                    <!-- Title & Tagline -->
                     <h3 class="game-card-title">Startup Builder</h3>
-                    <p class="game-card-description">Launch and scale AI-powered businesses</p>
-                    <div class="xp-badge">XP: 2,500</div>
-                    <a href="games.html" class="start-button">START →</a>
+                    <p class="game-card-tagline">Launch AI companies</p>
+
+                    <!-- Progress Bar -->
+                    <div class="game-card-progress-container">
+                        <div class="game-card-progress-bar">
+                            <div class="game-card-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="game-card-progress-label">
+                            <span>Locked</span>
+                            <span class="text-neural-spectrum-orange">0 / 15,000 XP</span>
+                        </div>
+                    </div>
+
+                    <!-- Unlocks -->
+                    <div class="game-card-unlocks">
+                        <div class="game-card-unlocks-label">UNLOCKS</div>
+                        <ul class="game-card-unlocks-list">
+                            <li class="game-card-unlocks-item">Fundraising frameworks</li>
+                            <li class="game-card-unlocks-item">Go-to-market machines</li>
+                            <li class="game-card-unlocks-item">Revenue multiplication</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Icons Preview -->
+                    <div class="game-card-skill-icons">
+                        <div class="game-card-skill-icon">⚙️</div>
+                        <div class="game-card-skill-icon">🧠</div>
+                        <div class="game-card-skill-icon">⚡</div>
+                        <div class="game-card-skill-icon">💰</div>
+                    </div>
+
+                    <!-- ENTER GAME Button (Locked) -->
+                    <button class="game-card-button" disabled>UNLOCK AT GODMODE</button>
+
+                    <!-- Lock Icon Overlay -->
+                    <div class="lock-icon-overlay">🔒</div>
                 </div>
 
             </div>
@@ -480,7 +823,7 @@
                 <!-- Boss Missions Card -->
                 <div class="how-it-works-card">
                     <div class="how-it-works-icon">🏆</div>
-                    <h3 class="how-it-works-title">Beat Bosses</h3>
+                    <h3 class="how-it-works-title">Defeat Bosses</h3>
                     <p class="how-it-works-text">Each level has a boss mission. Defeat it to unlock the next level and earn big XP.</p>
                 </div>
 
@@ -515,12 +858,16 @@
                             <td class="xp-value">100–200 XP</td>
                         </tr>
                         <tr>
-                            <td class="font-inter">Boss Mission</td>
-                            <td class="xp-value">400 XP</td>
+                            <td class="font-inter">Mini Boss</td>
+                            <td class="xp-value">300 XP</td>
                         </tr>
                         <tr>
-                            <td class="font-inter">Level Completion</td>
-                            <td class="xp-value">+250 XP</td>
+                            <td class="font-inter">Final Boss</td>
+                            <td class="xp-value">700 XP</td>
+                        </tr>
+                        <tr>
+                            <td class="font-inter">Daily Login</td>
+                            <td class="xp-value">25 XP</td>
                         </tr>
                         <tr>
                             <td class="font-inter">7-Day Streak</td>
@@ -531,8 +878,8 @@
                             <td class="xp-value">+1,000 XP</td>
                         </tr>
                         <tr class="total-row">
-                            <td class="font-grotesk">Total Graduation XP</td>
-                            <td class="xp-value">10,500 XP</td>
+                            <td class="font-grotesk">Godmode Total XP</td>
+                            <td class="xp-value">156,000 XP</td>
                         </tr>
                     </tbody>
                 </table>
@@ -544,13 +891,13 @@
     <section class="py-16 sm:py-20 px-4 sm:px-6 bg-white dark:bg-neural-navy">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk mb-4 sm:mb-6 text-neural-navy dark:text-white">
-                Ready to Play?
+                Ready to Begin Your Ascension?
             </h2>
             <p class="text-base sm:text-lg text-neural-navy/70 dark:text-gray-400 mb-6 sm:mb-8 font-inter">
-                Start with Prompt Architect and begin your journey to mastery.
+                Start with Prompt Architect. Complete quests, defeat bosses, unlock powers, and ascend the 7-level ladder to Godmode.
             </p>
             <a href="games.html" class="ready-to-play-button">
-                Play Now →
+                ENTER GAME →
             </a>
         </div>
     </section>
@@ -558,15 +905,15 @@
     <!-- Footer -->
     <footer class="py-8 sm:py-10 px-4 sm:px-6 border-t border-neural-graphite dark:border-gray-800">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
-            <p class="text-xs sm:text-sm text-neural-navy/60 dark:text-gray-400 font-inter">&copy; 2025 sixtysevenai. All rights reserved.</p>
-            <div class="flex gap-4 sm:gap-6 text-xs sm:text-sm sm:text-base font-inter">
+            <p class="text-xs sm:text-sm text-neural-navy/60 dark:text-gray-400 font-inter">&copy; 2025 SixtySeven AI. All rights reserved.</p>
+            <div class="flex gap-4 sm:gap-6 text-xs sm:text-sm font-inter">
                 <a href="about.html" class="text-neural-navy/60 dark:text-gray-400 hover:text-neural-spectrum-orange transition">📖 About</a>
                 <a href="contact.html" class="text-neural-navy/60 dark:text-gray-400 hover:text-neural-spectrum-orange transition">💬 Contact</a>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Menu Toggle & Theme Toggle Script -->
+    <!-- Scripts -->
     <script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -579,7 +926,7 @@
             });
         }
 
-        // Theme Toggle Script (Light / Dark / Game)
+        // Theme Toggle Script
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         const sunIcon = document.getElementById('sun-icon');
@@ -616,6 +963,14 @@
             const currentIndex = themes.indexOf(currentTheme);
             const nextIndex = (currentIndex + 1) % themes.length;
             setTheme(themes[nextIndex]);
+        });
+
+        // Locked Card Styling
+        document.querySelectorAll('.game-card').forEach(card => {
+            const isUnlocked = card.getAttribute('data-unlocked') === 'true';
+            if (!isUnlocked) {
+                card.classList.add('game-card-locked');
+            }
         });
     </script>
 
