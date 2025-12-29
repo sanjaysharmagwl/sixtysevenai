@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/game-theme.css">
     <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
     <style>
         .hero-gradient {
             background: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00);
@@ -131,23 +132,23 @@
     </section>
 
     <!-- Level Map Section -->
-    <section class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-center">Level Map</h2>
-            <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Choose your path to prompt mastery</p>
+    <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto w-full">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center">Level Map</h2>
+            <p class="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 text-center mb-8 sm:mb-12">Choose your path to prompt mastery</p>
 
-            <div class="space-y-4">
+            <div class="space-y-2 sm:space-y-3 md:space-y-4">
                 <!-- Level 1 -->
-                <div class="bg-ai-navy border-2 border-xp-cyan rounded-xl p-6 flex items-center justify-between hover:scale-105 transition-transform cursor-pointer">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-xp-cyan rounded-full flex items-center justify-center text-ai-navy font-bold">●</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-xp-cyan">Level 1 — Mind Control Basics</h3>
-                            <p class="text-gray-400">Learn the fundamentals of prompt engineering</p>
-                        </div>
-                    </div>
-                    <span class="text-xp-cyan font-bold">[UNLOCKED]</span>
-                </div>
+                <div class="bg-ai-navy border-2 border-xp-cyan rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between hover:scale-105 transition-transform cursor-pointer gap-2 sm:gap-4">
+                     <div class="flex items-start sm:items-center gap-2 sm:gap-4 min-w-0 flex-grow">
+                         <div class="w-10 sm:w-12 h-10 sm:h-12 bg-xp-cyan rounded-full flex-shrink-0 flex items-center justify-center text-ai-navy font-bold text-sm sm:text-base">●</div>
+                         <div class="min-w-0">
+                             <h3 class="text-sm sm:text-lg md:text-xl font-bold text-xp-cyan">Level 1 — Mind Control Basics</h3>
+                             <p class="text-xs sm:text-sm text-gray-400 truncate">Learn the fundamentals of prompt engineering</p>
+                         </div>
+                     </div>
+                     <span class="text-xp-cyan font-bold text-xs sm:text-sm md:text-base whitespace-nowrap flex-shrink-0">[UNLOCKED]</span>
+                 </div>
 
                 <!-- Level 2 -->
                 <div class="bg-void-black border-2 border-gray-600 rounded-xl p-6 flex items-center justify-between opacity-60 cursor-not-allowed">
@@ -225,17 +226,17 @@
     </section>
 
     <!-- Level Details Section -->
-    <section id="level-details" class="py-20 px-6 hidden">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-center">Level 1 — Mind Control Basics</h2>
-            <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Power Unlocked: Command Voice</p>
+    <section id="level-details" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 hidden">
+        <div class="max-w-4xl mx-auto w-full">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center">Level 1 — Mind Control Basics</h2>
+            <p class="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 text-center mb-8 sm:mb-12">Power Unlocked: Command Voice</p>
 
             <!-- Level Progress -->
-            <div class="bg-ai-navy border-2 border-xp-cyan rounded-xl p-6 mb-8">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-sm font-medium text-gray-400">XP Required</span>
-                    <span class="text-lg font-bold text-xp-cyan">600 XP</span>
-                </div>
+            <div class="bg-ai-navy border-2 border-xp-cyan rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4 mb-4">
+                     <span class="text-xs sm:text-sm font-medium text-gray-400">XP Required</span>
+                     <span class="text-base sm:text-lg font-bold text-xp-cyan">600 XP</span>
+                 </div>
                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
                     <div class="bg-gradient-to-r from-xp-cyan to-power-yellow h-4 rounded-full" style="width: 0%"></div>
                 </div>

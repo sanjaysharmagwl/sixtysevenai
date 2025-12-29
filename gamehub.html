@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/game-theme.css">
     <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
     <style>
         .hero-gradient {
             background: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00);
@@ -169,7 +170,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Available Games</h2>
             <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Master different skills. Earn XP. Unlock powers. Graduate at 10,500 XP.</p>
             
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                 <!-- PROMPTFORGE Game Card -->
                 <a href="games.html" class="group bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none hover:shadow-xl dark:hover:shadow-2xl hover:scale-105 transition-all border-2 border-transparent hover:border-purple-500 dark:hover:border-purple-400">
                     <div class="flex justify-between items-start mb-6">
@@ -257,7 +258,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">How It Works</h2>
             <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Play games. Earn XP. Unlock powers. Graduate at 10,500 XP.</p>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 <!-- Stats Card 1 -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
                     <div class="text-4xl mb-4">⚡</div>
@@ -288,17 +289,17 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">XP & Progression</h2>
             
             <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm md:text-base">
+                <table class="w-full text-left text-xs sm:text-sm md:text-base">
                     <thead class="border-b-2 border-purple-500 dark:border-purple-400">
                         <tr>
-                            <th class="py-4 px-4 font-bold">Action</th>
-                            <th class="py-4 px-4 font-bold">XP Earned</th>
+                            <th class="py-2 sm:py-4 px-2 sm:px-4 font-bold">Action</th>
+                            <th class="py-2 sm:py-4 px-2 sm:px-4 font-bold">XP Earned</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                            <td class="py-4 px-4">Quest Completion</td>
-                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">100–200 XP</td>
+                            <td class="py-2 sm:py-4 px-2 sm:px-4">Quest Completion</td>
+                            <td class="py-2 sm:py-4 px-2 sm:px-4 text-purple-600 dark:text-purple-400 font-bold">100–200 XP</td>
                         </tr>
                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                             <td class="py-4 px-4">Boss Mission</td>

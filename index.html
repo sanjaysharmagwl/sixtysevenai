@@ -63,6 +63,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/game-theme.css">
     <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
     <style>
         /* Hero Zone Gradient */
         .hero-gradient {
@@ -352,15 +353,15 @@
 <body class="bg-white dark:bg-neural-navy text-neural-navy dark:text-white font-inter transition-colors duration-300">
 
     <!-- Navigation -->
-    <nav class="absolute top-0 left-0 right-0 z-10 py-4 sm:py-6 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center gap-6 sm:gap-12">
+    <nav class="absolute top-0 left-0 right-0 z-10 py-3 sm:py-4 md:py-6 px-3 sm:px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-2 sm:gap-6 md:gap-12">
             <!-- Left: Logo (Smaller in index) -->
             <div class="logo-container flex-shrink-0">
-                <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-12 sm:h-16 md:h-20 w-auto">
+                <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-8 sm:h-12 md:h-16 lg:h-20 w-auto">
             </div>
 
-            <!-- Center: Navigation Links -->
-            <div class="flex gap-4 sm:gap-8 items-center text-xs sm:text-sm font-medium flex-shrink-0">
+            <!-- Center: Navigation Links - Hidden on mobile, shown on md and up -->
+            <div class="hidden md:flex gap-4 lg:gap-8 items-center text-xs lg:text-sm font-medium flex-shrink-0">
                 <a href="index.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
                     🎯 Dashboard
                 </a>
@@ -377,6 +378,13 @@
                     👤 Profile
                 </a>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors" aria-label="Toggle mobile menu">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
 
             <!-- Right: Theme Toggle (Light / Dark / Game) -->
             <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors flex items-center gap-2" aria-label="Toggle theme">
@@ -615,29 +623,29 @@
             </div>
 
             <!-- Games Grid: Responsive Layout (5 cols desktop, 2 cols tablet, 1 col mobile) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5 max-w-6xl mx-auto">
                 <!-- Game Card 1: Prompt Architect -->
-                <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #26E6C8, #2A8CFF); border-color: rgba(38, 230, 200, 0.5);" onclick="openLevel1Modal('prompt-architect')">
-                    <!-- Content Wrapper -->
-                    <div class="relative z-10 flex flex-col h-full">
-                        <!-- Icon -->
-                        <div class="text-4xl mb-4">🎯</div>
+                <div class="game-card relative rounded-lg sm:rounded-xl p-5 sm:p-6 lg:p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[240px] sm:min-h-[260px] lg:min-h-[280px]" style="background: linear-gradient(135deg, #26E6C8, #2A8CFF); border-color: rgba(38, 230, 200, 0.5);" onclick="openLevel1Modal('prompt-architect')">
+                     <!-- Content Wrapper -->
+                     <div class="relative z-10 flex flex-col h-full">
+                         <!-- Icon -->
+                         <div class="text-3xl sm:text-4xl mb-2 sm:mb-4">🎯</div>
 
-                        <!-- Title -->
-                        <h3 class="text-xl font-bold font-grotesk text-white mb-2">Prompt Architect</h3>
+                         <!-- Title -->
+                         <h3 class="text-lg sm:text-xl font-bold font-grotesk text-white mb-1 sm:mb-2">Prompt Architect</h3>
 
-                        <!-- Description -->
-                        <p class="text-sm text-white/90 mb-4 flex-grow">Build elite prompting systems</p>
+                         <!-- Description -->
+                         <p class="text-xs sm:text-sm text-white/90 mb-3 sm:mb-4 flex-grow">Build elite prompting systems</p>
 
-                        <!-- XP Badge -->
-                        <div class="absolute top-4 right-4 xp-badge">XP: 2,500</div>
+                         <!-- XP Badge -->
+                         <div class="absolute top-3 right-3 sm:top-4 sm:right-4 xp-badge text-xs sm:text-sm">XP: 2,500</div>
 
-                        <!-- START Button -->
-                        <button class="w-full mt-auto cta-button py-3 text-white font-bold font-inter rounded-lg transition-all duration-300">
-                            START
-                        </button>
-                    </div>
-                </div>
+                         <!-- START Button -->
+                         <button class="w-full mt-auto cta-button py-2 sm:py-3 text-white font-bold font-inter text-sm sm:text-base rounded-lg transition-all duration-300">
+                             START
+                         </button>
+                     </div>
+                 </div>
 
                 <!-- Game Card 2: Agent Engineer -->
                 <div class="game-card relative rounded-xl p-8 border-2 border-transparent overflow-hidden cursor-pointer min-h-[280px]" style="background: linear-gradient(135deg, #2A8CFF, #7B3FE4); border-color: rgba(42, 140, 255, 0.5);" onclick="openLevel1Modal('agent-engineer')">
@@ -708,7 +716,7 @@
             </div>
 
             <!-- 6-Mode Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
                 <!-- Mode 1: Read -->
                 <div class="bg-neural-snow rounded-xl p-8 border-2 border-neural-spectrum-blue/40 hover:border-neural-spectrum-blue/80 hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer">
                     <div class="text-4xl mb-4">📖</div>
@@ -784,7 +792,7 @@
             </div>
 
             <!-- 3-Column Pillar Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 <!-- Pillar 1: Game-Structured Learning -->
                 <div class="bg-neural-snow rounded-xl p-8 border border-neural-graphite">
                     <div class="text-4xl mb-4">🎮</div>
@@ -844,7 +852,7 @@
                  The future rewards operators—people who can command machines, design systems, create leverage, and move faster. You don't just learn AI. You become AI-native.
              </p>
              <!-- Dual CTAs -->
-             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+             <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center">
                  <button onclick="document.getElementById('games-hub').scrollIntoView({ behavior: 'smooth' })" class="cta-button px-6 sm:px-10 py-3 sm:py-4 text-white font-bold font-grotesk rounded-lg hover:shadow-lg transition-all duration-300 text-sm sm:text-base md:text-lg">
                      Choose Your First Game
                  </button>
@@ -1019,6 +1027,17 @@
                 closeLevel1Modal();
             }
         });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const navLinks = document.querySelector('.hidden.md\\:flex');
+                if (navLinks) {
+                    navLinks.classList.toggle('hidden');
+                }
+            });
+        }
 
         // Theme Toggle Script (Light / Dark / Game)
         const themeToggle = document.getElementById('theme-toggle');
