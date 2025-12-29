@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMPTFORGE L3 - Command Hacker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'sans-serif'],
+                    'inter': ['Inter', 'sans-serif'],
+                    'mono': ['JetBrains Mono', 'monospace']
+                },
+                extend: {
+                    colors: {
+                        'neural-spectrum': {
+                            'teal': '#26E6C8',
+                            'blue': '#2A8CFF',
+                            'violet': '#7B3FE4',
+                            'pink': '#FF4FD8',
+                            'orange': '#FF8A00'
+                        },
+                        'neural': {
+                            'navy': '#0F172A',
+                            'white': '#FFFFFF',
+                            'graphite': '#E5E7EB',
+                            'green': '#22C55E',
+                            'snow': '#F9FAFB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/game-theme.css">
+    <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
+    <style>
+        .hero-banner {
+            background: linear-gradient(135deg, #26E6C8, #2A8CFF);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quest-item {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid #26E6C8;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .quest-item:hover {
+            border-left-color: #FF8A00;
+            transform: translateX(8px);
+        }
+
+        .quest-item.completed {
+            border-left-color: #22C55E;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .quest-item.active {
+            border-left-color: #FF8A00;
+            background: rgba(255, 138, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 138, 0, 0.2);
+        }
+
+        .boss-arena {
+            background: linear-gradient(135deg, #0F172A, #1a1f3a);
+            border: 3px solid #FF8A00;
+            border-radius: 12px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boss-arena::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #FF8A00, transparent);
+        }
+
+        .quest-progress {
+            background: linear-gradient(90deg, #2A8CFF, #FF8A00);
+            height: 6px;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .mini-boss-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid #FF8A00;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-boss-card:hover {
+            box-shadow: 0 0 30px rgba(255, 138, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .boss-arena {
+                padding: 20px;
+            }
+
+            .quest-item {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white font-inter transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 py-4 sm:py-6 px-4 sm:px-6 bg-neural-navy/95 backdrop-blur border-b border-neural-spectrum-teal/20">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-6">
+            <a href="promptforge.html" class="text-white hover:text-neural-spectrum-teal transition font-mono text-sm font-bold">
+                ← Back to Game
+            </a>
+            <h1 class="text-xl sm:text-2xl font-bold font-grotesk text-neural-spectrum-teal">L3 — COMMAND HACKER</h1>
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors" aria-label="Toggle theme">
+                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner py-12 sm:py-16 px-4 sm:px-6 text-white text-center relative z-10">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk mb-3">You Bend AI Behavior</h2>
+        <p class="text-base sm:text-lg max-w-2xl mx-auto mb-6">Master role injection, prompt chaining, and behavior control. Unlock the multi-agent future.</p>
+        
+        <!-- XP Bar -->
+        <div class="bg-neural-navy/80 backdrop-blur rounded-lg p-4 max-w-md mx-auto">
+            <div class="flex justify-between items-center text-sm mb-2">
+                <span class="font-mono">Level 3 Progress</span>
+                <span class="font-mono font-bold">6,240 / 11,000 XP</span>
+            </div>
+            <div class="bg-gray-800 rounded-full h-3 overflow-hidden">
+                <div class="quest-progress" style="width: 62%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12 sm:py-16 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Quest Flow Overview -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-neural-spectrum-teal">QUEST SEQUENCE</h3>
+                
+                <div class="space-y-4 mb-8">
+                    <!-- Quest 1 -->
+                    <div class="quest-item completed">
+                        <div class="flex items-start justify-between gap-4 mb-3">
+                            <div>
+                                <h4 class="text-lg font-bold text-neural-spectrum-green">✓ Quest 1: Role Injection</h4>
+                                <p class="text-sm text-white/70 mt-1">Create role-switching prompt logic</p>
+                            </div>
+                            <span class="text-sm font-mono text-neural-spectrum-green whitespace-nowrap">+200 XP</span>
+                        </div>
+                        <p class="text-white/80 mb-4">You've successfully built prompts that switch between Analyst, Creator, Critic, and Optimizer roles. Your outputs are diverse and contextual.</p>
+                        
+                        <div class="bg-gray-800/50 rounded-lg p-4 text-xs text-white/70 mb-4">
+                            <p class="font-mono font-bold mb-2">Your Build Proof:</p>
+                            <p>✓ Analyst prompt: Data extraction and insight generation</p>
+                            <p>✓ Creator prompt: Content ideation and creative direction</p>
+                            <p>✓ Critic prompt: Quality evaluation and feedback</p>
+                            <p>✓ Optimizer prompt: Refinement and improvement</p>
+                        </div>
+
+                        <p class="text-xs text-neural-spectrum-green font-mono">Completed on: Dec 28, 2025</p>
+                    </div>
+
+                    <!-- Quest 2 -->
+                    <div class="quest-item active">
+                        <div class="flex items-start justify-between gap-4 mb-3">
+                            <div>
+                                <h4 class="text-lg font-bold text-neural-spectrum-orange">⟳ Quest 2: Chain Control</h4>
+                                <p class="text-sm text-white/70 mt-1">Build chained prompts where output becomes input</p>
+                            </div>
+                            <span class="text-sm font-mono text-neural-spectrum-orange whitespace-nowrap">+200 XP</span>
+                        </div>
+                        <p class="text-white/80 mb-4">Create multi-step prompt chains where each prompt's output feeds into the next. Test consistency across the chain.</p>
+
+                        <div class="bg-gray-800/50 rounded-lg p-4 mb-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-3">Progress: 2/3 Chains Complete</p>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-neural-spectrum-green">✓</span>
+                                    <span class="text-white/70 text-sm">Chain 1: Idea → Expansion → Summary</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-neural-spectrum-green">✓</span>
+                                    <span class="text-white/70 text-sm">Chain 2: Question → Research → Answer</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-gray-500">◯</span>
+                                    <span class="text-white/70 text-sm">Chain 3: Problem → Analysis → Solution</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="px-6 py-2 bg-neural-spectrum-teal text-neural-navy font-mono font-bold rounded hover:bg-neural-spectrum-blue transition">
+                            SUBMIT CHAIN #3
+                        </button>
+                    </div>
+
+                    <!-- Quest 3 -->
+                    <div class="quest-item opacity-60 border-gray-600 cursor-not-allowed">
+                        <div class="flex items-start justify-between gap-4 mb-3">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-500">🔒 Quest 3: Behavior Override</h4>
+                                <p class="text-sm text-gray-600 mt-1">Create a "Behavior Lock" prompt that controls style</p>
+                            </div>
+                            <span class="text-sm font-mono text-gray-500 whitespace-nowrap">+400 XP</span>
+                        </div>
+                        <p class="text-gray-600">Unlock after completing Quest 2: Chain Control</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini-Boss Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-neural-spectrum-orange">MINI-BOSS CHALLENGE</h3>
+                
+                <div class="mini-boss-card">
+                    <div class="text-3xl mb-3">⚔️</div>
+                    <h4 class="text-xl font-bold text-neural-spectrum-orange mb-2">Behavior Stability Test</h4>
+                    <p class="text-white/80 mb-4">Run all 3 chains simultaneously and verify that AI behavior remains consistent and predictable across all outputs.</p>
+                    
+                    <div class="bg-gray-800/50 rounded-lg p-4 mb-4 text-left">
+                        <p class="text-sm font-mono font-bold text-white/80 mb-2">Criteria:</p>
+                        <ul class="text-sm text-white/70 space-y-1">
+                            <li>• All 3 chains complete without errors</li>
+                            <li>• Output quality consistent across chains</li>
+                            <li>• No prompt injection vulnerabilities</li>
+                            <li>• Response time < 30 seconds per chain</li>
+                        </ul>
+                    </div>
+
+                    <button class="px-6 py-2 bg-neural-spectrum-orange text-neural-navy font-mono font-bold rounded hover:bg-orange-600 transition">
+                        RUN TEST
+                    </button>
+                    <p class="text-xs text-white/60 mt-3 font-mono">XP Reward: +400</p>
+                </div>
+            </div>
+
+            <!-- Final Boss Section -->
+            <div>
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-neural-spectrum-orange">FINAL BOSS</h3>
+                
+                <div class="boss-arena">
+                    <div class="mb-6">
+                        <div class="text-4xl mb-3">👑</div>
+                        <h4 class="text-3xl font-bold text-neural-spectrum-orange mb-2">Behavior Control Engine</h4>
+                        <p class="text-white/80 mb-1">Ascend from Signal Rookie to Command Hacker</p>
+                        <p class="text-neural-spectrum-orange font-mono font-bold text-lg">+1,200 XP</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- Requirements -->
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-4">REQUIREMENTS (2/3 Complete)</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-green font-bold text-lg">✓</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">3 Role-Based Prompts</p>
+                                        <p class="text-xs text-white/60">Analyst, Creator, Critic</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-green font-bold text-lg">✓</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Error Correction Layer</p>
+                                        <p class="text-xs text-white/60">Self-healing error detection</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-gray-500 font-bold text-lg">◯</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Memory Persistence Layer</p>
+                                        <p class="text-xs text-white/60">Session state management required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- What You Unlock -->
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-4">UNLOCK ON DEFEAT</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-teal">→</span>
+                                    <div>
+                                        <p class="font-bold text-neural-spectrum-teal">Meta Prompting Node</p>
+                                        <p class="text-xs text-white/60">Advanced prompt technique</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-teal">→</span>
+                                    <div>
+                                        <p class="font-bold text-neural-spectrum-teal">Multi-Agent Gate</p>
+                                        <p class="text-xs text-white/60">Level 4+ capability</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-teal">→</span>
+                                    <div>
+                                        <p class="font-bold text-neural-spectrum-teal">Rank: Command Hacker</p>
+                                        <p class="text-xs text-white/60">New identity + status</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="text-sm text-white/70 mb-3">Build a complete Behavior Control Engine that demonstrates mastery:</p>
+                        <div class="bg-gray-900/50 rounded-lg p-4 text-sm text-white/70 font-mono space-y-2">
+                            <p>1. Create system prompt with unified behavior controls</p>
+                            <p>2. Implement style, risk, and verbosity controls</p>
+                            <p>3. Test across 5+ different input scenarios</p>
+                            <p>4. Verify output consistency and safety</p>
+                            <p>5. Document your system architecture</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="px-8 py-3 bg-gradient-to-r from-neural-spectrum-orange to-neural-spectrum-pink text-white font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition disabled:opacity-50" disabled>
+                            SUBMIT FOR ASCENSION
+                        </button>
+                        <button class="px-8 py-3 bg-gray-800 text-white font-bold rounded-lg hover:bg-gray-700 transition">
+                            STUDY GUIDE
+                        </button>
+                    </div>
+                    <p class="text-xs text-white/60 text-center mt-4 font-mono">Complete Quest 3 and Mini-Boss to enable Final Boss submission</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 sm:px-6 border-t border-neural-spectrum-teal/20 bg-neural-navy/80">
+        <div class="max-w-4xl mx-auto text-center text-sm text-white/60">
+            <p>&copy; 2025 SixtySeven AI. PromptForge™</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        
+        const themes = ['light', 'dark'];
+        
+        function setTheme(theme) {
+            html.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.add('hidden');
+            
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+        
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            setTheme(themes[nextIndex]);
+        });
+    </script>
+
+</body>
+</html>

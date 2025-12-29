@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMPTFORGE L5 - Prompt Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'sans-serif'],
+                    'inter': ['Inter', 'sans-serif'],
+                    'mono': ['JetBrains Mono', 'monospace']
+                },
+                extend: {
+                    colors: {
+                        'neural-spectrum': {
+                            'teal': '#26E6C8',
+                            'blue': '#2A8CFF',
+                            'violet': '#7B3FE4',
+                            'pink': '#FF4FD8',
+                            'orange': '#FF8A00'
+                        },
+                        'neural': {
+                            'navy': '#0F172A',
+                            'white': '#FFFFFF',
+                            'graphite': '#E5E7EB',
+                            'green': '#22C55E',
+                            'snow': '#F9FAFB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/game-theme.css">
+    <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
+    <style>
+        .hero-banner {
+            background: linear-gradient(135deg, #FF8A00, #26E6C8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quest-item {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid #FF8A00;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .quest-item:hover {
+            border-left-color: #26E6C8;
+            transform: translateX(8px);
+        }
+
+        .quest-item.completed {
+            border-left-color: #22C55E;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .quest-item.active {
+            border-left-color: #FF8A00;
+            background: rgba(255, 138, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 138, 0, 0.2);
+        }
+
+        .boss-arena {
+            background: linear-gradient(135deg, #0F172A, #1a1f3a);
+            border: 3px solid #FF8A00;
+            border-radius: 12px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boss-arena::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #FF8A00, transparent);
+        }
+
+        .quest-progress {
+            background: linear-gradient(90deg, #FF8A00, #26E6C8);
+            height: 6px;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .mini-boss-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid #FF8A00;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-boss-card:hover {
+            box-shadow: 0 0 30px rgba(255, 138, 0, 0.4);
+        }
+
+        .mission-framework {
+            background: rgba(26, 31, 58, 0.8);
+            border: 1px solid rgba(255, 138, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #E5E7EB;
+            margin: 12px 0;
+        }
+
+        .mission-framework-header {
+            color: #FF8A00;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .boss-arena {
+                padding: 20px;
+            }
+
+            .quest-item {
+                padding: 16px;
+            }
+
+            .mission-framework {
+                font-size: 12px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white font-inter transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 py-4 sm:py-6 px-4 sm:px-6 bg-neural-navy/95 backdrop-blur border-b border-neural-spectrum-orange/20">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-6">
+            <a href="promptforge.html" class="text-white hover:text-neural-spectrum-orange transition font-mono text-sm font-bold">
+                ← Back to Game
+            </a>
+            <h1 class="text-xl sm:text-2xl font-bold font-grotesk text-neural-spectrum-orange">L5 — PROMPT ARCHITECT</h1>
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors" aria-label="Toggle theme">
+                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner py-12 sm:py-16 px-4 sm:px-6 text-white text-center relative z-10">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk mb-3">Design the Future of AI</h2>
+        <p class="text-base sm:text-lg max-w-2xl mx-auto mb-2">Move from engineering to visioning. You design what's possible.</p>
+        <p class="text-sm sm:text-base max-w-2xl mx-auto text-white/80 mb-6">Your architectures become frameworks that others build upon. You define the pattern.</p>
+        
+        <!-- XP Bar -->
+        <div class="bg-neural-navy/80 backdrop-blur rounded-lg p-4 max-w-md mx-auto">
+            <div class="flex justify-between items-center text-sm mb-2">
+                <span class="font-mono">Level 5 Progress</span>
+                <span class="font-mono font-bold">0 / 5,500 XP</span>
+            </div>
+            <div class="bg-gray-800 rounded-full h-3 overflow-hidden">
+                <div class="quest-progress" style="width: 0%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12 sm:py-16 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Mission Overview -->
+            <div class="mb-12 bg-neural-navy/80 backdrop-blur rounded-xl p-6 sm:p-8 border border-neural-spectrum-orange/20">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-6 text-neural-spectrum-orange">MISSION OBJECTIVE</h3>
+                <p class="text-white/90 mb-6">When you complete Prompt Architect, you will permanently unlock:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <span class="text-neural-spectrum-orange font-bold">✦</span>
+                        <span class="text-white/80">Framework Design</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-neural-spectrum-orange font-bold">✦</span>
+                        <span class="text-white/80">Pattern Library Creation</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-neural-spectrum-orange font-bold">✦</span>
+                        <span class="text-white/80">Ecosystem Architecture</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-neural-spectrum-orange font-bold">✦</span>
+                        <span class="text-white/80">Strategic Thought Leadership</span>
+                    </div>
+                </div>
+                <p class="text-white/70 text-sm mt-6 italic">You are no longer building systems. You are designing the systems that others build from.</p>
+            </div>
+
+            <!-- Quest Sequence -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-neural-spectrum-orange">QUEST LINE</h3>
+                
+                <div class="space-y-4 mb-8">
+                    <!-- Quest 1 -->
+                    <div class="quest-item active">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-neural-spectrum-orange">⟳ Quest 1: Pattern Architecture</h4>
+                                <p class="text-sm text-white/70 mt-1">Design reusable patterns that solve common AI problems</p>
+                            </div>
+                            <span class="text-sm font-mono text-neural-spectrum-orange whitespace-nowrap">+300 XP</span>
+                        </div>
+                        <p class="text-white/80 mb-4">Create a pattern library documenting 5+ architectural patterns:</p>
+
+                        <div class="mission-framework">
+                            <div class="mission-framework-header">PATTERN TEMPLATE</div>
+                            <div class="pl-4 space-y-2 mb-3">
+                                <div>Name: [Pattern identity]</div>
+                                <div>Problem: [What problem does it solve?]</div>
+                                <div>Solution: [The architecture approach]</div>
+                                <div>Benefits: [Advantages of this pattern]</div>
+                                <div>Trade-offs: [What you sacrifice]</div>
+                                <div>Example: [Real-world implementation]</div>
+                            </div>
+                            <div class="mission-framework-header">PATTERN EXAMPLES</div>
+                            <div class="pl-4 space-y-2">
+                                <div>• Agent-Coordinator Pattern</div>
+                                <div>• Feedback Loop Pattern</div>
+                                <div>• Role-Based Control Pattern</div>
+                                <div>• Adaptive Learning Pattern</div>
+                                <div>• Distributed Reasoning Pattern</div>
+                            </div>
+                        </div>
+
+                        <p class="text-white/70 text-sm mb-4">Each pattern must include implementation examples and use cases.</p>
+
+                        <button class="px-6 py-2 bg-neural-spectrum-orange text-neural-navy font-mono font-bold rounded hover:bg-orange-700 transition">
+                            SUBMIT PATTERN LIBRARY
+                        </button>
+                        <p class="text-xs text-neural-spectrum-orange font-mono mt-2">⚡ Unlock: Pattern Design Node</p>
+                    </div>
+
+                    <!-- Quest 2 -->
+                    <div class="quest-item opacity-70 border-gray-600 cursor-not-allowed">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-500">🔒 Quest 2: Framework Design</h4>
+                                <p class="text-sm text-gray-600 mt-1">Build a reusable framework that others can build upon</p>
+                            </div>
+                            <span class="text-sm font-mono text-gray-500 whitespace-nowrap">+300 XP</span>
+                        </div>
+                        <p class="text-gray-600">Unlock after completing Quest 1</p>
+                    </div>
+
+                    <!-- Quest 3 -->
+                    <div class="quest-item opacity-70 border-gray-600 cursor-not-allowed">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-500">🔒 Quest 3: Ecosystem Design</h4>
+                                <p class="text-sm text-gray-600 mt-1">Design how multiple systems interact in a cohesive ecosystem</p>
+                            </div>
+                            <span class="text-sm font-mono text-gray-500 whitespace-nowrap">+300 XP</span>
+                        </div>
+                        <p class="text-gray-600">Unlock after completing Quest 2</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini-Boss Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-neural-spectrum-orange">MINI-BOSS CHALLENGE</h3>
+                
+                <div class="mini-boss-card">
+                    <div class="text-3xl mb-3">⚔️</div>
+                    <h4 class="text-xl font-bold text-neural-spectrum-orange mb-2">Architecture Review Gauntlet</h4>
+                    <p class="text-white/80 mb-4">Have your 3 architectures reviewed by peer architects for completeness, scalability, and innovation.</p>
+                    
+                    <div class="bg-gray-800/50 rounded-lg p-4 mb-4 text-left">
+                        <p class="text-sm font-mono font-bold text-white/80 mb-2">Criteria:</p>
+                        <ul class="text-sm text-white/70 space-y-1">
+                            <li>• Architecture clarity and documentation</li>
+                            <li>• Scalability of design (handles 10x load)</li>
+                            <li>• Innovation & novel approaches</li>
+                            <li>• Peer review approval (80%+ positive)</li>
+                            <li>• Publication-ready documentation</li>
+                        </ul>
+                    </div>
+
+                    <button class="px-6 py-2 bg-neural-spectrum-orange text-neural-navy font-mono font-bold rounded hover:bg-orange-600 transition disabled:opacity-50" disabled>
+                        SUBMIT FOR PEER REVIEW (Complete all quests first)
+                    </button>
+                    <p class="text-xs text-white/60 mt-3 font-mono">XP Reward: +700</p>
+                </div>
+            </div>
+
+            <!-- Final Boss Section -->
+            <div>
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-neural-spectrum-orange">FINAL BOSS</h3>
+                
+                <div class="boss-arena">
+                    <div class="mb-6">
+                        <div class="text-4xl mb-3">👑</div>
+                        <h4 class="text-3xl font-bold text-neural-spectrum-orange mb-2">AI Ecosystem Architect</h4>
+                        <p class="text-white/80 mb-1">Design a complete ecosystem that other architects can build upon</p>
+                        <p class="text-neural-spectrum-orange font-mono font-bold text-lg">+1,800 XP</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- What You Build -->
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-4">BUILD ARCHITECTURE</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-orange">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Pattern Library</p>
+                                        <p class="text-xs text-white/60">10+ reusable patterns</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-orange">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Framework Foundation</p>
+                                        <p class="text-xs text-white/60">Template for others to extend</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-orange">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Integration Layer</p>
+                                        <p class="text-xs text-white/60">How systems connect</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-orange">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Governance Model</p>
+                                        <p class="text-xs text-white/60">Rules for extending ecosystem</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- What You Unlock -->
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-4">UNLOCK ON DEFEAT</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-green">✓</span>
+                                    <div>
+                                        <p class="font-bold text-neural-spectrum-green">🛡️ Meta Tree Advanced</p>
+                                        <p class="text-xs text-white/60">Leadership tier unlocked</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-green">✓</span>
+                                    <div>
+                                        <p class="font-bold text-neural-spectrum-green">Rank: OVERLORD</p>
+                                        <p class="text-xs text-white/60">AI leadership mastery</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-green">✓</span>
+                                    <div>
+                                        <p class="font-bold text-neural-spectrum-green">Mentorship Powers</p>
+                                        <p class="text-xs text-white/60">Guide other architects</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-neural-spectrum-green">✓</span>
+                                    <div>
+                                        <p class="font-bold text-neural-spectrum-green">+50% XP Multiplier</p>
+                                        <p class="text-xs text-white/60">Permanent power tier</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="text-sm text-white/70 mb-3">Design a complete ecosystem with these components:</p>
+                        <div class="bg-gray-900/50 rounded-lg p-4 text-sm text-white/70 font-mono space-y-2">
+                            <p>1. Pattern Library: 10+ documented patterns</p>
+                            <p>2. Framework Template: Scaffolding for new systems</p>
+                            <p>3. Integration Standards: How systems compose</p>
+                            <p>4. Governance: Extension rules & best practices</p>
+                            <p>5. Proof: 5+ systems built from your ecosystem</p>
+                            <p>6. Publication: Open-source release with docs</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="px-8 py-3 bg-gradient-to-r from-neural-spectrum-orange to-neural-spectrum-teal text-white font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition disabled:opacity-50" disabled>
+                            SUBMIT FOR ASCENSION
+                        </button>
+                        <button class="px-8 py-3 bg-gray-800 text-white font-bold rounded-lg hover:bg-gray-700 transition">
+                            STUDY GUIDE
+                        </button>
+                    </div>
+                    <p class="text-xs text-white/60 text-center mt-4 font-mono">Complete all quests and mini-boss to enable final boss submission</p>
+                </div>
+            </div>
+
+            <!-- Ascension Complete Section -->
+            <div class="mt-16 mb-8 bg-gradient-to-r from-neural-spectrum-orange/20 to-neural-spectrum-teal/20 rounded-xl p-8 sm:p-10 border border-neural-spectrum-teal/50 text-center">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-4 text-neural-spectrum-teal">ASCENSION COMPLETE</h3>
+                <p class="text-white/90 mb-6">You are now an Overlord. You command automation armies. Your frameworks shape the future.</p>
+                <div class="space-y-2 mb-8">
+                    <p class="text-neural-spectrum-green font-bold">✓ Rank Upgrade: OVERLORD</p>
+                    <p class="text-neural-spectrum-green font-bold">✓ New Access: Leadership Tier</p>
+                    <p class="text-neural-spectrum-green font-bold">✓ Unlocked: L6 (Final Level)</p>
+                    <p class="text-neural-spectrum-green font-bold">✓ Bonus: +50% XP Multiplier</p>
+                </div>
+                <button class="px-8 py-3 bg-gradient-to-r from-neural-spectrum-orange to-neural-spectrum-teal text-white font-bold rounded-lg hover:shadow-lg hover:shadow-teal-500/50 transition">
+                    ENTER PROMPTFORGE L6 →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 sm:px-6 border-t border-neural-spectrum-orange/20 bg-neural-navy/80">
+        <div class="max-w-4xl mx-auto text-center text-sm text-white/60">
+            <p>&copy; 2025 SixtySeven AI. PromptForge™</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        
+        const themes = ['light', 'dark'];
+        
+        function setTheme(theme) {
+            html.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.add('hidden');
+            
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+        
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            setTheme(themes[nextIndex]);
+        });
+
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('SUBMIT')) {
+                button.addEventListener('click', function() {
+                    alert('Quest submission form coming soon.\n\nPhase 2 Feature: Submit your architecture for peer review and ecosystem publication.');
+                });
+            }
+            if (button.textContent.includes('ENTER PROMPTFORGE L6')) {
+                button.addEventListener('click', function() {
+                    window.location.href = 'promptforge.html?level=6';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

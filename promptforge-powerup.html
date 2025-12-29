@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promptforge - Power-Up Lobby | SixtySeven AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Brand Colors */
+            --human-teal: #26E6C8;
+            --intelligence-blue: #2A8CFF;
+            --builder-violet: #7B3FE4;
+            --growth-pink: #FF4FD8;
+            --momentum-orange: #FF8A00;
+
+            /* Core Colors */
+            --neural-navy: #0F172A;
+            --pure-white: #FFFFFF;
+            --soft-graphite: #E5E7EB;
+            --soft-snow: #F9FAFB;
+            --void-black: #000000;
+
+            /* Action Colors */
+            --signal-yellow: #FACC15;
+            --alert-red: #EF4444;
+            --neural-green: #22C55E;
+
+            /* Gradients */
+            --gradient-brand: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00);
+            --gradient-xp: linear-gradient(90deg, #2A8CFF, #FF8A00);
+            --gradient-cta: linear-gradient(90deg, #FF8A00, #FF4FD8);
+            --gradient-promptforge: linear-gradient(135deg, #26E6C8, #2A8CFF);
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 60px;
+
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--pure-white);
+            color: var(--neural-navy);
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-lg);
+            background: var(--pure-white);
+            border-bottom: 2px solid var(--soft-graphite);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .header-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            background: var(--gradient-promptforge);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .game-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--neural-navy);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .active-run-hud {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--soft-snow);
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        .hud-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--gradient-xp);
+            color: var(--pure-white);
+            border-radius: 4px;
+            animation: pulse-subtle 2s ease-in-out infinite;
+        }
+
+        .hud-item.inactive {
+            background: var(--soft-graphite);
+            color: var(--neural-navy);
+            animation: none;
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--soft-snow);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--neural-navy);
+            transition: all 0.2s ease;
+        }
+
+        .back-button:hover {
+            background: var(--soft-graphite);
+            transform: translateX(-4px);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+
+        /* ===== POWER-UP LOBBY ===== */
+        .powerup-header {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .powerup-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--neural-navy);
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+
+        .powerup-subtitle {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* ===== POWER-UP CARDS GRID ===== */
+        .powerup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        @media (min-width: 768px) {
+            .powerup-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .powerup-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .powerup-card {
+            background: var(--pure-white);
+            border: 2px solid var(--soft-graphite);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 360px;
+        }
+
+        .powerup-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        /* Rarity Styles */
+        .powerup-card.common {
+            border: 2px solid var(--soft-graphite);
+        }
+
+        .powerup-card.rare {
+            border: 2px solid var(--intelligence-blue);
+            box-shadow: 0 0 20px rgba(42, 140, 255, 0.3);
+        }
+
+        .powerup-card.rare:hover {
+            box-shadow: 0 0 40px rgba(42, 140, 255, 0.5);
+        }
+
+        .powerup-card.epic {
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #2A8CFF, #FF4FD8) 1;
+            box-shadow: 0 0 30px rgba(123, 63, 228, 0.4);
+        }
+
+        .powerup-card.epic:hover {
+            box-shadow: 0 0 50px rgba(123, 63, 228, 0.6);
+        }
+
+        .powerup-card.legendary {
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #FF8A00, #FF4FD8) 1;
+            box-shadow: 0 0 40px rgba(255, 79, 216, 0.5);
+            animation: gold-pulse 2s ease-in-out infinite;
+        }
+
+        .powerup-card.legendary:hover {
+            box-shadow: 0 0 60px rgba(255, 79, 216, 0.8);
+            animation: none;
+        }
+
+        @keyframes gold-pulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 79, 216, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(255, 79, 216, 0.8); }
+        }
+
+        .powerup-icon {
+            font-size: 32px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--soft-snow);
+            border-radius: var(--radius-md);
+        }
+
+        .powerup-header-content {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+        }
+
+        .powerup-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--neural-navy);
+        }
+
+        .powerup-tagline {
+            font-size: 13px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .powerup-boosts {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .boost-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--neural-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .boost-item {
+            font-size: 13px;
+            color: var(--neural-navy);
+            padding-left: var(--spacing-md);
+            position: relative;
+        }
+
+        .boost-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--momentum-orange);
+            font-weight: bold;
+        }
+
+        .powerup-duration {
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .powerup-duration::before {
+            content: "⏱";
+            font-size: 14px;
+        }
+
+        .powerup-button {
+            margin-top: auto;
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--gradient-cta);
+            border: none;
+            border-radius: var(--radius-md);
+            color: var(--pure-white);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            min-height: 48px;
+            box-shadow: 0 4px 12px rgba(255, 142, 0, 0.3);
+        }
+
+        .powerup-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(255, 142, 0, 0.5);
+        }
+
+        .powerup-button:active {
+            transform: scale(0.98);
+        }
+
+        .powerup-button.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* ===== ACTIVATION MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--pure-white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--neural-navy);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .modal-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .modal-stats {
+            background: var(--soft-snow);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .modal-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            font-size: 14px;
+        }
+
+        .modal-stat-label {
+            color: #666;
+        }
+
+        .modal-stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: var(--neural-navy);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .modal-button {
+            flex: 1;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            min-height: 48px;
+        }
+
+        .modal-button.install {
+            background: var(--gradient-cta);
+            color: var(--pure-white);
+            box-shadow: 0 4px 12px rgba(255, 142, 0, 0.3);
+        }
+
+        .modal-button.install:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 142, 0, 0.5);
+        }
+
+        .modal-button.cancel {
+            background: var(--soft-graphite);
+            color: var(--neural-navy);
+        }
+
+        .modal-button.cancel:hover {
+            background: #d0d5dd;
+        }
+
+        /* ===== RUN COMPLETE SCREEN ===== */
+        .completion-section {
+            display: none;
+            text-align: center;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+
+        .completion-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .completion-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--neural-navy);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .completion-xp {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 48px;
+            font-weight: bold;
+            background: var(--gradient-xp);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-lg);
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .completion-message {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .completion-button {
+            padding: var(--spacing-md) var(--spacing-2xl);
+            background: var(--gradient-cta);
+            border: none;
+            border-radius: var(--radius-md);
+            color: var(--pure-white);
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            min-height: 48px;
+            box-shadow: 0 4px 12px rgba(255, 142, 0, 0.3);
+        }
+
+        .completion-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 142, 0, 0.5);
+        }
+
+        /* ===== STREAK NUDGE ===== */
+        .streak-nudge {
+            display: none;
+            background: linear-gradient(135deg, #FF8A00 0%, #FF4FD8 100%);
+            color: var(--pure-white);
+            padding: var(--spacing-lg) var(--spacing-2xl);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-2xl) 0;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(255, 79, 216, 0.3);
+        }
+
+        .streak-nudge.active {
+            display: block;
+            animation: slideInUp 0.4s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .streak-nudge-icon {
+            font-size: 32px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .streak-nudge-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .streak-nudge-text {
+            font-size: 14px;
+            opacity: 0.95;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .streak-nudge-button {
+            background: var(--pure-white);
+            color: #FF8A00;
+            border: none;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .streak-nudge-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .powerup-title {
+                font-size: 32px;
+            }
+
+            .powerup-subtitle {
+                font-size: 14px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                align-items: stretch;
+            }
+
+            .header-left,
+            .header-right {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .active-run-hud {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .container {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            .modal-content {
+                padding: var(--spacing-lg);
+            }
+
+            .modal-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo">67</div>
+            <div class="game-name">Promptforge</div>
+        </div>
+        <div class="header-right">
+            <div class="active-run-hud" id="activeRunHUD">
+                <div class="hud-item" id="hud1">⚡ Focus Active 18:42</div>
+                <div class="hud-item inactive">XP+ Inactive</div>
+            </div>
+            <button class="back-button" onclick="goBack()">← Back</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Power-Up Lobby -->
+        <section id="powerupLobby">
+            <div class="powerup-header">
+                <h1 class="powerup-title">Install Brain Upgrades</h1>
+                <p class="powerup-subtitle">Choose upgrades to amplify your current run.</p>
+            </div>
+
+            <div class="powerup-grid" id="powerupGrid">
+                <!-- Cards will be generated here -->
+            </div>
+        </section>
+
+        <!-- Streak Nudge -->
+        <div class="streak-nudge" id="streakNudge">
+            <div class="streak-nudge-icon">⚡</div>
+            <div class="streak-nudge-title">Power-Up Available</div>
+            <div class="streak-nudge-text">Install a boost to protect your streak.</div>
+            <button class="streak-nudge-button" onclick="openPowerUps()">OPEN POWER-UPS</button>
+        </div>
+
+        <!-- Run Complete Screen -->
+        <section id="completionSection" class="completion-section">
+            <div class="completion-title">POWER FADED</div>
+            <div class="completion-xp">+75 XP</div>
+            <div class="completion-message">Your run is complete.</div>
+            <button class="completion-button" onclick="backToLobby()">RETURN TO LOBBY</button>
+        </section>
+    </main>
+
+    <!-- Activation Modal -->
+    <div class="modal-overlay" id="activationModal">
+        <div class="modal-content">
+            <h2 class="modal-title" id="modalTitle">INSTALL COMMAND FOCUS?</h2>
+            <p class="modal-description" id="modalDescription">Description here</p>
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <span class="modal-stat-label">Boost</span>
+                    <span class="modal-stat-value" id="modalBoost">+30% Execution Speed</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="modal-stat-label">Duration</span>
+                    <span class="modal-stat-value" id="modalDuration">25 min</span>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-button install" onclick="confirmInstall()" id="installBtn">INSTALL</button>
+                <button class="modal-button cancel" onclick="closeModal()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Power-Up Data
+        const powerups = [
+            {
+                id: 1,
+                name: "Command Focus",
+                tagline: "Deep work tunnel vision",
+                icon: "⚡",
+                rarity: "common",
+                boost: "+30% Execution Speed",
+                duration: "25 min",
+                description: "Enter deep work mode. Minimize distractions and maximize clarity for your prompt engineering."
+            },
+            {
+                id: 2,
+                name: "Clarity Boost",
+                tagline: "Sharper prompts, cleaner outputs",
+                icon: "✨",
+                rarity: "common",
+                boost: "+25% Output Quality",
+                duration: "30 min",
+                description: "Enhance your prompt precision. Get clearer, more refined outputs from your AI interactions."
+            },
+            {
+                id: 3,
+                name: "Memory Lock",
+                tagline: "What you learn sticks",
+                icon: "🧠",
+                rarity: "rare",
+                boost: "+50% Retention",
+                duration: "30 min",
+                description: "Lock in your learning. Patterns and techniques you discover now stick with you permanently."
+            },
+            {
+                id: 4,
+                name: "Error Guard",
+                tagline: "Auto-fix broken outputs",
+                icon: "🛡️",
+                rarity: "rare",
+                boost: "+40% Error Recovery",
+                duration: "25 min",
+                description: "Automatically detect and fix common prompt failures. Learn from mistakes instantly."
+            },
+            {
+                id: 5,
+                name: "XP Multiplier",
+                tagline: "Level up faster",
+                icon: "🚀",
+                rarity: "epic",
+                boost: "+50% XP Earned",
+                duration: "60 min",
+                description: "Accelerate your progression. Earn 1.5× XP on all actions during this session."
+            },
+            {
+                id: 6,
+                name: "Time Warp",
+                tagline: "One hour becomes three",
+                icon: "⏳",
+                rarity: "legendary",
+                boost: "+200% Output Speed",
+                duration: "45 min",
+                description: "Compress time itself. Your output rate triples for the duration. Once per ascension level."
+            },
+            {
+                id: 7,
+                name: "Pattern Master",
+                tagline: "See hidden connections",
+                icon: "🔗",
+                rarity: "epic",
+                boost: "+60% Pattern Recognition",
+                duration: "40 min",
+                description: "Unlock deeper insights. Recognize powerful prompt patterns and system connections faster."
+            },
+            {
+                id: 8,
+                name: "Execution Overdrive",
+                tagline: "Run it all at once",
+                icon: "⚙️",
+                rarity: "epic",
+                boost: "+75% Batch Processing",
+                duration: "30 min",
+                description: "Process multiple prompts simultaneously. Unlock parallel execution for your workflows."
+            }
+        ];
+
+        let selectedPowerup = null;
+
+        // Render Power-Up Cards
+        function renderPowerups() {
+            const grid = document.getElementById('powerupGrid');
+            grid.innerHTML = powerups.map(power => `
+                <div class="powerup-card ${power.rarity}" onclick="openModal(${power.id})">
+                    <div class="powerup-header-content">
+                        <div class="powerup-icon">${power.icon}</div>
+                        <div>
+                            <div class="powerup-name">${power.name}</div>
+                            <div class="powerup-tagline">${power.tagline}</div>
+                        </div>
+                    </div>
+
+                    <div class="powerup-boosts">
+                        <div class="boost-label">Boosts</div>
+                        <div class="boost-item">${power.boost}</div>
+                    </div>
+
+                    <div class="powerup-duration">${power.duration}</div>
+
+                    <button class="powerup-button" onclick="openModal(${power.id}); event.stopPropagation();">ACTIVATE</button>
+                </div>
+            `).join('');
+        }
+
+        // Modal Functions
+        function openModal(powerId) {
+            const power = powerups.find(p => p.id === powerId);
+            if (!power) return;
+
+            selectedPowerup = power;
+            document.getElementById('modalTitle').textContent = `INSTALL ${power.name.toUpperCase()}?`;
+            document.getElementById('modalDescription').textContent = power.description;
+            document.getElementById('modalBoost').textContent = power.boost;
+            document.getElementById('modalDuration').textContent = power.duration;
+            document.getElementById('activationModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('activationModal').classList.remove('active');
+            selectedPowerup = null;
+        }
+
+        function confirmInstall() {
+            if (!selectedPowerup) return;
+
+            const installBtn = document.getElementById('installBtn');
+            installBtn.classList.add('loading');
+            installBtn.textContent = 'INSTALLING...';
+
+            // Simulate installation
+            setTimeout(() => {
+                closeModal();
+                showCompletionScreen();
+                installBtn.classList.remove('loading');
+                installBtn.textContent = 'INSTALL';
+            }, 1500);
+        }
+
+        function showCompletionScreen() {
+            document.getElementById('powerupLobby').style.display = 'none';
+            document.getElementById('completionSection').classList.add('active');
+
+            // Show streak nudge after completion
+            setTimeout(() => {
+                document.getElementById('streakNudge').classList.add('active');
+            }, 2000);
+        }
+
+        function backToLobby() {
+            document.getElementById('completionSection').classList.remove('active');
+            document.getElementById('powerupLobby').style.display = 'block';
+            document.getElementById('streakNudge').classList.remove('active');
+        }
+
+        function openPowerUps() {
+            document.getElementById('streakNudge').classList.remove('active');
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        // Initialize
+        renderPowerups();
+
+        // Close modal on overlay click
+        document.getElementById('activationModal').addEventListener('click', (e) => {
+            if (e.target.id === 'activationModal') {
+                closeModal();
+            }
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>

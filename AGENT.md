@@ -1681,9 +1681,512 @@ Each Power-Up card uses the same internal structure:
 
 ---
 
-## 17. Component naming conventions
+## 17. Player Profile UI System
 
-## 18. Folder architecture for developers
+The player profile is a **digital identity card** and **progression dashboard**. It anchors player identity, power, and mastery across all games.
+
+### Profile Philosophy
+
+Every player's profile must:
+- **Anchor identity**: Show who they are now (rank, name, avatar)
+- **Anchor progression**: Show where they're going (Godmode gate, level ring)
+- **Anchor power**: Show active upgrades (power-ups, skill tree unlocks)
+- **Anchor mastery**: Show multi-domain expertise (games, achievements, skills)
+- **Create social proof**: Show public validation (achievements, streak, rank badge)
+- **Drive engagement**: Show clear next-step paths (missions, level unlocks, Godmode progress)
+
+### Profile Layout (Vertical Mobile-First)
+
+```
+┌──────────────────────────────────────────┐
+│   AVATAR      PLAYER NAME                │
+│               Rank: HACKER               │
+│                                          │
+│   LEVEL RING (animated)                  │
+│      ◉─────── LEVEL 3 ───────◉           │
+│                                          │
+│   TOTAL XP        STREAK                 │
+│   12,480 XP      🔥 14 Days               │
+│                                          │
+│   ACTIVE POWER-UPS                       │
+│   [ Focus ] [ Memory ] [ XP+ ]            │
+│                                          │
+│   CURRENT GAMES                          │
+│   Prompt Architect   L3 Hacker           │
+│   Automation Forge   L1 Noob              │
+│                                          │
+│   SKILL TREE CORE                        │
+│   🧠  ⚙️  ⚡  🛡                             │
+│                                          │
+│   ACHIEVEMENTS                           │
+│   ▪ First Build                          │
+│   ▪ 7-Day Streak                         │
+│   ▪ Mini-Boss Slayer                     │
+│                                          │
+│   GODMODE GATE (locked)                  │
+│   24% Complete                           │
+│                                          │
+│   [ ENTER GAMES HUB ]                    │
+└──────────────────────────────────────────┘
+```
+
+### Core Components
+
+#### 1. Identity Header
+
+**Location**: Top of profile
+
+**Shows**:
+- Avatar (120px circle, bordered with game-primary gradient)
+- Player Name (Space Grotesk, 32px, Neural Navy)
+- Rank Title (Inter, 16px, game-primary color)
+- Edit Profile link (secondary, top-right)
+
+**Specs**:
+- Background: Pure White (#FFFFFF) or Soft Snow (#F9FAFB)
+- Padding: 24px
+- Border-radius: 8px
+- Avatar border: 3px gradient matching player's highest-rank game
+
+**Example**:
+```
+┌────────────────────────────┐
+│  [Avatar]  SanjayS         │
+│            Rank: Hacker    │
+│            [Edit Profile]  │
+└────────────────────────────┘
+```
+
+#### 2. Level Ring
+
+**Location**: Below identity header
+
+**Shows**:
+- Animated glowing circular progress ring
+- Current XP count (JetBrains Mono, 20px)
+- Rank progress percentage (12,480 / 26,000 XP = 48%)
+- Next rank unlock text (Inter, 12px)
+
+**Specs**:
+- Ring size: 180px diameter
+- Ring thickness: 12px
+- Gradient: Game-specific (primary to secondary)
+- Fill animation: Smooth 2s on page load
+- Center text: JetBrains Mono, bold
+- Glow effect: `box-shadow: 0 0 30px rgba([game-color], 0.4)`
+
+**Interaction**:
+- On XP gain: Ring pulses (1s scale 1.1)
+- On level-up: Ring flashes (3x pulse + 2s scale 1.2)
+
+**Example**:
+```
+        ◉─────── LEVEL 3 (Hacker) ───────◉
+       /  12,480 / 26,000 XP (48%)      \
+      /   Next: Engineer (2,520 XP left)  \
+```
+
+#### 3. XP & Streak Strip
+
+**Location**: Below level ring
+
+**Shows**:
+- Total XP earned (JetBrains Mono, 18px)
+- Streak counter with flame icon (🔥)
+- Streak day count (JetBrains Mono, 18px)
+- Multiplier status (if active)
+
+**Specs**:
+- Layout: 2-column grid (desktop), 1-column (mobile)
+- Background: Soft Snow (#F9FAFB)
+- Padding: 16px
+- Border-radius: 8px
+- Typography: JetBrains Mono, 14px body, 18px value
+
+**Streak states**:
+- 1–3 days: Flame gray (`#999`)
+- 4–7 days: Flame yellow (`#FACC15`)
+- 8–14 days: Flame orange (`#FF8A00`)
+- 15–30 days: Flame gold (`#FFA500`)
+- 30+ days: Flame red (`#EF4444`) with pulse animation
+
+**Example**:
+```
+┌──────────────────────────────┐
+│ TOTAL XP: 12,480  STREAK: 🔥 14 Days │
+│ Multiplier: 1.5× (Habit Tier) │
+└──────────────────────────────┘
+```
+
+#### 4. Active Power-Ups Strip
+
+**Location**: Below XP strip
+
+**Shows**:
+- Up to 3 active power-up badges
+- Each badge shows: icon, name, remaining time
+- Empty state: "Activate a Power-Up to boost your session"
+
+**Specs**:
+- Layout: Horizontal flex row, wrap on mobile
+- Padding: 12px
+- Border-radius: 8px
+- Gap: 8px between badges
+
+**Badge specs** (each):
+- Background: Power-up's primary gradient
+- Height: 44px
+- Padding: 8px 16px
+- Border-radius: 6px
+- Font: Inter, 12px, bold white
+- Content: `[Icon] Name (15m 23s left)`
+- Animation: Countdown timer updates every second, fades at 30s remaining
+
+**Example**:
+```
+┌────────────────────────────────────────┐
+│ ACTIVE POWER-UPS                       │
+│ [🧠 Memory Lock (8m)]  [⚡ Speed+] ... │
+└────────────────────────────────────────┘
+```
+
+#### 5. Current Games Panel
+
+**Location**: Below power-ups
+
+**Shows**:
+- List of all 5 games player is enrolled in
+- Each game shows: icon, name, current level, rank, progress bar
+- Locked games show: lock icon, unlock condition
+
+**Specs**:
+- Background: Pure White (#FFFFFF)
+- Layout: Stack (1 column)
+- Padding: 20px
+- Border-radius: 8px
+- Gap: 12px between game rows
+
+**Game row specs** (each):
+- Layout: Icon (40px) + Game info + Progress bar
+- Icon size: 40x40
+- Game name: Space Grotesk, 14px, Neural Navy, bold
+- Rank badge: JetBrains Mono, 11px, game-primary bg
+- Progress bar: 120px width, 6px height, XP gradient
+- CTA: "Continue Game" link (secondary, right-aligned)
+
+**Example**:
+```
+┌────────────────────────────────────────┐
+│ CURRENT GAMES                          │
+├────────────────────────────────────────┤
+│ 🎯 Prompt Architect [L3 Hacker]       │
+│    [■■■■■■■■□□□□]  45% to L4         │
+│    [Continue Game →]                   │
+│                                        │
+│ 🤖 Agent Engineer [L1 Noob]           │
+│    [■■□□□□□□□□□□]  18% to L2         │
+│    [Continue Game →]                   │
+└────────────────────────────────────────┘
+```
+
+#### 6. Skill Tree Core
+
+**Location**: Below games panel
+
+**Shows**:
+- 4 skill tree icons: 🧠 🎮 ⚡ 🛡️
+- Each icon is clickable, opens full constellation view
+- Tooltip shows: "Tree Name (X/Y nodes unlocked)"
+
+**Specs**:
+- Layout: 4-column grid, centered
+- Icon size: 56x56
+- Background: Light circle, gradient border
+- Padding: 40px section top/bottom
+- Gap: 20px between icons
+- Font: Inter, 12px body under each icon
+
+**Icon styling**:
+- Background: Subtle gradient (tree color at 10% opacity)
+- Border: 2px solid tree color
+- Glow on hover: `box-shadow: 0 0 20px rgba([tree-color], 0.3)`
+- Scale on hover: 1.1
+
+**Example**:
+```
+┌────────────────────────────────────────┐
+│ SKILL TREE CORE                        │
+├────────────────────────────────────────┤
+│   🧠          ⚙️         ⚡         🛡️    │
+│  Mind Tree   Systems    Output      Meta │
+│  (6/12)      (4/10)      (3/8)      (2/6) │
+│  [Open Tree] [Open Tree] ...            │
+└────────────────────────────────────────┘
+```
+
+#### 7. Achievements Panel
+
+**Location**: Below skill tree core
+
+**Shows**:
+- Grid of achievement badges (2–4 per row)
+- Each badge: icon, title, unlock date
+- Locked achievements show: lock icon, unlock condition (grayed out)
+- Achievement count: "6 / 24 Achievements"
+
+**Specs**:
+- Background: Soft Snow (#F9FAFB)
+- Layout: Grid (auto-fit, minmax(120px, 1fr))
+- Padding: 20px
+- Border-radius: 8px
+- Gap: 12px
+
+**Badge specs** (each):
+- Size: 120px square (mobile), 140px (desktop)
+- Background: Game-primary gradient (earned) or gray (locked)
+- Border: 2px solid game-color
+- Border-radius: 8px
+- Content: Icon (32px) + Title (Inter, 10px, centered below)
+- Hover: Scale 1.08, glow pulses
+- Locked: 50% opacity, lock icon overlay
+
+**Achievement types**:
+- First Build
+- 7-Day Streak
+- Mini-Boss Slayer
+- Final Boss Conqueror
+- Portfolio Published
+- Cross-Game Master
+- Godmode Unlocked
+
+**Example**:
+```
+┌────────────────────────────────────────┐
+│ ACHIEVEMENTS (6 / 24)                  │
+├────────────────────────────────────────┤
+│ [🎯 First Build]  [🔥 7-Day]  [🏆 Boss] │
+│ [📚 Portfolio]    [🎓 Master]  [🔒]     │
+└────────────────────────────────────────┘
+```
+
+#### 8. Godmode Gate
+
+**Location**: Below achievements
+
+**Shows**:
+- Large animated ring (locked state)
+- Godmode progress percentage
+- Remaining conditions to unlock (1–5)
+- Final unlock button (when 100% complete)
+
+**Specs**:
+- Ring size: 220px diameter
+- Ring thickness: 14px
+- Gradient: Dark (locked) → Gold (unlocking)
+- Center text: "Godmode Gate" + "X% Complete"
+- Font: Space Grotesk, 18px, bold
+- Background: Neural Navy (#0F172A) section with 10% opacity white card
+
+**Unlocking conditions checklist**:
+- [✓] XP Accumulation (100,000 XP)
+- [ ] Level 6+ Final Bosses (3/5 games)
+- [ ] Public Deployment (Portfolio GitHub)
+- [ ] Authority Review (Pending human review)
+- [ ] Ascension Seal (Not yet awarded)
+
+**Lock animation**:
+- Ring pulses slowly (1.5s cycle) when locked
+- Ring fills smoothly when condition met
+- Gold glow intensifies as % increases
+
+**Example**:
+```
+┌────────────────────────────────────────┐
+│ GODMODE GATE (24% Complete)            │
+│        ◉─────────────────────◉         │
+│   24% (6,240 / 10,500 XP req)          │
+├────────────────────────────────────────┤
+│ REQUIREMENTS:                          │
+│ [✓] XP: 6,240 / 10,500                 │
+│ [✓] Final Boss: 3 / 5 games            │
+│ [ ] Portfolio: Pending                 │
+│ [ ] Authority Review: Not submitted     │
+│ [ ] Ascension Seal: Locked             │
+└────────────────────────────────────────┘
+```
+
+#### 9. Primary CTA
+
+**Location**: Below Godmode gate
+
+**Shows**:
+- Primary button: "Enter Games Hub"
+- Secondary button: "View Leaderboard"
+
+**Specs**:
+- Button 1: Full-width, CTA gradient, 48px height, Inter 16px bold white
+- Button 2: Full-width, secondary style, 44px height, Inter 14px Neural Navy
+- Gap: 12px between buttons
+- Padding: 20px section
+
+### Micro-Interactions
+
+| Event              | UI Behavior                                 | Duration | Purpose                       |
+| ------------------ | ------------------------------------------- | -------- | ----------------------------- |
+| **XP gain**        | Level ring pulses (scale 1.1)              | 1s       | Celebrate progress            |
+| **Level up**       | Ring flashes (3x), screen brightens        | 2s       | Major achievement milestone   |
+| **Power activated**| Power badge appears, pulses                 | 0.8s     | Confirm activation            |
+| **Power ends**     | Power badge fades out                      | 1s       | Subtle notification           |
+| **Streak saved**   | Flame icon sparkles, multiplier glows      | 1.2s     | Reward consistency            |
+| **Godmode unlock** | Ring fills gold, entire section glows      | 3s       | Transcendent moment           |
+| **Achievement**    | Badge pops in with scale + rotate          | 0.6s     | Social proof celebration      |
+| **Hover profile**  | Card lifts (scale 1.02), shadow deepens    | 0.2s     | Interaction readiness         |
+
+### Profile Responsive Behavior
+
+**Mobile (< 768px)**:
+- Avatar: 100px (reduced from 120px)
+- Level ring: 140px (reduced from 180px)
+- Components: Stack vertically, full width with 16px padding
+- Font sizes: -2px all text
+- Game rows: Single column layout
+- Achievement grid: 2 columns
+
+**Tablet (768px–1024px)**:
+- Avatar: 110px
+- Level ring: 160px
+- Components: 80% max-width, centered
+- Font sizes: Standard
+- Game rows: Can expand horizontally if needed
+- Achievement grid: 3 columns
+
+**Desktop (1024px+)**:
+- Avatar: 120px
+- Level ring: 180px
+- Components: 90% max-width (max 900px), centered
+- Font sizes: Standard
+- Game rows: 2-column layout (game info + progress)
+- Achievement grid: 4 columns
+
+### Profile Data Model
+
+**Player profile object**:
+```json
+{
+  "id": "user_id",
+  "name": "SanjayS",
+  "avatar": "avatar_url",
+  "totalXP": 12480,
+  "currentRank": "Hacker",
+  "rankXP": 12480,
+  "rankXPRequired": 26000,
+  "streak": 14,
+  "streakMultiplier": 1.5,
+  "activePowerUps": [
+    {
+      "id": "power_1",
+      "name": "Memory Lock",
+      "icon": "🧠",
+      "remainingTime": 503000, // ms
+      "gradient": "linear-gradient(135deg, #7B3FE4, #2A8CFF)"
+    }
+  ],
+  "games": [
+    {
+      "gameId": "game_1",
+      "name": "Prompt Architect",
+      "level": 3,
+      "levelXP": 12480,
+      "levelXPRequired": 26000,
+      "rank": "Hacker",
+      "icon": "🎯"
+    }
+  ],
+  "skillTrees": {
+    "mind": { unlocked: 6, total: 12 },
+    "systems": { unlocked: 4, total: 10 },
+    "output": { unlocked: 3, total: 8 },
+    "meta": { unlocked: 2, total: 6 }
+  },
+  "achievements": [
+    {
+      "id": "ach_1",
+      "title": "First Build",
+      "icon": "🎯",
+      "unlockedAt": "2025-12-15T10:30:00Z",
+      "locked": false
+    }
+  ],
+  "godmodeProgress": {
+    "percentage": 24,
+    "xpAccumulated": 6240,
+    "xpRequired": 10500,
+    "conditions": {
+      "xpAccumulation": true,
+      "finalBosses": { completed: 3, required: 5 },
+      "publicDeployment": false,
+      "authorityReview": false,
+      "ascensionSeal": false
+    }
+  }
+}
+```
+
+### CSS Variables
+
+```css
+--profile-avatar-size: 120px;
+--profile-avatar-mobile: 100px;
+--profile-avatar-border: 3px;
+
+--profile-level-ring-size: 180px;
+--profile-level-ring-mobile: 140px;
+--profile-level-ring-thickness: 12px;
+--profile-level-ring-glow: 0 0 30px rgba(42, 140, 255, 0.4);
+
+--profile-godmode-ring-size: 220px;
+--profile-godmode-ring-thickness: 14px;
+
+--profile-card-padding: 20px;
+--profile-card-padding-mobile: 16px;
+--profile-card-radius: 8px;
+--profile-card-gap: 12px;
+
+--profile-section-spacing: 24px;
+--profile-section-spacing-mobile: 16px;
+
+--power-badge-height: 44px;
+--power-badge-padding: 8px 16px;
+--power-badge-radius: 6px;
+
+--achievement-badge-size: 140px;
+--achievement-badge-size-mobile: 120px;
+--achievement-badge-radius: 8px;
+```
+
+### Validation Checklist
+
+- [ ] Avatar displays with game-primary gradient border
+- [ ] Level ring animates smoothly on load
+- [ ] XP counter uses JetBrains Mono, correct values
+- [ ] Streak flame changes color at each tier
+- [ ] Active power-ups show countdown timer
+- [ ] Power-up badges fade when 30s remaining
+- [ ] Games panel shows correct level/rank/progress
+- [ ] Skill tree icons are clickable, open full view
+- [ ] Achievements display correctly (locked/unlocked)
+- [ ] Godmode gate fills to correct percentage
+- [ ] Godmode conditions list updates in real-time
+- [ ] All micro-interactions trigger correctly
+- [ ] Profile is fully responsive at all breakpoints
+- [ ] Mobile: No horizontal scroll, tappable CTAs (≥44px)
+- [ ] Tablet/Desktop: Proper spacing, readable fonts
+
+---
+
+## 18. Component naming conventions
+
+## 19. Folder architecture for developers
 
 - Component naming conventions
 - Folder architecture for developers

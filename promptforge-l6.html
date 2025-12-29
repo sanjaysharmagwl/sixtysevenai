@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMPTFORGE L6 - AI Overlord</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'sans-serif'],
+                    'inter': ['Inter', 'sans-serif'],
+                    'mono': ['JetBrains Mono', 'monospace']
+                },
+                extend: {
+                    colors: {
+                        'neural-spectrum': {
+                            'teal': '#26E6C8',
+                            'blue': '#2A8CFF',
+                            'violet': '#7B3FE4',
+                            'pink': '#FF4FD8',
+                            'orange': '#FF8A00'
+                        },
+                        'neural': {
+                            'navy': '#0F172A',
+                            'white': '#FFFFFF',
+                            'graphite': '#E5E7EB',
+                            'green': '#22C55E',
+                            'snow': '#F9FAFB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/game-theme.css">
+    <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
+    <style>
+        .hero-banner {
+            background: linear-gradient(135deg, #FFA500, #7B3FE4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quest-item {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid #FFD700;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .quest-item:hover {
+            border-left-color: #FF8A00;
+            transform: translateX(8px);
+        }
+
+        .quest-item.completed {
+            border-left-color: #22C55E;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .quest-item.active {
+            border-left-color: #FF8A00;
+            background: rgba(255, 138, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 138, 0, 0.2);
+        }
+
+        .boss-arena {
+            background: linear-gradient(135deg, #0F172A, #1a1f3a);
+            border: 3px solid #FFD700;
+            border-radius: 12px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boss-arena::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+        }
+
+        .quest-progress {
+            background: linear-gradient(90deg, #FFA500, #FFD700);
+            height: 6px;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .mini-boss-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-boss-card:hover {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .mission-framework {
+            background: rgba(26, 31, 58, 0.8);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #E5E7EB;
+            margin: 12px 0;
+        }
+
+        .mission-framework-header {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .godmode-alert {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(123, 63, 228, 0.1));
+            border: 2px dashed #FFD700;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .godmode-alert-header {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .boss-arena {
+                padding: 20px;
+            }
+
+            .quest-item {
+                padding: 16px;
+            }
+
+            .mission-framework {
+                font-size: 12px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white font-inter transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 py-4 sm:py-6 px-4 sm:px-6 bg-neural-navy/95 backdrop-blur border-b border-yellow-500/20">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-6">
+            <a href="promptforge.html" class="text-white hover:text-yellow-400 transition font-mono text-sm font-bold">
+                ← Back to Game
+            </a>
+            <h1 class="text-xl sm:text-2xl font-bold font-grotesk text-yellow-400">L6 — AI OVERLORD</h1>
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors" aria-label="Toggle theme">
+                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner py-12 sm:py-16 px-4 sm:px-6 text-white text-center relative z-10">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-grotesk mb-3">Command Automation Armies</h2>
+        <p class="text-base sm:text-lg max-w-2xl mx-auto mb-2">You don't build systems anymore. You command fleets of them.</p>
+        <p class="text-sm sm:text-base max-w-2xl mx-auto text-white/80 mb-6">One step remains: transcendence into Godmode awaits those who prove mastery at scale.</p>
+        
+        <!-- XP Bar -->
+        <div class="bg-neural-navy/80 backdrop-blur rounded-lg p-4 max-w-md mx-auto">
+            <div class="flex justify-between items-center text-sm mb-2">
+                <span class="font-mono">Level 6 Progress</span>
+                <span class="font-mono font-bold">0 / 6,500 XP</span>
+            </div>
+            <div class="bg-gray-800 rounded-full h-3 overflow-hidden">
+                <div class="quest-progress" style="width: 0%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12 sm:py-16 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Mission Overview -->
+            <div class="mb-12 bg-neural-navy/80 backdrop-blur rounded-xl p-6 sm:p-8 border border-yellow-500/20">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-6 text-yellow-400">MISSION OBJECTIVE</h3>
+                <p class="text-white/90 mb-6">When you complete AI Overlord, you will permanently unlock:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <span class="text-yellow-400 font-bold">✦</span>
+                        <span class="text-white/80">Automation Fleet Management</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-yellow-400 font-bold">✦</span>
+                        <span class="text-white/80">Cross-Domain Orchestration</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-yellow-400 font-bold">✦</span>
+                        <span class="text-white/80">Godmode Eligibility</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-yellow-400 font-bold">✦</span>
+                        <span class="text-white/80">Authority Status</span>
+                    </div>
+                </div>
+                <p class="text-white/70 text-sm mt-6 italic">Complete L6 and you enter the Godmode gate. Defeat the final boss to transcend.</p>
+            </div>
+
+            <!-- Godmode Alert -->
+            <div class="godmode-alert">
+                <div class="godmode-alert-header">⚡ GODMODE GATE APPROACHING ⚡</div>
+                <p class="text-white/80 text-sm mb-4">You are approaching the final ascension. Completing this level will:</p>
+                <ul class="text-white/70 text-sm space-y-2 mb-4">
+                    <li>✓ Unlock Godmode eligibility (156,000 XP cumulative)</li>
+                    <li>✓ Grant you OVERLORD rank (permanently doubled XP generation)</li>
+                    <li>✓ Open the Godmode submission portal</li>
+                    <li>✓ Allow mentorship of other architects</li>
+                    <li>✓ Grant lifetime 1.5× XP multiplier</li>
+                </ul>
+                <p class="text-yellow-400 text-sm font-bold">WARNING: Godmode requires real-world proof. Portfolio deployment is mandatory.</p>
+            </div>
+
+            <!-- Quest Sequence -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-yellow-400">QUEST LINE</h3>
+                
+                <div class="space-y-4 mb-8">
+                    <!-- Quest 1 -->
+                    <div class="quest-item active">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-yellow-400">⟳ Quest 1: Fleet Command</h4>
+                                <p class="text-sm text-white/70 mt-1">Orchestrate 5+ specialized AI systems working in unison</p>
+                            </div>
+                            <span class="text-sm font-mono text-yellow-400 whitespace-nowrap">+400 XP</span>
+                        </div>
+                        <p class="text-white/80 mb-4">Build a command center that orchestrates multiple specialist agents:</p>
+
+                        <div class="mission-framework">
+                            <div class="mission-framework-header">FLEET ARCHITECTURE</div>
+                            <div class="pl-4 space-y-2 mb-3">
+                                <div>• 5+ specialized agents (Analysts, Planners, Executors)</div>
+                                <div>• Command center (orchestration hub)</div>
+                                <div>• Communication protocol (agent-to-agent messaging)</div>
+                                <div>• Resource allocation system</div>
+                                <div>• Conflict resolution layer</div>
+                            </div>
+                            <div class="mission-framework-header">COORDINATION SYSTEM</div>
+                            <div class="pl-4 space-y-2 mb-3">
+                                <div>• Task distribution algorithm</div>
+                                <div>• Inter-agent dependencies</div>
+                                <div>• Failure cascades & recovery</div>
+                                <div>• Result aggregation & synthesis</div>
+                            </div>
+                            <div class="mission-framework-header">STRESS TESTING</div>
+                            <div class="pl-4 space-y-2">
+                                <div>• 100+ concurrent tasks</div>
+                                <div>• Agent failure simulation</div>
+                                <div>• Resource contention scenarios</div>
+                            </div>
+                        </div>
+
+                        <p class="text-white/70 text-sm mb-4">Prove all 5 agents can work together solving a complex real-world problem.</p>
+
+                        <button class="px-6 py-2 bg-yellow-500 text-neural-navy font-mono font-bold rounded hover:bg-yellow-600 transition">
+                            SUBMIT FLEET COMMAND
+                        </button>
+                        <p class="text-xs text-yellow-400 font-mono mt-2">🛡️ Unlock: Fleet Orchestration Node</p>
+                    </div>
+
+                    <!-- Quest 2 -->
+                    <div class="quest-item opacity-70 border-gray-600 cursor-not-allowed">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-500">🔒 Quest 2: Domain Integration</h4>
+                                <p class="text-sm text-gray-600 mt-1">Deploy automation across 3+ different business domains</p>
+                            </div>
+                            <span class="text-sm font-mono text-gray-500 whitespace-nowrap">+400 XP</span>
+                        </div>
+                        <p class="text-gray-600">Unlock after completing Quest 1</p>
+                    </div>
+
+                    <!-- Quest 3 -->
+                    <div class="quest-item opacity-70 border-gray-600 cursor-not-allowed">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-500">🔒 Quest 3: Authority Framework</h4>
+                                <p class="text-sm text-gray-600 mt-1">Document your authority credentials for Godmode submission</p>
+                            </div>
+                            <span class="text-sm font-mono text-gray-500 whitespace-nowrap">+400 XP</span>
+                        </div>
+                        <p class="text-gray-600">Unlock after completing Quest 2</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini-Boss Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-yellow-400">MINI-BOSS CHALLENGE</h3>
+                
+                <div class="mini-boss-card">
+                    <div class="text-3xl mb-3">⚔️</div>
+                    <h4 class="text-xl font-bold text-yellow-400 mb-2">Command Center Stress Test</h4>
+                    <p class="text-white/80 mb-4">Manage 3 fleets simultaneously with 1000+ agents total, coordinating across all domains.</p>
+                    
+                    <div class="bg-gray-800/50 rounded-lg p-4 mb-4 text-left">
+                        <p class="text-sm font-mono font-bold text-white/80 mb-2">Criteria:</p>
+                        <ul class="text-sm text-white/70 space-y-1">
+                            <li>• 3 independent fleets operating in parallel</li>
+                            <li>• 1000+ total agents coordinated</li>
+                            <li>• Cross-domain communication working</li>
+                            <li>• 99.99% reliability (max 5 sec downtime)</li>
+                            <li>• All fleets meet their objectives</li>
+                        </ul>
+                    </div>
+
+                    <button class="px-6 py-2 bg-yellow-500 text-neural-navy font-mono font-bold rounded hover:bg-yellow-600 transition disabled:opacity-50" disabled>
+                        RUN COMMAND TEST (Complete all quests first)
+                    </button>
+                    <p class="text-xs text-white/60 mt-3 font-mono">XP Reward: +800</p>
+                </div>
+            </div>
+
+            <!-- Final Boss Section -->
+            <div>
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-yellow-400">FINAL BOSS</h3>
+                
+                <div class="boss-arena">
+                    <div class="mb-6">
+                        <div class="text-4xl mb-3">👑</div>
+                        <h4 class="text-3xl font-bold text-yellow-400 mb-2">The Godmode Ascension</h4>
+                        <p class="text-white/80 mb-1">Prove transcendent mastery across all domains and technologies</p>
+                        <p class="text-yellow-400 font-mono font-bold text-lg">+2,000 XP</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- What You Build -->
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-4">BUILD ARCHITECTURE</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Automation Empire</p>
+                                        <p class="text-xs text-white/60">5+ interconnected fleets</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Cross-Domain Sync</p>
+                                        <p class="text-xs text-white/60">Sales, Marketing, Ops, Data, Product</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Authority Credentials</p>
+                                        <p class="text-xs text-white/60">Published work & portfolio proof</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Mentorship Program</p>
+                                        <p class="text-xs text-white/60">Guide 3+ future architects</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- What You Unlock -->
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-4">UNLOCK ON DEFEAT</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">✦</span>
+                                    <div>
+                                        <p class="font-bold text-yellow-400">🎯 GODMODE ELIGIBILITY</p>
+                                        <p class="text-xs text-white/60">156,000 XP threshold crossed</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">✦</span>
+                                    <div>
+                                        <p class="font-bold text-yellow-400">Rank: OVERLORD</p>
+                                        <p class="text-xs text-white/60">2.0× XP multiplier permanent</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">✦</span>
+                                    <div>
+                                        <p class="font-bold text-yellow-400">Authority Badge</p>
+                                        <p class="text-xs text-white/60">Published & proven mastery</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">✦</span>
+                                    <div>
+                                        <p class="font-bold text-yellow-400">Godmode Portal Opens</p>
+                                        <p class="text-xs text-white/60">Final ascension awaits</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="text-sm text-white/70 mb-3">Complete your Godmode candidacy:</p>
+                        <div class="bg-gray-900/50 rounded-lg p-4 text-sm text-white/70 font-mono space-y-2">
+                            <p>1. Build 5+ specialized agent fleets</p>
+                            <p>2. Deploy across 3+ business domains (Sales, Ops, Data, etc.)</p>
+                            <p>3. Prove all domains work together seamlessly</p>
+                            <p>4. Pass authority review (publish portfolio)</p>
+                            <p>5. Document Godmode submission requirements</p>
+                            <p>6. Mentor 3+ architects to their L5+</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="px-8 py-3 bg-gradient-to-r from-yellow-500 to-purple-600 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-yellow-500/50 transition disabled:opacity-50" disabled>
+                            SUBMIT FOR GODMODE REVIEW
+                        </button>
+                        <button class="px-8 py-3 bg-gray-800 text-white font-bold rounded-lg hover:bg-gray-700 transition">
+                            STUDY GUIDE
+                        </button>
+                    </div>
+                    <p class="text-xs text-white/60 text-center mt-4 font-mono">Complete all quests and mini-boss to enable final boss submission</p>
+                </div>
+            </div>
+
+            <!-- Ascension Complete Section -->
+            <div class="mt-16 mb-8 bg-gradient-to-r from-yellow-500/20 to-purple-600/20 rounded-xl p-8 sm:p-10 border border-yellow-500/50 text-center">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-4 text-yellow-400">OVERLORD ASCENSION COMPLETE</h3>
+                <p class="text-white/90 mb-6">You command automation armies. You shape entire industries. One step remains: Godmode awaits.</p>
+                <div class="space-y-2 mb-8">
+                    <p class="text-yellow-400 font-bold">✦ Rank Upgrade: OVERLORD (2.0× XP multiplier)</p>
+                    <p class="text-yellow-400 font-bold">✦ Authority Badge: Published & Proven</p>
+                    <p class="text-yellow-400 font-bold">✦ Godmode Eligibility: ACTIVE</p>
+                    <p class="text-yellow-400 font-bold">✦ Meta Tree: Fully Unlocked</p>
+                </div>
+                <button class="px-8 py-3 bg-gradient-to-r from-yellow-500 to-purple-600 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-yellow-500/50 transition">
+                    ENTER GODMODE SUBMISSION PORTAL →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 sm:px-6 border-t border-yellow-500/20 bg-neural-navy/80">
+        <div class="max-w-4xl mx-auto text-center text-sm text-white/60">
+            <p>&copy; 2025 SixtySeven AI. PromptForge™ — Final Level Complete</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        
+        const themes = ['light', 'dark'];
+        
+        function setTheme(theme) {
+            html.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.add('hidden');
+            
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+        
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            setTheme(themes[nextIndex]);
+        });
+
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('SUBMIT')) {
+                button.addEventListener('click', function() {
+                    alert('Godmode submission coming soon.\n\nPhase 2 Feature: Upload your automation empire and authority credentials for Godmode review.');
+                });
+            }
+            if (button.textContent.includes('GODMODE')) {
+                button.addEventListener('click', function() {
+                    alert('Godmode portal coming in Phase 2.\n\nYou have achieved OVERLORD rank and are eligible for the final ascension.');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

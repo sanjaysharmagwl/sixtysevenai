@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMPTFORGE - Command Engineering Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'sans-serif'],
+                    'inter': ['Inter', 'sans-serif'],
+                    'mono': ['JetBrains Mono', 'monospace']
+                },
+                extend: {
+                    colors: {
+                        'neural-spectrum': {
+                            'teal': '#26E6C8',
+                            'blue': '#2A8CFF',
+                            'violet': '#7B3FE4',
+                            'pink': '#FF4FD8',
+                            'orange': '#FF8A00'
+                        },
+                        'neural': {
+                            'navy': '#0F172A',
+                            'white': '#FFFFFF',
+                            'graphite': '#E5E7EB',
+                            'green': '#22C55E',
+                            'snow': '#F9FAFB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/game-theme.css">
+    <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
+    <style>
+        .promptforge-gradient {
+            background: linear-gradient(135deg, #26E6C8, #2A8CFF);
+        }
+
+        .level-ring {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 12px solid;
+            border-image: linear-gradient(90deg, #26E6C8, #2A8CFF) 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: rgba(38, 230, 200, 0.1);
+            box-shadow: 0 0 30px rgba(38, 230, 200, 0.4);
+        }
+
+        .level-ring-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 32px;
+            font-weight: bold;
+            color: #26E6C8;
+        }
+
+        .level-ring-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #26E6C8;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .quest-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid rgba(38, 230, 200, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .quest-card:hover {
+            border-color: #26E6C8;
+            box-shadow: 0 0 20px rgba(38, 230, 200, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .quest-card.completed {
+            border-color: #22C55E;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .quest-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: rgba(229, 231, 235, 0.2);
+        }
+
+        .boss-card {
+            background: linear-gradient(135deg, #0F172A, rgba(26, 23, 42, 0.8));
+            border: 3px solid #FF8A00;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 0 40px rgba(255, 138, 0, 0.3);
+        }
+
+        .boss-card:hover {
+            box-shadow: 0 0 60px rgba(255, 138, 0, 0.6);
+            transform: scale(1.02);
+        }
+
+        .skill-tree-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(38, 230, 200, 0.3);
+        }
+
+        .skill-tree-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(38, 230, 200, 0.4);
+            border-color: #26E6C8;
+        }
+
+        .level-unlock {
+            animation: levelUnlock 0.6s ease-out;
+        }
+
+        @keyframes levelUnlock {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .xp-gain-animation {
+            animation: xpGain 1s ease-out forwards;
+        }
+
+        @keyframes xpGain {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+        }
+
+        .level-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .level-ring {
+                width: 140px;
+                height: 140px;
+                border-width: 10px;
+            }
+
+            .level-ring-value {
+                font-size: 24px;
+            }
+
+            .quest-card {
+                padding: 16px;
+            }
+
+            .boss-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white font-inter transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 py-4 sm:py-6 px-4 sm:px-6 bg-neural-navy/95 backdrop-blur border-b border-neural-spectrum-teal/20">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-6 sm:gap-12">
+            <!-- Logo -->
+            <div class="logo-container flex-shrink-0">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-12 sm:h-16 w-auto">
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex gap-8 items-center text-sm font-medium flex-shrink-0">
+                <a href="gamehub.html" class="text-white hover:text-neural-spectrum-teal transition">🎮 Games</a>
+                <a href="powerup.html" class="text-white hover:text-neural-spectrum-teal transition">⚡ Powers</a>
+                <a href="leaderboard.html" class="text-white hover:text-neural-spectrum-teal transition">🏆 Leaderboard</a>
+                <a href="profile.html" class="text-white hover:text-neural-spectrum-teal transition">👤 Profile</a>
+            </div>
+
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors" aria-label="Toggle theme">
+                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="promptforge-gradient min-h-[50vh] flex items-center justify-center px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto w-full text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-grotesk leading-tight text-white mb-4 sm:mb-6">
+                PROMPTFORGE™
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 font-inter">
+                Forge your command power over AI. Master the art of prompt engineering across 7 ascension ranks.
+            </p>
+
+            <!-- Quick Stats -->
+            <div class="bg-neural-navy/80 backdrop-blur rounded-xl p-6 sm:p-8 border border-neural-spectrum-teal/30 max-w-md mx-auto">
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-neural-spectrum-teal font-mono">L3</div>
+                        <div class="text-xs sm:text-sm text-white/60">Current Level</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-neural-spectrum-orange font-mono">6.2K</div>
+                        <div class="text-xs sm:text-sm text-white/60">XP Earned</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-neural-spectrum-blue font-mono">4</div>
+                        <div class="text-xs sm:text-sm text-white/60">Quests Done</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Game Interface -->
+    <section class="py-12 sm:py-16 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <!-- Game State Overview -->
+            <div class="bg-neural-navy/80 backdrop-blur rounded-xl p-6 sm:p-8 border border-neural-spectrum-teal/20 mb-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Rank Display -->
+                    <div class="text-center">
+                        <h3 class="text-sm font-mono text-white/60 uppercase mb-2">Rank</h3>
+                        <p class="text-2xl sm:text-3xl font-bold text-neural-spectrum-teal font-grotesk">Command Hacker</p>
+                        <p class="text-xs sm:text-sm text-white/60 mt-1">Signal Rookie → Command Hacker</p>
+                    </div>
+
+                    <!-- Current Level Ring -->
+                    <div class="flex justify-center">
+                        <div class="level-ring">
+                            <div class="level-ring-value">3</div>
+                            <div class="level-ring-label">Level</div>
+                        </div>
+                    </div>
+
+                    <!-- XP Progress -->
+                    <div>
+                        <h3 class="text-sm font-mono text-white/60 uppercase mb-2">XP Progress</h3>
+                        <div class="bg-gray-800 rounded-lg h-2 overflow-hidden mb-2">
+                            <div class="bg-gradient-to-r from-neural-spectrum-teal to-neural-spectrum-orange h-full" style="width: 62%;"></div>
+                        </div>
+                        <p class="text-xs sm:text-sm font-mono text-white/80">6,240 / 11,000 XP</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs: Levels / Skill Trees -->
+            <div class="flex gap-4 mb-8 border-b border-neural-spectrum-teal/20 overflow-x-auto">
+                <button class="tab-button tab-active px-4 py-3 font-mono text-sm font-bold text-neural-spectrum-teal border-b-2 border-neural-spectrum-teal whitespace-nowrap" data-tab="levels">
+                    📊 LEVELS
+                </button>
+                <button class="tab-button px-4 py-3 font-mono text-sm font-bold text-white/60 border-b-2 border-transparent hover:text-white whitespace-nowrap" data-tab="trees">
+                    🧠 SKILL TREES
+                </button>
+                <button class="tab-button px-4 py-3 font-mono text-sm font-bold text-white/60 border-b-2 border-transparent hover:text-white whitespace-nowrap" data-tab="quests">
+                    ⚡ MY QUESTS
+                </button>
+            </div>
+
+            <!-- LEVELS TAB -->
+            <div id="levels-tab" class="tab-content">
+                <div class="level-map">
+                    <!-- L1 -->
+                    <div class="level-card bg-neural-navy/80 backdrop-blur rounded-xl p-6 border-2 border-neural-spectrum-teal cursor-pointer hover:border-neural-spectrum-orange transition" data-level="1">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-teal">L1</h3>
+                            <span class="text-sm font-mono text-green-400">✓ COMPLETE</span>
+                        </div>
+                        <p class="text-white/80 font-inter mb-2">Signal Rookie</p>
+                        <p class="text-xs text-white/60 mb-4">Learn to speak to machines</p>
+                        <div class="bg-gray-800 rounded h-1.5 overflow-hidden mb-2">
+                            <div class="bg-neural-spectrum-green h-full" style="width: 100%;"></div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60">700 XP earned</p>
+                    </div>
+
+                    <!-- L2 -->
+                    <div class="level-card bg-neural-navy/80 backdrop-blur rounded-xl p-6 border-2 border-neural-spectrum-teal cursor-pointer hover:border-neural-spectrum-orange transition" data-level="2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-teal">L2</h3>
+                            <span class="text-sm font-mono text-green-400">✓ COMPLETE</span>
+                        </div>
+                        <p class="text-white/80 font-inter mb-2">Command User</p>
+                        <p class="text-xs text-white/60 mb-4">Get reliable outputs every time</p>
+                        <div class="bg-gray-800 rounded h-1.5 overflow-hidden mb-2">
+                            <div class="bg-neural-spectrum-green h-full" style="width: 100%;"></div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60">900 XP earned</p>
+                    </div>
+
+                    <!-- L3 -->
+                    <div class="level-card bg-neural-navy/80 backdrop-blur rounded-xl p-6 border-2 border-neural-spectrum-teal cursor-pointer hover:border-neural-spectrum-orange transition level-unlock" data-level="3">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-teal">L3</h3>
+                            <span class="text-sm font-mono text-yellow-400">▶ ACTIVE</span>
+                        </div>
+                        <p class="text-white/80 font-inter mb-2">Command Hacker</p>
+                        <p class="text-xs text-white/60 mb-4">Bend AI behavior</p>
+                        <div class="bg-gray-800 rounded h-1.5 overflow-hidden mb-2">
+                            <div class="bg-gradient-to-r from-neural-spectrum-teal to-neural-spectrum-orange h-full" style="width: 62%;"></div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60">6,240 / 11,000 XP</p>
+                    </div>
+
+                    <!-- L4 -->
+                    <div class="level-card bg-neural-navy/80 backdrop-blur rounded-xl p-6 border-2 border-neural-spectrum-blue cursor-pointer hover:border-neural-spectrum-orange transition" data-level="4">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-blue">L4</h3>
+                            <span class="text-sm font-mono text-white/60">⟳ AVAILABLE</span>
+                        </div>
+                        <p class="text-white/80 font-inter mb-2">Prompt Engineer</p>
+                        <p class="text-xs text-white/60 mb-4">Build multi-agent systems</p>
+                        <div class="bg-gray-800 rounded h-1.5 overflow-hidden mb-2">
+                            <div class="bg-gradient-to-r from-neural-spectrum-blue to-neural-spectrum-violet h-full" style="width: 0%;"></div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60">Start Level 4</p>
+                    </div>
+
+                    <!-- L5 -->
+                    <div class="level-card bg-neural-navy/80 backdrop-blur rounded-xl p-6 border-2 border-neural-spectrum-violet cursor-pointer hover:border-neural-spectrum-orange transition" data-level="5">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-violet">L5</h3>
+                            <span class="text-sm font-mono text-white/60">⟳ AVAILABLE</span>
+                        </div>
+                        <p class="text-white/80 font-inter mb-2">Command Architect</p>
+                        <p class="text-xs text-white/60 mb-4">Design AI workflows</p>
+                        <div class="bg-gray-800 rounded h-1.5 overflow-hidden mb-2">
+                            <div class="bg-gradient-to-r from-neural-spectrum-violet to-neural-spectrum-pink h-full" style="width: 0%;"></div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60">Start Level 5</p>
+                    </div>
+
+                    <!-- L6 -->
+                    <div class="level-card bg-neural-navy/80 backdrop-blur rounded-xl p-6 border-2 border-neural-spectrum-pink cursor-pointer hover:border-neural-spectrum-orange transition" data-level="6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-pink">L6</h3>
+                            <span class="text-sm font-mono text-white/60">⟳ AVAILABLE</span>
+                        </div>
+                        <p class="text-white/80 font-inter mb-2">Command Overlord</p>
+                        <p class="text-xs text-white/60 mb-4">Monetize AI power</p>
+                        <div class="bg-gray-800 rounded h-1.5 overflow-hidden mb-2">
+                            <div class="bg-gradient-to-r from-neural-spectrum-pink to-neural-spectrum-orange h-full" style="width: 0%;"></div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60">Start Level 6</p>
+                    </div>
+
+                    <div class="level-card bg-neural-navy/60 backdrop-blur rounded-xl p-6 border-2 border-orange-500 opacity-50 cursor-not-allowed" data-level="7">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold font-grotesk text-gray-500">L7</h3>
+                            <span class="text-sm font-mono text-orange-500">👑 GODMODE</span>
+                        </div>
+                        <p class="text-gray-500 font-inter mb-2">Command Godmode</p>
+                        <p class="text-xs text-gray-600">Define new paradigms</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SKILL TREES TAB -->
+            <div id="trees-tab" class="tab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Mind Tree -->
+                    <div class="bg-neural-navy/80 backdrop-blur rounded-xl p-6 sm:p-8 border border-neural-spectrum-teal/20">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="skill-tree-icon bg-gradient-to-br from-blue-600 to-blue-700">🧠</div>
+                            <div>
+                                <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-blue">Mind Tree</h3>
+                                <p class="text-xs text-white/60">Thinking models & clarity</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-gray-800/50 rounded border border-neural-spectrum-blue/20">
+                                <p class="text-sm font-mono text-neural-spectrum-blue">✓ Prompt Logic</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-neural-spectrum-blue/20">
+                                <p class="text-sm font-mono text-neural-spectrum-blue">✓ Instruction Precision</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-neural-spectrum-blue/20">
+                                <p class="text-sm font-mono text-neural-spectrum-blue">✓ Reasoning Control</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-gray-600/30 opacity-50">
+                                <p class="text-sm font-mono text-gray-500">🔒 Meta Prompting</p>
+                            </div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60 mt-4">3/4 Nodes Unlocked</p>
+                    </div>
+
+                    <!-- Systems Tree -->
+                    <div class="bg-neural-navy/80 backdrop-blur rounded-xl p-6 sm:p-8 border border-neural-spectrum-teal/20">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="skill-tree-icon bg-gradient-to-br from-purple-600 to-purple-700">⚙️</div>
+                            <div>
+                                <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-violet">Systems Tree</h3>
+                                <p class="text-xs text-white/60">Workflows & automation</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-gray-800/50 rounded border border-neural-spectrum-violet/20">
+                                <p class="text-sm font-mono text-neural-spectrum-violet">✓ Prompt OS</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-neural-spectrum-violet/20">
+                                <p class="text-sm font-mono text-neural-spectrum-violet">✓ Multi-Agent Chains</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-gray-600/30 opacity-50">
+                                <p class="text-sm font-mono text-gray-500">🔒 Memory Control</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-gray-600/30 opacity-50">
+                                <p class="text-sm font-mono text-gray-500">🔒 Error Healing</p>
+                            </div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60 mt-4">2/4 Nodes Unlocked</p>
+                    </div>
+
+                    <!-- Output Tree -->
+                    <div class="bg-neural-navy/80 backdrop-blur rounded-xl p-6 sm:p-8 border border-neural-spectrum-teal/20">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="skill-tree-icon bg-gradient-to-br from-orange-600 to-orange-700">⚡</div>
+                            <div>
+                                <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-orange">Output Tree</h3>
+                                <p class="text-xs text-white/60">Speed & production</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-gray-800/50 rounded border border-neural-spectrum-orange/20">
+                                <p class="text-sm font-mono text-neural-spectrum-orange">✓ Speed Multipliers</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-gray-600/30 opacity-50">
+                                <p class="text-sm font-mono text-gray-500">🔒 Prompt Packs</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-gray-600/30 opacity-50">
+                                <p class="text-sm font-mono text-gray-500">🔒 Product Templates</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-gray-600/30 opacity-50">
+                                <p class="text-sm font-mono text-gray-500">🔒 Monetization</p>
+                            </div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60 mt-4">1/4 Nodes Unlocked</p>
+                    </div>
+
+                    <!-- Meta Tree -->
+                    <div class="bg-neural-navy/80 backdrop-blur rounded-xl p-6 sm:p-8 border border-neural-spectrum-teal/20">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="skill-tree-icon bg-gradient-to-br from-pink-600 to-pink-700">🛡️</div>
+                            <div>
+                                <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-pink">Meta Tree</h3>
+                                <p class="text-xs text-white/60">Power & progression</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-gray-800/50 rounded border border-neural-spectrum-pink/20">
+                                <p class="text-sm font-mono text-neural-spectrum-pink">✓ XP Boost</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-neural-spectrum-pink/20">
+                                <p class="text-sm font-mono text-neural-spectrum-pink">✓ Streak Shield</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-gray-600/30 opacity-50">
+                                <p class="text-sm font-mono text-gray-500">🔒 Godmode Gate</p>
+                            </div>
+                            <div class="p-3 bg-gray-800/50 rounded border border-gray-600/30 opacity-50">
+                                <p class="text-sm font-mono text-gray-500">🔒 Authority Badge</p>
+                            </div>
+                        </div>
+                        <p class="text-xs font-mono text-white/60 mt-4">2/4 Nodes Unlocked</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTS TAB -->
+            <div id="quests-tab" class="tab-content hidden">
+                <div class="space-y-6">
+                    <!-- L3 Active Quests -->
+                    <div>
+                        <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-teal mb-4">Level 3 Quests (In Progress)</h3>
+                        <div class="space-y-4">
+                            <!-- Quest 1 Complete -->
+                            <div class="quest-card completed">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-neural-spectrum-green">✓ Role Injection</h4>
+                                    <span class="text-sm font-mono text-neural-spectrum-green">+200 XP</span>
+                                </div>
+                                <p class="text-white/80 mb-2">Create role-switching prompt logic</p>
+                                <p class="text-xs text-white/60">Completed: Build prompts with Analyst, Creator, Critic, Optimizer roles</p>
+                            </div>
+
+                            <!-- Quest 2 Active -->
+                            <div class="quest-card">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-neural-spectrum-teal">⟳ Chain Control</h4>
+                                    <span class="text-sm font-mono text-neural-spectrum-orange">+200 XP</span>
+                                </div>
+                                <p class="text-white/80 mb-2">Build chained prompts where output becomes input</p>
+                                <p class="text-xs text-white/60 mb-4">Progress: 2/3 prompt chains created</p>
+                                <button class="px-4 py-2 bg-neural-spectrum-teal text-neural-navy font-mono text-sm rounded hover:bg-neural-spectrum-blue transition">
+                                    SUBMIT BUILD
+                                </button>
+                            </div>
+
+                            <!-- Quest 3 Locked -->
+                            <div class="quest-card locked">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-gray-500">🔒 Behavior Override</h4>
+                                    <span class="text-sm font-mono text-gray-500">+400 XP</span>
+                                </div>
+                                <p class="text-gray-600 mb-2">Create a "Behavior Lock" prompt</p>
+                                <p class="text-xs text-gray-600">Unlock after completing Chain Control</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- L3 Boss -->
+                    <div>
+                        <h3 class="text-xl font-bold font-grotesk text-neural-spectrum-orange mb-4">Level 3 Boss Challenge</h3>
+                        <div class="boss-card">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h4 class="text-2xl font-bold text-neural-spectrum-orange">🏆 Behavior Control Engine</h4>
+                                    <p class="text-sm text-white/70 mt-1">Final Boss for Level 3 Ascension</p>
+                                </div>
+                                <span class="text-lg font-mono text-neural-spectrum-orange">+1,200 XP</span>
+                            </div>
+                            <div class="bg-gray-800/40 rounded-lg p-4 mb-4 border border-gray-700/50">
+                                <p class="text-sm text-white/80 mb-3">Requirements (2/3 completed):</p>
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-neural-spectrum-green">✓</span>
+                                        <span class="text-white/70 text-sm">3 prompts built with different roles</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-neural-spectrum-green">✓</span>
+                                        <span class="text-white/70 text-sm">Error handling layer implemented</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-gray-500">◯</span>
+                                        <span class="text-white/70 text-sm">Memory persistence layer required</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="w-full px-6 py-3 bg-gradient-to-r from-neural-spectrum-orange to-neural-spectrum-pink text-white font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition disabled:opacity-50" disabled>
+                                SUBMIT FOR ASCENSION (Complete all requirements)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 sm:py-10 px-4 sm:px-6 border-t border-neural-spectrum-teal/20 bg-neural-navy/80">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-xs sm:text-sm text-white/60 font-inter">&copy; 2025 SixtySeven AI. PromptForge™ All rights reserved.</p>
+            <div class="flex gap-4 sm:gap-6 text-xs sm:text-sm">
+                <a href="gamehub.html" class="text-white/60 hover:text-neural-spectrum-teal transition">← Back to Games</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Tab System
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+
+                // Hide all tabs
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.add('hidden');
+                });
+
+                // Remove active state from all buttons
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('border-b-transparent');
+                });
+
+                // Show selected tab
+                document.getElementById(tabName + '-tab').classList.remove('hidden');
+
+                // Add active state to clicked button
+                this.classList.add('tab-active');
+                this.classList.add('border-b-neural-spectrum-teal');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        
+        const themes = ['light', 'dark'];
+        
+        function setTheme(theme) {
+            html.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.add('hidden');
+            
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+        
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            setTheme(themes[nextIndex]);
+        });
+
+        // Level Card Interaction
+        document.querySelectorAll('.level-card').forEach(card => {
+            const level = card.getAttribute('data-level');
+            const levelNum = parseInt(level);
+            
+            // Disable click on locked levels (L7)
+            if (levelNum > 6) {
+                return;
+            }
+
+            card.addEventListener('click', function() {
+                // Navigate to level detail page
+                switch(levelNum) {
+                    case 1:
+                        window.location.href = 'promptforge-l1.html';
+                        break;
+                    case 2:
+                        window.location.href = 'promptforge-l2.html';
+                        break;
+                    case 3:
+                        window.location.href = 'promptforge-level.html';
+                        break;
+                    case 4:
+                        window.location.href = 'promptforge-l4.html';
+                        break;
+                    case 5:
+                        window.location.href = 'promptforge-l5.html';
+                        break;
+                    case 6:
+                        window.location.href = 'promptforge-l6.html';
+                        break;
+                    default:
+                        console.log('Level ' + level + ' not yet available');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
