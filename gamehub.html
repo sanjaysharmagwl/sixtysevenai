@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub - sixtysevenai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white font-sans transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="absolute top-0 left-0 right-0 py-6 px-6 z-10">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <!-- Theme Toggle (Light / Dark / Game) -->
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2" aria-label="Toggle theme">
+                <!-- Sun icon (Light mode) -->
+                <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <!-- Moon icon (Dark mode) -->
+                <svg id="moon-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+                <!-- Game icon (Game mode) -->
+                <svg id="game-icon" class="w-6 h-6 text-cyan-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </button>
+            <div class="flex gap-6">
+                <a href="index.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Home</a>
+                <a href="gamehub.html" class="text-gray-900 dark:text-white font-medium">Games</a>
+                <a href="powerup.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Power-Up</a>
+                <a href="about.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-[60vh] flex flex-col justify-center items-center text-center px-6 py-20 relative">
+        <a href="index.html" class="text-purple-500 dark:text-purple-400 hover:underline mb-6">← Back to Home</a>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Game Hub</h1>
+        <p class="text-xl text-purple-500 dark:text-purple-400 font-medium mb-6">Choose Your Skill Game</p>
+        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+            Compete, learn, and level up. Each game unlocks new abilities and brings you closer to mastery. Pick a game to start playing.
+        </p>
+    </section>
+
+    <!-- Games Grid Section -->
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Available Games</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Master different skills. Earn XP. Unlock powers. Graduate at 10,500 XP.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- PROMPTFORGE Game Card -->
+                <a href="games.html" class="group bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none hover:shadow-xl dark:hover:shadow-2xl hover:scale-105 transition-all border-2 border-transparent hover:border-purple-500 dark:hover:border-purple-400">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-2 text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition">PROMPTFORGE</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Master the Art of Prompt Engineering</p>
+                        </div>
+                        <div class="text-4xl">🔨</div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Levels:</span>
+                            <span class="font-bold text-gray-900 dark:text-white">1 → 7</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Total XP:</span>
+                            <span class="font-bold text-gray-900 dark:text-white">7,200 XP</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Status:</span>
+                            <span class="font-bold text-green-600 dark:text-green-400">Available</span>
+                        </div>
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mt-4">
+                            <div class="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">
+                        Learn prompt engineering from basics to advanced automation. Build real AI systems and master the art of communicating with AI.
+                    </p>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="text-purple-600 dark:text-purple-400 font-medium">Enter Game →</span>
+                        <div class="text-sm text-gray-500 dark:text-gray-500">~2-3 hours</div>
+                    </div>
+                </a>
+
+                <!-- Coming Soon Card -->
+                <div class="group bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none opacity-70 cursor-not-allowed border-2 border-dashed border-gray-300 dark:border-gray-700">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-2 text-gray-400">Coming Soon</h3>
+                            <p class="text-gray-500">Next skill game launching soon</p>
+                        </div>
+                        <div class="text-4xl">🎮</div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Levels:</span>
+                            <span class="font-bold text-gray-400">TBD</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Total XP:</span>
+                            <span class="font-bold text-gray-400">TBD</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Status:</span>
+                            <span class="font-bold text-gray-500">Coming Soon</span>
+                        </div>
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mt-4">
+                            <div class="bg-gray-400 h-3 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">
+                        We're crafting the next game. Stay tuned for announcements on new skill games launching this season.
+                    </p>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-500 font-medium">Notify Me →</span>
+                        <div class="text-sm text-gray-500">Coming Q1 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Stats Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">How It Works</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Play games. Earn XP. Unlock powers. Graduate at 10,500 XP.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Stats Card 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold mb-2">Complete Quests</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Each quest teaches a skill and awards XP. Build real projects along the way.</p>
+                </div>
+
+                <!-- Stats Card 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-2xl font-bold mb-2">Beat Bosses</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Each level has a boss mission. Defeat it to unlock the next level and earn big XP.</p>
+                </div>
+
+                <!-- Stats Card 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
+                    <div class="text-4xl mb-4">🔓</div>
+                    <h3 class="text-2xl font-bold mb-2">Unlock Powers</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Level up to unlock new abilities and powers that increase your effectiveness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progression Table -->
+    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">XP & Progression</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead class="border-b-2 border-purple-500 dark:border-purple-400">
+                        <tr>
+                            <th class="py-4 px-4 font-bold">Action</th>
+                            <th class="py-4 px-4 font-bold">XP Earned</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                            <td class="py-4 px-4">Quest Completion</td>
+                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">100–200 XP</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                            <td class="py-4 px-4">Boss Mission</td>
+                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">400 XP</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                            <td class="py-4 px-4">Level Completion</td>
+                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">+250 XP</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                            <td class="py-4 px-4">7-Day Streak</td>
+                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">+500 XP</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                            <td class="py-4 px-4">Portfolio Publish</td>
+                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">+1,000 XP</td>
+                        </tr>
+                        <tr class="bg-purple-50 dark:bg-purple-900/20 font-bold border-t-2 border-purple-500 dark:border-purple-400">
+                            <td class="py-4 px-4">Total Graduation XP</td>
+                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400">10,500 XP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ready to Play Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Play?</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                Start with PROMPTFORGE and begin your journey to mastery.
+            </p>
+            <a href="games.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-colors text-lg">
+                Play PROMPTFORGE Now →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-4xl mx-auto text-center text-gray-500">
+            <p>&copy; 2025 sixtysevenai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script (Light / Dark / Game) -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const gameIcon = document.getElementById('game-icon');
+        
+        const themes = ['light', 'dark', 'game'];
+        
+        function setTheme(theme) {
+            html.classList.remove('dark', 'game');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.add('hidden');
+            gameIcon.classList.add('hidden');
+            
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+            } else if (theme === 'game') {
+                html.classList.add('game');
+                gameIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+        
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            setTheme(themes[nextIndex]);
+        });
+    </script>
+
+</body>
+</html>

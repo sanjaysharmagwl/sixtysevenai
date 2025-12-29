@@ -62,8 +62,10 @@
 .transition-level-wrapper {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
     position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .transition-level-number {
@@ -126,14 +128,13 @@
 
 .transition-arrows-container {
     display: flex;
-    gap: 0.3rem;
+    gap: clamp(0.2rem, 0.5vw, 0.4rem);
     align-items: center;
-    min-width: 3rem;
+    min-width: clamp(2rem, 15vw, 4rem);
     justify-content: center;
     position: relative;
     height: clamp(1.5rem, 10vw, 7rem);
-    display: flex;
-    align-items: center;
+    flex-shrink: 0;
 }
 
 .transition-arrow-flow {
@@ -714,6 +715,46 @@ nav a:hover .nav-badge {
     
     nav a::after {
         display: none;
+    }
+}
+
+/* Responsive animation adjustments */
+@media (max-width: 768px) {
+    .transition-level-wrapper {
+        gap: clamp(0.4rem, 1.5vw, 1rem);
+        margin-bottom: 1rem;
+    }
+    
+    .transition-level-number {
+        font-size: clamp(1.2rem, 8vw, 4rem);
+    }
+    
+    .transition-arrows-container {
+        min-width: clamp(1.5rem, 12vw, 3rem);
+        height: clamp(1.2rem, 8vw, 4rem);
+    }
+    
+    .transition-arrow-flow {
+        font-size: clamp(1.2rem, 8vw, 4rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .transition-level-wrapper {
+        gap: clamp(0.3rem, 1.2vw, 0.8rem);
+    }
+    
+    .transition-level-number {
+        font-size: clamp(1rem, 7vw, 3rem);
+    }
+    
+    .transition-arrows-container {
+        min-width: clamp(1.2rem, 10vw, 2.5rem);
+        height: clamp(1rem, 7vw, 3rem);
+    }
+    
+    .transition-arrow-flow {
+        font-size: clamp(1rem, 7vw, 3rem);
     }
 }
 
