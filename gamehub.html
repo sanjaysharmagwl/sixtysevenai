@@ -49,13 +49,239 @@
             background: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00);
         }
         
-        .cta-button {
+        .cta-gradient {
             background: linear-gradient(90deg, #FF8A00, #FF4FD8);
-            transition: all 0.3s ease;
         }
         
-        .cta-button:hover {
+        .cta-gradient:hover {
             box-shadow: 0 0 20px rgba(255, 143, 0, 0.5);
+        }
+
+        /* Game Card Styles - Per AGENT.md Specs */
+        .game-card {
+            border-radius: 12px;
+            padding: 32px;
+            min-height: 280px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card-prompt-architect {
+            background: linear-gradient(135deg, #26E6C8, #2A8CFF);
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #26E6C8, #2A8CFF) 1;
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+        }
+
+        .game-card-agent-engineer {
+            background: linear-gradient(135deg, #2A8CFF, #7B3FE4);
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #2A8CFF, #7B3FE4) 1;
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+        }
+
+        .game-card-automation-forge {
+            background: linear-gradient(135deg, #7B3FE4, #FF4FD8);
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #7B3FE4, #FF4FD8) 1;
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+        }
+
+        .game-card-creator-os {
+            background: linear-gradient(135deg, #FF4FD8, #FF8A00);
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #FF4FD8, #FF8A00) 1;
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+        }
+
+        .game-card-startup-builder {
+            background: linear-gradient(135deg, #FF8A00, #26E6C8);
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #FF8A00, #26E6C8) 1;
+            box-shadow: 0 0 30px rgba(255, 143, 0, 0.3);
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 143, 0, 0.6) !important;
+        }
+
+        .game-card-icon {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 20px;
+            font-size: 32px;
+        }
+
+        .game-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0F172A;
+            margin-bottom: 10px;
+        }
+
+        .game-card-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #0F172A;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .xp-badge {
+            background: #A855F7;
+            color: #FFFFFF;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        .start-button {
+            background: linear-gradient(90deg, #FF8A00, #FF4FD8);
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 24px;
+            height: 48px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            margin-top: auto;
+        }
+
+        .start-button:hover {
+            box-shadow: 0 0 20px rgba(255, 143, 0, 0.5);
+        }
+
+        .how-it-works-card {
+            background: linear-gradient(135deg, #26E6C8 0%, #2A8CFF 50%, #7B3FE4 100%);
+            border-radius: 12px;
+            padding: 32px;
+            color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(255, 143, 0, 0.2);
+        }
+
+        .how-it-works-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .how-it-works-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .how-it-works-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Progression Table */
+        .progression-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .progression-table thead {
+            border-bottom: 2px solid #FF8A00;
+        }
+
+        .progression-table th {
+            padding: 16px;
+            text-align: left;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: bold;
+            color: #0F172A;
+            background: linear-gradient(90deg, rgba(255, 143, 0, 0.1), transparent);
+        }
+
+        .progression-table td {
+            padding: 16px;
+            border-bottom: 1px solid #E5E7EB;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .progression-table tbody tr:hover {
+            background: #F9FAFB;
+        }
+
+        .progression-table .xp-value {
+            color: #FF8A00;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+        }
+
+        .progression-table .total-row {
+            background: linear-gradient(90deg, #FF8A00 0%, rgba(255, 143, 0, 0.1) 100%);
+            border-top: 2px solid #FF8A00;
+            font-weight: bold;
+        }
+
+        .ready-to-play-button {
+            background: linear-gradient(90deg, #FF8A00, #FF4FD8);
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 16px 32px;
+            height: 48px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .ready-to-play-button:hover {
+            box-shadow: 0 0 20px rgba(255, 143, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Dark mode adjustments */
+        .dark .how-it-works-card {
+            background: linear-gradient(135deg, #26E6C8 0%, #2A8CFF 50%, #7B3FE4 100%);
+        }
+
+        .dark .progression-table th {
+            color: #FFFFFF;
+            background: linear-gradient(90deg, rgba(255, 143, 0, 0.15), transparent);
+        }
+
+        .dark .progression-table td {
+            border-bottom-color: #374151;
+            color: #FFFFFF;
+        }
+
+        .dark .progression-table tbody tr:hover {
+            background: #1F2937;
+        }
+
+        .dark .progression-table .total-row {
+            background: linear-gradient(90deg, #FF8A00 0%, rgba(255, 143, 0, 0.15) 100%);
+            color: #FFFFFF;
         }
     </style>
 </head>
@@ -71,19 +297,19 @@
 
             <!-- Center: Navigation Links -->
             <div class="flex gap-4 sm:gap-8 items-center text-xs sm:text-sm font-medium flex-shrink-0">
-                <a href="index.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="index.html" class="nav-link text-neural-navy dark:text-white transition hover:text-neural-spectrum-orange duration-300 whitespace-nowrap font-inter">
                     🎯 Dashboard
                 </a>
-                <a href="gamehub.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="gamehub.html" class="nav-link text-neural-navy dark:text-white transition hover:text-neural-spectrum-orange duration-300 whitespace-nowrap font-inter">
                     🎮 Games
                 </a>
-                <a href="powerup.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="powerup.html" class="nav-link text-neural-navy dark:text-white transition hover:text-neural-spectrum-orange duration-300 whitespace-nowrap font-inter">
                     ⚡ Powers
                 </a>
-                <a href="leaderboard.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="leaderboard.html" class="nav-link text-neural-navy dark:text-white transition hover:text-neural-spectrum-orange duration-300 whitespace-nowrap font-inter">
                     🏆 Leaderboard
                 </a>
-                <a href="profile.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                <a href="profile.html" class="nav-link text-neural-navy dark:text-white transition hover:text-neural-spectrum-orange duration-300 whitespace-nowrap font-inter">
                     👤 Profile
                 </a>
             </div>
@@ -109,23 +335,23 @@
 
     <!-- HERO ZONE (60vh) -->
     <section class="hero-gradient min-h-screen md:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 pt-48 pb-16 sm:pt-56 sm:pb-20 md:pt-64 md:py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal/5 via-neural-spectrum-blue/5 to-neural-spectrum-pink/5 opacity-30"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-black/20 via-black/15 to-black/20 opacity-40"></div>
 
-        <div class="max-w-7xl mx-auto w-full text-center relative z-10">
+        <div class="max-w-3xl mx-auto w-full text-center relative z-10">
             <div class="space-y-4 sm:space-y-6 md:space-y-8">
                 <div>
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-grotesk leading-tight mb-3 sm:mb-4 md:mb-6 text-white">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-grotesk leading-tight mb-6 sm:mb-8 md:mb-10 text-white drop-shadow-lg" style="text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);">
                         Choose Your First Game<br>and Start Leveling.
                     </h1>
-                    <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto font-inter leading-relaxed">
-                        <strong>This is where you forge real power.</strong><br><br>
+                    <p class="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto font-inter leading-relaxed drop-shadow-md" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);">
+                        <strong class="block mb-4">This is where you forge real power.</strong>
                         Games build your permanent abilities. Each level unlocks new skills. Each boss mission brings you closer to mastery.<br><br>
-                        <span class="block space-y-1 sm:space-y-2">
+                        <span class="block space-y-2 sm:space-y-1 mb-4">
                             • Master core AI skills<br>
                             • Build real systems<br>
                             • Unlock permanent abilities<br>
                             • Graduate at 10,500 XP
-                        </span><br>
+                        </span>
                         Your progress is your portfolio.
                     </p>
                 </div>
@@ -136,9 +362,9 @@
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 pointer-events-none">
             <div class="flex flex-col items-center gap-0">
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #2A8CFF; filter: drop-shadow(0 0 20px rgba(42, 140, 255, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite;">↓</span>
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #26E6C8; filter: drop-shadow(0 0 20px rgba(38, 230, 200, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.3s;">↓</span>
-                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #7B3FE4; filter: drop-shadow(0 0 20px rgba(123, 63, 228, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.6s;">↓</span>
+                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4)); animation: arrow-surge-vertical 1.5s ease-in-out infinite;">↓</span>
+                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.3s;">↓</span>
+                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #0F172A; filter: drop-shadow(0 0 20px rgba(15, 23, 42, 0.4)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.6s;">↓</span>
                 </div>
             </div>
         </div>
@@ -165,161 +391,141 @@
     </section>
 
     <!-- Games Grid Section -->
-    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Available Games</h2>
-            <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Master different skills. Earn XP. Unlock powers. Graduate at 10,500 XP.</p>
+    <section class="py-20 px-6 bg-neural-snow dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold font-grotesk mb-4 text-center text-neural-navy dark:text-white">
+                Available Games
+            </h2>
+            <p class="text-neural-navy/70 dark:text-gray-400 text-center mb-12 font-inter">
+                Master different skills. Earn XP. Unlock powers. Graduate at 10,500 XP.
+            </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-                <!-- PROMPTFORGE Game Card -->
-                <a href="games.html" class="group bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none hover:shadow-xl dark:hover:shadow-2xl hover:scale-105 transition-all border-2 border-transparent hover:border-purple-500 dark:hover:border-purple-400">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-3xl font-bold mb-2 text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition">PROMPTFORGE</h3>
-                            <p class="text-gray-600 dark:text-gray-400">Master the Art of Prompt Engineering</p>
-                        </div>
-                        <div class="text-4xl">🔨</div>
-                    </div>
-                    
-                    <div class="space-y-3 mb-6">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-600 dark:text-gray-400">Levels:</span>
-                            <span class="font-bold text-gray-900 dark:text-white">1 → 7</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-600 dark:text-gray-400">Total XP:</span>
-                            <span class="font-bold text-gray-900 dark:text-white">7,200 XP</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-600 dark:text-gray-400">Status:</span>
-                            <span class="font-bold text-green-600 dark:text-green-400">Available</span>
-                        </div>
-                        <!-- Progress Bar -->
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mt-4">
-                            <div class="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full" style="width: 0%"></div>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">
-                        Learn prompt engineering from basics to advanced automation. Build real AI systems and master the art of communicating with AI.
-                    </p>
-                    
-                    <div class="flex items-center justify-between">
-                        <span class="text-purple-600 dark:text-purple-400 font-medium">Enter Game →</span>
-                        <div class="text-sm text-gray-500 dark:text-gray-500">~2-3 hours</div>
-                    </div>
-                </a>
-
-                <!-- Coming Soon Card -->
-                <div class="group bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none opacity-70 cursor-not-allowed border-2 border-dashed border-gray-300 dark:border-gray-700">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-3xl font-bold mb-2 text-gray-400">Coming Soon</h3>
-                            <p class="text-gray-500">Next skill game launching soon</p>
-                        </div>
-                        <div class="text-4xl">🎮</div>
-                    </div>
-                    
-                    <div class="space-y-3 mb-6">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-600 dark:text-gray-400">Levels:</span>
-                            <span class="font-bold text-gray-400">TBD</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-600 dark:text-gray-400">Total XP:</span>
-                            <span class="font-bold text-gray-400">TBD</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-600 dark:text-gray-400">Status:</span>
-                            <span class="font-bold text-gray-500">Coming Soon</span>
-                        </div>
-                        <!-- Progress Bar -->
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mt-4">
-                            <div class="bg-gray-400 h-3 rounded-full" style="width: 0%"></div>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">
-                        We're crafting the next game. Stay tuned for announcements on new skill games launching this season.
-                    </p>
-                    
-                    <div class="flex items-center justify-between">
-                        <span class="text-gray-500 font-medium">Notify Me →</span>
-                        <div class="text-sm text-gray-500">Coming Q1 2025</div>
-                    </div>
+            <!-- 5-Column Responsive Grid: 5 cols desktop, 2 tablet, 1 mobile -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-4 lg:gap-5">
+                
+                <!-- Prompt Architect Card -->
+                <div class="game-card game-card-prompt-architect">
+                    <div class="game-card-icon">🔨</div>
+                    <h3 class="game-card-title">Prompt Architect</h3>
+                    <p class="game-card-description">Master the art of communicating with AI systems</p>
+                    <div class="xp-badge">XP: 2,500</div>
+                    <a href="games.html" class="start-button">START →</a>
                 </div>
+
+                <!-- Agent Engineer Card -->
+                <div class="game-card game-card-agent-engineer">
+                    <div class="game-card-icon">🤖</div>
+                    <h3 class="game-card-title">Agent Engineer</h3>
+                    <p class="game-card-description">Design and build autonomous AI agents</p>
+                    <div class="xp-badge">XP: 2,500</div>
+                    <a href="games.html" class="start-button">START →</a>
+                </div>
+
+                <!-- Automation Forge Card -->
+                <div class="game-card game-card-automation-forge">
+                    <div class="game-card-icon">⚙️</div>
+                    <h3 class="game-card-title">Automation Forge</h3>
+                    <p class="game-card-description">Build powerful workflow systems and automations</p>
+                    <div class="xp-badge">XP: 2,500</div>
+                    <a href="games.html" class="start-button">START →</a>
+                </div>
+
+                <!-- Creator OS Card -->
+                <div class="game-card game-card-creator-os">
+                    <div class="game-card-icon">📝</div>
+                    <h3 class="game-card-title">Creator OS</h3>
+                    <p class="game-card-description">Master content creation and personal branding</p>
+                    <div class="xp-badge">XP: 2,500</div>
+                    <a href="games.html" class="start-button">START →</a>
+                </div>
+
+                <!-- Startup Builder Card -->
+                <div class="game-card game-card-startup-builder">
+                    <div class="game-card-icon">🚀</div>
+                    <h3 class="game-card-title">Startup Builder</h3>
+                    <p class="game-card-description">Launch and scale AI-powered businesses</p>
+                    <div class="xp-badge">XP: 2,500</div>
+                    <a href="games.html" class="start-button">START →</a>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Game Stats Section -->
-    <section class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">How It Works</h2>
-            <p class="text-gray-600 dark:text-gray-400 text-center mb-12">Play games. Earn XP. Unlock powers. Graduate at 10,500 XP.</p>
+    <!-- Game Elements Section -->
+    <section class="py-20 px-6 bg-white dark:bg-neural-navy">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold font-grotesk mb-4 text-center text-neural-navy dark:text-white">
+                Game Elements
+            </h2>
+            <p class="text-neural-navy/70 dark:text-gray-400 text-center mb-12 font-inter">
+                Every game combines challenges, progression, and real outcomes.
+            </p>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                <!-- Stats Card 1 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <div class="text-4xl mb-4">⚡</div>
-                    <h3 class="text-2xl font-bold mb-2">Complete Quests</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Each quest teaches a skill and awards XP. Build real projects along the way.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Quests Card -->
+                <div class="how-it-works-card">
+                    <div class="how-it-works-icon">⚡</div>
+                    <h3 class="how-it-works-title">Complete Quests</h3>
+                    <p class="how-it-works-text">Each quest teaches a skill and awards XP. Build real projects along the way.</p>
                 </div>
 
-                <!-- Stats Card 2 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <div class="text-4xl mb-4">🏆</div>
-                    <h3 class="text-2xl font-bold mb-2">Beat Bosses</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Each level has a boss mission. Defeat it to unlock the next level and earn big XP.</p>
+                <!-- Boss Missions Card -->
+                <div class="how-it-works-card">
+                    <div class="how-it-works-icon">🏆</div>
+                    <h3 class="how-it-works-title">Beat Bosses</h3>
+                    <p class="how-it-works-text">Each level has a boss mission. Defeat it to unlock the next level and earn big XP.</p>
                 </div>
 
-                <!-- Stats Card 3 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg dark:shadow-none">
-                    <div class="text-4xl mb-4">🔓</div>
-                    <h3 class="text-2xl font-bold mb-2">Unlock Powers</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Level up to unlock new abilities and powers that increase your effectiveness.</p>
+                <!-- Powers Card -->
+                <div class="how-it-works-card">
+                    <div class="how-it-works-icon">🔓</div>
+                    <h3 class="how-it-works-title">Unlock Powers</h3>
+                    <p class="how-it-works-text">Level up to unlock new abilities and powers that increase your effectiveness.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Progression Table -->
-    <section class="py-20 px-6 bg-gray-100 dark:bg-gray-900">
+    <section class="py-20 px-6 bg-neural-snow dark:bg-gray-900">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">XP & Progression</h2>
+            <h2 class="text-3xl md:text-4xl font-bold font-grotesk mb-12 text-center text-neural-navy dark:text-white">
+                XP & Progression
+            </h2>
             
             <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs sm:text-sm md:text-base">
-                    <thead class="border-b-2 border-purple-500 dark:border-purple-400">
+                <table class="progression-table">
+                    <thead>
                         <tr>
-                            <th class="py-2 sm:py-4 px-2 sm:px-4 font-bold">Action</th>
-                            <th class="py-2 sm:py-4 px-2 sm:px-4 font-bold">XP Earned</th>
+                            <th>Action</th>
+                            <th>XP Earned</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                            <td class="py-2 sm:py-4 px-2 sm:px-4">Quest Completion</td>
-                            <td class="py-2 sm:py-4 px-2 sm:px-4 text-purple-600 dark:text-purple-400 font-bold">100–200 XP</td>
+                    <tbody>
+                        <tr>
+                            <td class="font-inter">Quest Completion</td>
+                            <td class="xp-value">100–200 XP</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                            <td class="py-4 px-4">Boss Mission</td>
-                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">400 XP</td>
+                        <tr>
+                            <td class="font-inter">Boss Mission</td>
+                            <td class="xp-value">400 XP</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                            <td class="py-4 px-4">Level Completion</td>
-                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">+250 XP</td>
+                        <tr>
+                            <td class="font-inter">Level Completion</td>
+                            <td class="xp-value">+250 XP</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                            <td class="py-4 px-4">7-Day Streak</td>
-                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">+500 XP</td>
+                        <tr>
+                            <td class="font-inter">7-Day Streak</td>
+                            <td class="xp-value">+500 XP</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                            <td class="py-4 px-4">Portfolio Publish</td>
-                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400 font-bold">+1,000 XP</td>
+                        <tr>
+                            <td class="font-inter">Portfolio Publish</td>
+                            <td class="xp-value">+1,000 XP</td>
                         </tr>
-                        <tr class="bg-purple-50 dark:bg-purple-900/20 font-bold border-t-2 border-purple-500 dark:border-purple-400">
-                            <td class="py-4 px-4">Total Graduation XP</td>
-                            <td class="py-4 px-4 text-purple-600 dark:text-purple-400">10,500 XP</td>
+                        <tr class="total-row">
+                            <td class="font-grotesk">Total Graduation XP</td>
+                            <td class="xp-value">10,500 XP</td>
                         </tr>
                     </tbody>
                 </table>
@@ -328,25 +534,27 @@
     </section>
 
     <!-- Ready to Play Section -->
-    <section class="py-20 px-6">
+    <section class="py-20 px-6 bg-white dark:bg-neural-navy">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Play?</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
-                Start with PROMPTFORGE and begin your journey to mastery.
+            <h2 class="text-3xl md:text-4xl font-bold font-grotesk mb-4 text-neural-navy dark:text-white">
+                Ready to Play?
+            </h2>
+            <p class="text-lg text-neural-navy/70 dark:text-gray-400 mb-8 font-inter">
+                Start with Prompt Architect and begin your journey to mastery.
             </p>
-            <a href="games.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-colors text-lg">
-                Play PROMPTFORGE Now →
+            <a href="games.html" class="ready-to-play-button">
+                Play Now →
             </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-10 px-6 border-t border-gray-200 dark:border-gray-800">
+    <footer class="py-10 px-6 border-t border-neural-graphite dark:border-gray-800">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
-            <p class="text-sm sm:text-base text-gray-500">&copy; 2025 sixtysevenai. All rights reserved.</p>
-            <div class="flex gap-6 text-sm sm:text-base">
-                <a href="about.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">📖 About</a>
-                <a href="contact.html" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">💬 Contact</a>
+            <p class="text-sm sm:text-base text-neural-navy/60 dark:text-gray-400 font-inter">&copy; 2025 sixtysevenai. All rights reserved.</p>
+            <div class="flex gap-6 text-sm sm:text-base font-inter">
+                <a href="about.html" class="text-neural-navy/60 dark:text-gray-400 hover:text-neural-spectrum-orange transition">📖 About</a>
+                <a href="contact.html" class="text-neural-navy/60 dark:text-gray-400 hover:text-neural-spectrum-orange transition">💬 Contact</a>
             </div>
         </div>
     </footer>
