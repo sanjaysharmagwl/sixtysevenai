@@ -3,54 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Hub - sixtysevenai</title>
+    <title>Game Hub - SixtySeven AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'sans-serif'],
+                    'inter': ['Inter', 'sans-serif'],
+                    'mono': ['JetBrains Mono', 'monospace']
+                },
+                extend: {
+                    colors: {
+                        'neural-spectrum': {
+                            'teal': '#26E6C8',
+                            'blue': '#2A8CFF',
+                            'violet': '#7B3FE4',
+                            'pink': '#FF4FD8',
+                            'orange': '#FF8A00'
+                        },
+                        'neural': {
+                            'navy': '#0F172A',
+                            'white': '#FFFFFF',
+                            'graphite': '#E5E7EB',
+                            'green': '#22C55E',
+                            'snow': '#F9FAFB'
+                        }
+                    }
+                }
+            }
         }
     </script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #26E6C8, #2A8CFF, #7B3FE4, #FF4FD8, #FF8A00);
+        }
+        
+        .cta-button {
+            background: linear-gradient(90deg, #FF8A00, #FF4FD8);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            box-shadow: 0 0 20px rgba(255, 143, 0, 0.5);
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white font-sans transition-colors duration-300">
+<body class="bg-white dark:bg-neural-navy text-neural-navy dark:text-white font-inter transition-colors duration-300">
 
     <!-- Navigation -->
-    <nav class="absolute top-0 left-0 right-0 py-6 px-6 z-10">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <!-- Theme Toggle (Light / Dark / Game) -->
-            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2" aria-label="Toggle theme">
-                <!-- Sun icon (Light mode) -->
-                <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                </svg>
-                <!-- Moon icon (Dark mode) -->
-                <svg id="moon-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                </svg>
-                <!-- Game icon (Game mode) -->
-                <svg id="game-icon" class="w-6 h-6 text-cyan-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </button>
-            <div class="flex gap-6">
-                <a href="index.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">🎯 Dashboard</a>
-                <a href="gamehub.html" class="text-gray-900 dark:text-white font-medium">🎮 Games</a>
-                <a href="powerup.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">⚡ Powers</a>
-                <a href="leaderboard.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">🏆 Leaderboard</a>
-                <a href="profile.html" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">👤 Profile</a>
+    <nav class="absolute top-0 left-0 right-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+            <div class="flex justify-between items-center gap-6 sm:gap-12">
+                <!-- Left: Logo -->
+                <div class="logo-container flex-shrink-0">
+                    <img src="assets/images/logo.png" alt="SixtySeven AI" class="h-16 sm:h-20 md:h-28 lg:h-32 w-auto">
+                </div>
+
+                <!-- Right: Navigation Links -->
+                <div class="flex gap-4 sm:gap-8 items-center text-sm sm:text-base font-medium flex-shrink-0">
+                    <a href="index.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                        🎯 Dashboard
+                    </a>
+                    <a href="gamehub.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                        🎮 Games
+                    </a>
+                    <a href="powerup.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                        ⚡ Powers
+                    </a>
+                    <a href="leaderboard.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                        🏆 Leaderboard
+                    </a>
+                    <a href="profile.html" class="nav-link text-white transition hover:text-neural-spectrum-teal duration-300 whitespace-nowrap">
+                        👤 Profile
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-[60vh] flex flex-col justify-center items-center text-center px-6 py-20 relative">
-        <a href="index.html" class="text-purple-500 dark:text-purple-400 hover:underline mb-6">← Back to Home</a>
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Game Hub</h1>
-        <p class="text-xl text-purple-500 dark:text-purple-400 font-medium mb-6">Choose Your Skill Game</p>
-        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-            Compete, learn, and level up. Each game unlocks new abilities and brings you closer to mastery. Pick a game to start playing.
-        </p>
+    <!-- HERO ZONE (60vh) -->
+    <section class="hero-gradient min-h-screen md:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 pt-48 pb-16 sm:pt-56 sm:pb-20 md:pt-64 md:py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-neural-spectrum-teal/5 via-neural-spectrum-blue/5 to-neural-spectrum-pink/5 opacity-30"></div>
+
+        <div class="max-w-7xl mx-auto w-full text-center relative z-10">
+            <div class="space-y-4 sm:space-y-6 md:space-y-8">
+                <div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-grotesk leading-tight mb-3 sm:mb-4 md:mb-6 text-white">
+                        Choose Your First Game<br>and Start Leveling.
+                    </h1>
+                    <p class="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto font-inter leading-relaxed">
+                        <strong>This is where you forge real power.</strong><br><br>
+                        Games build your permanent abilities. Each level unlocks new skills. Each boss mission brings you closer to mastery.<br><br>
+                        <span class="block space-y-1 sm:space-y-2">
+                            • Master core AI skills<br>
+                            • Build real systems<br>
+                            • Unlock permanent abilities<br>
+                            • Graduate at 10,500 XP
+                        </span><br>
+                        Your progress is your portfolio.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Downward Arrow Flow Animation -->
+        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 pointer-events-none">
+            <div class="flex flex-col items-center gap-0">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
+                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #2A8CFF; filter: drop-shadow(0 0 20px rgba(42, 140, 255, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite;">↓</span>
+                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #26E6C8; filter: drop-shadow(0 0 20px rgba(38, 230, 200, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.3s;">↓</span>
+                    <span style="font-size: clamp(1.5rem, 10vw, 3rem); font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #7B3FE4; filter: drop-shadow(0 0 20px rgba(123, 63, 228, 0.6)); animation: arrow-surge-vertical 1.5s ease-in-out infinite 0.6s;">↓</span>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            @keyframes arrow-surge-vertical {
+                0% {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                20% {
+                    opacity: 1;
+                }
+                80% {
+                    opacity: 1;
+                    transform: translateY(20px);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(40px);
+                }
+            }
+        </style>
     </section>
 
     <!-- Games Grid Section -->
