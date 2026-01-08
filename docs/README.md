@@ -4,7 +4,18 @@ This index shows the organized documentation structure.
 
 ## General
 
-- [copilot_md_organizer_prompt.md](general/copilot_md_organizer_prompt.md)
-- [PROMPTFORGE.md](general/PROMPTFORGE.md)
-- [README.md](general/README.md)
+- [IMPLEMENTATION_STATUS.md](general/IMPLEMENTATION_STATUS.md)
+- [FILES_MANIFEST.md](general/FILES_MANIFEST.md)
+- [QUICK_START_GUIDE.md](general/QUICK_START_GUIDE.md)
+- [START_HERE.md](general/START_HERE.md)
+- [PHASE_3_IMPLEMENTATION_SUMMARY.md](general/PHASE_3_IMPLEMENTATION_SUMMARY.md)
+- [PHASE_2_DELIVERY_SUMMARY.md](general/PHASE_2_DELIVERY_SUMMARY.md)
+- [PHASE_2_API_REFERENCE.md](general/PHASE_2_API_REFERENCE.md)
+- [IMPLEMENTATION_GUIDE.md](general/IMPLEMENTATION_GUIDE.md)
+- [PHASE_3_PLAN.md](general/PHASE_3_PLAN.md)
+- [PHASE_1_COMPLETION.md](general/PHASE_1_COMPLETION.md)
+- [PHASE_2_COMPLETION.md](general/PHASE_2_COMPLETION.md)
+- [PHASE_3_VISUAL_OVERVIEW.md](general/PHASE_3_VISUAL_OVERVIEW.md)
+- [PHASE_3_COMPLETE.md](general/PHASE_3_COMPLETE.md)
+- [QUICK_START.md](general/QUICK_START.md)
 
