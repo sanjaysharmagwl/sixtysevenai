@@ -2,28 +2,19 @@
   "name": "sixtysevenai",
   "version": "1.0.0",
   "description": "SixtySeven AI - Skill Game Engine powered by modern web technologies",
-  "type": "module",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "dev": "wrangler dev",
-    "dev:client": "cd client && npm run dev",
-    "dev:all": "npm run dev & npm run dev:client",
-    "deploy": "wrangler deploy",
-    "build": "npm run build:client && node build.js",
-    "build:client": "cd client && npm run build",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "test": "node --test",
-    "type-check": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.43.0",
-    "hono": "^4.0.0",
-    "stripe": "^14.0.0",
-    "zod": "^3.22.0"
-  },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240605.0",
-    "wrangler": "^3.45.0",
-    "typescript": "^5.3.0",
-    "eslint": "^8.55.0"
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:all": "npm run dev:backend & npm run dev:frontend",
+    "build:backend": "npm run build --workspace=backend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "build": "npm run build:backend && npm run build:frontend",
+    "deploy:backend": "npm run deploy --workspace=backend",
+    "install:all": "npm install && npm install --workspace=backend && npm install --workspace=frontend"
   }
 }
