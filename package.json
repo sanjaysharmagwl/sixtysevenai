@@ -1,0 +1,29 @@
+{
+  "name": "sixtysevenai",
+  "version": "1.0.0",
+  "description": "SixtySeven AI - Skill Game Engine powered by modern web technologies",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:client": "cd client && npm run dev",
+    "dev:all": "npm run dev & npm run dev:client",
+    "deploy": "wrangler deploy",
+    "build": "npm run build:client && node build.js",
+    "build:client": "cd client && npm run build",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "test": "node --test",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.43.0",
+    "hono": "^4.0.0",
+    "stripe": "^14.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240605.0",
+    "wrangler": "^3.45.0",
+    "typescript": "^5.3.0",
+    "eslint": "^8.55.0"
+  }
+}

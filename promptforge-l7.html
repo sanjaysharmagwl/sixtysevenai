@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMPTFORGE L7 - GODMODE GATE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'sans-serif'],
+                    'inter': ['Inter', 'sans-serif'],
+                    'mono': ['JetBrains Mono', 'monospace']
+                },
+                extend: {
+                    colors: {
+                        'neural-spectrum': {
+                            'teal': '#26E6C8',
+                            'blue': '#2A8CFF',
+                            'violet': '#7B3FE4',
+                            'pink': '#FF4FD8',
+                            'orange': '#FF8A00'
+                        },
+                        'neural': {
+                            'navy': '#0F172A',
+                            'white': '#FFFFFF',
+                            'graphite': '#E5E7EB',
+                            'green': '#22C55E',
+                            'snow': '#F9FAFB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/game-theme.css">
+    <link rel="stylesheet" href="assets/css/brand-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
+    <style>
+        .godmode-banner {
+            background: linear-gradient(135deg, #FFD700, #7B3FE4, #26E6C8);
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(135deg, #FFD700, #7B3FE4, #26E6C8); }
+            50% { background: linear-gradient(135deg, #26E6C8, #FFD700, #7B3FE4); }
+        }
+
+        .ascension-gate {
+            background: rgba(15, 23, 42, 0.9);
+            border: 3px solid #FFD700;
+            border-radius: 12px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .ascension-gate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: shimmer 2s ease infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .unlock-condition {
+            background: rgba(26, 31, 58, 0.8);
+            border-left: 4px solid #FFD700;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 12px 0;
+            transition: all 0.3s ease;
+        }
+
+        .unlock-condition.locked {
+            border-left-color: #666;
+            opacity: 0.6;
+        }
+
+        .unlock-condition.unlocked {
+            border-left-color: #22C55E;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .ascension-quest {
+            background: rgba(26, 31, 58, 0.8);
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .ascension-quest:hover {
+            border-color: #FF8A00;
+            transform: translateX(8px);
+            box-shadow: 0 0 20px rgba(255, 138, 0, 0.2);
+        }
+
+        .ascension-quest.completed {
+            border-color: #22C55E;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .mission-framework {
+            background: rgba(26, 31, 58, 0.8);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #E5E7EB;
+            margin: 12px 0;
+        }
+
+        .mission-framework-header {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .authority-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #FFD700, #FF8A00);
+            color: #0F172A;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .godmode-requirement {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(123, 63, 228, 0.1));
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 12px 0;
+        }
+
+        .requirement-item.met .check {
+            color: #22C55E;
+        }
+
+        .requirement-item.unmet .check {
+            color: #666;
+        }
+
+        .check {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            background: #333;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #FFD700, #FF8A00);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 768px) {
+            .ascension-gate {
+                padding: 20px;
+            }
+
+            .ascension-quest {
+                padding: 16px;
+            }
+
+            .mission-framework {
+                font-size: 12px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white font-inter transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 py-4 sm:py-6 px-4 sm:px-6 bg-neural-navy/95 backdrop-blur border-b border-yellow-500/20">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-6">
+            <a href="promptforge.html" class="text-white hover:text-yellow-400 transition font-mono text-sm font-bold">
+                ← Back to Game
+            </a>
+            <h1 class="text-xl sm:text-2xl font-bold font-grotesk text-yellow-400">L7 — GODMODE GATE</h1>
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-700/40 hover:bg-gray-600/40 transition-colors" aria-label="Toggle theme">
+                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <svg id="moon-icon" class="w-5 h-5 text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="godmode-banner py-16 sm:py-20 px-4 sm:px-6 text-white text-center relative z-10">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-grotesk mb-4">THE GODMODE ASCENSION</h2>
+        <p class="text-lg sm:text-xl max-w-3xl mx-auto mb-4 font-grotesk">You have transcended 6 realms. Now face the ultimate test.</p>
+        <p class="text-base sm:text-lg max-w-3xl mx-auto text-white/90 mb-8">Only those who prove absolute mastery across all domains can ascend to Godmode—the final authority.</p>
+        
+        <!-- Godmode Status Badge -->
+        <div class="bg-neural-navy/80 backdrop-blur rounded-lg p-4 max-w-md mx-auto mb-6">
+            <p class="text-sm font-mono text-yellow-400 mb-2">ASCENSION STATUS</p>
+            <div id="godmode-status" class="font-bold text-yellow-400">
+                Loading your progression...
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12 sm:py-16 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- The Gate -->
+            <div class="ascension-gate mb-12">
+                <h3 class="text-3xl sm:text-4xl font-bold font-grotesk mb-6 text-yellow-400">✦ THE GATE OF TRANSCENDENCE ✦</h3>
+                <p class="text-white/90 mb-8 text-lg">You stand before the final portal. Beyond lies Godmode—a state of being where you command reality itself.</p>
+                <p class="text-white/80 mb-8">To pass through, you must prove absolute mastery across all dimensions:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-start gap-3">
+                        <span class="text-yellow-400 font-bold text-xl">◇</span>
+                        <span class="text-white/80"><strong>Cumulative XP:</strong> 156,000+ total XP earned</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-yellow-400 font-bold text-xl">◇</span>
+                        <span class="text-white/80"><strong>Final Bosses:</strong> Defeated all 6 final bosses</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-yellow-400 font-bold text-xl">◇</span>
+                        <span class="text-white/80"><strong>Rank Achieved:</strong> OVERLORD (5,000+ XP per level)</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-yellow-400 font-bold text-xl">◇</span>
+                        <span class="text-white/80"><strong>Authority Proof:</strong> Published work demonstrating mastery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Requirements Check -->
+            <div class="godmode-requirement">
+                <h3 class="text-2xl font-bold font-grotesk mb-6 text-yellow-400">GODMODE REQUIREMENTS</h3>
+                <div id="requirements-container" class="space-y-4">
+                    <p class="text-white/70">Loading your eligibility status...</p>
+                </div>
+            </div>
+
+            <!-- The Ascension Quests -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-yellow-400">ASCENSION TRIALS</h3>
+                <p class="text-white/80 mb-8">Three final trials await. Complete all to unlock the Godmode authority.</p>
+                
+                <div class="space-y-4 mb-8">
+                    <!-- Quest 1 -->
+                    <div class="ascension-quest" id="ascension-quest-1">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-yellow-400">⟳ Trial 1: Omniscience Proof</h4>
+                                <p class="text-sm text-white/70 mt-1">Demonstrate mastery across 6+ interconnected domains</p>
+                            </div>
+                            <span class="text-sm font-mono text-yellow-400 whitespace-nowrap">+500 XP</span>
+                        </div>
+                        <p class="text-white/80 mb-4">Build and document a system that orchestrates knowledge from at least 6 different expertise domains:</p>
+
+                        <div class="mission-framework">
+                            <div class="mission-framework-header">OMNISCIENCE ARCHITECTURE</div>
+                            <div class="pl-4 space-y-2 mb-3">
+                                <div>• Marketing: Customer psychology & campaign optimization</div>
+                                <div>• Finance: Budget allocation & ROI maximization</div>
+                                <div>• Engineering: System design & scalability patterns</div>
+                                <div>• Operations: Process automation & efficiency</div>
+                                <div>• Data Science: Analytics & predictive modeling</div>
+                                <div>• Strategy: Vision articulation & roadmap orchestration</div>
+                            </div>
+                            <div class="mission-framework-header">INTEGRATION LAYERS</div>
+                            <div class="pl-4 space-y-2 mb-3">
+                                <div>• Cross-domain knowledge synthesis</div>
+                                <div>• Conflict resolution between domain priorities</div>
+                                <div>• Holistic optimization (not siloed)</div>
+                                <div>• Real-time adaptation across domains</div>
+                            </div>
+                            <div class="mission-framework-header">PROOF OF MASTERY</div>
+                            <div class="pl-4 space-y-2">
+                                <div>• 10,000+ words detailed documentation</div>
+                                <div>• 5+ real-world case studies</div>
+                                <div>• 95%+ accuracy in cross-domain predictions</div>
+                            </div>
+                        </div>
+
+                        <button class="px-6 py-2 bg-yellow-500 text-neural-navy font-mono font-bold rounded hover:bg-yellow-600 transition mt-4" onclick="submitAscensionQuest(1)">
+                            SUBMIT OMNISCIENCE PROOF
+                        </button>
+                        <p class="text-xs text-yellow-400 font-mono mt-2">✦ Unlock: Universal Knowledge Node</p>
+                    </div>
+
+                    <!-- Quest 2 -->
+                    <div class="ascension-quest" id="ascension-quest-2">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-yellow-400">⟳ Trial 2: Authority Credentials</h4>
+                                <p class="text-sm text-white/70 mt-1">Prove your right to speak with authority</p>
+                            </div>
+                            <span class="text-sm font-mono text-yellow-400 whitespace-nowrap">+500 XP</span>
+                        </div>
+                        <p class="text-white/80 mb-4">Submit evidence of your authority status in your domain:</p>
+
+                        <div class="mission-framework">
+                            <div class="mission-framework-header">AUTHORITY PROOF (Choose 3+)</div>
+                            <div class="pl-4 space-y-2 mb-3">
+                                <div>✓ Published technical articles (10,000+ reads)</div>
+                                <div>✓ Speaking engagements (conference talks)</div>
+                                <div>✓ Open source projects (1000+ stars)</div>
+                                <div>✓ Team led (5+ people managed)</div>
+                                <div>✓ Business metrics (10M+$ impact documented)</div>
+                                <div>✓ Product shipped (100K+ users)</div>
+                            </div>
+                            <div class="mission-framework-header">SUBMISSION INCLUDES</div>
+                            <div class="pl-4 space-y-2 mb-3">
+                                <div>• Links to published work</div>
+                                <div>• Team/company validation</div>
+                                <div>• Impact metrics proof</div>
+                                <div>• 2000+ word authority statement</div>
+                            </div>
+                        </div>
+
+                        <button class="px-6 py-2 bg-yellow-500 text-neural-navy font-mono font-bold rounded hover:bg-yellow-600 transition mt-4" onclick="submitAscensionQuest(2)">
+                            SUBMIT AUTHORITY CREDENTIALS
+                        </button>
+                        <p class="text-xs text-yellow-400 font-mono mt-2">✦ Unlock: Authority Seal</p>
+                    </div>
+
+                    <!-- Quest 3 -->
+                    <div class="ascension-quest" id="ascension-quest-3">
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-yellow-400">⟳ Trial 3: Mentorship Covenant</h4>
+                                <p class="text-sm text-white/70 mt-1">Pledge to guide the next generation of architects</p>
+                            </div>
+                            <span class="text-sm font-mono text-yellow-400 whitespace-nowrap">+500 XP</span>
+                        </div>
+                        <p class="text-white/80 mb-4">Godmode carriers have a responsibility: guide others on the path to mastery.</p>
+
+                        <div class="mission-framework">
+                            <div class="mission-framework-header">MENTORSHIP COVENANT</div>
+                            <div class="pl-4 space-y-2 mb-3">
+                                <div>✓ Mentor 3+ people through Architect rank</div>
+                                <div>✓ Create 1+ learning resources for others</div>
+                                <div>✓ Weekly office hours (ongoing commitment)</div>
+                                <div>✓ Review 10+ submissions from mentees</div>
+                            </div>
+                            <div class="mission-framework-header">GODMODE DUTIES</div>
+                            <div class="pl-4 space-y-2">
+                                <div>• Authority verification for new Godmode candidates</div>
+                                <div>• Community governance participation</div>
+                                <div>• Annual summit attendance (knowledge sharing)</div>
+                            </div>
+                        </div>
+
+                        <button class="px-6 py-2 bg-yellow-500 text-neural-navy font-mono font-bold rounded hover:bg-yellow-600 transition mt-4" onclick="submitAscensionQuest(3)">
+                            PLEDGE THE COVENANT
+                        </button>
+                        <p class="text-xs text-yellow-400 font-mono mt-2">✦ Unlock: Mentorship Authority</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Final Challenge -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-yellow-400">THE FINAL BOSS</h3>
+                
+                <div class="ascension-gate">
+                    <div class="mb-6">
+                        <div class="text-5xl mb-4">👑</div>
+                        <h4 class="text-3xl font-bold text-yellow-400 mb-3">Reality Manifestation</h4>
+                        <p class="text-white/80 mb-2 text-lg">You have mastered theory, practice, and authority. Now prove you can reshape reality itself.</p>
+                        <p class="text-yellow-400 font-mono font-bold text-xl">+2,500 XP + GODMODE UNLOCK</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- What You Build -->
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-4">WHAT YOU CREATE</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Transcendent System</p>
+                                        <p class="text-xs text-white/60">Orchestrates 10+ specialized AI agents</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Universal Framework</p>
+                                        <p class="text-xs text-white/60">Works across all domains & industries</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Self-Improving Loop</p>
+                                        <p class="text-xs text-white/60">Learns and adapts autonomously</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">→</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Authority Manifestation</p>
+                                        <p class="text-xs text-white/60">Deployed publicly, proven in production</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- What You Unlock -->
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <p class="text-sm font-mono font-bold text-white/80 mb-4">UNLOCKS ON ASCENSION</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">✦</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Godmode Status</p>
+                                        <p class="text-xs text-white/60">Authority rank in the community</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">✦</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">3.0× XP Multiplier</p>
+                                        <p class="text-xs text-white/60">All future earnings tripled</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">✦</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Governance Rights</p>
+                                        <p class="text-xs text-white/60">Vote on community decisions</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-400">✦</span>
+                                    <div>
+                                        <p class="font-bold text-white/80">Immortal Legacy</p>
+                                        <p class="text-xs text-white/60">Your work enshrined forever</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-500/10 border border-yellow-500/50 rounded-lg p-4 mb-6">
+                        <p class="text-white/90 mb-2"><strong>The Challenge:</strong></p>
+                        <p class="text-white/80 text-sm mb-3">Create a system that solves an unsolved problem in your domain. The system must:</p>
+                        <ul class="text-white/80 text-sm space-y-1 ml-4">
+                            <li>✓ Be publicly deployed and working in production</li>
+                            <li>✓ Generate measurable business impact (100K+$ value created)</li>
+                            <li>✓ Be novel (not a clone of existing solutions)</li>
+                            <li>✓ Include 20,000+ words of documentation</li>
+                            <li>✓ Demonstrate transcendent mastery across 6+ domains</li>
+                        </ul>
+                    </div>
+
+                    <button id="final-boss-btn" class="w-full px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-neural-navy font-mono font-bold text-lg rounded-lg hover:from-yellow-600 hover:to-orange-600 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        UNLOCK GODMODE (Complete all trials first)
+                    </button>
+                    <p class="text-xs text-white/60 mt-4 text-center font-mono">Only those who complete all three trials may face the final challenge.</p>
+                </div>
+            </div>
+
+            <!-- Godmode Benefits -->
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold font-grotesk mb-8 text-yellow-400">GODMODE PRIVILEGES</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-800/50 rounded-lg p-6 border-l-4 border-yellow-400">
+                        <h4 class="text-lg font-bold text-yellow-400 mb-3">⚡ Power</h4>
+                        <p class="text-white/80 text-sm">3.0× XP multiplier on all future challenges. Master new domains at 3x speed.</p>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-6 border-l-4 border-yellow-400">
+                        <h4 class="text-lg font-bold text-yellow-400 mb-3">👑 Authority</h4>
+                        <p class="text-white/80 text-sm">Recognized as the highest authority. Your words carry weight across all domains.</p>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-6 border-l-4 border-yellow-400">
+                        <h4 class="text-lg font-bold text-yellow-400 mb-3">🔗 Network</h4>
+                        <p class="text-white/80 text-sm">Access exclusive Godmode network. Meet other transcended masters globally.</p>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-6 border-l-4 border-yellow-400">
+                        <h4 class="text-lg font-bold text-yellow-400 mb-3">🎓 Mentorship</h4>
+                        <p class="text-white/80 text-sm">Guide the next generation. Build your own lineage of disciples.</p>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-6 border-l-4 border-yellow-400">
+                        <h4 class="text-lg font-bold text-yellow-400 mb-3">🌟 Legacy</h4>
+                        <p class="text-white/80 text-sm">Your achievements preserved forever. Immortal in the annals of mastery.</p>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-6 border-l-4 border-yellow-400">
+                        <h4 class="text-lg font-bold text-yellow-400 mb-3">🏛️ Governance</h4>
+                        <p class="text-white/80 text-sm">Vote on community evolution. Shape the future of PROMPTFORGE itself.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-8 px-4 sm:px-6 mt-12">
+        <div class="max-w-4xl mx-auto text-center text-white/60 text-sm">
+            <p class="mb-2">PROMPTFORGE L7 — THE GODMODE GATE</p>
+            <p>For those who dare to reshape reality itself.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load Godmode status
+        async function loadGodmodeStatus() {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                document.getElementById('godmode-status').innerHTML = 'Log in to view your status';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/quests/validator/godmode-status/${userId}`);
+                const data = await response.json();
+                
+                const progress = data.godmodeProgress;
+                const statusHtml = `
+                    <div class="space-y-2">
+                        <p>Current Rank: <strong>${data.currentRank}</strong></p>
+                        <p>XP Progress: <strong>${progress.xpAccumulated.toLocaleString()} / 156,000</strong></p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress.xpProgress}%"></div>
+                        </div>
+                        <p class="text-xs text-yellow-300 mt-2">${data.message}</p>
+                    </div>
+                `;
+                document.getElementById('godmode-status').innerHTML = statusHtml;
+                
+                // Render requirements
+                renderRequirements(progress);
+                
+                // Enable final boss button if all requirements met
+                if (data.godmodeUnlocked) {
+                    document.getElementById('final-boss-btn').disabled = false;
+                    document.getElementById('final-boss-btn').textContent = 'FACE THE FINAL BOSS';
+                }
+            } catch (error) {
+                console.error('Error loading Godmode status:', error);
+                document.getElementById('godmode-status').innerHTML = 'Error loading status';
+            }
+        }
+
+        function renderRequirements(progress) {
+            const requirements = [
+                {
+                    label: 'Cumulative XP (156,000+)',
+                    met: progress.conditions.xpAccumulation,
+                    value: `${progress.xpAccumulated} / 156,000`
+                },
+                {
+                    label: 'Final Bosses Defeated',
+                    met: progress.conditions.finalBosses.completed >= progress.conditions.finalBosses.required,
+                    value: `${progress.conditions.finalBosses.completed} / ${progress.conditions.finalBosses.required}`
+                },
+                {
+                    label: 'Minimum Rank (OVERLORD)',
+                    met: progress.conditions.minRankMet,
+                    value: 'Check profile'
+                }
+            ];
+
+            const html = requirements.map(req => `
+                <div class="requirement-item ${req.met ? 'met' : 'unmet'}">
+                    <span class="check">${req.met ? '✓' : '○'}</span>
+                    <div class="flex-1">
+                        <p class="font-bold text-white">${req.label}</p>
+                        <p class="text-sm text-white/60">${req.value}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('requirements-container').innerHTML = html;
+        }
+
+        async function submitAscensionQuest(questNumber) {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                alert('Please log in to submit');
+                return;
+            }
+
+            const answer = prompt(`Enter your submission for Trial ${questNumber}:`);
+            if (!answer) return;
+
+            try {
+                const response = await fetch('/api/quests/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userId,
+                        gameId: 'promptforge',
+                        levelNumber: 7,
+                        questNumber,
+                        answer
+                    })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert(`✓ Trial ${questNumber} submitted! Score: ${data.validation.score.toFixed(0)}%`);
+                    loadGodmodeStatus();
+                } else {
+                    alert(`✗ Submission needs improvement: ${data.validation.feedback.join(', ')}`);
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('Error submitting trial');
+            }
+        }
+
+        // Load status on page load
+        loadGodmodeStatus();
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            sunIcon.classList.toggle('hidden');
+            moonIcon.classList.toggle('hidden');
+        });
+
+        // Set initial icons
+        if (htmlElement.classList.contains('dark')) {
+            moonIcon.classList.remove('hidden');
+        } else {
+            sunIcon.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
