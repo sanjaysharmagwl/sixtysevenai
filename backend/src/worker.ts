@@ -14,6 +14,24 @@ const app = new Hono();
 app.use(cors());
 app.use(logger());
 
+// Root endpoint
+app.get('/', (c) => {
+  return c.json({
+    name: 'SixtySeven AI API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/health',
+      auth: '/api/auth/*',
+      player: '/api/player/*',
+      games: '/api/games/*',
+      xp: '/api/xp/*',
+      payments: '/api/payments/*',
+      quests: '/api/quests/*'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/health', (c) => {
   return c.json({

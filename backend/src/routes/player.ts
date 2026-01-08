@@ -189,7 +189,7 @@ router.post('/:userId/skill-trees/:skillTreeId/unlock-node', async (c) => {
       .single();
 
     if (skillTree) {
-      const unlockedInTree = allUnlockedNodes?.filter(n => {
+      const unlockedInTree = allUnlockedNodes?.filter(() => {
         // This is simplified - ideally would join with skill_nodes
         return true;
       }).length || 0;

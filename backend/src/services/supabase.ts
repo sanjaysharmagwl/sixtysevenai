@@ -7,8 +7,13 @@ export function getSupabaseClient(env: any) {
     const supabaseUrl = env.SUPABASE_URL;
     const supabaseKey = env.SUPABASE_ANON_KEY;
 
+    console.log('Initializing Supabase client with:', {
+      url: supabaseUrl ? `${supabaseUrl.substring(0, 20)}...` : 'MISSING',
+      hasKey: !!supabaseKey
+    });
+
     if (!supabaseUrl || !supabaseKey) {
-      throw new Error('Missing Supabase credentials');
+      throw new Error('Missing Supabase credentials - check .dev.vars file');
     }
 
     supabaseClient = createClient(supabaseUrl, supabaseKey);
@@ -20,18 +25,27 @@ export function getSupabaseClient(env: any) {
 export async function getUser(env: any, userId: string) {
   const supabase = getSupabaseClient(env);
   
+  console.log('Fetching user from database:', userId);
+  
   const { data, error } = await supabase
     .from('users')
     .select('*')
     .eq('id', userId)
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error fetching user:', error);
+    throw error;
+  }
+  
+  console.log('User fetched successfully:', data?.email);
   return data;
 }
 
 export async function createUser(env: any, userData: any) {
   const supabase = getSupabaseClient(env);
+  
+  console.log('Creating user in database:', userData.email);
   
   const { data, error } = await supabase
     .from('users')
@@ -39,7 +53,12 @@ export async function createUser(env: any, userData: any) {
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error creating user:', error);
+    throw error;
+  }
+  
+  console.log('User created successfully:', data?.email);
   return data;
 }
 

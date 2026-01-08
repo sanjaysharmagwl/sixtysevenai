@@ -19,9 +19,12 @@ const loginSchema = z.object({
 router.post('/register', async (c) => {
   try {
     const body = await c.req.json();
+    console.log('Register request body:', body);
+    
     const { email, password, name } = registerSchema.parse(body);
 
     const supabase = getSupabaseClient(c.env);
+    console.log('Supabase client created');
 
     // Create auth user in Supabase
     const { data: authData, error: authError } = await supabase.auth.signUp({
@@ -29,13 +32,25 @@ router.post('/register', async (c) => {
       password
     });
 
+    console.log('Supabase auth response:', { authData, authError });
+
     if (authError) {
+      console.error('Auth error:', authError);
+      // Check for duplicate user error
+      if (authError.message.includes('already registered') || authError.message.includes('already exists')) {
+        return c.json({ error: 'User with this email already exists. Please login instead.' }, 409);
+      }
       return c.json({ error: authError.message }, 400);
+    }
+
+    if (!authData.user) {
+      console.error('No user returned from signUp');
+      return c.json({ error: 'Failed to create user' }, 500);
     }
 
     // Create player profile
     const playerData = {
-      id: authData.user!.id,
+      id: authData.user.id,
       email,
       name,
       total_xp: 0,
@@ -44,7 +59,23 @@ router.post('/register', async (c) => {
       created_at: new Date().toISOString()
     };
 
-    const player = await createUser(c.env, playerData);
+    console.log('Creating player with data:', playerData);
+    
+    let player;
+    try {
+      player = await createUser(c.env, playerData);
+      console.log('Player created:', player);
+    } catch (dbError: any) {
+      console.error('Database error creating user:', dbError);
+      // If user profile already exists, fetch it instead
+      if (dbError.code === '23505' || dbError.message?.includes('duplicate') || dbError.message?.includes('unique')) {
+        console.log('User profile already exists, fetching existing user');
+        player = await getUser(c.env, authData.user.id);
+        console.log('Existing player fetched:', player);
+      } else {
+        throw dbError;
+      }
+    }
 
     // Get session for access token
     const { data: sessionData } = await supabase.auth.getSession();
@@ -63,10 +94,14 @@ router.post('/register', async (c) => {
       }
     }, 201);
   } catch (err) {
+    console.error('Register error:', err);
     if (err instanceof z.ZodError) {
       return c.json({ error: 'Validation error', details: err.errors }, 400);
     }
-    return c.json({ error: 'Registration failed' }, 500);
+    return c.json({ 
+      error: 'Registration failed', 
+      message: err instanceof Error ? err.message : 'Unknown error' 
+    }, 500);
   }
 });
 
@@ -74,6 +109,8 @@ router.post('/register', async (c) => {
 router.post('/login', async (c) => {
   try {
     const body = await c.req.json();
+    console.log('Login request for:', body.email);
+    
     const { email, password } = loginSchema.parse(body);
 
     const supabase = getSupabaseClient(c.env);
@@ -83,11 +120,21 @@ router.post('/login', async (c) => {
       password
     });
 
+    console.log('Supabase login response:', { hasData: !!data, error });
+
     if (error) {
+      console.error('Login error:', error);
       return c.json({ error: error.message }, 401);
     }
 
+    if (!data.user) {
+      console.error('No user returned from signIn');
+      return c.json({ error: 'Authentication failed' }, 401);
+    }
+
+    console.log('Fetching player data for user:', data.user.id);
     const player = await getUser(c.env, data.user.id);
+    console.log('Player data fetched:', player);
 
     return c.json({
       success: true,
@@ -103,10 +150,14 @@ router.post('/login', async (c) => {
       }
     });
   } catch (err) {
+    console.error('Login exception:', err);
     if (err instanceof z.ZodError) {
-      return c.json({ error: 'Validation error' }, 400);
+      return c.json({ error: 'Validation error', details: err.errors }, 400);
     }
-    return c.json({ error: 'Login failed' }, 500);
+    return c.json({ 
+      error: 'Login failed', 
+      message: err instanceof Error ? err.message : 'Unknown error' 
+    }, 500);
   }
 });
 
