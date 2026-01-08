@@ -2,7 +2,23 @@
 
 **SixtySeven AI – Core Agent Contract**
 
-## 1. Platform Identity (Non-Negotiable)
+## 1. Tech Stack (The Correct Stack for SixtySeven AI)
+
+This fits your gamified AI learning platform perfectly:
+
+| Layer     | Tool                          |
+| --------- | ----------------------------- |
+| Frontend  | GitHub Pages (free, CDN, fast)|
+| Backend   | Cloudflare Workers            |
+| Database  | Supabase                      |
+| Auth      | Supabase Auth                 |
+| Payments  | Stripe                        |
+| Storage   | Supabase Storage              |
+| CMS       | Sanity / Notion API           |
+
+---
+
+## 2. Platform Identity (Non-Negotiable)
 
 SixtySeven AI is **not a course website**.
 It is a **Skill Game Engine**.
@@ -21,7 +37,7 @@ No "blog-style" or "course-style" UX is allowed.
 
 ---
 
-## 2. UI Zones (Must Remain Separate)
+## 3. UI Zones (Must Remain Separate)
 
 There are two permanent universes:
 
@@ -34,7 +50,7 @@ They must never mix.
 
 ---
 
-## 3. Brand Colors & Gradients (Lock These)
+## 4. Brand Colors & Gradients (Lock These)
 
 ### PRIMARY BRAND GRADIENT: Neural Spectrum
 
@@ -100,7 +116,7 @@ They must never mix.
 
 ---
 
-## 4. SixtySeven Ascension Ladder (CANONICAL IDENTITY NAMING)
+## 5. SixtySeven Ascension Ladder (CANONICAL IDENTITY NAMING)
 
 Players don't acquire "levels." They ascend through mythic identity ranks.
 
@@ -193,7 +209,7 @@ Once Godmode is achieved:
 
 ---
 
-## 5. Card System (Mandatory)
+## 6. Card System (Mandatory)
 
 All content must render as cards.
 
@@ -206,7 +222,7 @@ All content must render as cards.
 
 ---
 
-## 6. SixtySeven XP & Multiplier Engine (Core Logic)
+## 7. SixtySeven XP & Multiplier Engine (Core Logic)
 
 This engine is what turns SixtySeven AI from a content platform into a **behavior-shaping operating system**.
 
@@ -374,7 +390,7 @@ The SixtySeven XP engine is **not fake points**. It is a **real progression econ
 
 ---
 
-## 7. Typography (Lock)
+## 8. Typography (Lock)
 
 | Use      | Font           |
 | -------- | -------------- |
@@ -384,7 +400,7 @@ The SixtySeven XP engine is **not fake points**. It is a **real progression econ
 
 ---
 
-## 8. Experience Law (Core Design Philosophy)
+## 9. Experience Law (Core Design Philosophy)
 
 Every game element must:
 
@@ -403,7 +419,7 @@ Even discovery zones (read/audio/video) must have subtle game styling.
 
 ---
 
-## 9. Naming Rules
+## 10. Naming Rules
 
 Never use:
 
@@ -422,13 +438,13 @@ Always use:
 
 ---
 
-## 10. Design Authority
+## 11. Design Authority
 
 If any future change conflicts with this file, **this file wins.**
 
 ---
 
-## 11. Homepage Layout Grid
+## 12. Homepage Layout Grid
 
 The homepage is the entry point to the platform—it must immediately communicate the game structure and drive navigation into either Power Up or GAMES zones.
 
@@ -484,7 +500,7 @@ The homepage is the entry point to the platform—it must immediately communicat
 
 ---
 
-## 12. Games Hub Card System
+## 13. Games Hub Card System
 
 Game cards are the **power-forging interface** of SixtySeven AI. They must feel like games, quests, status symbols, skill factories, and career-defining machines—not courses.
 
@@ -869,7 +885,7 @@ Players don't "take courses". They **own games**. They **forge skills**. They **
 
 ---
 
-## 13. Skill Tree System (Permanent Progression Framework)
+## 14. Skill Tree System (Permanent Progression Framework)
 
 Skill Trees are the **permanent brain upgrade system** of SixtySeven AI. Each game contains **four immutable skill trees** that never reset. Players evolve through specialization, not repetition.
 
@@ -1119,7 +1135,7 @@ If a game is redesigned:
 
 ---
 
-## 14. Level 1 Onboarding Flow
+## 15. Level 1 Onboarding Flow
 
 When a player enters a game, Level 1 must hook them immediately, establish game rules, and deliver their first win within 5 minutes.
 
@@ -1254,7 +1270,7 @@ Each game's Level 1 must customize **Screen 3** and the **mission definition**:
 
 ---
 
-## 15. Mobile & Responsive Design (All Pages)
+## 16. Mobile & Responsive Design (All Pages)
 
 All pages must be fully responsive and mobile-friendly across all breakpoints.
 
@@ -1449,7 +1465,7 @@ Consistent logo sizing across breakpoints:
 
 ---
 
-## 16. Power-Up Card UI System
+## 17. Power-Up Card UI System
 
 Power-Ups are the daily engagement engine. They must feel installable, collectible, and create addictive interaction loops without manipulation.
 
@@ -1681,7 +1697,7 @@ Each Power-Up card uses the same internal structure:
 
 ---
 
-## 17. Player Profile UI System
+## 18. Player Profile UI System
 
 The player profile is a **digital identity card** and **progression dashboard**. It anchors player identity, power, and mastery across all games.
 
@@ -2184,9 +2200,9 @@ Every player's profile must:
 
 ---
 
-## 18. Component naming conventions
+## 19. Component naming conventions
 
-## 19. Folder architecture for developers
+## 20. Folder architecture for developers
 
 - Component naming conventions
 - Folder architecture for developers
